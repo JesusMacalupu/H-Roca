@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hornos Roca | Detalle del Accesorio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-background": "#1a1c1b", "on-error-container": "#93000a", "on-tertiary-container": "#818489",
+                        "surface-dim": "#dadad8", "on-secondary-fixed": "#3a0b00", "secondary-fixed-dim": "#ffb59e",
+                        "surface": "#faf9f7", "inverse-on-surface": "#f1f1ef", "inverse-surface": "#2f3130",
+                        "on-tertiary-fixed-variant": "#44474b", "secondary": "#a53c19", "primary-fixed-dim": "#c8c6c5",
+                        "on-tertiary-fixed": "#181c20", "surface-container-lowest": "#ffffff", "inverse-primary": "#c8c6c5",
+                        "background": "#faf9f7", "on-primary-fixed": "#1c1b1b", "error": "#ba1a1a",
+                        "secondary-fixed": "#ffdbd0", "outline": "#747878", "outline-variant": "#c4c7c7",
+                        "primary-container": "#1c1b1b", "on-secondary-container": "#6e1c00", "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#842502", "on-tertiary": "#ffffff", "on-error": "#ffffff",
+                        "tertiary-fixed": "#e0e2e8", "surface-container-high": "#e9e8e6", "tertiary-container": "#181c20",
+                        "on-primary-fixed-variant": "#474746", "surface-container-highest": "#e3e2e0", "surface-container": "#efeeec",
+                        "primary": "#000000", "surface-bright": "#faf9f7", "primary-fixed": "#e5e2e1", "tertiary": "#000000",
+                        "on-secondary": "#ffffff", "on-surface": "#1a1c1b", "surface-variant": "#e3e2e0",
+                        "on-primary": "#ffffff", "on-surface-variant": "#444748", "secondary-container": "#fe7e55",
+                        "surface-tint": "#5f5e5e", "surface-container-low": "#f4f3f1", "tertiary-fixed-dim": "#c4c6cc",
+                        "on-primary-container": "#858383",
+                    },
+                    borderRadius: { DEFAULT: "0px", lg: "0px", xl: "0px", full: "9999px" },
+                    spacing: { "container-max": "1280px", "stack-sm": "16px", "margin-desktop": "28px", "gutter": "20px", "unit": "8px", "margin-mobile": "12px", "stack-md": "28px", "stack-lg": "48px" },
+                    fontFamily: { "headline-md": ["Source Serif 4"], "label-md": ["Hanken Grotesk"], "body-lg": ["Hanken Grotesk"], "headline-sm": ["Source Serif 4"], "body-md": ["Hanken Grotesk"], "display-lg": ["Source Serif 4"], "display-lg-mobile": ["Source Serif 4"], "label-sm": ["Hanken Grotesk"] },
+                    fontSize: {
+                        "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "label-md": ["14px", { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "headline-sm": ["24px", { lineHeight: "1.4", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "display-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "display-lg-mobile": ["36px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "label-sm": ["12px", { lineHeight: "1.2", letterSpacing: "0.1em", fontWeight: "700" }],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        :root {
+            --industrial-shadow: 3px 3px 0px rgba(0, 0, 0, 0.08);
+            --industrial-border: 1px solid #c4c7c7;
+            --transition-smooth: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .technical-shadow {
+            box-shadow: var(--industrial-shadow);
+        }
+
+        .industrial-border {
+            border: var(--industrial-border);
+        }
+
+        .product-img-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .accent-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            z-index: 2;
+        }
+
+        .img-accessory .accent-line {
+            background: #c8c6c5;
+        }
+
+        details.industrial-accordion {
+            border: var(--industrial-border);
+            background: #fff;
+            margin-bottom: 8px;
+        }
+
+        details.industrial-accordion summary {
+            padding: 14px 18px;
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f4f3f1;
+            transition: background 0.2s;
+        }
+
+        details.industrial-accordion summary:hover {
+            background: #e9e8e6;
+        }
+
+        details.industrial-accordion summary::after {
+            content: 'expand_more';
+            font-family: 'Material Symbols Outlined';
+            font-size: 20px;
+            transition: transform 0.2s;
+        }
+
+        details.industrial-accordion[open] summary::after {
+            content: 'expand_less';
+        }
+
+        details.industrial-accordion .content {
+            padding: 18px;
+        }
+
+        .gallery-thumb {
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+            cursor: pointer;
+        }
+
+        .gallery-thumb.active {
+            border-color: #1c1b1b;
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+            cursor: pointer;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #a53c19;
+            transition: width var(--transition-smooth);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #a53c19;
+        }
+
+        @media (max-width: 767px) {
+            .detail-main-img-mobile {
+                aspect-ratio: 1/1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md">
+    <header class="bg-background border-b border-outline-variant sticky top-0 z-50">
+        <div
+            class="flex justify-between items-center w-full px-3 sm:px-margin-mobile md:px-margin-desktop py-2.5 max-w-container-max mx-auto gap-3">
+            <a href="index.html" class="flex items-center gap-2 cursor-pointer">
+                <div class="w-10 sm:w-12 md:w-14 lg:w-16 xl:w-20 flex items-center justify-center overflow-hidden">
+                    <img src="img/logo%20Hornos%20Roca.png" alt="Logo de Hornos Roca"
+                        class="w-full h-auto object-contain" />
+                </div>
+            </a>
+            <nav class="hidden md:flex gap-5 items-center">
+                <a href="index.html#inicio"
+                    class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-secondary transition-colors">Inicio</a>
+                <a href="index.html#sobre-nosotros"
+                    class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-secondary transition-colors">Sobre
+                    Nosotros</a>
+                <a href="index.html#hornos"
+                    class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-secondary transition-colors">Hornos</a>
+                <a href="index.html#accesorios"
+                    class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-secondary transition-colors active">Accesorios</a>
+            </nav>
+            <a href="index.html#contacto"
+                class="hidden md:block bg-primary text-on-primary px-4 py-2.5 font-label-md text-label-md uppercase tracking-widest hover:bg-secondary transition-all active:opacity-80 whitespace-nowrap text-[13px]">Contáctanos</a>
+            <button class="md:hidden p-2 text-on-surface-variant" id="mobileMenuBtn" aria-label="Menú">
+                <span class="material-symbols-outlined text-[26px]">menu</span>
+            </button>
+        </div>
+        <div class="md:hidden overflow-hidden transition-all duration-300 max-h-0 bg-surface-container-low border-b border-outline-variant"
+            id="mobileNavDropdown">
+            <nav class="flex flex-col px-3 py-3 gap-2">
+                <a href="index.html#inicio"
+                    class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Inicio</a>
+                <a href="index.html#sobre-nosotros"
+                    class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Sobre
+                    Nosotros</a>
+                <a href="index.html#hornos"
+                    class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Hornos</a>
+                <a href="index.html#accesorios"
+                    class="nav-link font-label-md text-label-md uppercase tracking-wider text-on-surface-variant active">Accesorios</a>
+                <a href="index.html#contacto"
+                    class="mt-2 bg-primary text-on-primary px-4 py-2.5 font-label-md text-label-md uppercase tracking-widest text-center text-[13px]">Contáctanos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-container-max mx-auto px-3 sm:px-margin-mobile md:px-margin-desktop py-8 md:py-stack-lg"
+        id="productDetailContainer"></main>
+
+    <div class="hidden" id="accesorio-templates">
+        <!-- Accesorio 7: Soporte para Bandeja de Pizza -->
+        <div data-id="7">
+            <div class="animate-fade-in-up">
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-outline hover:text-secondary transition-colors bg-surface-container-low industrial-border px-4 py-2 mb-6"><span
+                        class="material-symbols-outlined text-[18px]">arrow_back</span> Volver al Catálogo</a>
+                <div
+                    class="flex flex-col lg:flex-row gap-0 industrial-border technical-shadow bg-surface-container-lowest">
+                    <div class="lg:w-1/2 relative">
+                        <div
+                            class="aspect-square product-img-placeholder img-accessory relative detail-main-img-mobile">
+                            <img class="js-gallery-main"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                alt="Soporte" />
+                            <div class="accent-line"></div>
+                            <button
+                                class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-prev"><span
+                                    class="material-symbols-outlined">chevron_left</span></button>
+                            <button
+                                class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-next"><span
+                                    class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="flex gap-2 mt-2 overflow-x-auto pb-2 px-2 js-gallery-thumbs">
+                            <div class="gallery-thumb active w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23a53c19'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23444748'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23444748'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23747878'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23747878'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 p-5 md:p-8 flex flex-col">
+                        <h1
+                            class="font-headline-md text-headline-md uppercase tracking-tight leading-tight text-[26px] md:text-[32px] mb-1">
+                            Soporte para Bandeja de Pizza con Porta Condimentos — Hornos Roca</h1>
+                        <div class="text-sm uppercase tracking-wider text-outline mb-3">Hornos Roca</div>
+                        <span class="font-headline-md text-headline-md text-primary block mb-3">S/ 31.90</span>
+                        <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed mb-4">Soporte robusto
+                            con compartimentos para condimentos integrados.</p>
+                        <div class="border-b border-outline-variant w-12 mb-4"></div>
+                        <div class="space-y-4 flex-grow">
+                            <details class="industrial-accordion">
+                                <summary>Especificaciones Técnicas</summary>
+                                <div class="content grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Material</span><span
+                                            class="font-label-md text-label-md">Acero</span></div>
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Compatibilidad</span><span
+                                            class="font-label-md text-label-md">Bandejas 40 cm</span></div>
+                                </div>
+                            </details>
+                            <details class="industrial-accordion">
+                                <summary>Descripción Completa</summary>
+                                <div class="content">
+                                    <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed">
+                                        Estructura de acero con acabado resistente a altas temperaturas. Incluye tres
+                                        compartimentos para especias y aceites. Compatible con bandejas estándar de
+                                        hasta 40 cm de diámetro.</p>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="mt-auto pt-6">
+                            <a href="index.html#contacto"
+                                class="block w-full bg-primary text-on-primary py-3 font-label-md text-label-md uppercase tracking-widest hover:bg-secondary transition-all text-center text-[13px]">Solicitar
+                                Cotización</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accesorio 8: Pala Pizzera -->
+        <div data-id="8">
+            <div class="animate-fade-in-up">
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-outline hover:text-secondary transition-colors bg-surface-container-low industrial-border px-4 py-2 mb-6"><span
+                        class="material-symbols-outlined text-[18px]">arrow_back</span> Volver al Catálogo</a>
+                <div
+                    class="flex flex-col lg:flex-row gap-0 industrial-border technical-shadow bg-surface-container-lowest">
+                    <div class="lg:w-1/2 relative">
+                        <div
+                            class="aspect-square product-img-placeholder img-accessory relative detail-main-img-mobile">
+                            <img class="js-gallery-main"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                alt="Pala Pizzera" />
+                            <div class="accent-line"></div>
+                            <button
+                                class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-prev"><span
+                                    class="material-symbols-outlined">chevron_left</span></button>
+                            <button
+                                class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-next"><span
+                                    class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="flex gap-2 mt-2 overflow-x-auto pb-2 px-2 js-gallery-thumbs">
+                            <div class="gallery-thumb active w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23a53c19'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23444748'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23444748'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23747878'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23747878'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 p-5 md:p-8 flex flex-col">
+                        <h1
+                            class="font-headline-md text-headline-md uppercase tracking-tight leading-tight text-[26px] md:text-[32px] mb-1">
+                            Pala Pizzera AISI 304 — Hornos Roca</h1>
+                        <div class="text-sm uppercase tracking-wider text-outline mb-3">Hornos Roca</div>
+                        <span class="font-headline-md text-headline-md text-primary block mb-3">S/ 277.90</span>
+                        <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed mb-4">Pala
+                            profesional
+                            en acero inoxidable AISI 304.</p>
+                        <div class="border-b border-outline-variant w-12 mb-4"></div>
+                        <div class="space-y-4 flex-grow">
+                            <details class="industrial-accordion">
+                                <summary>Especificaciones Técnicas</summary>
+                                <div class="content grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Material</span><span
+                                            class="font-label-md text-label-md">AISI 304</span></div>
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Longitud</span><span
+                                            class="font-label-md text-label-md">120 cm</span></div>
+                                </div>
+                            </details>
+                            <details class="industrial-accordion">
+                                <summary>Descripción Completa</summary>
+                                <div class="content">
+                                    <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed">Cabeza
+                                        de
+                                        acero inoxidable AISI 304 de grado alimenticio. Mango ergonómico de madera
+                                        tratada. Diseño biselado que facilita deslizar bajo la pizza sin dañar la masa.
+                                        Longitud total de 120 cm.</p>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="mt-auto pt-6">
+                            <a href="index.html#contacto"
+                                class="block w-full bg-primary text-on-primary py-3 font-label-md text-label-md uppercase tracking-widest hover:bg-secondary transition-all text-center text-[13px]">Solicitar
+                                Cotización</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accesorio 9: Bandeja para Hornos de Barro -->
+        <div data-id="9">
+            <div class="animate-fade-in-up">
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-outline hover:text-secondary transition-colors bg-surface-container-low industrial-border px-4 py-2 mb-6"><span
+                        class="material-symbols-outlined text-[18px]">arrow_back</span> Volver al Catálogo</a>
+                <div
+                    class="flex flex-col lg:flex-row gap-0 industrial-border technical-shadow bg-surface-container-lowest">
+                    <div class="lg:w-1/2 relative">
+                        <div
+                            class="aspect-square product-img-placeholder img-accessory relative detail-main-img-mobile">
+                            <img class="js-gallery-main"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                alt="Bandeja" />
+                            <div class="accent-line"></div>
+                            <button
+                                class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-prev"><span
+                                    class="material-symbols-outlined">chevron_left</span></button>
+                            <button
+                                class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-next"><span
+                                    class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="flex gap-2 mt-2 overflow-x-auto pb-2 px-2 js-gallery-thumbs">
+                            <div class="gallery-thumb active w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23a53c19'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23444748'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23444748'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23747878'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23747878'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 p-5 md:p-8 flex flex-col">
+                        <h1
+                            class="font-headline-md text-headline-md uppercase tracking-tight leading-tight text-[26px] md:text-[32px] mb-1">
+                            Bandeja para Hornos de Barro — Hornos Roca</h1>
+                        <div class="text-sm uppercase tracking-wider text-outline mb-3">Hornos Roca</div>
+                        <span class="font-headline-md text-headline-md text-primary block mb-3">S/ 119.90</span>
+                        <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed mb-4">Bandeja de
+                            acero
+                            al carbono para hornos de barro.</p>
+                        <div class="border-b border-outline-variant w-12 mb-4"></div>
+                        <div class="space-y-4 flex-grow">
+                            <details class="industrial-accordion">
+                                <summary>Especificaciones Técnicas</summary>
+                                <div class="content grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Material</span><span
+                                            class="font-label-md text-label-md">Acero al carbono</span></div>
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Medidas</span><span
+                                            class="font-label-md text-label-md">50×35 cm</span></div>
+                                </div>
+                            </details>
+                            <details class="industrial-accordion">
+                                <summary>Descripción Completa</summary>
+                                <div class="content">
+                                    <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed">
+                                        Fabricada
+                                        en acero al carbono de alta resistencia térmica. Ideal para cocción directa
+                                        sobre superficie de ladrillo refractario. Asas laterales para manipulación
+                                        segura.</p>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="mt-auto pt-6">
+                            <a href="index.html#contacto"
+                                class="block w-full bg-primary text-on-primary py-3 font-label-md text-label-md uppercase tracking-widest hover:bg-secondary transition-all text-center text-[13px]">Solicitar
+                                Cotización</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accesorio 10: Puerta de Acero Inoxidable con Termómetro -->
+        <div data-id="10">
+            <div class="animate-fade-in-up">
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-outline hover:text-secondary transition-colors bg-surface-container-low industrial-border px-4 py-2 mb-6"><span
+                        class="material-symbols-outlined text-[18px]">arrow_back</span> Volver al Catálogo</a>
+                <div
+                    class="flex flex-col lg:flex-row gap-0 industrial-border technical-shadow bg-surface-container-lowest">
+                    <div class="lg:w-1/2 relative">
+                        <div
+                            class="aspect-square product-img-placeholder img-accessory relative detail-main-img-mobile">
+                            <img class="js-gallery-main"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                alt="Puerta" />
+                            <div class="accent-line"></div>
+                            <button
+                                class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-prev"><span
+                                    class="material-symbols-outlined">chevron_left</span></button>
+                            <button
+                                class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-next"><span
+                                    class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="flex gap-2 mt-2 overflow-x-auto pb-2 px-2 js-gallery-thumbs">
+                            <div class="gallery-thumb active w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23a53c19'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23444748'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23444748'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23747878'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23747878'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 p-5 md:p-8 flex flex-col">
+                        <h1
+                            class="font-headline-md text-headline-md uppercase tracking-tight leading-tight text-[26px] md:text-[32px] mb-1">
+                            Puerta de Acero Inoxidable para Horno Artesanal con Termómetro — Hornos Roca</h1>
+                        <div class="text-sm uppercase tracking-wider text-outline mb-3">Hornos Roca</div>
+                        <span class="font-headline-md text-headline-md text-primary block mb-3">S/ 749.00</span>
+                        <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed mb-4">Puerta con
+                            termómetro integrado para hornos artesanales.</p>
+                        <div class="border-b border-outline-variant w-12 mb-4"></div>
+                        <div class="space-y-4 flex-grow">
+                            <details class="industrial-accordion">
+                                <summary>Especificaciones Técnicas</summary>
+                                <div class="content grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Material</span><span
+                                            class="font-label-md text-label-md">Acero Inoxidable</span></div>
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Termómetro</span><span
+                                            class="font-label-md text-label-md">0-500 °C</span></div>
+                                </div>
+                            </details>
+                            <details class="industrial-accordion">
+                                <summary>Descripción Completa</summary>
+                                <div class="content">
+                                    <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed">
+                                        Construida
+                                        íntegramente en acero inoxidable. Termómetro analógico de alta precisión con
+                                        escala de 0 a 500 °C. Bisagras reforzadas con sistema de cierre hermético.
+                                        Marco adaptable a diferentes tamaños de boca.</p>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="mt-auto pt-6">
+                            <a href="index.html#contacto"
+                                class="block w-full bg-primary text-on-primary py-3 font-label-md text-label-md uppercase tracking-widest hover:bg-secondary transition-all text-center text-[13px]">Solicitar
+                                Cotización</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accesorio 11: Cuchilla Corta Pizza -->
+        <div data-id="11">
+            <div class="animate-fade-in-up">
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-outline hover:text-secondary transition-colors bg-surface-container-low industrial-border px-4 py-2 mb-6"><span
+                        class="material-symbols-outlined text-[18px]">arrow_back</span> Volver al Catálogo</a>
+                <div
+                    class="flex flex-col lg:flex-row gap-0 industrial-border technical-shadow bg-surface-container-lowest">
+                    <div class="lg:w-1/2 relative">
+                        <div
+                            class="aspect-square product-img-placeholder img-accessory relative detail-main-img-mobile">
+                            <img class="js-gallery-main"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                alt="Cuchilla" />
+                            <div class="accent-line"></div>
+                            <button
+                                class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-prev"><span
+                                    class="material-symbols-outlined">chevron_left</span></button>
+                            <button
+                                class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-next"><span
+                                    class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="flex gap-2 mt-2 overflow-x-auto pb-2 px-2 js-gallery-thumbs">
+                            <div class="gallery-thumb active w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23a53c19'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23444748'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23444748'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23747878'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23747878'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 p-5 md:p-8 flex flex-col">
+                        <h1
+                            class="font-headline-md text-headline-md uppercase tracking-tight leading-tight text-[26px] md:text-[32px] mb-1">
+                            Cuchilla Corta Pizza (Tipo Mezzaluna) — Hornos Roca</h1>
+                        <div class="text-sm uppercase tracking-wider text-outline mb-3">Hornos Roca</div>
+                        <span class="font-headline-md text-headline-md text-primary block mb-3">S/ 74.90</span>
+                        <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed mb-4">Cuchilla
+                            mezzaluna de acero inoxidable de alto rendimiento.</p>
+                        <div class="border-b border-outline-variant w-12 mb-4"></div>
+                        <div class="space-y-4 flex-grow">
+                            <details class="industrial-accordion">
+                                <summary>Especificaciones Técnicas</summary>
+                                <div class="content grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Material</span><span
+                                            class="font-label-md text-label-md">Acero Inoxidable</span></div>
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Longitud</span><span
+                                            class="font-label-md text-label-md">35 cm</span></div>
+                                </div>
+                            </details>
+                            <details class="industrial-accordion">
+                                <summary>Descripción Completa</summary>
+                                <div class="content">
+                                    <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed">Hoja
+                                        curva
+                                        de acero inoxidable con filo de larga duración. Mangos de madera ergonómicos en
+                                        ambos extremos. Corte limpio y preciso sin arrastrar los ingredientes. Ideal
+                                        para pizzas grandes.</p>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="mt-auto pt-6">
+                            <a href="index.html#contacto"
+                                class="block w-full bg-primary text-on-primary py-3 font-label-md text-label-md uppercase tracking-widest hover:bg-secondary transition-all text-center text-[13px]">Solicitar
+                                Cotización</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accesorio 12: Termómetro para Horno de Barro -->
+        <div data-id="12">
+            <div class="animate-fade-in-up">
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-outline hover:text-secondary transition-colors bg-surface-container-low industrial-border px-4 py-2 mb-6"><span
+                        class="material-symbols-outlined text-[18px]">arrow_back</span> Volver al Catálogo</a>
+                <div
+                    class="flex flex-col lg:flex-row gap-0 industrial-border technical-shadow bg-surface-container-lowest">
+                    <div class="lg:w-1/2 relative">
+                        <div
+                            class="aspect-square product-img-placeholder img-accessory relative detail-main-img-mobile">
+                            <img class="js-gallery-main"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                alt="Termómetro" />
+                            <div class="accent-line"></div>
+                            <button
+                                class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-prev"><span
+                                    class="material-symbols-outlined">chevron_left</span></button>
+                            <button
+                                class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-next"><span
+                                    class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="flex gap-2 mt-2 overflow-x-auto pb-2 px-2 js-gallery-thumbs">
+                            <div class="gallery-thumb active w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23a53c19'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23444748'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23444748'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23747878'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23747878'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 p-5 md:p-8 flex flex-col">
+                        <h1
+                            class="font-headline-md text-headline-md uppercase tracking-tight leading-tight text-[26px] md:text-[32px] mb-1">
+                            Termómetro para Horno de Barro (Vástago 12 cm) — Hornos Roca</h1>
+                        <div class="text-sm uppercase tracking-wider text-outline mb-3">Hornos Roca</div>
+                        <span class="font-headline-md text-headline-md text-primary block mb-3">S/ 122.90</span>
+                        <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed mb-4">Termómetro de
+                            precisión con vástago de 12 cm.</p>
+                        <div class="border-b border-outline-variant w-12 mb-4"></div>
+                        <div class="space-y-4 flex-grow">
+                            <details class="industrial-accordion">
+                                <summary>Especificaciones Técnicas</summary>
+                                <div class="content grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Vástago</span><span
+                                            class="font-label-md text-label-md">12 cm</span></div>
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Rango</span><span
+                                            class="font-label-md text-label-md">0-500 °C</span></div>
+                                </div>
+                            </details>
+                            <details class="industrial-accordion">
+                                <summary>Descripción Completa</summary>
+                                <div class="content">
+                                    <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed">Vástago
+                                        de
+                                        acero inoxidable de 12 cm de largo que permite mediciones en el corazón del
+                                        horno. Esfera de lectura fácil con rango de 0 a 500 °C. Resistente a golpes y
+                                        vibraciones.</p>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="mt-auto pt-6">
+                            <a href="index.html#contacto"
+                                class="block w-full bg-primary text-on-primary py-3 font-label-md text-label-md uppercase tracking-widest hover:bg-secondary transition-all text-center text-[13px]">Solicitar
+                                Cotización</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accesorio 13: Rejilla de Doble Altura -->
+        <div data-id="13">
+            <div class="animate-fade-in-up">
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-outline hover:text-secondary transition-colors bg-surface-container-low industrial-border px-4 py-2 mb-6"><span
+                        class="material-symbols-outlined text-[18px]">arrow_back</span> Volver al Catálogo</a>
+                <div
+                    class="flex flex-col lg:flex-row gap-0 industrial-border technical-shadow bg-surface-container-lowest">
+                    <div class="lg:w-1/2 relative">
+                        <div
+                            class="aspect-square product-img-placeholder img-accessory relative detail-main-img-mobile">
+                            <img class="js-gallery-main"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                alt="Rejilla" />
+                            <div class="accent-line"></div>
+                            <button
+                                class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-prev"><span
+                                    class="material-symbols-outlined">chevron_left</span></button>
+                            <button
+                                class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 flex items-center justify-center hover:bg-secondary transition-colors z-10 js-gallery-next"><span
+                                    class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="flex gap-2 mt-2 overflow-x-auto pb-2 px-2 js-gallery-thumbs">
+                            <div class="gallery-thumb active w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%231c1b1b'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23a53c19'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23444748'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23444748'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                            <div class="gallery-thumb w-20 h-16 md:w-28 md:h-20 flex-shrink-0"><img
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='112' viewBox='0 0 144 112'%3E%3Crect width='144' height='112' fill='%23747878'/%3E%3C/svg%3E"
+                                    data-full="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23747878'/%3E%3C/svg%3E"
+                                    class="w-full h-full object-cover" /></div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 p-5 md:p-8 flex flex-col">
+                        <h1
+                            class="font-headline-md text-headline-md uppercase tracking-tight leading-tight text-[26px] md:text-[32px] mb-1">
+                            Rejilla de Doble Altura de Cocción para Horno de Barro — Hornos Roca (Acero al carbono)</h1>
+                        <div class="text-sm uppercase tracking-wider text-outline mb-3">Hornos Roca</div>
+                        <span class="font-headline-md text-headline-md text-primary block mb-3">S/ 850.00</span>
+                        <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed mb-4">Rejilla de
+                            acero
+                            al carbono con dos niveles de altura.</p>
+                        <div class="border-b border-outline-variant w-12 mb-4"></div>
+                        <div class="space-y-4 flex-grow">
+                            <details class="industrial-accordion">
+                                <summary>Especificaciones Técnicas</summary>
+                                <div class="content grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Material</span><span
+                                            class="font-label-md text-label-md">Acero al carbono</span></div>
+                                    <div class="bg-surface-container-low px-4 py-3 industrial-border text-center"><span
+                                            class="font-label-sm text-[10px] text-outline uppercase block">Niveles</span><span
+                                            class="font-label-md text-label-md">2 alturas</span></div>
+                                </div>
+                            </details>
+                            <details class="industrial-accordion">
+                                <summary>Descripción Completa</summary>
+                                <div class="content">
+                                    <p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed">Permite
+                                        duplicar la capacidad de cocción del horno de barro. Fabricada en acero al
+                                        carbono con patas plegables. Resistente a temperaturas extremas. Se adapta a
+                                        hornos de bóveda y de cúpula.</p>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="mt-auto pt-6">
+                            <a href="index.html#contacto"
+                                class="block w-full bg-primary text-on-primary py-3 font-label-md text-label-md uppercase tracking-widest hover:bg-secondary transition-all text-center text-[13px]">Solicitar
+                                Cotización</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-primary-container text-on-primary-container mt-8 md:mt-stack-lg">
+        <div class="max-w-container-max mx-auto px-3 sm:px-margin-mobile md:px-margin-desktop py-8 md:py-stack-md">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 sm:w-12 md:w-14 lg:w-16 xl:w-20 flex items-center justify-center overflow-hidden">
+                            <img src="img/logo%20Hornos%20Roca.png" alt="Logo de Hornos Roca"
+                                class="w-full h-auto object-contain" />
+                        </div>
+                    </div>
+                    <p class="font-body-md text-on-primary-container/70 text-sm max-w-xs leading-relaxed">Ingeniería de
+                        precisión térmica para el experto culinario moderno.</p>
+                    <div class="flex gap-3 pt-1">
+                        <a href="https://www.facebook.com/hornosroca" target="_blank"
+                            class="w-9 h-9 border border-on-primary-container/30 flex items-center justify-center hover:bg-on-primary-container hover:text-primary-container transition-colors"
+                            aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg></a>
+                        <a href="https://www.instagram.com/hornosroca/" target="_blank"
+                            class="w-9 h-9 border border-on-primary-container/30 flex items-center justify-center hover:bg-on-primary-container hover:text-primary-container transition-colors"
+                            aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+                            </svg></a>
+                        <a href="https://www.tiktok.com/@hornos.roca" target="_blank"
+                            class="w-9 h-9 border border-on-primary-container/30 flex items-center justify-center hover:bg-on-primary-container hover:text-primary-container transition-colors"
+                            aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.89a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.3 0 .59.05.86.14v-3.5a6.37 6.37 0 0 0-6.37 6.37 6.37 6.37 0 0 0 10.86 4.54 6.37 6.37 0 0 0 1.87-4.54V7.68a8.22 8.22 0 0 0 4.8 1.53v-3.4a4.83 4.83 0 0 1-3.12-1.12z" />
+                            </svg></a>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-label-md text-label-md uppercase tracking-widest text-on-primary-container/60">
+                        Explorar</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#hornos"
+                                class="font-body-md text-on-primary-container/75 hover:text-secondary transition-colors text-sm">Hornos</a>
+                        </li>
+                        <li><a href="index.html#accesorios"
+                                class="font-body-md text-on-primary-container/75 hover:text-secondary transition-colors text-sm">Accesorios</a>
+                        </li>
+                        <li><a href="index.html#sobre-nosotros"
+                                class="font-body-md text-on-primary-container/75 hover:text-secondary transition-colors text-sm">Sobre
+                                Nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-label-md text-label-md uppercase tracking-widest text-on-primary-container/60">
+                        Soporte</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#"
+                                class="font-body-md text-on-primary-container/75 hover:text-secondary transition-colors text-sm">Garantía</a>
+                        </li>
+                        <li><a href="#"
+                                class="font-body-md text-on-primary-container/75 hover:text-secondary transition-colors text-sm">Manuales</a>
+                        </li>
+                        <li><a href="#"
+                                class="font-body-md text-on-primary-container/75 hover:text-secondary transition-colors text-sm">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-label-md text-label-md uppercase tracking-widest text-on-primary-container/60">
+                        Contacto</h4>
+                    <ul class="space-y-2 text-on-primary-container/75 text-sm">
+                        <li class="flex items-start gap-2"><span
+                                class="material-symbols-outlined text-[16px]">location_on</span> Av. de la Industria
+                            1420, Lima</li>
+                        <li class="flex items-start gap-2"><span
+                                class="material-symbols-outlined text-[16px]">call</span> +51 900 000 000</li>
+                        <li class="flex items-start gap-2"><span
+                                class="material-symbols-outlined text-[16px]">mail</span> info@hornosroca.pe</li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-on-primary-container/15 mt-6 md:mt-8 pt-5 md:pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+                <p class="font-body-md text-on-primary-container/50 text-xs">© 2026 Hornos Roca. Todos los derechos
+                    reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const container = document.getElementById('productDetailContainer');
+            const templates = document.getElementById('accesorio-templates');
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('id');
+            const template = templates.querySelector(`[data-id="${productId}"]`);
+
+            if (!template) {
+                container.innerHTML =
+                    `<div class="flex flex-col items-center justify-center py-20"><span class="material-symbols-outlined text-[64px] text-outline-variant mb-4">error_outline</span><h2 class="font-headline-sm text-headline-sm uppercase text-outline mb-2">Accesorio no encontrado</h2><a href="index.html" class="mt-4 border-2 border-primary text-primary px-6 py-3 font-label-md text-label-md uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors">Volver al catálogo</a></div>`;
+            } else {
+                container.innerHTML = template.innerHTML;
+                initGallery();
+            }
+
+            function initGallery() {
+                const mainImg = container.querySelector('.js-gallery-main');
+                const thumbs = container.querySelectorAll('.js-gallery-thumbs .gallery-thumb');
+                const prevBtn = container.querySelector('.js-gallery-prev');
+                const nextBtn = container.querySelector('.js-gallery-next');
+                if (!mainImg || !thumbs.length) return;
+
+                let currentIndex = 0;
+                const images = Array.from(thumbs).map(thumb => thumb.querySelector('img').dataset.full);
+
+                function setMainImage(index) {
+                    if (index >= 0 && index < images.length) {
+                        mainImg.src = images[index];
+                        thumbs.forEach(t => t.classList.remove('active'));
+                        thumbs[index].classList.add('active');
+                        currentIndex = index;
+                    }
+                }
+
+                thumbs.forEach((thumb, idx) => {
+                    thumb.addEventListener('click', () => setMainImage(idx));
+                });
+
+                prevBtn?.addEventListener('click', () => setMainImage((currentIndex - 1 + images.length) % images
+                    .length));
+                nextBtn?.addEventListener('click', () => setMainImage((currentIndex + 1) % images.length));
+            }
+
+            const mobileBtn = document.getElementById('mobileMenuBtn');
+            const mobileDropdown = document.getElementById('mobileNavDropdown');
+            if (mobileBtn && mobileDropdown) {
+                let open = false;
+                mobileBtn.addEventListener('click', () => {
+                    open = !open;
+                    mobileDropdown.style.maxHeight = open ? mobileDropdown.scrollHeight + 'px' : '0px';
+                    mobileBtn.querySelector('.material-symbols-outlined').textContent = open ? 'close' : 'menu';
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>
