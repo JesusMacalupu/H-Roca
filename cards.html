@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LUXE OVEN CO. | Catálogo de Precisión Industrial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "primary": "#000000",
+                "secondary": "#5d5f5f",
+                "surface": "#ffffff",
+                "outline": "#e0e0e0",
+                "outline-variant": "#000000",
+                "on-surface": "#000000",
+                "background": "#ffffff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0px",
+                "lg": "0px",
+                "xl": "0px",
+                "full": "9999px"
+            },
+            "spacing": {
+                "unit": "8px",
+                "container-max": "1440px",
+                "margin-desktop": "64px",
+                "margin-mobile": "20px",
+                "gutter": "24px"
+            },
+            "fontFamily": {
+                "display-lg": ["Inter", "sans-serif"],
+                "body-lg": ["Inter", "sans-serif"],
+                "body-md": ["Inter", "sans-serif"],
+                "label-sm": ["JetBrains Mono", "monospace"],
+                "headline-md": ["Inter", "sans-serif"],
+                "headline-lg": ["Inter", "sans-serif"],
+                "mono": ["JetBrains Mono", "monospace"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 20;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        
+        .technical-grid {
+            background-image: 
+                linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+                linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .product-card {
+            transition: background-color 0.2s ease;
+            position: relative;
+        }
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 0.5px solid #000000;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        .product-card:hover {
+            background-color: #fafafa;
+        }
+        .product-card:hover::after {
+            opacity: 0.8;
+        }
+        
+        .line-detail {
+            height: 0.5px;
+            background-color: currentColor;
+            opacity: 0.2;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: black;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary selection:text-white technical-grid min-h-screen">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-white/80 backdrop-blur-md border-b border-black">
+<nav class="flex justify-between items-center px-margin-desktop py-6 w-full max-w-container-max mx-auto">
+<div class="font-mono text-xl font-bold tracking-tight uppercase">LUXE OVEN CO. // ARCH_TECH</div>
+<div class="hidden md:flex gap-10">
+<a class="nav-link text-primary font-mono text-[11px] uppercase tracking-widest" href="#">Colecciones</a>
+<a class="nav-link text-secondary font-mono text-[11px] uppercase tracking-widest" href="#">Ingeniería</a>
+<a class="nav-link text-secondary font-mono text-[11px] uppercase tracking-widest" href="#">Showrooms</a>
+<a class="nav-link text-secondary font-mono text-[11px] uppercase tracking-widest" href="#">Contacto</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined cursor-pointer hover:opacity-50" data-icon="shopping_bag">shopping_bag</span>
+<span class="material-symbols-outlined cursor-pointer hover:opacity-50" data-icon="person">person</span>
+</div>
+</nav>
+<!-- Filter Bar (Industrial Style) -->
+<div class="border-t border-black/10">
+<div class="max-w-container-max mx-auto px-margin-desktop py-3 flex flex-wrap items-center justify-between">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-2 group cursor-pointer">
+<span class="font-mono text-[10px] uppercase tracking-[0.2em] font-medium">Hornos</span>
+<span class="text-[12px] opacity-40 font-mono">/01</span>
+</div>
+<div class="flex items-center gap-2 group cursor-pointer opacity-40 hover:opacity-100 transition-opacity">
+<span class="font-mono text-[10px] uppercase tracking-[0.2em]">Accesorios</span>
+<span class="text-[12px] opacity-40 font-mono">/02</span>
+</div>
+<div class="flex items-center gap-2 group cursor-pointer opacity-40 hover:opacity-100 transition-opacity">
+<span class="font-mono text-[10px] uppercase tracking-[0.2em]">Acabados</span>
+<span class="text-[12px] opacity-40 font-mono">/03</span>
+</div>
+</div>
+<div class="flex items-center gap-8 font-mono text-[10px] uppercase tracking-widest">
+<button class="hover:underline opacity-40 hover:opacity-100 transition-opacity">Reset_Filter</button>
+<div class="w-[1px] h-3 bg-black/20"></div>
+<span class="font-bold">Total_Items: 13</span>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-desktop py-20">
+<header class="mb-24 relative">
+<div class="absolute -left-12 top-0 h-full w-[1px] bg-black/10 hidden lg:block"></div>
+<div class="flex items-baseline gap-4 mb-4">
+<span class="font-mono text-xs opacity-40 uppercase tracking-widest">Section_Catalog</span>
+<div class="h-[1px] flex-grow bg-black/5"></div>
+</div>
+<h1 class="font-display-lg text-5xl md:text-7xl font-light tracking-tighter uppercase leading-none mb-8">Instrumentos de <br/>Precisión Térmica</h1>
+<p class="font-body-md text-secondary max-w-2xl leading-relaxed opacity-70">
+            Sistemas de cocción de alto rendimiento fabricados bajo estándares de tolerancia mínima. 
+            Ingeniería artesanal aplicada a la termodinámica culinaria.
+        </p>
+</header>
+<!-- Strictly Aligned Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-l border-t border-black/10">
+<!-- Product 1 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black text-white px-2 py-0.5">Ref. 001</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Hornos Roca</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Horno Artesanal Colosso di Forgia 100 cm</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Serie Premium // Edición Limitada</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 5,170.00</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black/5 text-black px-2 py-0.5">Ref. 002</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Hornos Roca</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Horno Pachamanquero – Modelo Nina Pacha</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Sistemas Tradicionales</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 3,709.00</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black/5 text-black px-2 py-0.5">Ref. 003</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Hornos Roca</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Horno Artesanal – Modelo Nina – 100 cm</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Arquitectura Orgánica</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 4,585.00</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black/5 text-black px-2 py-0.5">Ref. 004</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Hornos Roca</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Horno Artesanal – Modelo Ichu – 100 cm</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Estructura Rural</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 4,330.00</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Product 5 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black/5 text-black px-2 py-0.5">Ref. 005</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Hornos Roca</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Horno Artesanal – Modelo Napolitano – 100 cm</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Cultura Termodinámica</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 4,420.00</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Product 6 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black/5 text-black px-2 py-0.5">Ref. 006</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Hornos Roca</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Horno Premium – Modelo Di Bronzo – 57 × 57 cm</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Módulo Compacto Industrial</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 3,900.00</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Product 7 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black/5 text-black px-2 py-0.5">Ref. 007</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Accesorios</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Soporte Bandeja Pizza + Porta Condimentos</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Logística Culinaria</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 31.90</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Product 8 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black/5 text-black px-2 py-0.5">Ref. 008</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Accesorios</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Pala Pizzera AISI 304 – Inox</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Acero Quirúrgico</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 277.90</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Product 9 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black/5 text-black px-2 py-0.5">Ref. 009</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Accesorios</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Bandeja para Hornos de Barro</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Resistencia Térmica Grado A</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 119.90</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Product 10 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black/5 text-black px-2 py-0.5">Ref. 010</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Hornos Roca</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Puerta de Acero Inox con Termómetro</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Precisión de Sellado</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 749.00</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Product 11 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black/5 text-black px-2 py-0.5">Ref. 011</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Accesorios</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Cuchilla Corta Pizza (Mezzaluna)</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Ergonomía de Corte</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 74.90</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Product 12 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black/5 text-black px-2 py-0.5">Ref. 012</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Accesorios</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Termómetro para Horno (Vástago 12 cm)</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Control Analógico Absoluto</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 122.90</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Product 13 -->
+<div class="product-card p-8 border-r border-b border-black/10 flex flex-col justify-between min-h-[400px]">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] bg-black/5 text-black px-2 py-0.5">Ref. 013</span>
+<span class="font-mono text-[9px] uppercase tracking-widest opacity-40">Hornos Roca</span>
+</div>
+<h3 class="font-headline-md text-lg font-medium leading-snug tracking-tight uppercase">Rejilla de Doble Altura de Cocción</h3>
+<div class="line-detail w-8"></div>
+<p class="font-mono text-[10px] text-secondary uppercase tracking-widest">Optimización de Espacio Modular</p>
+</div>
+<div class="pt-12 flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="font-mono text-xs opacity-40">Price_Unit</span>
+<span class="font-mono text-lg font-medium">S/ 850.00</span>
+</div>
+<button class="w-full py-3 border border-black/20 hover:border-black font-mono text-[10px] uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2">
+                    Add_to_Cart <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Empty Slot to maintain grid -->
+<div class="p-8 border-r border-b border-black/5 flex items-center justify-center bg-black/[0.02]">
+<span class="font-mono text-[9px] opacity-20 uppercase tracking-[0.5em] -rotate-90">End_Of_List</span>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-40 border-t border-black bg-white">
+<div class="max-w-container-max mx-auto px-margin-desktop py-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+<div class="font-mono text-sm font-bold uppercase tracking-tighter">
+                LUXE OVEN CO. <br/>
+<span class="font-light opacity-50">Engineering Standards 2024</span>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-mono text-[10px] uppercase tracking-widest opacity-40">Documentación</span>
+<div class="flex flex-col gap-2 font-mono text-[11px] uppercase tracking-widest">
+<a class="hover:underline" href="#">Política_Privacidad</a>
+<a class="hover:underline" href="#">Términos_Servicio</a>
+<a class="hover:underline" href="#">Soporte_Técnico</a>
+<a class="hover:underline" href="#">Portal_Arquitectos</a>
+</div>
+</div>
+<div class="md:text-right flex flex-col justify-between h-full">
+<div class="font-mono text-[10px] opacity-40 uppercase tracking-widest leading-relaxed">
+                    © 2024 LUXE OVEN CO. <br/>
+                    TODOS LOS DERECHOS RESERVADOS. <br/>
+                    EST. MMXXIV.
+                </div>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

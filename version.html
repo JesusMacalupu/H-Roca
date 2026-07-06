@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hornos Roca | Catálogo profesional</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-tertiary-container": "#656464",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-dim": "#131313",
+                        "outline-variant": "#444748",
+                        "on-tertiary": "#313030",
+                        "surface-container": "#1f1f1f",
+                        "on-primary": "#2f3131",
+                        "on-primary-fixed": "#1a1c1c",
+                        "secondary": "#c7c6c6",
+                        "surface-tint": "#c6c6c7",
+                        "secondary-container": "#464747",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#ffffff",
+                        "primary-container": "#e2e2e2",
+                        "on-primary-container": "#636565",
+                        "on-secondary-container": "#b5b5b5",
+                        "background": "#131313",
+                        "tertiary-container": "#e5e2e1",
+                        "inverse-surface": "#e2e2e2",
+                        "inverse-primary": "#5d5f5f",
+                        "on-secondary": "#303031",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "error-container": "#93000a",
+                        "surface-bright": "#393939",
+                        "primary-fixed": "#e2e2e2",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "surface": "#131313",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "surface-container-highest": "#353535",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "secondary-fixed": "#e3e2e2",
+                        "inverse-on-surface": "#303030",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-surface": "#e2e2e2",
+                        "surface-container-low": "#1b1b1b",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-surface-variant": "#c4c7c8",
+                        "on-background": "#e2e2e2",
+                        "outline": "#8e9192",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-variant": "#353535",
+                        "tertiary": "#ffffff"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "row-gap": "12px",
+                        "container-max": "1440px",
+                        "stack-section": "64px",
+                        "column-gap": "32px",
+                        "edge-margin": "48px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "headline-display": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "headline-section-mobile": ["Manrope"],
+                        "headline-section": ["Manrope"]
+                    },
+                    fontSize: {
+                        "body-md": ["13px", { "lineHeight": "22px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "body-lg": ["14px", { "lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "headline-display": ["24px", { "lineHeight": "32px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-section-mobile": ["13px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "headline-section": ["14px", { "lineHeight": "20px", "letterSpacing": "0.08em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Estilos base */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+
+        .icono-mobile {
+            font-size: 28px !important;
+        }
+
+        .mega-menu-transition {
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .mobile-menu-panel {
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+
+        .mobile-menu-panel.open {
+            transform: translateX(0);
+        }
+
+        .mobile-overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+
+        .mobile-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .accordion-content.open {
+            grid-template-rows: 1fr;
+        }
+
+        .accordion-inner {
+            overflow: hidden;
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1f1f1f;
+            border-left: 1px solid #2a2a2a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 20px;
+            border: 1px solid #2a2a2a;
+            transition: background 0.2s;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #555 #1f1f1f;
+        }
+
+        /* Carrusel */
+        .hero-slide {
+            transition: opacity 1.2s ease-in-out;
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            background-size: cover;
+            background-position: center;
+            will-change: opacity;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .hero-slide:not(.active) {
+            z-index: 0;
+        }
+
+        .hero-wrapper {
+            position: relative;
+            min-height: 100vh;
+            background-color: #000;
+            margin-top: 0;
+        }
+
+        .hero-wrapper .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        /* ===== HEADER TOTALMENTE TRANSPARENTE ===== */
+        header {
+            background: transparent !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border-bottom: none;
+        }
+
+        .top-bar,
+        .main-header {
+            background: transparent !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            border-bottom: none;
+        }
+
+        .top-bar-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            width: 100%;
+            margin: 0;
+        }
+
+        .header-bottom-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            width: 100%;
+            margin: 0;
+        }
+
+        /* Sombras en texto */
+        header .text-primary,
+        header .text-white\/70,
+        header .text-white {
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .top-bar a,
+        .top-bar .social-icons {
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Mega menú VIDRIO ULTRA BORROSO (esmerilado intenso) */
+        #megaMenu {
+            background: #000000 !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8);
+        }
+
+        #megaMenu .mega-col h3 {
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Enlaces del mega menú con línea animada */
+        #megaMenu .mega-col ul li a {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 2px;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.2s ease;
+            text-decoration: none;
+        }
+
+        #megaMenu .mega-col ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.5);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        #megaMenu .mega-col ul li a:hover {
+            color: #ffffff;
+        }
+
+        #megaMenu .mega-col ul li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Enlaces especiales (Repuestos, Planifica, Guía) con línea animada */
+        #megaMenu .mega-col .special-link {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 2px;
+            color: #ffffff;
+            transition: color 0.1s ease;
+            text-decoration: none;
+        }
+
+        #megaMenu .mega-col .special-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.6);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        #megaMenu .mega-col .special-link:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        #megaMenu .mega-col .special-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Navegación principal: enlaces con línea animada (excepto PRODUCTOS que tiene línea fija) */
+        .nav-link {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.6);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* PRODUCTOS tiene su propia línea fija (activa) */
+        #productosLink {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        #productosLink::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+        }
+
+        /* Botón Cotizar */
+        .btn-cotizar-desktop {
+            padding: 10px 28px !important;
+            font-size: 13px !important;
+            letter-spacing: 0.15em !important;
+            border-width: 1.5px !important;
+        }
+
+        @media (max-width: 768px) {
+            .btn-cotizar-desktop {
+                padding: 4px 12px !important;
+                font-size: 10px !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md">
+
+    <!-- ===== HEADER FIJO (superpuesto) ===== -->
+    <header class="fixed top-0 left-0 w-full z-50">
+        <!-- Barra superior utilitaria (oculta en móvil) -->
+        <div class="hidden sm:flex top-bar">
+            <div
+                class="max-w-container-max mx-auto px-4 md:px-edge-margin h-10 flex items-center justify-between w-full">
+                <nav class="flex items-center gap-4 md:gap-6">
+                    <a class="font-label-caps text-label-caps text-white/70 hover:text-white transition-colors"
+                        href="#">LOCALIZADOR DE TIENDAS</a>
+                    <a class="font-label-caps text-label-caps text-white/70 hover:text-white transition-colors"
+                        href="#">DOCUMENTACIÓN</a>
+                    <a class="font-label-caps text-label-caps text-white/70 hover:text-white transition-colors"
+                        href="#">SOPORTE</a>
+                </nav>
+                <div class="flex items-center gap-3 md:gap-5 social-icons text-white/70">
+                    <a href="https://www.facebook.com/hornosroca?locale=es_LA" target="_blank" rel="noopener noreferrer"
+                        class="hover:text-white transition-opacity opacity-70 hover:opacity-100" aria-label="Facebook">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/hornosroca/" target="_blank" rel="noopener noreferrer"
+                        class="hover:text-white transition-opacity opacity-70 hover:opacity-100" aria-label="Instagram">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@hornos.roca" target="_blank" rel="noopener noreferrer"
+                        class="hover:text-white transition-opacity opacity-70 hover:opacity-100" aria-label="TikTok">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M12.525.02c1.31-.02 2.61-.01 3.91-.01.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.21-1.35 2.06-.11.97.23 1.99.94 2.63.77.71 1.86.88 2.85.54.59-.2 1.06-.67 1.39-1.22.21-.48.31-1.01.32-1.53-.02-5.07-.02-10.15-.02-15.22z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@HornosRoca" target="_blank" rel="noopener noreferrer"
+                        class="hover:text-white transition-opacity opacity-70 hover:opacity-100" aria-label="YouTube">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Línea divisoria horizontal sútil debajo de la barra superior -->
+        <div class="top-bar-divider"></div>
+
+        <!-- Cabecera principal (sin fondo) -->
+        <div
+            class="main-header flex items-center justify-between h-16 md:h-20 px-4 md:px-edge-margin max-w-container-max mx-auto">
+            <div class="flex items-center">
+                <div class="w-14 h-14 md:w-20 md:h-20 flex-shrink-0" aria-label="Hornos Roca">
+                    <img src="img/logoRoca.png" alt="Hornos Roca Logo" class="w-full h-full object-contain" />
+                </div>
+            </div>
+
+            <!-- Menú de escritorio -->
+            <nav class="hidden md:flex items-center gap-6 lg:gap-10 h-full">
+                <div class="relative h-full flex items-center">
+                    <a id="productosLink" href="#products"
+                        class="font-label-caps text-label-caps text-primary py-2 transition-all cursor-pointer">
+                        PRODUCTOS
+                    </a>
+                </div>
+                <a class="nav-link font-label-caps text-label-caps text-white/70 hover:text-white transition-colors py-2"
+                    href="#about">SOBRE NOSOTROS</a>
+                <a class="nav-link font-label-caps text-label-caps text-white/70 hover:text-white transition-colors py-2"
+                    href="#">ASESORIA</a>
+                <a class="nav-link font-label-caps text-label-caps text-white/70 hover:text-white transition-colors py-2"
+                    href="#">CONTACTANOS</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden md:flex items-center gap-3 md:gap-6 text-primary">
+                    <button class="hover:opacity-60 transition-opacity" aria-label="Buscar">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                    <button
+                        class="btn-cotizar-desktop border border-white/30 px-5 py-2.5 text-sm uppercase tracking-[0.15em] hover:bg-white hover:text-black transition-colors">Cotizar</button>
+                </div>
+                <div class="flex items-center justify-center gap-5 md:hidden">
+                    <button class="text-primary hover:opacity-60 transition-opacity flex items-center"
+                        aria-label="Buscar">
+                        <span class="material-symbols-outlined icono-mobile">search</span>
+                    </button>
+                    <button id="menuHamburguesa" class="text-primary focus:outline-none flex items-center"
+                        aria-label="Abrir menú">
+                        <span class="material-symbols-outlined icono-mobile">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Línea divisoria horizontal sútil al final del header (antes del contenido) -->
+        <div class="header-bottom-divider"></div>
+
+        <!-- Mega menú (hover) con efecto glass real -->
+        <div id="megaMenu"
+            class="absolute top-full left-0 w-full border-b border-white/10 shadow-2xl mega-menu-transition overflow-y-auto max-h-[calc(100vh-120px)] no-scrollbar hidden">
+            <div class="max-w-container-max mx-auto px-4 md:px-edge-margin py-8 md:py-16">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-column-gap mega-grid">
+                    <div class="mega-col space-y-row-gap">
+                        <h3
+                            class="font-headline-section text-headline-section text-primary uppercase border-b border-white/20 pb-4 mb-4">
+                            HORNOS A GAS</h3>
+                        <ul class="space-y-3">
+                            <li><a class="font-body-md text-body-md" href="#">Serie Profesional G</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Serie Clásica</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Horno de Convección</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Horno de Pizza</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Quemador Potente</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Quemador Doble Lateral</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Accesorios de Barra</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Bases Autoportantes</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-col space-y-row-gap">
+                        <h3
+                            class="font-headline-section text-headline-section text-primary uppercase border-b border-white/20 pb-4 mb-4">
+                            HORNOS ELÉCTRICOS</h3>
+                        <ul class="space-y-3">
+                            <li><a class="font-body-md text-body-md" href="#">Horno Eléctrico Premium</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Edición Color</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Horno de Pizza Eléctrico</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Plancha Teppanyaki</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Quemador Eléctrico</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Accesorios de Barra</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Bases Autoportantes</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-col space-y-row-gap">
+                        <h3
+                            class="font-headline-section text-headline-section text-primary uppercase border-b border-white/20 pb-4 mb-4">
+                            HORNOS DE LEÑA</h3>
+                        <ul class="space-y-3">
+                            <li><a class="font-body-md text-body-md" href="#">Horno de Leña Rústico</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Horno de Leña Moderno</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Horno de Barro</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Parrilla para Leña</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Accesorios para Leña</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-col space-y-row-gap">
+                        <h3
+                            class="font-headline-section text-headline-section text-primary uppercase border-b border-white/20 pb-4 mb-4">
+                            ACCESORIOS</h3>
+                        <ul class="space-y-3">
+                            <li><a class="font-body-md text-body-md" href="#">Piedras para Pizza</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Bandejas y Asadores</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Termómetros</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Cubiertos y Utensilios</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Fundas y Protectores</a></li>
+                            <li><a class="font-body-md text-body-md" href="#">Kits de Limpieza</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-col flex flex-col gap-6 md:gap-10">
+                        <div>
+                            <h3
+                                class="font-headline-section text-headline-section text-primary uppercase hover:text-white/70 transition-colors cursor-pointer group flex items-center special-link">
+                                REPUESTOS <span
+                                    class="material-symbols-outlined ml-2 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 text-primary">arrow_forward</span>
+                            </h3>
+                        </div>
+                        <div>
+                            <h3
+                                class="font-headline-section text-headline-section text-primary uppercase hover:text-white/70 transition-colors cursor-pointer group flex items-center special-link">
+                                PLANIFICA TU COCINA <span
+                                    class="material-symbols-outlined ml-2 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 text-primary">arrow_forward</span>
+                            </h3>
+                        </div>
+                        <div>
+                            <h3
+                                class="font-headline-section text-headline-section text-primary uppercase hover:text-white/70 transition-colors cursor-pointer group flex items-center special-link">
+                                GUÍA DE COMPRA <span
+                                    class="material-symbols-outlined ml-2 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 text-primary">arrow_forward</span>
+                            </h3>
+                        </div>
+                        <div class="mt-2 pt-6 border-t border-white/10">
+                            <div class="relative group cursor-pointer overflow-hidden rounded-sm bg-black/30">
+                                <div class="w-full h-40 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80');">
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60">
+                                </div>
+                                <div class="absolute bottom-4 left-4">
+                                    <p class="font-label-caps text-label-caps text-white/80 tracking-widest">NUEVO</p>
+                                    <p class="font-headline-section text-headline-section text-primary">HORNO
+                                        PROFESIONAL G</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overlay y menú lateral móvil -->
+    <div id="mobileOverlay" class="mobile-overlay fixed inset-0 bg-black/60 z-[60]"></div>
+    <div id="mobilePanel"
+        class="mobile-menu-panel fixed top-0 right-0 h-full w-72 bg-surface-container-high border-l border-white/10 shadow-2xl z-[60] overflow-y-auto no-scrollbar">
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between p-4 border-b border-white/10">
+                <span class="font-headline-section text-headline-section text-primary tracking-widest">MENÚ</span>
+                <button id="cerrarMenuMobile" class="text-primary hover:opacity-60 transition-opacity"
+                    aria-label="Cerrar menú">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <nav class="flex-1 p-4 space-y-4">
+                <a class="block font-label-caps text-label-caps text-white/70 hover:text-white transition-colors"
+                    href="#">LOCALIZADOR DE TIENDAS</a>
+                <a class="block font-label-caps text-label-caps text-white/70 hover:text-white transition-colors"
+                    href="#">DOCUMENTACIÓN</a>
+                <a class="block font-label-caps text-label-caps text-white/70 hover:text-white transition-colors"
+                    href="#">SOPORTE</a>
+                <div>
+                    <button id="productosAccordionBtn"
+                        class="w-full flex items-center justify-between font-label-caps text-label-caps text-primary border-b border-primary pb-2 transition-all cursor-pointer"
+                        aria-expanded="false">
+                        <span>PRODUCTOS</span>
+                        <span id="productosAccordionIcon"
+                            class="material-symbols-outlined text-base transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div id="productosAccordionContent" class="accordion-content">
+                        <div class="accordion-inner">
+                            <div class="mt-3 ml-2 space-y-1 pb-2">
+                                <button
+                                    class="categoria-btn w-full flex items-center justify-between text-left font-body-md text-body-md text-white/80 hover:text-white py-2 pr-2"
+                                    data-target="cat-gas">
+                                    <span>Hornos a Gas</span>
+                                    <span
+                                        class="material-symbols-outlined text-base transition-transform duration-300 cat-icon">expand_more</span>
+                                </button>
+                                <div id="cat-gas" class="accordion-content cat-content">
+                                    <div class="accordion-inner ml-4 space-y-1">
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Serie Profesional G</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Serie Clásica</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Horno de Convección</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Horno de Pizza</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Quemador Potente</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Quemador Doble Lateral</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Accesorios de Barra</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Bases Autoportantes</a>
+                                    </div>
+                                </div>
+                                <button
+                                    class="categoria-btn w-full flex items-center justify-between text-left font-body-md text-body-md text-white/80 hover:text-white py-2 pr-2"
+                                    data-target="cat-electricos">
+                                    <span>Hornos Eléctricos</span>
+                                    <span
+                                        class="material-symbols-outlined text-base transition-transform duration-300 cat-icon">expand_more</span>
+                                </button>
+                                <div id="cat-electricos" class="accordion-content cat-content">
+                                    <div class="accordion-inner ml-4 space-y-1">
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Horno Eléctrico Premium</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Edición Color</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Horno de Pizza Eléctrico</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Plancha Teppanyaki</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Quemador Eléctrico</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Accesorios de Barra</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Bases Autoportantes</a>
+                                    </div>
+                                </div>
+                                <button
+                                    class="categoria-btn w-full flex items-center justify-between text-left font-body-md text-body-md text-white/80 hover:text-white py-2 pr-2"
+                                    data-target="cat-lena">
+                                    <span>Hornos de Leña</span>
+                                    <span
+                                        class="material-symbols-outlined text-base transition-transform duration-300 cat-icon">expand_more</span>
+                                </button>
+                                <div id="cat-lena" class="accordion-content cat-content">
+                                    <div class="accordion-inner ml-4 space-y-1">
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Horno de Leña Rústico</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Horno de Leña Moderno</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Horno de Barro</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Parrilla para Leña</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Accesorios para Leña</a>
+                                    </div>
+                                </div>
+                                <button
+                                    class="categoria-btn w-full flex items-center justify-between text-left font-body-md text-body-md text-white/80 hover:text-white py-2 pr-2"
+                                    data-target="cat-accesorios">
+                                    <span>Accesorios</span>
+                                    <span
+                                        class="material-symbols-outlined text-base transition-transform duration-300 cat-icon">expand_more</span>
+                                </button>
+                                <div id="cat-accesorios" class="accordion-content cat-content">
+                                    <div class="accordion-inner ml-4 space-y-1">
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Piedras para Pizza</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Bandejas y Asadores</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Termómetros</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Cubiertos y Utensilios</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Fundas y Protectores</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            href="#">Kits de Limpieza</a>
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-3 border-t border-white/10 space-y-2">
+                                    <a class="block font-label-caps text-label-caps text-primary hover:text-white/70 transition-colors py-1"
+                                        href="#">REPUESTOS →</a>
+                                    <a class="block font-label-caps text-label-caps text-primary hover:text-white/70 transition-colors py-1"
+                                        href="#">PLANIFICA TU COCINA →</a>
+                                    <a class="block font-label-caps text-label-caps text-primary hover:text-white/70 transition-colors py-1"
+                                        href="#">GUÍA DE COMPRA →</a>
+                                </div>
+                                <div class="mt-4 mb-2">
+                                    <div class="relative group cursor-pointer overflow-hidden rounded-sm bg-black/30">
+                                        <div class="w-full h-32 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                            style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=400&q=80');">
+                                        </div>
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70">
+                                        </div>
+                                        <div class="absolute bottom-3 left-3">
+                                            <p
+                                                class="font-label-caps text-label-caps text-white/80 tracking-widest text-xs">
+                                                NUEVO</p>
+                                            <p class="font-headline-section text-headline-section text-primary text-sm">
+                                                HORNO PROFESIONAL G</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="block font-label-caps text-label-caps text-white/70 hover:text-white transition-colors"
+                    href="#about">SOBRE NOSOTROS</a>
+                <a class="block font-label-caps text-label-caps text-white/70 hover:text-white transition-colors"
+                    href="#">ASESORIA</a>
+                <a class="block font-label-caps text-label-caps text-white/70 hover:text-white transition-colors"
+                    href="#">CONTACTANOS</a>
+                <hr class="border-white/10" />
+                <div class="flex items-center gap-4 pt-2">
+                    <a href="https://www.facebook.com/hornosroca?locale=es_LA" target="_blank"
+                        class="text-white/70 hover:text-white transition-colors" aria-label="Facebook">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/hornosroca/" target="_blank"
+                        class="text-white/70 hover:text-white transition-colors" aria-label="Instagram">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@hornos.roca" target="_blank"
+                        class="text-white/70 hover:text-white transition-colors" aria-label="TikTok">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M12.525.02c1.31-.02 2.61-.01 3.91-.01.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.21-1.35 2.06-.11.97.23 1.99.94 2.63.77.71 1.86.88 2.85.54.59-.2 1.06-.67 1.39-1.22.21-.48.31-1.01.32-1.53-.02-5.07-.02-10.15-.02-15.22z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@HornosRoca" target="_blank"
+                        class="text-white/70 hover:text-white transition-colors" aria-label="YouTube">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+                </div>
+            </nav>
+            <div class="p-4 border-t border-white/10">
+                <button
+                    class="w-full border border-primary text-primary px-4 py-2 font-headline-section text-headline-section uppercase tracking-widest hover:bg-primary hover:text-black transition-colors">Cotizar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HÉROE: carrusel a pantalla completa ===== -->
+    <div class="hero-wrapper">
+        <div class="hero-slide active"
+            style="background-image: url('https://cdn.shopify.com/s/files/1/0521/0305/3481/files/modeloIchu1_800x800.png?v=1783367134');">
+        </div>
+        <div class="hero-slide"
+            style="background-image: url('https://cdn.shopify.com/s/files/1/0521/0305/3481/files/horno-artesanal-modelo-nina_af53bae1-fae6-49f9-aec8-ffe70a19c05a_800x800.jpg?v=1755274627');">
+        </div>
+        <div class="hero-slide"
+            style="background-image: url('https://cdn.shopify.com/s/files/1/0521/0305/3481/files/ChatGPT_Image_28_may_2025_06_42_27_p.m._800x800.png?v=1748625345');">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="max-w-2xl">
+                <h2
+                    class="font-headline-display text-4xl md:text-[64px] leading-tight text-primary font-extrabold uppercase tracking-tighter mb-6">
+                    El Arte de la<br />Cocina con Hornos
+                </h2>
+                <p class="font-body-lg text-body-lg text-white/70 max-w-md mb-8">
+                    Soluciones de cocina precisas, diseñadas para los amantes de la repostería y la cocina. Eleve su
+                    hogar con nuestros hornos de alta gama y accesorios profesionales.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button
+                        class="bg-primary text-black px-6 md:px-10 py-3 md:py-4 font-headline-section text-headline-section uppercase tracking-widest hover:bg-white/80 transition-colors">EXPLORAR
+                        COLECCIÓN</button>
+                    <button
+                        class="border border-primary text-primary px-6 md:px-10 py-3 md:py-4 font-headline-section text-headline-section uppercase tracking-widest hover:bg-primary hover:text-black transition-all">VER
+                        GUÍA DE DISEÑO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECCIONES RESTANTES ===== -->
+    <section id="about"
+        class="relative z-10 max-w-container-max mx-auto px-4 md:px-edge-margin py-stack-section scroll-mt-24">
+        <div class="grid md:grid-cols-2 gap-column-gap items-center">
+            <div class="space-y-8">
+                <h2 class="font-headline-display text-headline-display uppercase text-primary">Herencia de Innovación
+                </h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant leading-loose">
+                    Fundada con la visión de revolucionar la experiencia de la cocina al aire libre, Hornos Roca
+                    representa la culminación de décadas de experiencia. Nuestro lenguaje de diseño "Precisión Ónix" se
+                    integra perfectamente en la arquitectura moderna, ofreciendo una estética oscura y elegante que
+                    enfatiza tanto la forma como la función.
+                </p>
+                <div class="flex gap-12 border-t border-outline-variant/30 pt-8">
+                    <div><span
+                            class="block font-headline-display text-headline-display text-primary mb-1">15+</span><span
+                            class="font-label-caps text-label-caps opacity-60">PATENTES</span></div>
+                    <div><span
+                            class="block font-headline-display text-headline-display text-primary mb-1">USA</span><span
+                            class="font-label-caps text-label-caps opacity-60">FABRICADO</span></div>
+                </div>
+            </div>
+            <div class="w-full aspect-[16/9] bg-surface-container-low overflow-hidden border border-outline-variant/20">
+                <img class="w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuACcyA6wdjUhUm5LscEEEEW4zbLa72J9AXpMgmWDhYUUhRIop1V6lbX2We70_vAaxEvQu77hxevtRsmlY-y2x4bijDt9HwQhao_I06Tluc4BUAmIcnRDGADLlPOkkV153I6MTLeu_D85Jtgirdw4nxCl6dXbZy9LmsPl2A8Tr-pEd7cltpd9Kn0YqQnAyQiFXrrmfc83laqTnP_K6Vqqo1_G663Bpmd2ULaNkXDPeZpwcW9p8YOueM_zQ"
+                    alt="Detalle de perilla de control en acero inoxidable" />
+            </div>
+        </div>
+    </section>
+
+    <section id="products"
+        class="relative z-10 bg-surface-container-lowest border-t border-outline-variant/20 py-stack-section scroll-mt-24">
+        <div class="max-w-container-max mx-auto px-4 md:px-edge-margin">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-row-gap">
+                <div>
+                    <h2 class="font-headline-display text-[32px] font-bold uppercase tracking-widest mb-4 text-primary">
+                        La Colección</h2>
+                    <p class="font-body-md text-on-surface-variant max-w-lg opacity-80">Explore nuestro ecosistema
+                        integral de electrodomésticos profesionales, desde hornos de alto rendimiento hasta
+                        refrigeración climática.</p>
+                </div>
+                <div class="flex gap-8 overflow-x-auto no-scrollbar pb-2">
+                    <div class="flex flex-col"><span
+                            class="font-label-caps text-[10px] uppercase opacity-40 mb-2">Categoría</span>
+                        <div class="flex gap-4">
+                            <button
+                                class="text-primary font-headline-section text-[12px] border-b border-primary pb-1">TODOS</button>
+                            <button
+                                class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">HORNOS</button>
+                            <button
+                                class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">REFRIGERACIÓN</button>
+                            <button
+                                class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">COCCIÓN</button>
+                        </div>
+                    </div>
+                    <div class="w-px h-10 bg-outline-variant/30 hidden md:block"></div>
+                    <div class="flex flex-col"><span
+                            class="font-label-caps text-[10px] uppercase opacity-40 mb-2">Series</span>
+                        <div class="flex gap-4">
+                            <button
+                                class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">SERIE
+                                G</button>
+                            <button
+                                class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">ELÉCTRICA</button>
+                            <button
+                                class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">LEÑA</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="md:col-span-2 group relative bg-background border border-outline-variant/10 overflow-hidden cursor-pointer">
+                    <div class="aspect-[16/9] w-full overflow-hidden">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqpicrkskrdLfWv_aAT6UniSvpBd_r7TtO6WrkhK-IqmZ19w-rliE6viGE2tcF6Zyx_u54mm_yD5_7V3Q0c0qYB_VO-yXt50e-nuUtvOxTLxd9_qb1Hos7dbdQRCp4Ud7Xsrm0AhAz9_7mu1LUFQes7QFog67R5tR4mDs47icGH93iWNZTB51mYznJ9_lKV897Qifyn_y7rkn4_MMx79iXEGptg6nR5jEigfJZNzrtNwenZK2q2ojewA"
+                            alt="Horno a gas Serie Profesional G" />
+                    </div>
+                    <div class="p-8 flex justify-between items-start">
+                        <div><span
+                                class="font-label-caps text-label-caps text-primary/50 uppercase tracking-widest mb-2 block">Premium
+                                Series</span>
+                            <h3 class="font-headline-display text-headline-display uppercase text-primary">Serie
+                                Profesional G</h3>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </div>
+                    <div
+                        class="absolute inset-0 border border-primary/0 group-hover:border-primary/20 transition-all pointer-events-none">
+                    </div>
+                </div>
+                <div
+                    class="group relative bg-background border border-outline-variant/10 overflow-hidden cursor-pointer">
+                    <div class="aspect-square w-full overflow-hidden">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn-CWcCOTnN_C0Ey8r_FfXH25Oy0JvaA9a9ENo8Ld6Biw5SEFH74xED2JmjT-OGv75p-OaeTYrOQha5Tamz7rQvx8zY7ZF_py7tZg3CpxD6TUUurtbnVtXNvg7LDig4IGURt8WdL4IvMgdK259q7BT6JVUvol3iIp5PhJojr108HZNNxLEOUG_Hup9Ps2fm1ffOm4xJx8PnK5fjiQ8LDPKyXuuuyjqFT_CNP4-NRWY2DVPra3WTd7JiA"
+                            alt="Enfriador de bebidas premium" />
+                    </div>
+                    <div class="p-8"><span
+                            class="font-label-caps text-label-caps text-primary/50 uppercase tracking-widest mb-2 block">Refrigeración</span>
+                        <h3 class="font-headline-display text-[20px] uppercase text-primary">Enfriador Premium</h3>
+                    </div>
+                </div>
+                <div
+                    class="group relative bg-background border border-outline-variant/10 overflow-hidden cursor-pointer">
+                    <div class="aspect-square w-full overflow-hidden">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvrYW_UHJSMEVxAM6AGPQl1bcdCsaVFdwwmvyRguTqybstoW0uQGZ6BcR8m6nGhE1niHHp53hb84LGSCh0zUUlzoYCZ9fMeEqWrEF-fWidSTb0cdn3jyAdA4UwdMMTpFj5dWT0CqeaKfNAB1CA1cdOF67Sal0AGZjGsrQlJSiCjEm0s0nCtyrZxkZ46_AiXsk-p14-yOevJHZgdQBnDdqgmAfcTKdM5vU4yz2cjx0upGTlBzSgVEfZEw"
+                            alt="Quemador de alta potencia 24 pulgadas" />
+                    </div>
+                    <div class="p-8"><span
+                            class="font-label-caps text-label-caps text-primary/50 uppercase tracking-widest mb-2 block">Cocción</span>
+                        <h3 class="font-headline-display text-[20px] uppercase text-primary">Quemador 24"</h3>
+                    </div>
+                </div>
+                <div
+                    class="group relative bg-background border border-outline-variant/10 overflow-hidden cursor-pointer">
+                    <div class="aspect-square w-full overflow-hidden">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj5s3s1rSu5-_eA80iAhjnO1Ga1P15HNFWe-m3PWHh7NB8WTihUBzNof-qy4Rq_V0kpG87ebWrJqbv10JCWRb2UoM4-eJNZRA3dNRhbZ4XfEDvnkF00x0DZHmsKaHCL3-G0948DP-Kkc9euIn2-E478jzqlk71ZqU2N_92g5hDp4SBQuHfboqvY5C8z9pcxyBgG6JUH_DfT3B31Q5_dM0uIoDXjDTbcxuVQAULvODZmyHIAykN39iM8A"
+                            alt="Plancha Teppanyaki profesional" />
+                    </div>
+                    <div class="p-8"><span
+                            class="font-label-caps text-label-caps text-primary/50 uppercase tracking-widest mb-2 block">Cocción</span>
+                        <h3 class="font-headline-display text-[20px] uppercase text-primary">Plancha Teppanyaki</h3>
+                    </div>
+                </div>
+                <div
+                    class="group relative bg-background border border-outline-variant/10 overflow-hidden cursor-pointer">
+                    <div class="aspect-square w-full overflow-hidden">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuADkymxaNx5haxkF6by58QfY1oK8zAMOIoCSJoBrOo2A5iRLp2FVq0X0JcM6Rcx7vhFdfVjwjJwdFURCs9JCqNUtvmzXGWR_z6R9oyxtGrYuw5rEzdYD-W8DRSS8DMJ2W6eBbcBKVjlxrThCnEfYnIe3grz4qgoZ-skvMmGhtVkJp8S7dp_QshYoy_TzCP94KUccP0Z52xL36wMgzJ80ohIbQNlctR9zT7LYnG1KcHl8oYtAuvsTrqBDA"
+                            alt="Cajones de almacenamiento sellados" />
+                    </div>
+                    <div class="p-8"><span
+                            class="font-label-caps text-label-caps text-primary/50 uppercase tracking-widest mb-2 block">Almacenaje</span>
+                        <h3 class="font-headline-display text-[20px] uppercase text-primary">Cajones Sellados</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 text-center">
+                <button
+                    class="font-headline-section text-headline-section border border-primary px-12 py-4 uppercase tracking-[0.2em] hover:bg-primary hover:text-background transition-all duration-300 text-primary">VER
+                    CATÁLOGO COMPLETO</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative z-10 py-stack-section bg-background border-t border-outline-variant/20 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div
+                class="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent">
+            </div>
+        </div>
+        <div class="max-w-container-max mx-auto px-4 md:px-edge-margin text-center relative z-10">
+            <h2 class="font-headline-display text-[40px] font-bold uppercase tracking-widest mb-6 text-primary">Planea
+                tu visión.</h2>
+            <p class="font-body-lg text-on-surface-variant max-w-xl mx-auto mb-10">Utilice nuestro planificador de
+                cocina interactivo para dar vida a su cocina exterior profesional con precisión milimétrica.</p>
+            <a class="inline-flex items-center gap-4 font-headline-section text-headline-section text-primary border-b border-primary/40 pb-2 hover:border-primary transition-all"
+                href="#">COMENZAR A PLANIFICAR <span class="material-symbols-outlined text-sm">open_in_new</span></a>
+        </div>
+    </section>
+
+    <script>
+        // ===== Mega menú hover =====
+        const productosLink = document.getElementById('productosLink');
+        const megaMenu = document.getElementById('megaMenu');
+        let hoverTimeout;
+        let isOverMenu = false;
+
+        function showMegaMenu() { clearTimeout(hoverTimeout); megaMenu.classList.remove('hidden'); }
+        function hideMegaMenu() { hoverTimeout = setTimeout(() => { if (!isOverMenu) megaMenu.classList.add('hidden'); }, 150); }
+
+        productosLink.addEventListener('mouseenter', showMegaMenu);
+        productosLink.addEventListener('mouseleave', hideMegaMenu);
+        megaMenu.addEventListener('mouseenter', () => { isOverMenu = true; clearTimeout(hoverTimeout); });
+        megaMenu.addEventListener('mouseleave', () => { isOverMenu = false; hideMegaMenu(); });
+        productosLink.addEventListener('click', () => { megaMenu.classList.add('hidden'); });
+
+        // ===== Menú lateral móvil =====
+        const menuHamburguesa = document.getElementById('menuHamburguesa');
+        const mobilePanel = document.getElementById('mobilePanel');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const cerrarMenu = document.getElementById('cerrarMenuMobile');
+        let mobileOpen = false;
+        function abrirMenuMobile() { mobilePanel.classList.add('open'); mobileOverlay.classList.add('open'); mobileOpen = true; document.body.classList.add('overflow-hidden'); }
+        function cerrarMenuMobile() { mobilePanel.classList.remove('open'); mobileOverlay.classList.remove('open'); mobileOpen = false; document.body.classList.remove('overflow-hidden'); document.querySelectorAll('.cat-content.open').forEach(el => el.classList.remove('open')); document.querySelectorAll('.cat-icon').forEach(icon => icon.style.transform = 'rotate(0deg)'); const prodContent = document.getElementById('productosAccordionContent'); const prodIcon = document.getElementById('productosAccordionIcon'); if (prodContent.classList.contains('open')) { prodContent.classList.remove('open'); prodIcon.style.transform = 'rotate(0deg)'; document.getElementById('productosAccordionBtn').setAttribute('aria-expanded', 'false'); } }
+        menuHamburguesa.addEventListener('click', () => { if (mobileOpen) { cerrarMenuMobile(); } else { abrirMenuMobile(); } });
+        cerrarMenu.addEventListener('click', cerrarMenuMobile);
+        mobileOverlay.addEventListener('click', cerrarMenuMobile);
+        document.querySelectorAll('#mobilePanel a').forEach(link => { link.addEventListener('click', () => { cerrarMenuMobile(); }); });
+
+        // ===== Acordeón principal productos =====
+        const productosAccordionBtn = document.getElementById('productosAccordionBtn');
+        const productosAccordionContent = document.getElementById('productosAccordionContent');
+        const productosAccordionIcon = document.getElementById('productosAccordionIcon');
+        let accordionOpen = false;
+        productosAccordionBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); accordionOpen = !accordionOpen; if (accordionOpen) { productosAccordionContent.classList.add('open'); productosAccordionIcon.style.transform = 'rotate(180deg)'; productosAccordionBtn.setAttribute('aria-expanded', 'true'); } else { productosAccordionContent.classList.remove('open'); productosAccordionIcon.style.transform = 'rotate(0deg)'; productosAccordionBtn.setAttribute('aria-expanded', 'false'); document.querySelectorAll('.cat-content.open').forEach(el => el.classList.remove('open')); document.querySelectorAll('.cat-icon').forEach(icon => icon.style.transform = 'rotate(0deg)'); } });
+
+        // ===== Acordeones de categorías =====
+        const categoriaBtns = document.querySelectorAll('.categoria-btn');
+        categoriaBtns.forEach(btn => { btn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); const targetId = btn.getAttribute('data-target'); const targetContent = document.getElementById(targetId); const icon = btn.querySelector('.cat-icon'); const isOpen = targetContent.classList.contains('open'); document.querySelectorAll('.cat-content.open').forEach(el => { if (el !== targetContent) { el.classList.remove('open'); const otherIcon = el.previousElementSibling?.querySelector('.cat-icon'); if (otherIcon) otherIcon.style.transform = 'rotate(0deg)'; } }); document.querySelectorAll('.cat-icon').forEach(ic => { if (ic !== icon) ic.style.transform = 'rotate(0deg)'; }); if (!isOpen) { targetContent.classList.add('open'); icon.style.transform = 'rotate(180deg)'; } else { targetContent.classList.remove('open'); icon.style.transform = 'rotate(0deg)'; } }); });
+
+        // ===== Smooth scroll para enlaces internos =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth' }); }); });
+
+        // ===== Carrusel automático =====
+        (function () {
+            const slides = document.querySelectorAll('.hero-slide');
+            if (slides.length === 0) return;
+            let current = 0;
+            function goTo(index) {
+                slides.forEach((el, i) => {
+                    el.classList.toggle('active', i === index);
+                });
+                current = index;
+            }
+            function nextSlide() {
+                const next = (current + 1) % slides.length;
+                goTo(next);
+            }
+            const interval = setInterval(nextSlide, 4000);
+            const heroWrapper = document.querySelector('.hero-wrapper');
+            if (heroWrapper) {
+                heroWrapper.addEventListener('mouseenter', () => clearInterval(interval));
+                heroWrapper.addEventListener('mouseleave', () => {
+                    clearInterval(window._heroInterval);
+                    window._heroInterval = setInterval(nextSlide, 4000);
+                });
+                window._heroInterval = interval;
+            }
+        })();
+    </script>
+
+</body>
+
+</html>
