@@ -1169,9 +1169,9 @@
                 <a class="nav-link font-label-caps text-label-caps text-white/70 hover:text-white transition-colors py-2"
                     href="#about">SOBRE NOSOTROS</a>
                 <a class="nav-link font-label-caps text-label-caps text-white/70 hover:text-white transition-colors py-2"
-                    href="#">ASESORIA</a>
+                    href="#planifica">ASESORIA</a>
                 <a class="nav-link font-label-caps text-label-caps text-white/70 hover:text-white transition-colors py-2"
-                    href="#">CONTACTANOS</a>
+                    href="#contacto">CONTACTANOS</a>
             </nav>
 
             <div class="flex items-center gap-3">
@@ -1375,9 +1375,9 @@
                 <a class="block font-label-caps text-label-caps text-white/70 hover:text-white transition-colors"
                     href="#about">SOBRE NOSOTROS</a>
                 <a class="block font-label-caps text-label-caps text-white/70 hover:text-white transition-colors"
-                    href="#">ASESORIA</a>
+                    href="#planifica">ASESORIA</a>
                 <a class="block font-label-caps text-label-caps text-white/70 hover:text-white transition-colors"
-                    href="#">CONTACTANOS</a>
+                    href="#contacto">CONTACTANOS</a>
                 <hr class="border-white/10" />
                 <div class="flex items-center gap-4 pt-2">
                     <a href="#" target="_blank" class="text-white/70 hover:text-white transition-colors"
@@ -1524,23 +1524,25 @@
             </div>
         </section>
 
-        <!-- PLANIFICA TU VISIÓN -->
-        <section
-            class="relative z-10 py-stack-section bg-background border-t border-outline-variant/20 overflow-hidden">
-            <div class="absolute inset-0 opacity-10 pointer-events-none">
-                <div
-                    class="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent">
-                </div>
-            </div>
-            <div class="max-w-container-max mx-auto px-4 md:px-edge-margin text-center relative z-10">
+        <!-- ===== PLANIFICA TU VISIÓN CON IMAGEN DE FONDO (id="planifica") ===== -->
+        <section id="planifica" class="relative z-10 py-stack-section overflow-hidden bg-cover bg-center bg-no-repeat"
+            style="background-image: url('img/fondoInicio.png');">
+            <!-- Overlay oscuro para mejorar legibilidad -->
+            <div class="absolute inset-0 bg-black/70"></div>
+
+            <div class="relative z-10 max-w-container-max mx-auto px-4 md:px-edge-margin text-center">
                 <h2 class="font-headline-display text-[40px] font-bold uppercase tracking-widest mb-6 text-primary">
-                    Planea
-                    tu visión.</h2>
-                <p class="font-body-lg text-on-surface-variant max-w-xl mx-auto mb-10">Utilice nuestro planificador de
-                    cocina interactivo para dar vida a su cocina exterior profesional con precisión milimétrica.</p>
+                    Planea tu visión.
+                </h2>
+                <p class="font-body-lg text-white/80 max-w-xl mx-auto mb-10">
+                    Utilice nuestro planificador de cocina interactivo para dar vida a su cocina exterior profesional
+                    con precisión milimétrica.
+                </p>
                 <a class="inline-flex items-center gap-4 font-headline-section text-headline-section text-primary border-b border-primary/40 pb-2 hover:border-primary transition-all"
-                    href="#">COMENZAR A PLANIFICAR <span
-                        class="material-symbols-outlined text-sm">open_in_new</span></a>
+                    href="#">
+                    COMENZAR A PLANIFICAR
+                    <span class="material-symbols-outlined text-sm">open_in_new</span>
+                </a>
             </div>
         </section>
 
@@ -1553,7 +1555,100 @@
             </video>
         </div>
 
-        
+        <!-- ===== CONTACTO (id="contacto") ===== -->
+        <section id="contacto" class="relative z-10 bg-background border-t border-outline-variant/20 overflow-hidden">
+            <!-- Contenedor ancho completo sin padding lateral -->
+            <div class="w-full flex flex-col md:flex-row">
+                <!-- Columna izquierda: Información de contacto (30%) -->
+                <div
+                    class="w-full md:w-[30%] bg-surface-container-low border-r border-outline-variant/20 p-8 md:p-12 flex flex-col justify-center">
+                    <div class="max-w-sm mx-auto md:mx-0">
+                        <h2
+                            class="font-headline-display text-3xl md:text-4xl font-bold uppercase tracking-widest text-primary mb-4">
+                            CONTÁCTENOS</h2>
+                        <!-- Línea blanca debajo del título -->
+                        <div class="w-16 h-0.5 bg-white mb-8"></div>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-10">
+                            ¿Listo para transformar tu cocina? Escríbenos o visítanos. Estamos aquí para ayudarte a
+                            encontrar el horno perfecto.
+                        </p>
+                        <div class="space-y-6">
+                            <!-- Dirección -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-full border-2 border-[#d2af8b] flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-location-dot text-lg text-[#d2af8b]"></i>
+                                </div>
+                                <div>
+                                    <h3
+                                        class="font-label-caps text-label-caps text-primary/70 uppercase tracking-widest mb-1">
+                                        DIRECCIÓN</h3>
+                                    <p class="text-on-surface-variant text-sm leading-6">Morropon 19, Santiago de Surco,
+                                        Lima, Perú</p>
+                                </div>
+                            </div>
+                            <!-- Email -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-full border-2 border-[#d2af8b] flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-regular fa-envelope text-lg text-[#d2af8b]"></i>
+                                </div>
+                                <div>
+                                    <h3
+                                        class="font-label-caps text-label-caps text-primary/70 uppercase tracking-widest mb-1">
+                                        EMAIL</h3>
+                                    <p class="text-on-surface-variant text-sm leading-6">
+                                        <a href="mailto:grupohornosroca@gmail.com"
+                                            class="hover:text-primary transition-colors">grupohornosroca@gmail.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Teléfono -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-full border-2 border-[#d2af8b] flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-phone text-lg text-[#d2af8b]"></i>
+                                </div>
+                                <div>
+                                    <h3
+                                        class="font-label-caps text-label-caps text-primary/70 uppercase tracking-widest mb-1">
+                                        TELÉFONO / WHATSAPP</h3>
+                                    <p class="text-on-surface-variant text-sm leading-6">
+                                        <a href="https://wa.me/51952363833"
+                                            class="hover:text-primary transition-colors">+51 952 363 833</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Horario -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-full border-2 border-[#d2af8b] flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-regular fa-clock text-lg text-[#d2af8b]"></i>
+                                </div>
+                                <div>
+                                    <h3
+                                        class="font-label-caps text-label-caps text-primary/70 uppercase tracking-widest mb-1">
+                                        HORARIO</h3>
+                                    <p class="text-on-surface-variant text-sm leading-6">Lunes a Sábado 9:00 a.m. – 6:00
+                                        p.m.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: Mapa a todo color, sin márgenes, ocupando 70% -->
+                <div class="w-full md:w-[70%] relative bg-surface-container-low min-h-[400px] md:min-h-[500px]">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.434622608026!2d-76.98485692536471!3d-12.080846842578752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9b4e30e42b3%3A0x9f8e7b3c5e2a1f4d!2sMorropon%2019%2C%20Santiago%20de%20Surco%2015039%2C%20Peru!5e0!3m2!1ses!2spe!4v1740000000000!5m2!1ses!2spe"
+                        width="100%" height="100%"
+                        style="border:0; position:absolute; top:0; left:0; width:100%; height:100%;" allowfullscreen=""
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <!-- ===== VISTA CATÁLOGO COMPLETO CON FILTROS LATERALES ===== -->
@@ -2684,12 +2779,22 @@
             });
         });
 
-        // ===== SMOOTH SCROLL =====
+        // ===== SMOOTH SCROLL CON OFFSET PARA HEADER FIJO =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const header = document.querySelector('header');
+                    const headerHeight = header ? header.offsetHeight : 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
