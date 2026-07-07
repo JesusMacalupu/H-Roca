@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -83,7 +87,10 @@
                         "headline-display": ["Manrope"],
                         "label-caps": ["Manrope"],
                         "headline-section-mobile": ["Manrope"],
-                        "headline-section": ["Manrope"]
+                        "headline-section": ["Manrope"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "price-display": ["Inter"],
+                        "headline-md": ["Libre Caslon Text"],
                     },
                     fontSize: {
                         "body-md": ["13px", { "lineHeight": "22px", "letterSpacing": "0.01em", "fontWeight": "400" }],
@@ -91,7 +98,11 @@
                         "headline-display": ["24px", { "lineHeight": "32px", "letterSpacing": "0.1em", "fontWeight": "700" }],
                         "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
                         "headline-section-mobile": ["13px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "700" }],
-                        "headline-section": ["14px", { "lineHeight": "20px", "letterSpacing": "0.08em", "fontWeight": "700" }]
+                        "headline-section": ["14px", { "lineHeight": "20px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "price-display": ["20px", { "lineHeight": "1", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "400" }],
                     }
                 },
             },
@@ -150,7 +161,6 @@
             overflow: hidden;
         }
 
-        /* Scrollbar personalizada */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -222,7 +232,6 @@
             padding: 0 48px;
         }
 
-        /* ===== HEADER TOTALMENTE TRANSPARENTE ===== */
         header {
             background: transparent !important;
             backdrop-filter: blur(12px) !important;
@@ -252,7 +261,6 @@
             margin: 0;
         }
 
-        /* Sombras en texto */
         header .text-primary,
         header .text-white\/70,
         header .text-white {
@@ -264,7 +272,6 @@
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* Mega menú VIDRIO ULTRA BORROSO (esmerilado intenso) */
         #megaMenu {
             background: #000000 !important;
             backdrop-filter: none !important;
@@ -273,11 +280,6 @@
             box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8);
         }
 
-        #megaMenu .mega-col h3 {
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Enlaces del mega menú con línea animada */
         #megaMenu .mega-col ul li a {
             position: relative;
             display: inline-block;
@@ -285,6 +287,7 @@
             color: rgba(255, 255, 255, 0.7);
             transition: color 0.2s ease;
             text-decoration: none;
+            cursor: pointer;
         }
 
         #megaMenu .mega-col ul li a::after {
@@ -308,38 +311,6 @@
             transform: scaleX(1);
         }
 
-        /* Enlaces especiales (Repuestos, Planifica, Guía) con línea animada */
-        #megaMenu .mega-col .special-link {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 2px;
-            color: #ffffff;
-            transition: color 0.1s ease;
-            text-decoration: none;
-        }
-
-        #megaMenu .mega-col .special-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background-color: rgba(255, 255, 255, 0.6);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        #megaMenu .mega-col .special-link:hover {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        #megaMenu .mega-col .special-link:hover::after {
-            transform: scaleX(1);
-        }
-
-        /* Navegación principal: enlaces con línea animada (excepto PRODUCTOS que tiene línea fija) */
         .nav-link {
             position: relative;
             display: inline-block;
@@ -363,7 +334,6 @@
             transform: scaleX(1);
         }
 
-        /* PRODUCTOS tiene su propia línea fija (activa) */
         #productosLink {
             position: relative;
             padding-bottom: 4px;
@@ -379,7 +349,6 @@
             background-color: #ffffff;
         }
 
-        /* Botón Cotizar */
         .btn-cotizar-desktop {
             padding: 10px 28px !important;
             font-size: 13px !important;
@@ -393,14 +362,747 @@
                 font-size: 10px !important;
             }
         }
+
+        .destacado-link {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 2px;
+            color: #ffffff;
+            transition: color 0.1s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .destacado-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.6);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .destacado-link:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .destacado-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Vista detalle */
+        .hover-scale img {
+            transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+        }
+
+        .hover-scale:hover img {
+            transform: scale(1.05);
+        }
+
+        .vista-detalle summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .vista-detalle summary {
+            list-style: none;
+        }
+
+        .galeria-thumb {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .galeria-thumb:hover {
+            transform: scale(1.02);
+        }
+
+        .galeria-thumb img {
+            transition: transform 0.4s ease;
+        }
+
+        .galeria-thumb:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Transición suave para el detalle */
+        .vista-detalle-container {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .vista-detalle-container.visible {
+            opacity: 1;
+        }
+
+        /* Recomendados sin márgenes laterales */
+        .recomendados-wrapper {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            background: #1a1a1a;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .recomendados-wrapper .inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 3rem 48px;
+        }
+
+        @media (max-width: 768px) {
+            .recomendados-wrapper .inner {
+                padding: 2rem 20px;
+            }
+        }
+
+        /* Tarjetas de recomendados mejoradas */
+        .rec-card {
+            background: #222;
+            border-radius: 0px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .rec-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .rec-card .rec-img {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: #2a2a2a;
+        }
+
+        .rec-card .rec-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .rec-card:hover .rec-img img {
+            transform: scale(1.05);
+        }
+
+        .rec-card .rec-body {
+            padding: 1.25rem 1.5rem;
+        }
+
+        /* Botones en fila (vista detalle) */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .btn-group .btn {
+            flex: 1 1 auto;
+            min-width: 140px;
+        }
+
+        @media (max-width: 480px) {
+            .btn-group .btn {
+                min-width: 100%;
+            }
+        }
+
+        /* Ajuste de acordeones */
+        .vista-detalle details summary {
+            transition: background 0.2s;
+        }
+
+        .vista-detalle details summary:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .vista-detalle details[open] summary .material-symbols-outlined {
+            transform: rotate(45deg);
+        }
+
+        /* Separación del botón volver */
+        .btn-volver-container {
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .btn-volver-container {
+                margin-top: 0.75rem;
+            }
+        }
+
+        /* Botones del carrusel circulares y centrados */
+        .carrusel-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.2s;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .carrusel-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .carrusel-btn .material-symbols-outlined {
+            font-size: 24px;
+            color: white;
+            line-height: 1;
+        }
+
+        .carrusel-btn-left {
+            left: 16px;
+        }
+
+        .carrusel-btn-right {
+            right: 16px;
+        }
+
+        @media (max-width: 640px) {
+            .carrusel-btn {
+                width: 32px;
+                height: 32px;
+            }
+
+            .carrusel-btn .material-symbols-outlined {
+                font-size: 18px;
+            }
+
+            .carrusel-btn-left {
+                left: 8px;
+            }
+
+            .carrusel-btn-right {
+                right: 8px;
+            }
+        }
+
+        /* Estilos para el catálogo completo con filtros laterales */
+        .catalogo-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .catalogo-filtros-lateral {
+            flex: 0 0 260px;
+            min-width: 220px;
+            position: sticky;
+            top: 100px;
+            align-self: flex-start;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .catalogo-grid-container {
+            flex: 1;
+            min-width: 0;
+        }
+
+        @media (max-width: 768px) {
+            .catalogo-layout {
+                flex-direction: column;
+            }
+
+            .catalogo-filtros-lateral {
+                position: relative;
+                top: 0;
+                max-height: none;
+                flex: 1 1 auto;
+                width: 100%;
+                padding-right: 0;
+            }
+        }
+
+        .filtro-categoria {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.25rem 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .filtro-categoria h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 0.5rem;
+        }
+
+        .filtro-categoria label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+            cursor: pointer;
+            padding: 0.25rem 0;
+            transition: color 0.2s;
+        }
+
+        .filtro-categoria label:hover {
+            color: #ffffff;
+        }
+
+        .filtro-categoria input[type="checkbox"],
+        .filtro-categoria input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #d2af8b;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .filtro-categoria select {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 0.4rem 0.6rem;
+            color: #fff;
+            font-size: 0.8rem;
+            border-radius: 0px;
+            cursor: pointer;
+        }
+
+        .filtro-categoria select option {
+            background: #1f1f1f;
+            color: #fff;
+        }
+
+        /* Barra de precio estilo oscuro */
+        .price-filter-wrapper-dark {
+            padding-top: 0.5rem;
+        }
+
+        .price-display-badge-dark {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .slider-track-dark {
+            position: relative;
+            height: 6px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            overflow: visible;
+        }
+
+        .slider-fill-dark {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            border-radius: 20px;
+            background: #d2af8b;
+            transition: width 0.1s ease-out;
+            z-index: 1;
+        }
+
+        input[type="range"].price-slider-native-dark {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 30;
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+        }
+
+        input[type="range"].price-slider-native-dark::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            cursor: grab;
+            border: none;
+        }
+
+        input[type="range"].price-slider-native-dark::-moz-range-thumb {
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            cursor: grab;
+            border: none;
+        }
+
+        .elegant-thumb-dark {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            transform: translate(-50%, -50%);
+            width: 22px;
+            height: 22px;
+            background: #d2af8b;
+            border: 3px solid #1f1f1f;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            transition: left 0.1s linear;
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        .labels-minmax-dark {
+            margin-top: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Tarjetas de catálogo (mismo diseño que original) */
+        .catalogo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .catalogo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        .catalogo-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .catalogo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .catalogo-card .card-img {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: #1f1f1f;
+        }
+
+        .catalogo-card .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .catalogo-card:hover .card-img img {
+            transform: scale(1.05);
+        }
+
+        .catalogo-card .card-body {
+            padding: 1rem 1.25rem;
+        }
+
+        .catalogo-card .card-body h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.3;
+            margin-bottom: 0.25rem;
+        }
+
+        .catalogo-card .card-body .precio {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .catalogo-card .card-body .categoria-tag {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Botones: solo "Ver Detalles" es beige, "Cotizar" es blanco */
+        .btn-ver-detalle {
+            background-color: #d2af8b;
+            color: #1a1c1c;
+            border: none;
+            padding: 0.75rem 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 0px;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-ver-detalle:hover {
+            background-color: #e8c9a8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(210, 175, 139, 0.4);
+            color: #0a0a0a;
+        }
+
+        .btn-ver-detalle:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        .btn-cotizar-card {
+            background-color: #ffffff;
+            color: #1a1c1c;
+            border: none;
+            padding: 0.75rem 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 0px;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-cotizar-card:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-cotizar-card:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        /* En el catálogo completo y recomendados, los botones van verticales */
+        .btn-group-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .btn-group-vertical .btn-ver-detalle,
+        .btn-group-vertical .btn-cotizar-card {
+            width: 100%;
+        }
+
+        /* En la colección principal, los botones van en la misma línea (horizontal) */
+        .btn-group-horizontal {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .btn-group-horizontal .btn-ver-detalle,
+        .btn-group-horizontal .btn-cotizar-card {
+            flex: 1;
+            width: auto;
+            min-width: 0;
+        }
+
+        /* Botón Cotización en vista detalle (beige) */
+        .btn-cotizar-detalle {
+            background-color: #d2af8b;
+            color: #1a1c1c;
+            border: none;
+            padding: 0.75rem 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 0px;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .btn-cotizar-detalle:hover {
+            background-color: #e8c9a8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(210, 175, 139, 0.4);
+            color: #0a0a0a;
+        }
+
+        /* Botón Ver Accesorios en vista detalle (blanco) */
+        .btn-ver-accesorios-detalle {
+            background-color: #ffffff;
+            color: #1a1c1c;
+            border: none;
+            padding: 0.75rem 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 0px;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .btn-ver-accesorios-detalle:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Footer a ancho completo */
+        .footer-grillcorp {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            width: 100%;
+            margin: 0;
+        }
+
+        .footer-grillcorp .footer-heading {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-grillcorp .footer-link {
+            color: #d1d5db;
+            transition: color 0.2s ease;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.6rem;
+            text-decoration: none;
+        }
+
+        .footer-grillcorp .footer-link:hover {
+            color: #ffffff;
+        }
+
+        .footer-grillcorp .footer-info-text {
+            color: #d1d5db;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-grillcorp .footer-info-text a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-grillcorp .footer-info-text a:hover {
+            color: #ffffff;
+        }
+
+        .footer-grillcorp .bottom-bar-link {
+            color: #d1d5db;
+            font-size: 0.8rem;
+            padding: 0 1rem;
+            border-right: 1px solid #374151;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-grillcorp .bottom-bar-link:last-child {
+            border-right: none;
+        }
+
+        .footer-grillcorp .bottom-bar-link:hover {
+            color: #ffffff;
+        }
+
+        .footer-grillcorp .social-icon {
+            color: #ffffff;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-grillcorp .social-icon:hover {
+            color: #d2af8b;
+            transform: scale(1.1);
+        }
+
+        .footer-grillcorp .logo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .footer-grillcorp .logo-placeholder img {
+            max-height: 50px;
+            width: auto;
+        }
+
+        @media (max-width: 640px) {
+            .footer-grillcorp .logo-placeholder img {
+                max-height: 40px;
+            }
+        }
     </style>
 </head>
 
 <body class="bg-background text-on-background font-body-md">
 
-    <!-- ===== HEADER FIJO (superpuesto) ===== -->
+    <!-- ===== HEADER FIJO ===== -->
     <header class="fixed top-0 left-0 w-full z-50">
-        <!-- Barra superior utilitaria (oculta en móvil) -->
+        <!-- Barra superior utilitaria -->
         <div class="hidden sm:flex top-bar">
             <div
                 class="max-w-container-max mx-auto px-4 md:px-edge-margin h-10 flex items-center justify-between w-full">
@@ -413,28 +1115,28 @@
                         href="#">SOPORTE</a>
                 </nav>
                 <div class="flex items-center gap-3 md:gap-5 social-icons text-white/70">
-                    <a href="https://www.facebook.com/hornosroca?locale=es_LA" target="_blank" rel="noopener noreferrer"
+                    <a href="#" target="_blank" rel="noopener noreferrer"
                         class="hover:text-white transition-opacity opacity-70 hover:opacity-100" aria-label="Facebook">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
                     </a>
-                    <a href="https://www.instagram.com/hornosroca/" target="_blank" rel="noopener noreferrer"
+                    <a href="#" target="_blank" rel="noopener noreferrer"
                         class="hover:text-white transition-opacity opacity-70 hover:opacity-100" aria-label="Instagram">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                         </svg>
                     </a>
-                    <a href="https://www.tiktok.com/@hornos.roca" target="_blank" rel="noopener noreferrer"
+                    <a href="#" target="_blank" rel="noopener noreferrer"
                         class="hover:text-white transition-opacity opacity-70 hover:opacity-100" aria-label="TikTok">
                         <svg class="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24">
                             <path
                                 d="M12.525.02c1.31-.02 2.61-.01 3.91-.01.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.21-1.35 2.06-.11.97.23 1.99.94 2.63.77.71 1.86.88 2.85.54.59-.2 1.06-.67 1.39-1.22.21-.48.31-1.01.32-1.53-.02-5.07-.02-10.15-.02-15.22z" />
                         </svg>
                     </a>
-                    <a href="https://www.youtube.com/@HornosRoca" target="_blank" rel="noopener noreferrer"
+                    <a href="#" target="_blank" rel="noopener noreferrer"
                         class="hover:text-white transition-opacity opacity-70 hover:opacity-100" aria-label="YouTube">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
@@ -445,13 +1147,12 @@
             </div>
         </div>
 
-        <!-- Línea divisoria horizontal sútil debajo de la barra superior -->
         <div class="top-bar-divider"></div>
 
-        <!-- Cabecera principal (sin fondo) -->
+        <!-- Cabecera principal -->
         <div
             class="main-header flex items-center justify-between h-16 md:h-20 px-4 md:px-edge-margin max-w-container-max mx-auto">
-            <div class="flex items-center">
+            <div class="flex items-center cursor-pointer" id="logoLink">
                 <div class="w-14 h-14 md:w-20 md:h-20 flex-shrink-0" aria-label="Hornos Roca">
                     <img src="img/logoRoca.png" alt="Hornos Roca Logo" class="w-full h-full object-contain" />
                 </div>
@@ -494,104 +1195,79 @@
             </div>
         </div>
 
-        <!-- Línea divisoria horizontal sútil al final del header (antes del contenido) -->
         <div class="header-bottom-divider"></div>
 
-        <!-- Mega menú (hover) con efecto glass real -->
+        <!-- ===== MEGA MENÚ ===== -->
         <div id="megaMenu"
             class="absolute top-full left-0 w-full border-b border-white/10 shadow-2xl mega-menu-transition overflow-y-auto max-h-[calc(100vh-120px)] no-scrollbar hidden">
             <div class="max-w-container-max mx-auto px-4 md:px-edge-margin py-8 md:py-16">
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-column-gap mega-grid">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-column-gap mega-grid">
+                    <!-- Columna 1: HORNOS -->
                     <div class="mega-col space-y-row-gap">
                         <h3
                             class="font-headline-section text-headline-section text-primary uppercase border-b border-white/20 pb-4 mb-4">
-                            HORNOS A GAS</h3>
+                            HORNOS</h3>
                         <ul class="space-y-3">
-                            <li><a class="font-body-md text-body-md" href="#">Serie Profesional G</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Serie Clásica</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Horno de Convección</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Horno de Pizza</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Quemador Potente</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Quemador Doble Lateral</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Accesorios de Barra</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Bases Autoportantes</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="colosso">Horno Artesanal Colosso di
+                                    Forgia 100 cm</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="nina-pacha">Horno Pachamanquero
+                                    Multifunción – Modelo Nina Pacha</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="nina">Horno Artesanal – Modelo Nina –
+                                    100 cm</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="ichu">Horno Artesanal – Modelo Ichu –
+                                    100 cm</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="napolitano">Horno Artesanal – Modelo
+                                    Napolitano – 100 cm</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="di-bronzo">Horno Premium – Modelo Di
+                                    Bronzo – 57×57×32 cm</a></li>
                         </ul>
                     </div>
-                    <div class="mega-col space-y-row-gap">
-                        <h3
-                            class="font-headline-section text-headline-section text-primary uppercase border-b border-white/20 pb-4 mb-4">
-                            HORNOS ELÉCTRICOS</h3>
-                        <ul class="space-y-3">
-                            <li><a class="font-body-md text-body-md" href="#">Horno Eléctrico Premium</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Edición Color</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Horno de Pizza Eléctrico</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Plancha Teppanyaki</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Quemador Eléctrico</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Accesorios de Barra</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Bases Autoportantes</a></li>
-                        </ul>
-                    </div>
-                    <div class="mega-col space-y-row-gap">
-                        <h3
-                            class="font-headline-section text-headline-section text-primary uppercase border-b border-white/20 pb-4 mb-4">
-                            HORNOS DE LEÑA</h3>
-                        <ul class="space-y-3">
-                            <li><a class="font-body-md text-body-md" href="#">Horno de Leña Rústico</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Horno de Leña Moderno</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Horno de Barro</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Parrilla para Leña</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Accesorios para Leña</a></li>
-                        </ul>
-                    </div>
+
+                    <!-- Columna 2: ACCESORIOS -->
                     <div class="mega-col space-y-row-gap">
                         <h3
                             class="font-headline-section text-headline-section text-primary uppercase border-b border-white/20 pb-4 mb-4">
                             ACCESORIOS</h3>
                         <ul class="space-y-3">
-                            <li><a class="font-body-md text-body-md" href="#">Piedras para Pizza</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Bandejas y Asadores</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Termómetros</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Cubiertos y Utensilios</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Fundas y Protectores</a></li>
-                            <li><a class="font-body-md text-body-md" href="#">Kits de Limpieza</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="soporte-pizza">Soporte para Bandeja
+                                    de Pizza con Porta Condimentos</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="pala-pizzera">Pala Pizzera AISI
+                                    304</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="bandeja">Bandeja para Hornos de
+                                    Barro</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="puerta-inox">Puerta de Acero
+                                    Inoxidable para Horno Artesanal con Termómetro</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="cuchilla">Cuchilla Corta Pizza (Tipo
+                                    Mezzaluna)</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="termometro">Termómetro para Horno de
+                                    Barro (Vástago 12 cm)</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="rejilla">Rejilla de Doble Altura de
+                                    Cocción para Horno de Barro</a></li>
                         </ul>
                     </div>
-                    <div class="mega-col flex flex-col gap-6 md:gap-10">
-                        <div>
-                            <h3
-                                class="font-headline-section text-headline-section text-primary uppercase hover:text-white/70 transition-colors cursor-pointer group flex items-center special-link">
-                                REPUESTOS <span
-                                    class="material-symbols-outlined ml-2 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 text-primary">arrow_forward</span>
-                            </h3>
-                        </div>
-                        <div>
-                            <h3
-                                class="font-headline-section text-headline-section text-primary uppercase hover:text-white/70 transition-colors cursor-pointer group flex items-center special-link">
-                                PLANIFICA TU COCINA <span
-                                    class="material-symbols-outlined ml-2 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 text-primary">arrow_forward</span>
-                            </h3>
-                        </div>
-                        <div>
-                            <h3
-                                class="font-headline-section text-headline-section text-primary uppercase hover:text-white/70 transition-colors cursor-pointer group flex items-center special-link">
-                                GUÍA DE COMPRA <span
-                                    class="material-symbols-outlined ml-2 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 text-primary">arrow_forward</span>
-                            </h3>
-                        </div>
-                        <div class="mt-2 pt-6 border-t border-white/10">
-                            <div class="relative group cursor-pointer overflow-hidden rounded-sm bg-black/30">
-                                <div class="w-full h-40 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                    style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80');">
-                                </div>
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60">
-                                </div>
-                                <div class="absolute bottom-4 left-4">
-                                    <p class="font-label-caps text-label-caps text-white/80 tracking-widest">NUEVO</p>
-                                    <p class="font-headline-section text-headline-section text-primary">HORNO
-                                        PROFESIONAL G</p>
-                                </div>
+
+                    <!-- Columna 3: PRODUCTO DESTACADO -->
+                    <div class="mega-col space-y-row-gap">
+                        <h3
+                            class="font-headline-section text-headline-section text-primary uppercase border-b border-white/20 pb-4 mb-4">
+                            DESTACADO</h3>
+                        <div class="relative group cursor-pointer overflow-hidden rounded-sm bg-black/30"
+                            data-product="colosso">
+                            <div class="w-full h-48 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                style="background-image: url('https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia1_1066x.png?v=1783366960'); background-size: cover; background-position: center;">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60">
+                            </div>
+                            <div class="absolute bottom-4 left-4">
+                                <p class="font-label-caps text-label-caps text-white/80 tracking-widest">NUEVO</p>
+                                <p class="font-headline-section text-headline-section text-primary">COLOSO DI FORGIA</p>
+                                <p class="font-body-md text-body-md text-white/70">Horno Artesanal 100 cm</p>
                             </div>
                         </div>
+                        <a class="destacado-link font-label-caps text-label-caps text-white/80 hover:text-white transition-colors inline-block mt-4"
+                            data-product="colosso">
+                            Ver detalles →
+                        </a>
                     </div>
                 </div>
             </div>
@@ -628,102 +1304,62 @@
                     <div id="productosAccordionContent" class="accordion-content">
                         <div class="accordion-inner">
                             <div class="mt-3 ml-2 space-y-1 pb-2">
+                                <!-- Categoría Hornos -->
                                 <button
                                     class="categoria-btn w-full flex items-center justify-between text-left font-body-md text-body-md text-white/80 hover:text-white py-2 pr-2"
-                                    data-target="cat-gas">
-                                    <span>Hornos a Gas</span>
+                                    data-target="cat-hornos-mobile">
+                                    <span>Hornos</span>
                                     <span
                                         class="material-symbols-outlined text-base transition-transform duration-300 cat-icon">expand_more</span>
                                 </button>
-                                <div id="cat-gas" class="accordion-content cat-content">
+                                <div id="cat-hornos-mobile" class="accordion-content cat-content">
                                     <div class="accordion-inner ml-4 space-y-1">
                                         <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Serie Profesional G</a>
+                                            data-product="colosso">Horno Artesanal Colosso di Forgia 100 cm</a>
                                         <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Serie Clásica</a>
+                                            data-product="nina-pacha">Horno Pachamanquero Multifunción – Modelo Nina
+                                            Pacha</a>
                                         <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Horno de Convección</a>
+                                            data-product="nina">Horno Artesanal – Modelo Nina – 100 cm</a>
                                         <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Horno de Pizza</a>
+                                            data-product="ichu">Horno Artesanal – Modelo Ichu – 100 cm</a>
                                         <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Quemador Potente</a>
+                                            data-product="napolitano">Horno Artesanal – Modelo Napolitano – 100 cm</a>
                                         <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Quemador Doble Lateral</a>
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Accesorios de Barra</a>
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Bases Autoportantes</a>
+                                            data-product="di-bronzo">Horno Premium – Modelo Di Bronzo – 57×57×32 cm</a>
                                     </div>
                                 </div>
+
+                                <!-- Categoría Accesorios -->
                                 <button
                                     class="categoria-btn w-full flex items-center justify-between text-left font-body-md text-body-md text-white/80 hover:text-white py-2 pr-2"
-                                    data-target="cat-electricos">
-                                    <span>Hornos Eléctricos</span>
-                                    <span
-                                        class="material-symbols-outlined text-base transition-transform duration-300 cat-icon">expand_more</span>
-                                </button>
-                                <div id="cat-electricos" class="accordion-content cat-content">
-                                    <div class="accordion-inner ml-4 space-y-1">
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Horno Eléctrico Premium</a>
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Edición Color</a>
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Horno de Pizza Eléctrico</a>
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Plancha Teppanyaki</a>
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Quemador Eléctrico</a>
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Accesorios de Barra</a>
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Bases Autoportantes</a>
-                                    </div>
-                                </div>
-                                <button
-                                    class="categoria-btn w-full flex items-center justify-between text-left font-body-md text-body-md text-white/80 hover:text-white py-2 pr-2"
-                                    data-target="cat-lena">
-                                    <span>Hornos de Leña</span>
-                                    <span
-                                        class="material-symbols-outlined text-base transition-transform duration-300 cat-icon">expand_more</span>
-                                </button>
-                                <div id="cat-lena" class="accordion-content cat-content">
-                                    <div class="accordion-inner ml-4 space-y-1">
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Horno de Leña Rústico</a>
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Horno de Leña Moderno</a>
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Horno de Barro</a>
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Parrilla para Leña</a>
-                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Accesorios para Leña</a>
-                                    </div>
-                                </div>
-                                <button
-                                    class="categoria-btn w-full flex items-center justify-between text-left font-body-md text-body-md text-white/80 hover:text-white py-2 pr-2"
-                                    data-target="cat-accesorios">
+                                    data-target="cat-accesorios-mobile">
                                     <span>Accesorios</span>
                                     <span
                                         class="material-symbols-outlined text-base transition-transform duration-300 cat-icon">expand_more</span>
                                 </button>
-                                <div id="cat-accesorios" class="accordion-content cat-content">
+                                <div id="cat-accesorios-mobile" class="accordion-content cat-content">
                                     <div class="accordion-inner ml-4 space-y-1">
                                         <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Piedras para Pizza</a>
+                                            data-product="soporte-pizza">Soporte para Bandeja de Pizza con Porta
+                                            Condimentos</a>
                                         <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Bandejas y Asadores</a>
+                                            data-product="pala-pizzera">Pala Pizzera AISI 304</a>
                                         <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Termómetros</a>
+                                            data-product="bandeja">Bandeja para Hornos de Barro</a>
                                         <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Cubiertos y Utensilios</a>
+                                            data-product="puerta-inox">Puerta de Acero Inoxidable para Horno Artesanal
+                                            con Termómetro</a>
                                         <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Fundas y Protectores</a>
+                                            data-product="cuchilla">Cuchilla Corta Pizza (Tipo Mezzaluna)</a>
                                         <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
-                                            href="#">Kits de Limpieza</a>
+                                            data-product="termometro">Termómetro para Horno de Barro (Vástago 12 cm)</a>
+                                        <a class="block font-body-md text-body-md text-white/70 hover:text-white transition-colors py-1"
+                                            data-product="rejilla">Rejilla de Doble Altura de Cocción para Horno de
+                                            Barro</a>
                                     </div>
                                 </div>
+
                                 <div class="mt-3 pt-3 border-t border-white/10 space-y-2">
                                     <a class="block font-label-caps text-label-caps text-primary hover:text-white/70 transition-colors py-1"
                                         href="#">REPUESTOS →</a>
@@ -731,23 +1367,6 @@
                                         href="#">PLANIFICA TU COCINA →</a>
                                     <a class="block font-label-caps text-label-caps text-primary hover:text-white/70 transition-colors py-1"
                                         href="#">GUÍA DE COMPRA →</a>
-                                </div>
-                                <div class="mt-4 mb-2">
-                                    <div class="relative group cursor-pointer overflow-hidden rounded-sm bg-black/30">
-                                        <div class="w-full h-32 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                            style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=400&q=80');">
-                                        </div>
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70">
-                                        </div>
-                                        <div class="absolute bottom-3 left-3">
-                                            <p
-                                                class="font-label-caps text-label-caps text-white/80 tracking-widest text-xs">
-                                                NUEVO</p>
-                                            <p class="font-headline-section text-headline-section text-primary text-sm">
-                                                HORNO PROFESIONAL G</p>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -761,29 +1380,29 @@
                     href="#">CONTACTANOS</a>
                 <hr class="border-white/10" />
                 <div class="flex items-center gap-4 pt-2">
-                    <a href="https://www.facebook.com/hornosroca?locale=es_LA" target="_blank"
-                        class="text-white/70 hover:text-white transition-colors" aria-label="Facebook">
+                    <a href="#" target="_blank" class="text-white/70 hover:text-white transition-colors"
+                        aria-label="Facebook">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                             <path
                                 d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
                     </a>
-                    <a href="https://www.instagram.com/hornosroca/" target="_blank"
-                        class="text-white/70 hover:text-white transition-colors" aria-label="Instagram">
+                    <a href="#" target="_blank" class="text-white/70 hover:text-white transition-colors"
+                        aria-label="Instagram">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                             <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                         </svg>
                     </a>
-                    <a href="https://www.tiktok.com/@hornos.roca" target="_blank"
-                        class="text-white/70 hover:text-white transition-colors" aria-label="TikTok">
+                    <a href="#" target="_blank" class="text-white/70 hover:text-white transition-colors"
+                        aria-label="TikTok">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                             <path
                                 d="M12.525.02c1.31-.02 2.61-.01 3.91-.01.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.21-1.35 2.06-.11.97.23 1.99.94 2.63.77.71 1.86.88 2.85.54.59-.2 1.06-.67 1.39-1.22.21-.48.31-1.01.32-1.53-.02-5.07-.02-10.15-.02-15.22z" />
                         </svg>
                     </a>
-                    <a href="https://www.youtube.com/@HornosRoca" target="_blank"
-                        class="text-white/70 hover:text-white transition-colors" aria-label="YouTube">
+                    <a href="#" target="_blank" class="text-white/70 hover:text-white transition-colors"
+                        aria-label="YouTube">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                             <path
                                 d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -798,214 +1417,1180 @@
         </div>
     </div>
 
-    <!-- ===== HÉROE: carrusel a pantalla completa ===== -->
-    <div class="hero-wrapper">
-        <div class="hero-slide active"
-            style="background-image: url('https://cdn.shopify.com/s/files/1/0521/0305/3481/files/modeloIchu1_800x800.png?v=1783367134');">
+    <!-- ===== VISTA PRINCIPAL (landing + colección) ===== -->
+    <div id="vistaPrincipal">
+        <!-- HÉROE -->
+        <div class="hero-wrapper">
+            <div class="hero-slide active" style="background-image: url('img/principal1.png');">
+            </div>
+            <div class="hero-slide" style="background-image: url('img/principal2.png');">
+            </div>
+            <div class="hero-slide" style="background-image: url('img/principal3.png');">
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="max-w-2xl">
+                    <h2
+                        class="font-headline-display text-4xl md:text-[64px] leading-tight text-primary font-extrabold uppercase tracking-tighter mb-6">
+                        El Arte de la<br />Cocina con Hornos
+                    </h2>
+                    <p class="font-body-lg text-body-lg text-white/70 max-w-md mb-8">
+                        Soluciones de cocina precisas, diseñadas para los amantes de la repostería y la cocina. Eleve su
+                        hogar con nuestros hornos de alta gama y accesorios profesionales.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button
+                            class="bg-primary text-black px-6 md:px-10 py-3 md:py-4 font-headline-section text-headline-section uppercase tracking-widest hover:bg-white/80 transition-colors">EXPLORAR
+                            COLECCIÓN</button>
+                        <button
+                            class="border border-primary text-primary px-6 md:px-10 py-3 md:py-4 font-headline-section text-headline-section uppercase tracking-widest hover:bg-primary hover:text-black transition-all">VER
+                            GUÍA DE DISEÑO</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="hero-slide"
-            style="background-image: url('https://cdn.shopify.com/s/files/1/0521/0305/3481/files/horno-artesanal-modelo-nina_af53bae1-fae6-49f9-aec8-ffe70a19c05a_800x800.jpg?v=1755274627');">
+
+        <!-- SOBRE NOSOTROS -->
+        <section id="about"
+            class="relative z-10 max-w-container-max mx-auto px-4 md:px-edge-margin py-stack-section scroll-mt-24">
+            <div class="grid md:grid-cols-2 gap-column-gap items-center">
+                <div class="space-y-8">
+                    <h2 class="font-headline-display text-headline-display uppercase text-primary">Herencia de
+                        Innovación
+                    </h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant leading-loose">
+                        Fundada con la visión de revolucionar la experiencia de la cocina al aire libre, Hornos Roca
+                        representa la culminación de décadas de experiencia. Nuestro lenguaje de diseño "Precisión Ónix"
+                        se
+                        integra perfectamente en la arquitectura moderna, ofreciendo una estética oscura y elegante que
+                        enfatiza tanto la forma como la función.
+                    </p>
+                    <div class="flex gap-12 border-t border-outline-variant/30 pt-8">
+                        <div><span
+                                class="block font-headline-display text-headline-display text-primary mb-1">15+</span><span
+                                class="font-label-caps text-label-caps opacity-60">PATENTES</span></div>
+                        <div><span
+                                class="block font-headline-display text-headline-display text-primary mb-1">USA</span><span
+                                class="font-label-caps text-label-caps opacity-60">FABRICADO</span></div>
+                    </div>
+                </div>
+                <div
+                    class="w-full aspect-[16/9] bg-surface-container-low overflow-hidden border border-outline-variant/20">
+                    <img class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuACcyA6wdjUhUm5LscEEEEW4zbLa72J9AXpMgmWDhYUUhRIop1V6lbX2We70_vAaxEvQu77hxevtRsmlY-y2x4bijDt9HwQhao_I06Tluc4BUAmIcnRDGADLlPOkkV153I6MTLeu_D85Jtgirdw4nxCl6dXbZy9LmsPl2A8Tr-pEd7cltpd9Kn0YqQnAyQiFXrrmfc83laqTnP_K6Vqqo1_G663Bpmd2ULaNkXDPeZpwcW9p8YOueM_zQ"
+                        alt="Detalle de perilla de control en acero inoxidable" />
+                </div>
+            </div>
+        </section>
+
+        <!-- LA COLECCIÓN -->
+        <section id="products"
+            class="relative z-10 bg-surface-container-lowest border-t border-outline-variant/20 py-stack-section scroll-mt-24">
+            <div class="max-w-container-max mx-auto px-4 md:px-edge-margin">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-row-gap">
+                    <div>
+                        <h2
+                            class="font-headline-display text-[32px] font-bold uppercase tracking-widest mb-4 text-primary">
+                            La Colección</h2>
+                        <p class="font-body-md text-on-surface-variant max-w-lg opacity-80">Explore nuestro ecosistema
+                            integral de electrodomésticos profesionales, desde hornos de alto rendimiento hasta
+                            accesorios.</p>
+                    </div>
+                    <!-- FILTROS -->
+                    <div class="flex gap-8 overflow-x-auto no-scrollbar pb-2">
+                        <div class="flex flex-col">
+                            <span class="font-label-caps text-[10px] uppercase opacity-40 mb-2">Categoría</span>
+                            <div class="flex gap-4">
+                                <button id="filtroHornos"
+                                    class="text-primary font-headline-section text-[12px] border-b border-primary pb-1">HORNOS</button>
+                                <button id="filtroAccesorios"
+                                    class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">ACCESORIOS</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenedor dinámico de productos -->
+                <div id="productosContainer" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Los productos se renderizan con JavaScript -->
+                </div>
+
+                <div class="mt-16 text-center">
+                    <button id="btnCatalogoCompleto"
+                        class="font-headline-section text-headline-section border border-primary px-12 py-4 uppercase tracking-[0.2em] hover:bg-primary hover:text-background transition-all duration-300 text-primary">
+                        VER CATÁLOGO COMPLETO
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLANIFICA TU VISIÓN -->
+        <section
+            class="relative z-10 py-stack-section bg-background border-t border-outline-variant/20 overflow-hidden">
+            <div class="absolute inset-0 opacity-10 pointer-events-none">
+                <div
+                    class="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent">
+                </div>
+            </div>
+            <div class="max-w-container-max mx-auto px-4 md:px-edge-margin text-center relative z-10">
+                <h2 class="font-headline-display text-[40px] font-bold uppercase tracking-widest mb-6 text-primary">
+                    Planea
+                    tu visión.</h2>
+                <p class="font-body-lg text-on-surface-variant max-w-xl mx-auto mb-10">Utilice nuestro planificador de
+                    cocina interactivo para dar vida a su cocina exterior profesional con precisión milimétrica.</p>
+                <a class="inline-flex items-center gap-4 font-headline-section text-headline-section text-primary border-b border-primary/40 pb-2 hover:border-primary transition-all"
+                    href="#">COMENZAR A PLANIFICAR <span
+                        class="material-symbols-outlined text-sm">open_in_new</span></a>
+            </div>
+        </section>
+
+        <div
+            style="position: relative; width: 100vw; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; padding-bottom: 33.33%; height: 0; overflow: hidden;">
+            <video autoplay muted loop playsinline
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                <source src="https://cdn.shopify.com/videos/c/o/v/e4100b64417d414494ef9259031fa583.mp4"
+                    type="video/mp4">
+            </video>
         </div>
-        <div class="hero-slide"
-            style="background-image: url('https://cdn.shopify.com/s/files/1/0521/0305/3481/files/ChatGPT_Image_28_may_2025_06_42_27_p.m._800x800.png?v=1748625345');">
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="max-w-2xl">
+
+        
+    </div>
+
+    <!-- ===== VISTA CATÁLOGO COMPLETO CON FILTROS LATERALES ===== -->
+    <div id="vistaCatalogo" class="relative z-10 hidden">
+        <div class="max-w-container-max mx-auto px-4 md:px-edge-margin pt-32 pb-16">
+            <!-- Botón volver -->
+            <div class="btn-volver-container">
+                <button id="btnVolverCatalogo"
+                    class="flex items-center gap-2 text-white/70 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    <span class="font-label-caps text-label-caps">Volver</span>
+                </button>
+            </div>
+
+            <div class="mt-6">
                 <h2
-                    class="font-headline-display text-4xl md:text-[64px] leading-tight text-primary font-extrabold uppercase tracking-tighter mb-6">
-                    El Arte de la<br />Cocina con Hornos
-                </h2>
-                <p class="font-body-lg text-body-lg text-white/70 max-w-md mb-8">
-                    Soluciones de cocina precisas, diseñadas para los amantes de la repostería y la cocina. Eleve su
-                    hogar con nuestros hornos de alta gama y accesorios profesionales.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <button
-                        class="bg-primary text-black px-6 md:px-10 py-3 md:py-4 font-headline-section text-headline-section uppercase tracking-widest hover:bg-white/80 transition-colors">EXPLORAR
-                        COLECCIÓN</button>
-                    <button
-                        class="border border-primary text-primary px-6 md:px-10 py-3 md:py-4 font-headline-section text-headline-section uppercase tracking-widest hover:bg-primary hover:text-black transition-all">VER
-                        GUÍA DE DISEÑO</button>
+                    class="font-headline-display text-3xl md:text-4xl font-bold uppercase tracking-widest text-primary mb-2">
+                    Catálogo Completo</h2>
+                <p class="text-white/50 text-sm">Todos nuestros productos con filtros avanzados.</p>
+            </div>
+
+            <!-- Layout con filtros laterales -->
+            <div class="catalogo-layout mt-6">
+                <!-- Filtros (sidebar) -->
+                <aside class="catalogo-filtros-lateral" id="filtrosLateral">
+                    <!-- Se renderiza con JS -->
+                </aside>
+
+                <!-- Grid de productos -->
+                <div class="catalogo-grid-container">
+                    <div id="catalogoGrid" class="catalogo-grid">
+                        <!-- Renderizado por JS -->
+                    </div>
+                    <div id="catalogoPaginacion" class="mt-6 flex justify-center gap-2 flex-wrap"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ===== SECCIONES RESTANTES ===== -->
-    <section id="about"
-        class="relative z-10 max-w-container-max mx-auto px-4 md:px-edge-margin py-stack-section scroll-mt-24">
-        <div class="grid md:grid-cols-2 gap-column-gap items-center">
-            <div class="space-y-8">
-                <h2 class="font-headline-display text-headline-display uppercase text-primary">Herencia de Innovación
-                </h2>
-                <p class="font-body-lg text-body-lg text-on-surface-variant leading-loose">
-                    Fundada con la visión de revolucionar la experiencia de la cocina al aire libre, Hornos Roca
-                    representa la culminación de décadas de experiencia. Nuestro lenguaje de diseño "Precisión Ónix" se
-                    integra perfectamente en la arquitectura moderna, ofreciendo una estética oscura y elegante que
-                    enfatiza tanto la forma como la función.
-                </p>
-                <div class="flex gap-12 border-t border-outline-variant/30 pt-8">
-                    <div><span
-                            class="block font-headline-display text-headline-display text-primary mb-1">15+</span><span
-                            class="font-label-caps text-label-caps opacity-60">PATENTES</span></div>
-                    <div><span
-                            class="block font-headline-display text-headline-display text-primary mb-1">USA</span><span
-                            class="font-label-caps text-label-caps opacity-60">FABRICADO</span></div>
+    <!-- ===== VISTA DE DETALLE DE PRODUCTO ===== -->
+    <div id="vistaDetalle" class="relative z-10 hidden vista-detalle-container">
+        <main class="pt-32 pb-stack-lg max-w-container-max mx-auto px-4 md:px-edge-margin">
+            <!-- Botón volver con separación superior -->
+            <div class="btn-volver-container">
+                <button id="btnVolver" class="flex items-center gap-2 text-white/70 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    <span class="font-label-caps text-label-caps">Volver</span>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-6">
+                <!-- Imagen principal y galería -->
+                <div class="lg:col-span-7">
+                    <div class="bg-surface-container-low overflow-hidden hover-scale relative aspect-square rounded-sm">
+                        <img id="detalle-imagen-principal" class="w-full h-full object-cover" src="" alt="Producto" />
+                        <!-- Eliminada la etiqueta "Edición Limitada" -->
+                        <!-- Flechas del carrusel -->
+                        <button id="carruselIzq" class="carrusel-btn carrusel-btn-left">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button id="carruselDer" class="carrusel-btn carrusel-btn-right">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                        <!-- indicadores -->
+                        <div id="carruselIndicadores"
+                            class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
+                        </div>
+                    </div>
+                    <!-- Miniaturas: 4 imágenes -->
+                    <div id="detalle-miniaturas" class="grid grid-cols-4 gap-3 mt-6">
+                        <!-- se llenan con JS -->
+                    </div>
+                </div>
+
+                <!-- Información del producto -->
+                <div class="lg:col-span-5 sticky top-32 space-y-8">
+                    <div class="space-y-2">
+                        <span id="detalle-categoria"
+                            class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.2em]">Categoría</span>
+                        <h1 id="detalle-nombre"
+                            class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary leading-tight">
+                            Nombre</h1>
+                        <p id="detalle-precio"
+                            class="font-price-display text-display-lg-mobile md:text-display-lg text-primary tracking-tighter mt-2 pt-4">
+                            S/ 0.00</p>
+                    </div>
+                    <div class="h-px bg-outline-variant w-full"></div>
+                    <div class="space-y-4">
+                        <p id="detalle-descripcion"
+                            class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Descripción</p>
+                    </div>
+
+                    <!-- Especificaciones técnicas y otros detalles -->
+                    <div class="space-y-0 border-t border-outline-variant/30 vista-detalle">
+                        <details
+                            class="group border-b border-outline-variant/30 hover:bg-surface-container-lowest transition-colors duration-300">
+                            <summary class="flex items-center justify-between py-4 cursor-pointer list-none">
+                                <span class="font-display-lg text-body-lg text-primary">Especificaciones Técnicas</span>
+                                <span
+                                    class="material-symbols-outlined text-primary transition-transform duration-300 group-open:rotate-45">add</span>
+                            </summary>
+                            <div id="detalle-especificaciones" class="pb-4 space-y-2">
+                                <!-- se llenan con JS -->
+                            </div>
+                        </details>
+                        <details
+                            class="group border-b border-outline-variant/30 hover:bg-surface-container-lowest transition-colors duration-300">
+                            <summary class="flex items-center justify-between py-4 cursor-pointer list-none">
+                                <span class="font-display-lg text-body-lg text-primary">Envío y Entrega</span>
+                                <span
+                                    class="material-symbols-outlined text-primary transition-transform duration-300 group-open:rotate-45">add</span>
+                            </summary>
+                            <div class="pb-4 text-body-md text-on-surface-variant">
+                                Envío especializado a todo el país. El equipo de Hornos Roca coordina la entrega y
+                                posicionamiento de la pieza en su ubicación final.
+                            </div>
+                        </details>
+                        <details
+                            class="group border-b border-outline-variant/30 hover:bg-surface-container-lowest transition-colors duration-300">
+                            <summary class="flex items-center justify-between py-4 cursor-pointer list-none">
+                                <span class="font-display-lg text-body-lg text-primary">Garantía</span>
+                                <span
+                                    class="material-symbols-outlined text-primary transition-transform duration-300 group-open:rotate-45">add</span>
+                            </summary>
+                            <div class="pb-4 text-body-md text-on-surface-variant">
+                                Garantía limitada de 5 años que cubre defectos de fabricación y materiales en la
+                                estructura refractaria y componentes.
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- Botones en fila - Cotización beige, Ver Accesorios blanco -->
+                    <div class="btn-group pt-6">
+                        <button class="btn-cotizar-detalle" id="btnCotizarDetalle">Cotización</button>
+                        <button id="btnVerAccesorios" class="btn-ver-accesorios-detalle">Ver Accesorios</button>
+                    </div>
                 </div>
             </div>
-            <div class="w-full aspect-[16/9] bg-surface-container-low overflow-hidden border border-outline-variant/20">
-                <img class="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuACcyA6wdjUhUm5LscEEEEW4zbLa72J9AXpMgmWDhYUUhRIop1V6lbX2We70_vAaxEvQu77hxevtRsmlY-y2x4bijDt9HwQhao_I06Tluc4BUAmIcnRDGADLlPOkkV153I6MTLeu_D85Jtgirdw4nxCl6dXbZy9LmsPl2A8Tr-pEd7cltpd9Kn0YqQnAyQiFXrrmfc83laqTnP_K6Vqqo1_G663Bpmd2ULaNkXDPeZpwcW9p8YOueM_zQ"
-                    alt="Detalle de perilla de control en acero inoxidable" />
-            </div>
-        </div>
-    </section>
 
-    <section id="products"
-        class="relative z-10 bg-surface-container-lowest border-t border-outline-variant/20 py-stack-section scroll-mt-24">
-        <div class="max-w-container-max mx-auto px-4 md:px-edge-margin">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-row-gap">
+            <!-- ===== SECCIÓN DE RECOMENDADOS (4 productos) ===== -->
+            <div id="recomendadosWrapper" class="recomendados-wrapper mt-16">
+                <div class="inner">
+                    <div class="text-center mb-10">
+                        <span class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.3em]">También
+                            te puede interesar</span>
+                        <h2 class="font-display-lg text-headline-md md:text-display-lg text-primary mt-3">Productos
+                            Recomendados</h2>
+                    </div>
+                    <div id="detalle-recomendados" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- se llenan con JS, botones verticales -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== FOOTER A ANCHO COMPLETO (estilo Grillcorp) ===== -->
+    <footer class="footer-grillcorp">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top Bar con redes, logo y envíos -->
+            <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-800 pb-6 mb-10">
+                <!-- Redes Sociales -->
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+                <!-- Logo -->
+                <div class="logo-placeholder mb-6 md:mb-0">
+                    <img src="img/logoRoca.png" alt="Hornos Roca" class="max-h-12 md:max-h-16 w-auto" />
+                </div>
+                <!-- Envíos -->
+                <div class="flex items-center text-white text-sm">
+                    <i class="fas fa-phone-alt mr-2 rotate-90"></i>
+                    <span class="font-medium">Envíos a todo el Perú</span>
+                </div>
+            </div>
+
+            <!-- Columnas de enlaces -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Nuestra tienda -->
                 <div>
-                    <h2 class="font-headline-display text-[32px] font-bold uppercase tracking-widest mb-4 text-primary">
-                        La Colección</h2>
-                    <p class="font-body-md text-on-surface-variant max-w-lg opacity-80">Explore nuestro ecosistema
-                        integral de electrodomésticos profesionales, desde hornos de alto rendimiento hasta
-                        refrigeración climática.</p>
-                </div>
-                <div class="flex gap-8 overflow-x-auto no-scrollbar pb-2">
-                    <div class="flex flex-col"><span
-                            class="font-label-caps text-[10px] uppercase opacity-40 mb-2">Categoría</span>
-                        <div class="flex gap-4">
-                            <button
-                                class="text-primary font-headline-section text-[12px] border-b border-primary pb-1">TODOS</button>
-                            <button
-                                class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">HORNOS</button>
-                            <button
-                                class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">REFRIGERACIÓN</button>
-                            <button
-                                class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">COCCIÓN</button>
-                        </div>
+                    <h3 class="footer-heading">Nuestra tienda</h3>
+                    <div class="footer-info-text">
+                        <i class="fas fa-map-marker-alt w-5 text-center"></i>
+                        <span>Av. de las Artes Norte 961 - San Borja</span>
                     </div>
-                    <div class="w-px h-10 bg-outline-variant/30 hidden md:block"></div>
-                    <div class="flex flex-col"><span
-                            class="font-label-caps text-[10px] uppercase opacity-40 mb-2">Series</span>
-                        <div class="flex gap-4">
-                            <button
-                                class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">SERIE
-                                G</button>
-                            <button
-                                class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">ELÉCTRICA</button>
-                            <button
-                                class="text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors">LEÑA</button>
-                        </div>
+                    <div class="footer-info-text">
+                        <i class="fas fa-phone-alt w-5 text-center"></i>
+                        <span>01 9006949 / 992 768 321</span>
+                    </div>
+                    <div class="footer-info-text">
+                        <i class="far fa-envelope w-5 text-center"></i>
+                        <a href="mailto:tienda@hornosroca.pe">tienda@hornosroca.pe</a>
                     </div>
                 </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div
-                    class="md:col-span-2 group relative bg-background border border-outline-variant/10 overflow-hidden cursor-pointer">
-                    <div class="aspect-[16/9] w-full overflow-hidden">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqpicrkskrdLfWv_aAT6UniSvpBd_r7TtO6WrkhK-IqmZ19w-rliE6viGE2tcF6Zyx_u54mm_yD5_7V3Q0c0qYB_VO-yXt50e-nuUtvOxTLxd9_qb1Hos7dbdQRCp4Ud7Xsrm0AhAz9_7mu1LUFQes7QFog67R5tR4mDs47icGH93iWNZTB51mYznJ9_lKV897Qifyn_y7rkn4_MMx79iXEGptg6nR5jEigfJZNzrtNwenZK2q2ojewA"
-                            alt="Horno a gas Serie Profesional G" />
-                    </div>
-                    <div class="p-8 flex justify-between items-start">
-                        <div><span
-                                class="font-label-caps text-label-caps text-primary/50 uppercase tracking-widest mb-2 block">Premium
-                                Series</span>
-                            <h3 class="font-headline-display text-headline-display uppercase text-primary">Serie
-                                Profesional G</h3>
-                        </div>
-                        <span
-                            class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                    </div>
-                    <div
-                        class="absolute inset-0 border border-primary/0 group-hover:border-primary/20 transition-all pointer-events-none">
-                    </div>
+                <!-- Productos -->
+                <div>
+                    <h3 class="footer-heading">Productos</h3>
+                    <nav>
+                        <a class="footer-link" href="#">Cajas Chinas</a>
+                        <a class="footer-link" href="#">Parrillas</a>
+                        <a class="footer-link" href="#">Ahumadores</a>
+                        <a class="footer-link" href="#">Kamados</a>
+                        <a class="footer-link" href="#">Accesorios</a>
+                        <a class="footer-link" href="#">Línea Inoxidable</a>
+                    </nav>
                 </div>
-                <div
-                    class="group relative bg-background border border-outline-variant/10 overflow-hidden cursor-pointer">
-                    <div class="aspect-square w-full overflow-hidden">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn-CWcCOTnN_C0Ey8r_FfXH25Oy0JvaA9a9ENo8Ld6Biw5SEFH74xED2JmjT-OGv75p-OaeTYrOQha5Tamz7rQvx8zY7ZF_py7tZg3CpxD6TUUurtbnVtXNvg7LDig4IGURt8WdL4IvMgdK259q7BT6JVUvol3iIp5PhJojr108HZNNxLEOUG_Hup9Ps2fm1ffOm4xJx8PnK5fjiQ8LDPKyXuuuyjqFT_CNP4-NRWY2DVPra3WTd7JiA"
-                            alt="Enfriador de bebidas premium" />
-                    </div>
-                    <div class="p-8"><span
-                            class="font-label-caps text-label-caps text-primary/50 uppercase tracking-widest mb-2 block">Refrigeración</span>
-                        <h3 class="font-headline-display text-[20px] uppercase text-primary">Enfriador Premium</h3>
-                    </div>
+                <!-- Sobre Nosotros -->
+                <div>
+                    <h3 class="footer-heading">Sobre Hornos Roca</h3>
+                    <nav>
+                        <a class="footer-link" href="#">Nosotros</a>
+                        <a class="footer-link" href="#">¿Cómo comprar?</a>
+                        <a class="footer-link" href="#">Ventas corporativas</a>
+                        <a class="footer-link" href="#">Blog</a>
+                    </nav>
                 </div>
-                <div
-                    class="group relative bg-background border border-outline-variant/10 overflow-hidden cursor-pointer">
-                    <div class="aspect-square w-full overflow-hidden">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvrYW_UHJSMEVxAM6AGPQl1bcdCsaVFdwwmvyRguTqybstoW0uQGZ6BcR8m6nGhE1niHHp53hb84LGSCh0zUUlzoYCZ9fMeEqWrEF-fWidSTb0cdn3jyAdA4UwdMMTpFj5dWT0CqeaKfNAB1CA1cdOF67Sal0AGZjGsrQlJSiCjEm0s0nCtyrZxkZ46_AiXsk-p14-yOevJHZgdQBnDdqgmAfcTKdM5vU4yz2cjx0upGTlBzSgVEfZEw"
-                            alt="Quemador de alta potencia 24 pulgadas" />
+                <!-- Atención al Cliente -->
+                <div>
+                    <h3 class="footer-heading">Atención al Cliente</h3>
+                    <div class="footer-info-text">
+                        <i class="fas fa-phone-alt w-5 text-center"></i>
+                        <span>958 907 647 / 992 768 321</span>
                     </div>
-                    <div class="p-8"><span
-                            class="font-label-caps text-label-caps text-primary/50 uppercase tracking-widest mb-2 block">Cocción</span>
-                        <h3 class="font-headline-display text-[20px] uppercase text-primary">Quemador 24"</h3>
+                    <div class="footer-info-text">
+                        <i class="far fa-envelope w-5 text-center"></i>
+                        <a href="mailto:soporte@hornosroca.pe">soporte@hornosroca.pe</a>
                     </div>
-                </div>
-                <div
-                    class="group relative bg-background border border-outline-variant/10 overflow-hidden cursor-pointer">
-                    <div class="aspect-square w-full overflow-hidden">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj5s3s1rSu5-_eA80iAhjnO1Ga1P15HNFWe-m3PWHh7NB8WTihUBzNof-qy4Rq_V0kpG87ebWrJqbv10JCWRb2UoM4-eJNZRA3dNRhbZ4XfEDvnkF00x0DZHmsKaHCL3-G0948DP-Kkc9euIn2-E478jzqlk71ZqU2N_92g5hDp4SBQuHfboqvY5C8z9pcxyBgG6JUH_DfT3B31Q5_dM0uIoDXjDTbcxuVQAULvODZmyHIAykN39iM8A"
-                            alt="Plancha Teppanyaki profesional" />
-                    </div>
-                    <div class="p-8"><span
-                            class="font-label-caps text-label-caps text-primary/50 uppercase tracking-widest mb-2 block">Cocción</span>
-                        <h3 class="font-headline-display text-[20px] uppercase text-primary">Plancha Teppanyaki</h3>
-                    </div>
-                </div>
-                <div
-                    class="group relative bg-background border border-outline-variant/10 overflow-hidden cursor-pointer">
-                    <div class="aspect-square w-full overflow-hidden">
-                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuADkymxaNx5haxkF6by58QfY1oK8zAMOIoCSJoBrOo2A5iRLp2FVq0X0JcM6Rcx7vhFdfVjwjJwdFURCs9JCqNUtvmzXGWR_z6R9oyxtGrYuw5rEzdYD-W8DRSS8DMJ2W6eBbcBKVjlxrThCnEfYnIe3grz4qgoZ-skvMmGhtVkJp8S7dp_QshYoy_TzCP94KUccP0Z52xL36wMgzJ80ohIbQNlctR9zT7LYnG1KcHl8oYtAuvsTrqBDA"
-                            alt="Cajones de almacenamiento sellados" />
-                    </div>
-                    <div class="p-8"><span
-                            class="font-label-caps text-label-caps text-primary/50 uppercase tracking-widest mb-2 block">Almacenaje</span>
-                        <h3 class="font-headline-display text-[20px] uppercase text-primary">Cajones Sellados</h3>
+                    <div class="footer-info-text mt-3">
+                        <i class="fas fa-book w-5 text-center"></i>
+                        <a class="footer-link mb-0" href="#">Libro de reclamaciones</a>
                     </div>
                 </div>
             </div>
-            <div class="mt-16 text-center">
-                <button
-                    class="font-headline-section text-headline-section border border-primary px-12 py-4 uppercase tracking-[0.2em] hover:bg-primary hover:text-background transition-all duration-300 text-primary">VER
-                    CATÁLOGO COMPLETO</button>
-            </div>
-        </div>
-    </section>
 
-    <section class="relative z-10 py-stack-section bg-background border-t border-outline-variant/20 overflow-hidden">
-        <div class="absolute inset-0 opacity-10 pointer-events-none">
-            <div
-                class="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent">
+            <!-- Barra inferior de políticas -->
+            <div class="border-t border-gray-800 pt-6">
+                <div class="flex flex-wrap justify-center items-center">
+                    <a class="bottom-bar-link" href="#">Política de reembolso</a>
+                    <a class="bottom-bar-link" href="#">Política de privacidad</a>
+                    <a class="bottom-bar-link" href="#">Términos del servicio</a>
+                    <a class="bottom-bar-link" href="#">Política de envío</a>
+                </div>
             </div>
         </div>
-        <div class="max-w-container-max mx-auto px-4 md:px-edge-margin text-center relative z-10">
-            <h2 class="font-headline-display text-[40px] font-bold uppercase tracking-widest mb-6 text-primary">Planea
-                tu visión.</h2>
-            <p class="font-body-lg text-on-surface-variant max-w-xl mx-auto mb-10">Utilice nuestro planificador de
-                cocina interactivo para dar vida a su cocina exterior profesional con precisión milimétrica.</p>
-            <a class="inline-flex items-center gap-4 font-headline-section text-headline-section text-primary border-b border-primary/40 pb-2 hover:border-primary transition-all"
-                href="#">COMENZAR A PLANIFICAR <span class="material-symbols-outlined text-sm">open_in_new</span></a>
-        </div>
-    </section>
+    </footer>
 
     <script>
-        // ===== Mega menú hover =====
+        // ===== DATOS DE PRODUCTOS (versión extendida para detalle y catálogo) =====
+        function asegurar4Imagenes(imagenes) {
+            const arr = imagenes || [];
+            while (arr.length < 4) {
+                arr.push(arr.length > 0 ? arr[0] : 'https://via.placeholder.com/600x600/333/fff?text=Hornos+Roca');
+            }
+            return arr.slice(0, 4);
+        }
+
+        const productosDetalle = {
+            'colosso': {
+                id: 'colosso',
+                tipo: 'horno',
+                combustible: 'gas',
+                nombre: 'Horno Artesanal Colosso di Forgia 100 cm',
+                categoria: 'Hornos a Gas',
+                precio: 5170.00,
+                precioStr: 'S/ 5,170.00',
+                descripcion: 'Acabado en piedra y hierro forjado, diseñado para ofrecer la máxima retención de calor y un sabor ahumado auténtico. Una pieza central para cualquier cocina exterior de lujo.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia1_1066x.png?v=1783366960',
+                    'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia2_720x.png?v=1783367010',
+                    'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia3_720x.png?v=1783367068',
+                    'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia4_720x.png?v=1783367110'
+                ]),
+                especificaciones: [
+                    { clave: 'Diámetro Interno', valor: '100 cm' },
+                    { clave: 'Materiales', valor: 'Refractarios de alta densidad' },
+                    { clave: 'Puerta', valor: 'Hierro forjado con termómetro' }
+                ]
+            },
+            'nina-pacha': {
+                id: 'nina-pacha',
+                tipo: 'horno',
+                combustible: 'gas',
+                nombre: 'Horno Pachamanquero Multifunción – Modelo Nina Pacha',
+                categoria: 'Hornos a Gas',
+                precio: 3709.00,
+                precioStr: 'S/ 3,709.00',
+                descripcion: 'Horno versátil con sistema de cocción múltiple. Ideal para preparar platos típicos andinos y contemporáneos.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero_1066x.jpg?v=1755026023',
+                    'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero2_720x.jpg?v=1755026023',
+                    'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero3_720x.jpg?v=1755026023',
+                    'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero4_720x.jpg?v=1755026023'
+                ]),
+                especificaciones: [
+                    { clave: 'Capacidad', valor: '80 L' },
+                    { clave: 'Material', valor: 'Acero y refractario' },
+                    { clave: 'Quemadores', valor: '2 + grill' }
+                ]
+            },
+            'nina': {
+                id: 'nina',
+                tipo: 'horno',
+                combustible: 'leña',
+                nombre: 'Horno Artesanal – Modelo Nina – 100 cm',
+                categoria: 'Hornos a Leña',
+                precio: 4585.00,
+                precioStr: 'S/ 4,585.00',
+                descripcion: 'Modelo clásico de horno artesanal con diseño tradicional y excelente rendimiento térmico.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/modeloNina2_720x.png?v=1783367288',
+                    'https://lacarboneragrill.pe/cdn/shop/files/modeloNina3_720x.png?v=1783367288',
+                    'https://lacarboneragrill.pe/cdn/shop/files/modeloNina4_720x.png?v=1783367288'
+                ]),
+                especificaciones: [
+                    { clave: 'Diámetro', valor: '100 cm' },
+                    { clave: 'Material', valor: 'Refractario y acero' },
+                    { clave: 'Puerta', valor: 'Acero con visor' }
+                ]
+            },
+            'ichu': {
+                id: 'ichu',
+                tipo: 'horno',
+                combustible: 'gas',
+                nombre: 'Horno Artesanal – Modelo Ichu – 100 cm',
+                categoria: 'Hornos a Gas',
+                precio: 4330.00,
+                precioStr: 'S/ 4,330.00',
+                descripcion: 'Horno de diseño contemporáneo con eficiencia energética y gran capacidad de cocción.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu5_720x.png?v=1783367134',
+                    'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu6_720x.png?v=1783367134'
+                ]),
+                especificaciones: [
+                    { clave: 'Diámetro', valor: '100 cm' },
+                    { clave: 'Material', valor: 'Refractario de alta densidad' }
+                ]
+            },
+            'napolitano': {
+                id: 'napolitano',
+                tipo: 'horno',
+                combustible: 'gas',
+                nombre: 'Horno Artesanal – Modelo Napolitano – 100 cm',
+                categoria: 'Hornos a Gas',
+                precio: 4420.00,
+                precioStr: 'S/ 4,420.00',
+                descripcion: 'Especial para pizzas estilo napolitano, con cúpula alta y distribución uniforme del calor.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/horno-artesanal-modelo-napolitano-1_d61f4c95-7537-4c69-a68f-28fec4d9b62b_1066x.jpg?v=1757610659',
+                    'https://lacarboneragrill.pe/cdn/shop/files/horno-artesanal-modelo-napolitano-2_720x.jpg?v=1757610659'
+                ]),
+                especificaciones: [
+                    { clave: 'Diámetro', valor: '100 cm' },
+                    { clave: 'Material', valor: 'Refractario' },
+                    { clave: 'Altura cúpula', valor: '45 cm' }
+                ]
+            },
+            'di-bronzo': {
+                id: 'di-bronzo',
+                tipo: 'horno',
+                combustible: 'gas',
+                nombre: 'Horno Premium – Modelo Di Bronzo – 57×57×32 cm',
+                categoria: 'Hornos a Gas',
+                precio: 3900.00,
+                precioStr: 'S/ 3,900.00',
+                descripcion: 'Horno compacto de diseño premium, ideal para espacios reducidos sin sacrificar prestaciones.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/diBRONZO1_1066x.png?v=1783366601',
+                    'https://lacarboneragrill.pe/cdn/shop/files/diBRONZO2_720x.png?v=1783366601'
+                ]),
+                especificaciones: [
+                    { clave: 'Medidas', valor: '57×57×32 cm' },
+                    { clave: 'Material', valor: 'Acero y refractario' }
+                ]
+            },
+            // Accesorios (sin combustible)
+            'soporte-pizza': {
+                id: 'soporte-pizza',
+                tipo: 'accesorio',
+                combustible: null,
+                nombre: 'Soporte para Bandeja de Pizza con Porta Condimentos',
+                categoria: 'Accesorios',
+                precio: 31.90,
+                precioStr: 'S/ 31.90',
+                descripcion: 'Práctico soporte metálico para bandeja de pizza, incluye porta condimentos para mayor comodidad.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/Soporte-bandeja-para-pizza_8fb3e971-2062-4e76-9262-67b936cb3ec7_720x.jpg?v=1766075184',
+                    'https://lacarboneragrill.pe/cdn/shop/files/Soporte-bandeja-para-pizza_2_720x.jpg?v=1766075184'
+                ]),
+                especificaciones: [
+                    { clave: 'Material', valor: 'Acero inoxidable' },
+                    { clave: 'Medidas', valor: '30 x 20 x 15 cm' }
+                ]
+            },
+            'pala-pizzera': {
+                id: 'pala-pizzera',
+                tipo: 'accesorio',
+                combustible: null,
+                nombre: 'Pala Pizzera AISI 304',
+                categoria: 'Accesorios',
+                precio: 277.90,
+                precioStr: 'S/ 277.90',
+                descripcion: 'Pala de acero inoxidable AISI 304, mango ergonómico y superficie lisa para manejar pizzas con facilidad.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/pala-pizzera_720x.jpg?v=1766078938',
+                    'https://lacarboneragrill.pe/cdn/shop/files/pala-pizzera_2_720x.jpg?v=1766078938'
+                ]),
+                especificaciones: [
+                    { clave: 'Material', valor: 'Acero Inoxidable AISI 304' },
+                    { clave: 'Medidas', valor: '35 x 40 cm' }
+                ]
+            },
+            'bandeja': {
+                id: 'bandeja',
+                tipo: 'accesorio',
+                combustible: null,
+                nombre: 'Bandeja para Hornos de Barro',
+                categoria: 'Accesorios',
+                precio: 119.90,
+                precioStr: 'S/ 119.90',
+                descripcion: 'Bandeja de acero para utilizar dentro del horno, ideal para asar y gratinar.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/bandeja-para-horno_720x.jpg?v=1766077876',
+                    'https://lacarboneragrill.pe/cdn/shop/files/bandeja-para-horno_2_720x.jpg?v=1766077876'
+                ]),
+                especificaciones: [
+                    { clave: 'Material', valor: 'Acero' },
+                    { clave: 'Medidas', valor: '50 x 35 cm' }
+                ]
+            },
+            'puerta-inox': {
+                id: 'puerta-inox',
+                tipo: 'accesorio',
+                combustible: null,
+                nombre: 'Puerta de Acero Inoxidable para Horno Artesanal con Termómetro',
+                categoria: 'Accesorios',
+                precio: 749.00,
+                precioStr: 'S/ 749.00',
+                descripcion: 'Puerta robusta con termómetro integrado, fabricada en acero inoxidable de alta calidad.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/puerta-para-horno-inoxidable_720x.jpg?v=1766089332',
+                    'https://lacarboneragrill.pe/cdn/shop/files/puerta-para-horno-inoxidable_2_720x.jpg?v=1766089332'
+                ]),
+                especificaciones: [
+                    { clave: 'Material', valor: 'Acero Inoxidable' },
+                    { clave: 'Termómetro', valor: 'Incluido' }
+                ]
+            },
+            'cuchilla': {
+                id: 'cuchilla',
+                tipo: 'accesorio',
+                combustible: null,
+                nombre: 'Cuchilla Corta Pizza (Tipo Mezzaluna)',
+                categoria: 'Accesorios',
+                precio: 74.90,
+                precioStr: 'S/ 74.90',
+                descripcion: 'Cuchilla curva de acero con doble mango para cortar pizzas y masas con precisión.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/cuchilla-corta-pizza_720x.jpg?v=1766085224',
+                    'https://lacarboneragrill.pe/cdn/shop/files/cuchilla-corta-pizza_2_720x.jpg?v=1766085224'
+                ]),
+                especificaciones: [
+                    { clave: 'Material', valor: 'Acero inoxidable' },
+                    { clave: 'Medidas', valor: '30 cm de ancho' }
+                ]
+            },
+            'termometro': {
+                id: 'termometro',
+                tipo: 'accesorio',
+                combustible: null,
+                nombre: 'Termómetro para Horno de Barro (Vástago 12 cm)',
+                categoria: 'Accesorios',
+                precio: 122.90,
+                precioStr: 'S/ 122.90',
+                descripcion: 'Termómetro de vástago largo para controlar la temperatura interna del horno.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/termometro-para-horno_720x.jpg?v=1766087249',
+                    'https://lacarboneragrill.pe/cdn/shop/files/termometro-para-horno_2_720x.jpg?v=1766087249'
+                ]),
+                especificaciones: [
+                    { clave: 'Rango', valor: '0-500 °C' },
+                    { clave: 'Vástago', valor: '12 cm' }
+                ]
+            },
+            'rejilla': {
+                id: 'rejilla',
+                tipo: 'accesorio',
+                combustible: null,
+                nombre: 'Rejilla de Doble Altura de Cocción para Horno de Barro',
+                categoria: 'Accesorios',
+                precio: 850.00,
+                precioStr: 'S/ 850.00',
+                descripcion: 'Rejilla ajustable que permite cocinar en dos niveles, optimizando el espacio del horno.',
+                imagenes: asegurar4Imagenes([
+                    'https://lacarboneragrill.pe/cdn/shop/files/rejilla-para-doble-altura-horno-artesanal_720x.jpg?v=1766091987',
+                    'https://lacarboneragrill.pe/cdn/shop/files/rejilla-para-doble-altura-horno-artesanal_2_720x.jpg?v=1766091987'
+                ]),
+                especificaciones: [
+                    { clave: 'Material', valor: 'Acero' },
+                    { clave: 'Altura ajustable', valor: 'Sí' }
+                ]
+            }
+        };
+
+        // ===== FUNCIONES DE NAVEGACIÓN =====
+        const vistaPrincipal = document.getElementById('vistaPrincipal');
+        const vistaDetalle = document.getElementById('vistaDetalle');
+        const vistaCatalogo = document.getElementById('vistaCatalogo');
+        const logoLink = document.getElementById('logoLink');
+        const btnVolver = document.getElementById('btnVolver');
+        const btnVolverCatalogo = document.getElementById('btnVolverCatalogo');
+        const btnVerAccesorios = document.getElementById('btnVerAccesorios');
+        const btnCatalogoCompleto = document.getElementById('btnCatalogoCompleto');
+        const btnCotizarDetalle = document.getElementById('btnCotizarDetalle');
+
+        let imagenesActuales = [];
+        let indiceActual = 0;
+
+        function ocultarTodas() {
+            vistaPrincipal.classList.add('hidden');
+            vistaDetalle.classList.add('hidden');
+            vistaDetalle.classList.remove('visible');
+            vistaCatalogo.classList.add('hidden');
+        }
+
+        function mostrarVistaPrincipal() {
+            ocultarTodas();
+            vistaPrincipal.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (window._heroInterval) clearInterval(window._heroInterval);
+            window._heroInterval = setInterval(nextSlide, 4000);
+        }
+
+        function mostrarCatalogo() {
+            ocultarTodas();
+            vistaCatalogo.classList.remove('hidden');
+            renderCatalogo();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (window._heroInterval) clearInterval(window._heroInterval);
+        }
+
+        function mostrarDetalle(id) {
+            const producto = productosDetalle[id];
+            if (!producto) return;
+
+            ocultarTodas();
+            vistaDetalle.classList.remove('hidden');
+            void vistaDetalle.offsetWidth;
+            vistaDetalle.classList.add('visible');
+
+            document.getElementById('detalle-categoria').textContent = producto.categoria || 'Producto';
+            document.getElementById('detalle-nombre').textContent = producto.nombre;
+            document.getElementById('detalle-precio').textContent = producto.precioStr || 'S/ 0.00';
+            document.getElementById('detalle-descripcion').textContent = producto.descripcion || 'Sin descripción.';
+
+            imagenesActuales = producto.imagenes && producto.imagenes.length ? producto.imagenes : asegurar4Imagenes([]);
+            indiceActual = 0;
+            actualizarImagenPrincipal();
+
+            const miniContainer = document.getElementById('detalle-miniaturas');
+            miniContainer.innerHTML = '';
+            const thumbnails = imagenesActuales.slice(0, 4);
+            thumbnails.forEach((img, idx) => {
+                const div = document.createElement('div');
+                div.className = 'galeria-thumb bg-surface-container aspect-square flex items-center justify-center p-2 transition-all duration-300';
+                div.innerHTML = `<img class="w-full h-full object-cover" src="${img}" alt="Miniatura ${idx + 1}" />`;
+                div.addEventListener('click', () => {
+                    indiceActual = idx;
+                    actualizarImagenPrincipal();
+                });
+                miniContainer.appendChild(div);
+            });
+
+            const especContainer = document.getElementById('detalle-especificaciones');
+            especContainer.innerHTML = '';
+            if (producto.especificaciones && producto.especificaciones.length) {
+                producto.especificaciones.forEach(esp => {
+                    const div = document.createElement('div');
+                    div.className = 'flex justify-between text-body-md';
+                    div.innerHTML = `
+                        <span class="text-secondary uppercase text-xs font-label-caps">${esp.clave}</span>
+                        <span class="text-primary">${esp.valor}</span>
+                    `;
+                    especContainer.appendChild(div);
+                });
+            } else {
+                especContainer.innerHTML = '<p class="text-white/50">No hay especificaciones disponibles.</p>';
+            }
+
+            // Recomendados: 4 productos de tipo opuesto
+            const tipoActual = producto.tipo;
+            const tipoOpuesto = tipoActual === 'horno' ? 'accesorio' : 'horno';
+            const opciones = Object.values(productosDetalle).filter(p => p.tipo === tipoOpuesto && p.id !== id);
+            const seleccionados = [];
+            const copia = [...opciones];
+            while (seleccionados.length < 4 && copia.length > 0) {
+                const randIdx = Math.floor(Math.random() * copia.length);
+                seleccionados.push(copia.splice(randIdx, 1)[0]);
+            }
+
+            const recContainer = document.getElementById('detalle-recomendados');
+            recContainer.innerHTML = '';
+            if (seleccionados.length === 0) {
+                recContainer.innerHTML = '<p class="text-white/50 text-center col-span-4">No hay productos recomendados.</p>';
+            } else {
+                seleccionados.forEach(rec => {
+                    const div = document.createElement('div');
+                    div.className = 'rec-card';
+                    const imgUrl = rec.imagenes && rec.imagenes.length ? rec.imagenes[0] : '';
+                    div.innerHTML = `
+                        <div class="rec-img">
+                            <img src="${imgUrl}" alt="${rec.nombre}" />
+                        </div>
+                        <div class="rec-body">
+                            <span class="font-label-caps text-[10px] text-secondary uppercase tracking-widest">${tipoOpuesto === 'horno' ? 'Horno' : 'Accesorio'}</span>
+                            <h3 class="font-display-lg text-body-lg text-primary mt-1">${rec.nombre}</h3>
+                            <p class="font-price-display text-primary mt-1">${rec.precioStr}</p>
+                            <div class="btn-group-vertical">
+                                <button class="btn-ver-detalle" data-product-id="${rec.id}">Ver Detalles</button>
+                                <button class="btn-cotizar-card" data-product-name="${rec.nombre}">Cotizar</button>
+                            </div>
+                        </div>
+                    `;
+                    recContainer.appendChild(div);
+                });
+
+                recContainer.querySelectorAll('.btn-ver-detalle').forEach(btn => {
+                    btn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        const id = this.dataset.productId;
+                        if (id && productosDetalle[id]) {
+                            mostrarDetalle(id);
+                        }
+                    });
+                });
+                recContainer.querySelectorAll('.btn-cotizar-card').forEach(btn => {
+                    btn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        const nombre = this.dataset.productName;
+                        alert('Solicitar cotización para: ' + nombre);
+                    });
+                });
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== FUNCIONES DEL CARRUSEL =====
+        function actualizarImagenPrincipal() {
+            const img = document.getElementById('detalle-imagen-principal');
+            if (imagenesActuales.length > 0 && imagenesActuales[indiceActual]) {
+                img.src = imagenesActuales[indiceActual];
+                img.alt = 'Producto';
+            } else {
+                img.src = '';
+            }
+            const indicadores = document.getElementById('carruselIndicadores');
+            indicadores.innerHTML = '';
+            imagenesActuales.forEach((_, idx) => {
+                const dot = document.createElement('span');
+                dot.className = `block w-2 h-2 rounded-full transition-colors ${idx === indiceActual ? 'bg-primary' : 'bg-primary/20'}`;
+                indicadores.appendChild(dot);
+            });
+        }
+
+        function carruselSiguiente() {
+            if (imagenesActuales.length === 0) return;
+            indiceActual = (indiceActual + 1) % imagenesActuales.length;
+            actualizarImagenPrincipal();
+        }
+
+        function carruselAnterior() {
+            if (imagenesActuales.length === 0) return;
+            indiceActual = (indiceActual - 1 + imagenesActuales.length) % imagenesActuales.length;
+            actualizarImagenPrincipal();
+        }
+
+        document.getElementById('carruselDer').addEventListener('click', carruselSiguiente);
+        document.getElementById('carruselIzq').addEventListener('click', carruselAnterior);
+
+        // ===== CATÁLOGO COMPLETO CON FILTROS LATERALES =====
+        let catalogoPaginaActual = 1;
+        const catalogoPorPagina = 8;
+
+        function getProductosFiltrados() {
+            const tipoCheckboxes = document.querySelectorAll('#filtrosLateral .filtro-tipo:checked');
+            const tiposSeleccionados = Array.from(tipoCheckboxes).map(el => el.value);
+            const combustibleCheckboxes = document.querySelectorAll('#filtrosLateral .filtro-combustible:checked');
+            const combustiblesSeleccionados = Array.from(combustibleCheckboxes).map(el => el.value);
+            const orden = document.getElementById('ordenCatalogo')?.value || 'alfabetico-asc';
+            const precioMax = parseFloat(document.getElementById('precioMaxInput')?.value) || Infinity;
+            const precioMin = parseFloat(document.getElementById('precioMinInput')?.value) || 0;
+
+            let productos = Object.values(productosDetalle);
+
+            if (tiposSeleccionados.length > 0) {
+                productos = productos.filter(p => tiposSeleccionados.includes(p.tipo));
+            }
+
+            if (combustiblesSeleccionados.length > 0) {
+                productos = productos.filter(p => {
+                    if (p.tipo === 'accesorio') return false;
+                    return combustiblesSeleccionados.includes(p.combustible);
+                });
+            }
+
+            productos = productos.filter(p => p.precio >= precioMin && p.precio <= precioMax);
+
+            switch (orden) {
+                case 'alfabetico-asc': productos.sort((a, b) => a.nombre.localeCompare(b.nombre)); break;
+                case 'alfabetico-desc': productos.sort((a, b) => b.nombre.localeCompare(a.nombre)); break;
+                case 'precio-asc': productos.sort((a, b) => a.precio - b.precio); break;
+                case 'precio-desc': productos.sort((a, b) => b.precio - a.precio); break;
+                default: break;
+            }
+
+            return productos;
+        }
+
+        function renderCatalogo() {
+            const todos = getProductosFiltrados();
+            const totalPaginas = Math.ceil(todos.length / catalogoPorPagina);
+            if (catalogoPaginaActual > totalPaginas) catalogoPaginaActual = totalPaginas || 1;
+            const inicio = (catalogoPaginaActual - 1) * catalogoPorPagina;
+            const pagina = todos.slice(inicio, inicio + catalogoPorPagina);
+
+            const grid = document.getElementById('catalogoGrid');
+            if (pagina.length === 0) {
+                grid.innerHTML = '<p class="text-white/50 col-span-full text-center py-10">No hay productos que coincidan con los filtros.</p>';
+            } else {
+                grid.innerHTML = pagina.map(p => {
+                    const img = p.imagenes && p.imagenes.length ? p.imagenes[0] : '';
+                    const tipoLabel = p.tipo === 'horno' ? 'Horno' : 'Accesorio';
+                    return `
+                        <div class="catalogo-card">
+                            <div class="card-img">
+                                <img src="${img}" alt="${p.nombre}" onerror="this.style.display='none'" />
+                            </div>
+                            <div class="card-body">
+                                <span class="categoria-tag">${tipoLabel}</span>
+                                <h3>${p.nombre}</h3>
+                                <p class="precio">${p.precioStr}</p>
+                                <div class="btn-group-vertical">
+                                    <button class="btn-ver-detalle" data-product-id="${p.id}">Ver Detalles</button>
+                                    <button class="btn-cotizar-card" data-product-name="${p.nombre}">Cotizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                grid.querySelectorAll('.btn-ver-detalle').forEach(btn => {
+                    btn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        const id = this.dataset.productId;
+                        if (id && productosDetalle[id]) {
+                            mostrarDetalle(id);
+                        }
+                    });
+                });
+                grid.querySelectorAll('.btn-cotizar-card').forEach(btn => {
+                    btn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        const nombre = this.dataset.productName;
+                        alert('Solicitar cotización para: ' + nombre);
+                    });
+                });
+            }
+
+            const paginacion = document.getElementById('catalogoPaginacion');
+            if (totalPaginas > 1) {
+                let html = '';
+                for (let i = 1; i <= totalPaginas; i++) {
+                    html += `<button class="px-3 py-1 border border-white/10 hover:bg-white/10 transition-colors ${i === catalogoPaginaActual ? 'bg-white/20 text-white' : 'text-white/60'}" data-pagina="${i}">${i}</button>`;
+                }
+                paginacion.innerHTML = html;
+                paginacion.querySelectorAll('[data-pagina]').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        catalogoPaginaActual = parseInt(this.dataset.pagina);
+                        renderCatalogo();
+                    });
+                });
+            } else {
+                paginacion.innerHTML = '';
+            }
+        }
+
+        // ===== RENDERIZADO DE FILTROS LATERALES =====
+        function renderFiltrosLateral() {
+            const aside = document.getElementById('filtrosLateral');
+            const precios = Object.values(productosDetalle).map(p => p.precio);
+            const minPrecio = Math.min(...precios);
+            const maxPrecio = Math.max(...precios);
+
+            aside.innerHTML = `
+                <div class="filtro-categoria">
+                    <h4>Categoría</h4>
+                    <label><input type="checkbox" class="filtro-tipo" value="horno" /> Hornos</label>
+                    <label><input type="checkbox" class="filtro-tipo" value="accesorio" /> Accesorios</label>
+                </div>
+                <div class="filtro-categoria">
+                    <h4>Combustible</h4>
+                    <label><input type="checkbox" class="filtro-combustible" value="gas" /> Gas</label>
+                    <label><input type="checkbox" class="filtro-combustible" value="leña" /> Leña</label>
+                </div>
+                <div class="filtro-categoria">
+                    <h4>Ordenar por</h4>
+                    <select id="ordenCatalogo" class="w-full bg-transparent border border-white/10 rounded-none px-2 py-1 text-sm text-white">
+                        <option value="alfabetico-asc">Alfabético (A-Z)</option>
+                        <option value="alfabetico-desc">Alfabético (Z-A)</option>
+                        <option value="precio-asc">Precio (menor a mayor)</option>
+                        <option value="precio-desc">Precio (mayor a menor)</option>
+                    </select>
+                </div>
+                <div class="filtro-categoria price-filter-wrapper-dark">
+                    <h4>Filtrar por precio</h4>
+                    <div class="price-display-badge-dark" id="precioDisplayCatalogo">${formatPEN(maxPrecio)}</div>
+                    <div class="slider-container">
+                        <div class="slider-track-dark">
+                            <div class="slider-fill-dark" id="sliderFillCatalogo" style="width: 100%;"></div>
+                            <div class="elegant-thumb-dark" id="elegantThumbCatalogo" style="left: 100%;"></div>
+                            <input type="range" class="price-slider-native-dark" id="priceSliderCatalogo" min="${minPrecio}" max="${maxPrecio}" value="${maxPrecio}" step="50" />
+                        </div>
+                    </div>
+                    <div class="labels-minmax-dark">
+                        <span>${formatPEN(minPrecio)}</span>
+                        <span>${formatPEN(maxPrecio)}</span>
+                    </div>
+                    <input type="hidden" id="precioMinInput" value="${minPrecio}" />
+                    <input type="hidden" id="precioMaxInput" value="${maxPrecio}" />
+                </div>
+                <button id="btnLimpiarFiltrosCatalogo" class="w-full mt-2 text-xs text-white/50 hover:text-white transition-colors border border-white/10 py-1.5 rounded-none">Limpiar filtros</button>
+            `;
+
+            aside.querySelectorAll('.filtro-tipo, .filtro-combustible').forEach(el => {
+                el.addEventListener('change', function () {
+                    catalogoPaginaActual = 1;
+                    renderCatalogo();
+                });
+            });
+
+            document.getElementById('ordenCatalogo').addEventListener('change', function () {
+                catalogoPaginaActual = 1;
+                renderCatalogo();
+            });
+
+            const slider = document.getElementById('priceSliderCatalogo');
+            const fill = document.getElementById('sliderFillCatalogo');
+            const thumb = document.getElementById('elegantThumbCatalogo');
+            const display = document.getElementById('precioDisplayCatalogo');
+            const minInput = document.getElementById('precioMinInput');
+            const maxInput = document.getElementById('precioMaxInput');
+
+            slider.addEventListener('input', function () {
+                const val = Number(this.value);
+                const percent = ((val - minPrecio) / (maxPrecio - minPrecio)) * 100;
+                fill.style.width = percent + '%';
+                thumb.style.left = percent + '%';
+                display.textContent = formatPEN(val);
+                maxInput.value = val;
+                catalogoPaginaActual = 1;
+                renderCatalogo();
+            });
+
+            document.getElementById('btnLimpiarFiltrosCatalogo').addEventListener('click', function () {
+                aside.querySelectorAll('.filtro-tipo').forEach(el => el.checked = false);
+                aside.querySelectorAll('.filtro-combustible').forEach(el => el.checked = false);
+                document.getElementById('ordenCatalogo').value = 'alfabetico-asc';
+                slider.value = maxPrecio;
+                fill.style.width = '100%';
+                thumb.style.left = '100%';
+                display.textContent = formatPEN(maxPrecio);
+                maxInput.value = maxPrecio;
+                catalogoPaginaActual = 1;
+                renderCatalogo();
+            });
+        }
+
+        function formatPEN(amount) {
+            return 'S/ ' + amount.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        // ===== EVENTOS DE CLIC EN PRODUCTOS =====
+        document.querySelectorAll('[data-product]').forEach(el => {
+            el.addEventListener('click', function (e) {
+                e.preventDefault();
+                const id = this.dataset.product;
+                if (id && productosDetalle[id]) {
+                    mostrarDetalle(id);
+                    megaMenu.classList.add('hidden');
+                    cerrarMenuMobile();
+                }
+            });
+        });
+
+        function agregarEventosProductos() {
+            document.querySelectorAll('#productosContainer .cursor-pointer').forEach(card => {
+                card.addEventListener('click', function () {
+                    const id = this.dataset.productId;
+                    if (id && productosDetalle[id]) {
+                        mostrarDetalle(id);
+                    }
+                });
+            });
+            document.querySelectorAll('#productosContainer .btn-ver-detalle').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const id = this.dataset.productId;
+                    if (id && productosDetalle[id]) {
+                        mostrarDetalle(id);
+                    }
+                });
+            });
+            document.querySelectorAll('#productosContainer .btn-cotizar-card').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const nombre = this.dataset.productName;
+                    alert('Solicitar cotización para: ' + nombre);
+                });
+            });
+        }
+
+        // ===== RENDERIZADO DE LA COLECCIÓN (con botones horizontales) =====
+        const productosLista = [
+            { id: 'colosso', nombre: 'Horno Artesanal Colosso di Forgia 100 cm', precio: 'S/ 5,170.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia1_1066x.png?v=1783366960' },
+            { id: 'nina-pacha', nombre: 'Horno Pachamanquero Multifunción – Modelo Nina Pacha', precio: 'S/ 3,709.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero_1066x.jpg?v=1755026023' },
+            { id: 'nina', nombre: 'Horno Artesanal – Modelo Nina – 100 cm', precio: 'S/ 4,585.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/modeloNina2_720x.png?v=1783367288' },
+            { id: 'ichu', nombre: 'Horno Artesanal – Modelo Ichu – 100 cm', precio: 'S/ 4,330.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu5_720x.png?v=1783367134' },
+            { id: 'napolitano', nombre: 'Horno Artesanal – Modelo Napolitano – 100 cm', precio: 'S/ 4,420.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/horno-artesanal-modelo-napolitano-1_d61f4c95-7537-4c69-a68f-28fec4d9b62b_1066x.jpg?v=1757610659' },
+            { id: 'di-bronzo', nombre: 'Horno Premium – Modelo Di Bronzo – 57×57×32 cm', precio: 'S/ 3,900.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/diBRONZO1_1066x.png?v=1783366601' },
+            { id: 'soporte-pizza', nombre: 'Soporte para Bandeja de Pizza con Porta Condimentos', precio: 'S/ 31.90', categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/Soporte-bandeja-para-pizza_8fb3e971-2062-4e76-9262-67b936cb3ec7_720x.jpg?v=1766075184' },
+            { id: 'pala-pizzera', nombre: 'Pala Pizzera AISI 304', precio: 'S/ 277.90', categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/pala-pizzera_720x.jpg?v=1766078938' },
+            { id: 'bandeja', nombre: 'Bandeja para Hornos de Barro', precio: 'S/ 119.90', categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/bandeja-para-horno_720x.jpg?v=1766077876' },
+            { id: 'puerta-inox', nombre: 'Puerta de Acero Inoxidable para Horno Artesanal con Termómetro', precio: 'S/ 749.00', categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/puerta-para-horno-inoxidable_720x.jpg?v=1766089332' },
+            { id: 'cuchilla', nombre: 'Cuchilla Corta Pizza (Tipo Mezzaluna)', precio: 'S/ 74.90', categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/cuchilla-corta-pizza_720x.jpg?v=1766085224' },
+            { id: 'termometro', nombre: 'Termómetro para Horno de Barro (Vástago 12 cm)', precio: 'S/ 122.90', categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/termometro-para-horno_720x.jpg?v=1766087249' },
+            { id: 'rejilla', nombre: 'Rejilla de Doble Altura de Cocción para Horno de Barro', precio: 'S/ 850.00', categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/rejilla-para-doble-altura-horno-artesanal_720x.jpg?v=1766091987' }
+        ];
+
+        const container = document.getElementById('productosContainer');
+        const filtroHornos = document.getElementById('filtroHornos');
+        const filtroAccesorios = document.getElementById('filtroAccesorios');
+
+        function renderProductos(categoria) {
+            const filtrados = productosLista.filter(p => p.categoria === categoria);
+            container.innerHTML = filtrados.map(p => `
+                <div class="group relative bg-background border border-outline-variant/10 overflow-hidden cursor-pointer" data-product-id="${p.id}">
+                    <div class="aspect-square w-full overflow-hidden bg-surface-container-low">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                             src="${p.imagen || ''}" 
+                             alt="${p.nombre}" 
+                             onerror="this.style.display='none'" />
+                    </div>
+                    <div class="p-8">
+                        <span class="font-label-caps text-label-caps text-primary/50 uppercase tracking-widest mb-2 block">
+                            ${categoria === 'hornos' ? 'Horno' : 'Accesorio'}
+                        </span>
+                        <h3 class="font-headline-display text-[20px] uppercase text-primary">${p.nombre}</h3>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant mt-2 font-semibold">${p.precio}</p>
+                        <div class="btn-group-horizontal">
+                            <button class="btn-ver-detalle" data-product-id="${p.id}">Ver Detalles</button>
+                            <button class="btn-cotizar-card" data-product-name="${p.nombre}">Cotizar</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            agregarEventosProductos();
+        }
+
+        renderProductos('hornos');
+
+        filtroHornos.addEventListener('click', function () {
+            renderProductos('hornos');
+            filtroHornos.className = 'text-primary font-headline-section text-[12px] border-b border-primary pb-1';
+            filtroAccesorios.className = 'text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors';
+        });
+
+        filtroAccesorios.addEventListener('click', function () {
+            renderProductos('accesorios');
+            filtroAccesorios.className = 'text-primary font-headline-section text-[12px] border-b border-primary pb-1';
+            filtroHornos.className = 'text-on-surface-variant font-headline-section text-[12px] hover:text-primary transition-colors';
+        });
+
+        // ===== BOTONES DE NAVEGACIÓN =====
+        logoLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            mostrarVistaPrincipal();
+        });
+
+        btnVolver.addEventListener('click', function () {
+            if (!vistaCatalogo.classList.contains('hidden')) {
+                mostrarCatalogo();
+            } else {
+                mostrarVistaPrincipal();
+            }
+        });
+
+        btnVolverCatalogo.addEventListener('click', function () {
+            mostrarVistaPrincipal();
+        });
+
+        btnVerAccesorios.addEventListener('click', function () {
+            ocultarTodas();
+            vistaPrincipal.classList.remove('hidden');
+            filtroAccesorios.click();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (window._heroInterval) clearInterval(window._heroInterval);
+            window._heroInterval = setInterval(nextSlide, 4000);
+        });
+
+        btnCotizarDetalle.addEventListener('click', function () {
+            const nombre = document.getElementById('detalle-nombre').textContent;
+            alert('Solicitar cotización para: ' + nombre);
+        });
+
+        btnCatalogoCompleto.addEventListener('click', function () {
+            renderFiltrosLateral();
+            catalogoPaginaActual = 1;
+            mostrarCatalogo();
+        });
+
+        // ===== MEGA MENÚ HOVER =====
         const productosLink = document.getElementById('productosLink');
         const megaMenu = document.getElementById('megaMenu');
         let hoverTimeout;
         let isOverMenu = false;
 
-        function showMegaMenu() { clearTimeout(hoverTimeout); megaMenu.classList.remove('hidden'); }
-        function hideMegaMenu() { hoverTimeout = setTimeout(() => { if (!isOverMenu) megaMenu.classList.add('hidden'); }, 150); }
+        function showMegaMenu() {
+            clearTimeout(hoverTimeout);
+            megaMenu.classList.remove('hidden');
+        }
+
+        function hideMegaMenu() {
+            hoverTimeout = setTimeout(() => { if (!isOverMenu) megaMenu.classList.add('hidden'); }, 150);
+        }
 
         productosLink.addEventListener('mouseenter', showMegaMenu);
         productosLink.addEventListener('mouseleave', hideMegaMenu);
@@ -1013,42 +2598,107 @@
         megaMenu.addEventListener('mouseleave', () => { isOverMenu = false; hideMegaMenu(); });
         productosLink.addEventListener('click', () => { megaMenu.classList.add('hidden'); });
 
-        // ===== Menú lateral móvil =====
+        // ===== MENÚ LATERAL MÓVIL =====
         const menuHamburguesa = document.getElementById('menuHamburguesa');
         const mobilePanel = document.getElementById('mobilePanel');
         const mobileOverlay = document.getElementById('mobileOverlay');
         const cerrarMenu = document.getElementById('cerrarMenuMobile');
         let mobileOpen = false;
-        function abrirMenuMobile() { mobilePanel.classList.add('open'); mobileOverlay.classList.add('open'); mobileOpen = true; document.body.classList.add('overflow-hidden'); }
-        function cerrarMenuMobile() { mobilePanel.classList.remove('open'); mobileOverlay.classList.remove('open'); mobileOpen = false; document.body.classList.remove('overflow-hidden'); document.querySelectorAll('.cat-content.open').forEach(el => el.classList.remove('open')); document.querySelectorAll('.cat-icon').forEach(icon => icon.style.transform = 'rotate(0deg)'); const prodContent = document.getElementById('productosAccordionContent'); const prodIcon = document.getElementById('productosAccordionIcon'); if (prodContent.classList.contains('open')) { prodContent.classList.remove('open'); prodIcon.style.transform = 'rotate(0deg)'; document.getElementById('productosAccordionBtn').setAttribute('aria-expanded', 'false'); } }
+
+        function abrirMenuMobile() {
+            mobilePanel.classList.add('open');
+            mobileOverlay.classList.add('open');
+            mobileOpen = true;
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function cerrarMenuMobile() {
+            mobilePanel.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+            mobileOpen = false;
+            document.body.classList.remove('overflow-hidden');
+            document.querySelectorAll('.cat-content.open').forEach(el => el.classList.remove('open'));
+            document.querySelectorAll('.cat-icon').forEach(icon => icon.style.transform = 'rotate(0deg)');
+            const prodContent = document.getElementById('productosAccordionContent');
+            const prodIcon = document.getElementById('productosAccordionIcon');
+            if (prodContent.classList.contains('open')) {
+                prodContent.classList.remove('open');
+                prodIcon.style.transform = 'rotate(0deg)';
+                document.getElementById('productosAccordionBtn').setAttribute('aria-expanded', 'false');
+            }
+        }
+
         menuHamburguesa.addEventListener('click', () => { if (mobileOpen) { cerrarMenuMobile(); } else { abrirMenuMobile(); } });
         cerrarMenu.addEventListener('click', cerrarMenuMobile);
         mobileOverlay.addEventListener('click', cerrarMenuMobile);
         document.querySelectorAll('#mobilePanel a').forEach(link => { link.addEventListener('click', () => { cerrarMenuMobile(); }); });
 
-        // ===== Acordeón principal productos =====
+        // ===== ACORDEÓN PRINCIPAL PRODUCTOS (móvil) =====
         const productosAccordionBtn = document.getElementById('productosAccordionBtn');
         const productosAccordionContent = document.getElementById('productosAccordionContent');
         const productosAccordionIcon = document.getElementById('productosAccordionIcon');
         let accordionOpen = false;
-        productosAccordionBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); accordionOpen = !accordionOpen; if (accordionOpen) { productosAccordionContent.classList.add('open'); productosAccordionIcon.style.transform = 'rotate(180deg)'; productosAccordionBtn.setAttribute('aria-expanded', 'true'); } else { productosAccordionContent.classList.remove('open'); productosAccordionIcon.style.transform = 'rotate(0deg)'; productosAccordionBtn.setAttribute('aria-expanded', 'false'); document.querySelectorAll('.cat-content.open').forEach(el => el.classList.remove('open')); document.querySelectorAll('.cat-icon').forEach(icon => icon.style.transform = 'rotate(0deg)'); } });
+        productosAccordionBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            accordionOpen = !accordionOpen;
+            if (accordionOpen) {
+                productosAccordionContent.classList.add('open');
+                productosAccordionIcon.style.transform = 'rotate(180deg)';
+                productosAccordionBtn.setAttribute('aria-expanded', 'true');
+            } else {
+                productosAccordionContent.classList.remove('open');
+                productosAccordionIcon.style.transform = 'rotate(0deg)';
+                productosAccordionBtn.setAttribute('aria-expanded', 'false');
+                document.querySelectorAll('.cat-content.open').forEach(el => el.classList.remove('open'));
+                document.querySelectorAll('.cat-icon').forEach(icon => icon.style.transform = 'rotate(0deg)');
+            }
+        });
 
-        // ===== Acordeones de categorías =====
-        const categoriaBtns = document.querySelectorAll('.categoria-btn');
-        categoriaBtns.forEach(btn => { btn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); const targetId = btn.getAttribute('data-target'); const targetContent = document.getElementById(targetId); const icon = btn.querySelector('.cat-icon'); const isOpen = targetContent.classList.contains('open'); document.querySelectorAll('.cat-content.open').forEach(el => { if (el !== targetContent) { el.classList.remove('open'); const otherIcon = el.previousElementSibling?.querySelector('.cat-icon'); if (otherIcon) otherIcon.style.transform = 'rotate(0deg)'; } }); document.querySelectorAll('.cat-icon').forEach(ic => { if (ic !== icon) ic.style.transform = 'rotate(0deg)'; }); if (!isOpen) { targetContent.classList.add('open'); icon.style.transform = 'rotate(180deg)'; } else { targetContent.classList.remove('open'); icon.style.transform = 'rotate(0deg)'; } }); });
+        // ===== ACORDEONES DE CATEGORÍAS (móvil) =====
+        document.querySelectorAll('.categoria-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const targetId = btn.getAttribute('data-target');
+                const targetContent = document.getElementById(targetId);
+                const icon = btn.querySelector('.cat-icon');
+                const isOpen = targetContent.classList.contains('open');
+                document.querySelectorAll('.cat-content.open').forEach(el => {
+                    if (el !== targetContent) {
+                        el.classList.remove('open');
+                        const otherIcon = el.previousElementSibling?.querySelector('.cat-icon');
+                        if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                    }
+                });
+                document.querySelectorAll('.cat-icon').forEach(ic => {
+                    if (ic !== icon) ic.style.transform = 'rotate(0deg)';
+                });
+                if (!isOpen) {
+                    targetContent.classList.add('open');
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    targetContent.classList.remove('open');
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
 
-        // ===== Smooth scroll para enlaces internos =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth' }); }); });
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
 
-        // ===== Carrusel automático =====
-        (function () {
-            const slides = document.querySelectorAll('.hero-slide');
-            if (slides.length === 0) return;
+        // ===== CARRUSEL AUTOMÁTICO DEL HÉROE =====
+        const slides = document.querySelectorAll('.hero-slide');
+        if (slides.length) {
             let current = 0;
             function goTo(index) {
-                slides.forEach((el, i) => {
-                    el.classList.toggle('active', i === index);
-                });
+                slides.forEach((el, i) => { el.classList.toggle('active', i === index); });
                 current = index;
             }
             function nextSlide() {
@@ -1065,7 +2715,7 @@
                 });
                 window._heroInterval = interval;
             }
-        })();
+        }
     </script>
 
 </body>
