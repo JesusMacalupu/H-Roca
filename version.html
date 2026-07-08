@@ -109,6 +109,12 @@
         }
     </script>
     <style>
+        /* ===== ELIMINAR SCROLL HORIZONTAL ===== */
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
         /* Estilos base (mantener los existentes) */
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
@@ -1229,9 +1235,10 @@
             transform: translateX(4px);
         }
 
+        /* ===== IMÁGENES MÁS GRANDES EN BÚSQUEDA ===== */
         .search-product-item .item-img {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             flex-shrink: 0;
             background: #222;
             overflow: hidden;
