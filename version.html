@@ -2109,42 +2109,9 @@
                     </div>
 
                     <!-- Especificaciones técnicas y otros detalles -->
-                    <div class="space-y-0 border-t border-outline-variant/30 vista-detalle">
-                        <details
-                            class="group border-b border-outline-variant/30 hover:bg-surface-container-lowest transition-colors duration-300">
-                            <summary class="flex items-center justify-between py-4 cursor-pointer list-none">
-                                <span class="font-display-lg text-body-lg text-primary">Especificaciones Técnicas</span>
-                                <span
-                                    class="material-symbols-outlined text-primary transition-transform duration-300 group-open:rotate-45">add</span>
-                            </summary>
-                            <div id="detalle-especificaciones" class="pb-4 space-y-2">
-                                <!-- se llenan con JS -->
-                            </div>
-                        </details>
-                        <details
-                            class="group border-b border-outline-variant/30 hover:bg-surface-container-lowest transition-colors duration-300">
-                            <summary class="flex items-center justify-between py-4 cursor-pointer list-none">
-                                <span class="font-display-lg text-body-lg text-primary">Envío y Entrega</span>
-                                <span
-                                    class="material-symbols-outlined text-primary transition-transform duration-300 group-open:rotate-45">add</span>
-                            </summary>
-                            <div class="pb-4 text-body-md text-on-surface-variant">
-                                Envío especializado a todo el país. El equipo de Hornos Roca coordina la entrega y
-                                posicionamiento de la pieza en su ubicación final.
-                            </div>
-                        </details>
-                        <details
-                            class="group border-b border-outline-variant/30 hover:bg-surface-container-lowest transition-colors duration-300">
-                            <summary class="flex items-center justify-between py-4 cursor-pointer list-none">
-                                <span class="font-display-lg text-body-lg text-primary">Garantía</span>
-                                <span
-                                    class="material-symbols-outlined text-primary transition-transform duration-300 group-open:rotate-45">add</span>
-                            </summary>
-                            <div class="pb-4 text-body-md text-on-surface-variant">
-                                Garantía limitada de 5 años que cubre defectos de fabricación y materiales en la
-                                estructura refractaria y componentes.
-                            </div>
-                        </details>
+                    <!-- Acordeones dinámicos -->
+                    <div class="space-y-0 border-t border-outline-variant/30 vista-detalle" id="detalle-acordeones">
+                        <!-- Aquí se renderizarán los acordeones desde JavaScript -->
                     </div>
 
                     <!-- Botones en fila - Cotización beige, Ver Accesorios/Hornos blanco -->
@@ -2351,48 +2318,119 @@
         }
 
         const productosDetalle = {
+            // ========== HORNOS (información exacta sin modificar) ==========
             'colosso': {
                 id: 'colosso',
                 tipo: 'horno',
-                combustible: 'gas',
+                combustible: 'leña',
                 nombre: 'Horno Artesanal Colosso di Forgia 100 cm',
-                categoria: 'Hornos a Gas',
+                categoria: 'Hornos a Leña',
                 precio: 5170.00,
                 precioStr: 'S/ 5,170.00',
-                descripcion: 'Acabado en piedra y hierro forjado, diseñado para ofrecer la máxima retención de calor y un sabor ahumado auténtico. Una pieza central para cualquier cocina exterior de lujo.',
+                descripcion: 'El Colosso di Forgia 100 cm es un horno artesanal profesional de diseño italiano, concebido para pizzería y panadería exigente. Su cúpula maciza y aislamiento con fibra cerámica aseguran masa térmica y curva de calor estables; la chimenea frontal con regulador optimiza el tiro para resultados consistentes tanda tras tanda.',
                 imagenes: asegurar4Imagenes([
                     'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia1_1066x.png?v=1783366960',
                     'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia2_720x.png?v=1783367010',
                     'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia3_720x.png?v=1783367068',
                     'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia4_720x.png?v=1783367110'
                 ]),
-                especificaciones: [
-                    { clave: 'Diámetro Interno', valor: '100 cm' },
-                    { clave: 'Materiales', valor: 'Refractarios de alta densidad' },
-                    { clave: 'Puerta', valor: 'Hierro forjado con termómetro' }
-                ]
+                caracteristicas: [
+                    'Profesional para pizza & pan: geometría de cúpula que favorece la radiación y la convección internas para cornisa crujiente y miga bien desarrollada.',
+                    'Construcción premium: ladrillo pastelón + fibra cerámica; acabado exterior en piedra de mármol.',
+                    'Chimenea frontal regulable: mejor evacuación de humos y control de temperatura.',
+                    'Mesa de apoyo: granito incluido para manipulación de bandejas.',
+                    'Configuraciones: solo leña (precio en página) o dual (leña + gas).',
+                    'Instalación: armado (Lima/provincias) o in situ en Lima según proyecto.',
+                    'Tiempo de fabricación: 10–15 días útiles (según carga y acabados).'
+                ],
+                especificacionesTecnicas: [
+                    { clave: 'Diámetro externo', valor: '100 cm (las cotizaciones se dan por medida externa).' },
+                    { clave: 'Espesor térmico ref.', valor: '11 cm (rango 70–100 cm).' },
+                    { clave: 'Diámetro útil estimado', valor: '≈78 cm.' },
+                    { clave: 'Chimenea', valor: 'frontal con regulador de tiro.' },
+                    { clave: 'Acabado exterior', valor: 'mármol.' },
+                    { clave: 'Opción dual (gas)', valor: 'trabaja con media presión (si es gas LP de red, punto entre 10–15 PSI). Para gas natural, la conexión debe realizarla el proveedor autorizado.' },
+                    { clave: 'Peso aprox.', valor: '500–600 kg (según acabados/estructura/mesa).' },
+                    { clave: 'Entrega a provincia', valor: 'equipo armado por agencia o visita de equipo técnico (coordinar).' }
+                ],
+                capacidadGastronomica: [
+                    'Pizzas: hasta 2 unidades de 30–32 cm simultáneas (con rotación).',
+                    'Panificación: admite 1 bandeja 60×40 cm o producción artesanal en pala/loza refractaria.',
+                    'Asados grandes: pavo y cortes voluminosos; manejo estable de baja y media temperatura.'
+                ],
+                comoElegir: [
+                    'Indica qué cocinarás (pizza, pan, asados) y kg/tanda o pizzas por tanda.',
+                    'Confírmanos la medida de tu base (o si requieres estructura metálica).',
+                    'Definimos contigo si va solo leña o dual, y si conviene armado o in situ.'
+                ],
+                faqs: [
+                    { pregunta: '¿El precio incluye dual o in situ?', respuesta: 'No. El precio de página es solo leña + armado. Dual o in situ tienen costo adicional.' },
+                    { pregunta: '¿Pueden instalarlo en provincia?', respuesta: 'Sí: se envía armado por agencia; también podemos coordinar fabricación in situ.' },
+                    { pregunta: '¿Se puede desviar la chimenea?', respuesta: 'Sí, con codos. Envíanos el plano/recorrido para dimensionarla.' },
+                    { pregunta: '¿Tiempo de fabricación?', respuesta: '10–15 días útiles.' },
+                    { pregunta: '¿Mantenimiento?', respuesta: 'Limpieza tras cada uso; ante agentes contaminantes, malla guinda suave y acabado con abrillantador 3M.' }
+                ],
+                informacionComercial: '',
+                porqueElegir: ''
             },
+
             'nina-pacha': {
                 id: 'nina-pacha',
                 tipo: 'horno',
-                combustible: 'gas',
+                combustible: 'leña',
                 nombre: 'Horno Pachamanquero Multifunción – Modelo Nina Pacha',
-                categoria: 'Hornos a Gas',
+                categoria: 'Hornos a Leña',
                 precio: 3709.00,
                 precioStr: 'S/ 3,709.00',
-                descripcion: 'Horno versátil con sistema de cocción múltiple. Ideal para preparar platos típicos andinos y contemporáneos.',
+                descripcion: 'El Nina Pacha es un horno pachamanquero multifunción que combina la tradición de la cocina andina con una construcción robusta y acabados de lujo. Diseñado para ofrecer máxima versatilidad y rendimiento térmico, es ideal tanto para celebraciones familiares como para entornos gastronómicos exigentes.',
                 imagenes: asegurar4Imagenes([
                     'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero_1066x.jpg?v=1755026023',
                     'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero2_720x.jpg?v=1755026023',
                     'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero3_720x.jpg?v=1755026023',
                     'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero4_720x.jpg?v=1755026023'
                 ]),
-                especificaciones: [
-                    { clave: 'Capacidad', valor: '80 L' },
-                    { clave: 'Material', valor: 'Acero y refractario' },
-                    { clave: 'Quemadores', valor: '2 + grill' }
-                ]
+                ventajasTecnicas: [
+                    'Sistema dual: funciona a leña o gas LP (presión de trabajo 10 psi) con quemador tipo "chya" para un encendido rápido y control preciso del calor.',
+                    'Construcción de alta resistencia:',
+                    'Cuerpo en cemento refractario, que asegura una excelente retención y distribución del calor.',
+                    'Revestimiento interno en ladrillos refractarios, optimizando la inercia térmica para cocciones prolongadas y parejas.',
+                    'Enchapado exterior en mármol, que aporta elegancia y protección adicional contra el clima.',
+                    'Detalles y acabados en acero inoxidable que refuerzan la durabilidad y estética premium del equipo.',
+                    'Tapa de acero inoxidable con broches de seguridad, diseñada para un cierre firme y conservación del calor.',
+                    'Termómetro analógico con rango de 0 a 500 °C para un control preciso de la temperatura.',
+                    'Movilidad: cuatro ruedas industriales para facilitar el traslado.'
+                ],
+                funcionesVersatilidad: [
+                    'Horno pachamanquero para carnes, tubérculos y guarniciones al estilo tradicional.',
+                    'Parrilla para asados directos.',
+                    'Fogatera para reuniones al aire libre.',
+                    'Asador para chancho al palo con soporte y rejilla incluidos.'
+                ],
+                beneficiosGastronomicos: [
+                    'Capacidad para preparar hasta 34 kg de alimentos en una sola tanda.',
+                    'Cocción uniforme gracias a la combinación de calor envolvente por leña o gas y la cámara interna en ladrillo refractario.',
+                    'Flexibilidad para adaptarse a cocciones rápidas o lentas, según el método elegido.'
+                ],
+                fichaTecnica: [
+                    'Dimensiones externas: 70 cm (ancho) x 66 cm (fondo) x 61 cm (alto)',
+                    'Cavidad interna: 38.8 cm x 34 cm x 22.6 cm',
+                    'Espesor de paredes: 14cm',
+                    'Tamaño estructural: 55cm',
+                    'Garruchas: 16cm',
+                    'Revestimiento interno: Ladrillo refractario',
+                    'Enchapado exterior: Mármol',
+                    'Detalles: Acero inoxidable',
+                    'Tapa: Acero inoxidable con broches de seguridad',
+                    'Termómetro: Analógico (0 – 500 °C)',
+                    'Combustible: Leña o gas LP (10 psi)',
+                    'Quemador: Tipo chya',
+                    'Capacidad: 34 kg',
+                    'Movilidad: 4 ruedas industriales',
+                    'Uso recomendado: Gastronómico y residencial'
+                ],
+                porqueElegir: 'El Nina Pacha ofrece un balance perfecto entre tradición y tecnología. Su sólida construcción en cemento y ladrillo refractario, acabada con mármol y acero inoxidable, garantiza durabilidad, eficiencia térmica y una presentación impecable. Es la elección ideal para quienes buscan un horno versátil, elegante y de alto rendimiento. Fabricado por Hornos Roca, con calidad y tradición peruana.'
             },
+
             'nina': {
                 id: 'nina',
                 tipo: 'horno',
@@ -2401,55 +2439,138 @@
                 categoria: 'Hornos a Leña',
                 precio: 4585.00,
                 precioStr: 'S/ 4,585.00',
-                descripcion: 'Modelo clásico de horno artesanal con diseño tradicional y excelente rendimiento térmico.',
+                descripcion: 'El Modelo Nina es un horno artesanal premium que combina la tradición de la cocina a leña con un diseño elegante y acabados de lujo. Su arco frontal de ladrillo y revestimiento exterior en mármol lo convierten en una pieza que realza cualquier espacio, ya sea en una terraza residencial o en un ambiente gastronómico profesional. Construido con materiales de alto rendimiento térmico, garantiza cocciones envolventes, uniformes y con el inconfundible sabor de la leña.',
                 imagenes: asegurar4Imagenes([
                     'https://lacarboneragrill.pe/cdn/shop/files/modeloNina2_720x.png?v=1783367288',
                     'https://lacarboneragrill.pe/cdn/shop/files/modeloNina3_720x.png?v=1783367288',
                     'https://lacarboneragrill.pe/cdn/shop/files/modeloNina4_720x.png?v=1783367288'
                 ]),
-                especificaciones: [
-                    { clave: 'Diámetro', valor: '100 cm' },
-                    { clave: 'Material', valor: 'Refractario y acero' },
-                    { clave: 'Puerta', valor: 'Acero con visor' }
-                ]
+                ventajasTecnicas: [
+                    'Cúpula en ladrillo pastelón (torta), diseñada para retener y distribuir el calor de forma uniforme.',
+                    'Piso de ladrillos refractarios de 1 1/2", resistente y con alta inercia térmica para cocción pareja.',
+                    'Aislamiento intermedio en fibra cerámica (hasta 1200 °C), que prolonga la temperatura interna durante horas.',
+                    'Espesor de paredes térmicas de 11 cm, para un aislamiento eficiente.',
+                    'Puerta de acero inoxidable con regulador de ventilación para control preciso de la combustión.',
+                    'Chimenea frontal con regulador de tiro para optimizar la salida de humos.',
+                    'Termómetro analógico 0–500 °C integrado para monitorear la temperatura interna.'
+                ],
+                beneficiosGastronomicos: [
+                    'Ideal para preparar pizzas, panes artesanales, carnes, tubérculos y guisos de larga cocción.',
+                    'Mantiene calor constante, reduciendo el consumo de combustible.',
+                    'Cocción envolvente que realza texturas y sabores auténticos.'
+                ],
+                fichaTecnica: [
+                    'Medida exterior: 100 cm de diámetro',
+                    'Medida interior útil: 78 cm de diámetro',
+                    'Espesor de paredes térmicas: 11 cm (con núcleo de fibra cerámica)',
+                    'Capacidad: Hasta 3 pizzas grandes o 8–9 kg de pan, carnes o tubérculos por tanda',
+                    'Aislamiento térmico: Fibra cerámica (hasta 1200 °C)',
+                    'Piso: Ladrillos refractarios de 1 1/2"',
+                    'Cúpula: Ladrillo pastelón (torta)',
+                    'Puerta: Acero inoxidable con regulador de ventilación',
+                    'Termómetro: Analógico 0–500 °C',
+                    'Chimenea: Frontal con regulador de tiro',
+                    'Tipo de instalación: Entregado armado o fabricación in situ',
+                    'Tiempo de fabricación: 10 a 15 días útiles',
+                    'Uso recomendado: Residencial o comercial'
+                ],
+                informacionComercial: 'Precio publicado corresponde al horno en presentación a leña, entregado totalmente armado en medida estándar de 100 cm. Podemos fabricarlo en cualquier medida según requerimiento del cliente. Presentación dual (leña + gas) y fabricación in situ tienen un costo adicional.',
+                porqueElegir: 'El Modelo Nina ofrece el balance perfecto entre tradición y estética, con materiales premium y una construcción artesanal que asegura rendimiento y durabilidad. Su diseño con arco frontal y acabados en mármol lo convierten en un horno que no solo cocina de forma excepcional, sino que también añade un toque distintivo a cualquier espacio. Fabricado en Perú por Hornos Roca, con estándares de calidad premium.'
             },
+
             'ichu': {
                 id: 'ichu',
                 tipo: 'horno',
-                combustible: 'gas',
+                combustible: 'leña',
                 nombre: 'Horno Artesanal – Modelo Ichu – 100 cm',
-                categoria: 'Hornos a Gas',
+                categoria: 'Hornos a Leña',
                 precio: 4330.00,
                 precioStr: 'S/ 4,330.00',
-                descripcion: 'Horno de diseño contemporáneo con eficiencia energética y gran capacidad de cocción.',
+                descripcion: 'El Modelo Ichu combina tradición andina y diseño artesanal en una estructura boleada que garantiza una cocción envolvente y homogénea. Fabricado con materiales de alto rendimiento térmico y acabados de nivel premium, es perfecto para quienes buscan autenticidad, eficiencia y estética en un solo equipo. Ideal para uso residencial gourmet o para negocios gastronómicos que requieran un horno de alto desempeño.',
                 imagenes: asegurar4Imagenes([
                     'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu5_720x.png?v=1783367134',
                     'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu6_720x.png?v=1783367134'
                 ]),
-                especificaciones: [
-                    { clave: 'Diámetro', valor: '100 cm' },
-                    { clave: 'Material', valor: 'Refractario de alta densidad' }
-                ]
+                ventajasTecnicas: [
+                    'Cúpula boleada en ladrillo térmico tipo pastelón (torta), diseñada para distribuir el calor de manera uniforme.',
+                    'Piso de ladrillos refractarios de 1 1/2", que asegura cocción pareja y base crujiente.',
+                    'Aislamiento térmico de fibra cerámica (hasta 1200 °C), que mantiene la temperatura estable por horas.',
+                    'Chimenea frontal con regulador de tiro para optimizar la combustión y la salida de humos.',
+                    'Puerta de acero inoxidable con regulador de ventilación para un control preciso del flujo de aire.',
+                    'Termómetro analógico 0–500 °C integrado para monitorear la temperatura interna.',
+                    'Opción de sistema dual (leña + gas) para combinar el sabor tradicional con la practicidad del gas.'
+                ],
+                beneficiosGastronomicos: [
+                    'Ideal para preparar panes artesanales, pizzas rústicas, carnes, tubérculos y platos tradicionales como la pachamanca.',
+                    'La forma boleada y el aislamiento avanzado proporcionan una cocción uniforme y controlada.',
+                    'Retención térmica prolongada, reduciendo la necesidad de recargar combustible.'
+                ],
+                fichaTecnica: [
+                    'Medida exterior: 100 cm de diámetro',
+                    'Medida interior útil: 78 cm de diámetro',
+                    'Espesor de paredes térmicas: 11 cm (con núcleo de fibra cerámica)',
+                    'Capacidad: Hasta 3 pizzas grandes o 8–9 kg de pan, carnes o tubérculos por tanda',
+                    'Aislamiento térmico: Fibra cerámica (hasta 1200 °C)',
+                    'Piso: Ladrillos refractarios de 1 1/2"',
+                    'Cúpula: Ladrillo térmico tipo pastelón (torta)',
+                    'Puerta: Acero inoxidable con regulador de ventilación',
+                    'Termómetro: Analógico 0–500 °C',
+                    'Chimenea: Frontal con regulador de tiro',
+                    'Tipo de instalación: Entregado armado o fabricación in situ',
+                    'Tiempo de fabricación: 10 a 15 días útiles',
+                    'Uso recomendado: Residencial premium o comercial'
+                ],
+                informacionComercial: 'Precio publicado corresponde al horno en presentación a leña, entregado totalmente armado en medida estándar de 100 cm. Podemos fabricarlo en cualquier medida según requerimiento del cliente. Presentación dual (leña + gas) y fabricación in situ tienen un costo adicional.',
+                porqueElegir: 'El Modelo Ichu es un homenaje a la cocina tradicional, con un diseño boleado que optimiza la cocción y un acabado premium que realza cualquier espacio. Su construcción artesanal, materiales de alta calidad y opciones de combustión lo convierten en una inversión duradera para quienes buscan rendimiento y estilo en un solo equipo. Fabricado en Perú por Hornos Roca, con estándares de calidad premium.'
             },
+
             'napolitano': {
                 id: 'napolitano',
                 tipo: 'horno',
-                combustible: 'gas',
+                combustible: 'leña',
                 nombre: 'Horno Artesanal – Modelo Napolitano – 100 cm',
-                categoria: 'Hornos a Gas',
+                categoria: 'Hornos a Leña',
                 precio: 4420.00,
                 precioStr: 'S/ 4,420.00',
-                descripcion: 'Especial para pizzas estilo napolitano, con cúpula alta y distribución uniforme del calor.',
+                descripcion: 'El Modelo Napolitano está inspirado en la tradición italiana, diseñado para alcanzar temperaturas extremas en tiempo récord y ofrecer resultados auténticos. Su distintivo techo plano maximiza la acumulación y distribución del calor, logrando cocciones rápidas y uniformes. Fabricado con materiales de alto rendimiento térmico y acabados de nivel profesional, es ideal tanto para uso residencial premium como para negocios gastronómicos exigentes.',
                 imagenes: asegurar4Imagenes([
                     'https://lacarboneragrill.pe/cdn/shop/files/horno-artesanal-modelo-napolitano-1_d61f4c95-7537-4c69-a68f-28fec4d9b62b_1066x.jpg?v=1757610659',
                     'https://lacarboneragrill.pe/cdn/shop/files/horno-artesanal-modelo-napolitano-2_720x.jpg?v=1757610659'
                 ]),
-                especificaciones: [
-                    { clave: 'Diámetro', valor: '100 cm' },
-                    { clave: 'Material', valor: 'Refractario' },
-                    { clave: 'Altura cúpula', valor: '45 cm' }
-                ]
+                ventajasTecnicas: [
+                    'Cúpula de techo plano, que facilita el alcance de temperaturas máximas en pocos minutos.',
+                    'Aislamiento térmico en fibra cerámica (hasta 1200 °C) para retención de calor prolongada.',
+                    'Piso de ladrillos refractarios de 1 1/2", ideal para bases crujientes y cocción uniforme.',
+                    'Puerta de acero inoxidable con regulador de ventilación para control preciso de la combustión.',
+                    'Chimenea frontal con regulador de tiro para optimizar el flujo de aire.',
+                    'Termómetro analógico 0–500 °C integrado para monitoreo constante.',
+                    'Acabados exteriores en piedra de mármol con detalles en acero inoxidable para mayor resistencia y estética.'
+                ],
+                beneficiosGastronomicos: [
+                    'Perfecto para pizzas estilo napolitano, panes artesanales y preparaciones al horno que requieren temperaturas elevadas.',
+                    'Cocción rápida que conserva jugosidad y textura.',
+                    'Ideal para servicios de alta demanda o para experiencias gourmet en casa.'
+                ],
+                fichaTecnica: [
+                    'Medida exterior: 100 cm de diámetro',
+                    'Medida interior útil: 78 cm de diámetro',
+                    'Espesor de paredes térmicas: 11 cm (con núcleo de fibra cerámica)',
+                    'Capacidad: Hasta 4 pizzas grandes o 8 panes artesanales por tanda',
+                    'Aislamiento térmico: Fibra cerámica (hasta 1200 °C)',
+                    'Piso: Ladrillos refractarios de 1 1/2"',
+                    'Cúpula: Techo plano',
+                    'Puerta: Acero inoxidable con regulador de ventilación',
+                    'Termómetro: Analógico 0–500 °C',
+                    'Chimenea: Frontal con regulador de tiro',
+                    'Acabado exterior: Piedra de mármol con detalles en acero inoxidable',
+                    'Tipo de instalación: Entregado armado o fabricación in situ',
+                    'Tiempo de fabricación: 10 a 15 días útiles',
+                    'Uso recomendado: Residencial premium o comercial'
+                ],
+                informacionComercial: 'Precio publicado corresponde al horno en presentación a leña, entregado totalmente armado en medida estándar de 100 cm. Podemos fabricarlo en cualquier medida según requerimiento del cliente. Presentación dual (leña + gas) y fabricación in situ tienen un costo adicional.',
+                porqueElegir: 'El Modelo Napolitano ofrece el balance perfecto entre tradición y eficiencia, con un diseño pensado para la cocción más exigente y acabados que aportan distinción a cualquier espacio. Es la herramienta ideal para quienes buscan calidad, estética y resultados impecables. Fabricado en Perú por Hornos Roca, con estándares de calidad premium.'
             },
+
             'di-bronzo': {
                 id: 'di-bronzo',
                 tipo: 'horno',
@@ -2458,17 +2579,42 @@
                 categoria: 'Hornos a Gas',
                 precio: 3900.00,
                 precioStr: 'S/ 3,900.00',
-                descripcion: 'Horno compacto de diseño premium, ideal para espacios reducidos sin sacrificar prestaciones.',
+                descripcion: 'El Horno Di Bronzo de Hornos Roca es un equipo profesional de gas LP, diseñado para cocción versátil y eficiente en espacios residenciales o gastronómicos. Su diseño compacto en medidas estándar de 57 × 57 × 32 cm lo convierte en la opción ideal para quienes buscan rendimiento profesional en un formato práctico y elegante. La cúpula metálica pintada en negro mate anticalórico aporta un acabado sobrio y moderno, mientras que su piso de placa refractaria asegura una cocción uniforme y auténtica.',
                 imagenes: asegurar4Imagenes([
                     'https://lacarboneragrill.pe/cdn/shop/files/diBRONZO1_1066x.png?v=1783366601',
                     'https://lacarboneragrill.pe/cdn/shop/files/diBRONZO2_720x.png?v=1783366601'
                 ]),
-                especificaciones: [
-                    { clave: 'Medidas', valor: '57×57×32 cm' },
-                    { clave: 'Material', valor: 'Acero y refractario' }
-                ]
+                ventajasTecnicas: [
+                    'Funcionalidad a gas LP con quemador tipo flauta, eficiente y seguro.',
+                    'Medida estándar: 57 × 57 × 32 cm, compacto y de gran rendimiento.',
+                    'Cúpula de acero inoxidable pintada en negro mate anticalórico, resistente y elegante.',
+                    'Piso de placa refractaria, ideal para retención y distribución de calor.',
+                    'Cámara térmica contraplacada con fibra cerámica (resistencia hasta 1200 °C).',
+                    'Chimenea frontal con regulador de tiro para manejo preciso del aire y calor.',
+                    'Termómetro integrado (0–500 °C) para control de temperatura.'
+                ],
+                beneficiosGastronomicos: [
+                    'Ideal para pizzas, lasañas, panes y carnes con cocción pareja y auténtico sabor.',
+                    'Mantiene calor estable por largos periodos, optimizando consumo de gas.',
+                    'Diseño compacto y elegante que se adapta fácilmente a cocinas, terrazas o negocios.',
+                    'Ofrece resultados de nivel profesional con el estilo moderno del acabado negro mate.'
+                ],
+                fichaTecnica: [
+                    'Medidas exteriores: 57 × 57 × 32 cm',
+                    'Material cúpula: Acero inoxidable pintado en negro mate anticalórico',
+                    'Piso: Placa refractaria',
+                    'Combustible: Gas LP (quemador tipo flauta)',
+                    'Aislamiento térmico: Fibra cerámica (hasta 1200 °C)',
+                    'Termómetro: Analógico 0–500 °C',
+                    'Chimenea: Frontal con regulador de tiro',
+                    'Tipo de instalación: Entregado armado',
+                    'Uso recomendado: Residencial, gourmet y gastronómico'
+                ],
+                informacionComercial: 'El precio publicado corresponde al modelo estándar en medida 57 × 57 × 32 cm. Entrega del horno completamente armado y listo para instalar. Fabricado en Perú por Hornos Roca, con estándares de calidad profesional.',
+                porqueElegir: 'Porque combina diseño compacto, materiales de primera calidad y tecnología a gas para garantizar resultados profesionales en cada preparación. Su piso de placa refractaria y su acabado negro mate lo convierten en una opción robusta, elegante y funcional para quienes buscan un horno moderno y duradero. Fabricado en Perú por Hornos Roca, especialistas en hornos premium.'
             },
-            // Accesorios (sin combustible)
+
+            // ========== ACCESORIOS (datos previos sin modificar) ==========
             'soporte-pizza': {
                 id: 'soporte-pizza',
                 tipo: 'accesorio',
@@ -2482,10 +2628,11 @@
                     'https://lacarboneragrill.pe/cdn/shop/files/Soporte-bandeja-para-pizza_8fb3e971-2062-4e76-9262-67b936cb3ec7_720x.jpg?v=1766075184',
                     'https://lacarboneragrill.pe/cdn/shop/files/Soporte-bandeja-para-pizza_2_720x.jpg?v=1766075184'
                 ]),
-                especificaciones: [
+                especificacionesTecnicas: [
                     { clave: 'Material', valor: 'Acero inoxidable' },
                     { clave: 'Medidas', valor: '30 x 20 x 15 cm' }
-                ]
+                ],
+                porqueElegir: 'Ideal para mantener tu bandeja de pizza firme y tener los condimentos siempre a mano.'
             },
             'pala-pizzera': {
                 id: 'pala-pizzera',
@@ -2500,10 +2647,11 @@
                     'https://lacarboneragrill.pe/cdn/shop/files/pala-pizzera_720x.jpg?v=1766078938',
                     'https://lacarboneragrill.pe/cdn/shop/files/pala-pizzera_2_720x.jpg?v=1766078938'
                 ]),
-                especificaciones: [
+                especificacionesTecnicas: [
                     { clave: 'Material', valor: 'Acero Inoxidable AISI 304' },
                     { clave: 'Medidas', valor: '35 x 40 cm' }
-                ]
+                ],
+                porqueElegir: 'Diseño profesional para manipular pizzas con facilidad y precisión.'
             },
             'bandeja': {
                 id: 'bandeja',
@@ -2518,10 +2666,11 @@
                     'https://lacarboneragrill.pe/cdn/shop/files/bandeja-para-horno_720x.jpg?v=1766077876',
                     'https://lacarboneragrill.pe/cdn/shop/files/bandeja-para-horno_2_720x.jpg?v=1766077876'
                 ]),
-                especificaciones: [
+                especificacionesTecnicas: [
                     { clave: 'Material', valor: 'Acero' },
                     { clave: 'Medidas', valor: '50 x 35 cm' }
-                ]
+                ],
+                porqueElegir: 'Resistente y fácil de limpiar, perfecta para todo tipo de cocciones.'
             },
             'puerta-inox': {
                 id: 'puerta-inox',
@@ -2536,10 +2685,11 @@
                     'https://lacarboneragrill.pe/cdn/shop/files/puerta-para-horno-inoxidable_720x.jpg?v=1766089332',
                     'https://lacarboneragrill.pe/cdn/shop/files/puerta-para-horno-inoxidable_2_720x.jpg?v=1766089332'
                 ]),
-                especificaciones: [
+                especificacionesTecnicas: [
                     { clave: 'Material', valor: 'Acero Inoxidable' },
                     { clave: 'Termómetro', valor: 'Incluido' }
-                ]
+                ],
+                porqueElegir: 'Mejora el control de temperatura y la seguridad durante la cocción.'
             },
             'cuchilla': {
                 id: 'cuchilla',
@@ -2554,10 +2704,11 @@
                     'https://lacarboneragrill.pe/cdn/shop/files/cuchilla-corta-pizza_720x.jpg?v=1766085224',
                     'https://lacarboneragrill.pe/cdn/shop/files/cuchilla-corta-pizza_2_720x.jpg?v=1766085224'
                 ]),
-                especificaciones: [
+                especificacionesTecnicas: [
                     { clave: 'Material', valor: 'Acero inoxidable' },
                     { clave: 'Medidas', valor: '30 cm de ancho' }
-                ]
+                ],
+                porqueElegir: 'Corte limpio y rápido, ideal para pizzas y masas.'
             },
             'termometro': {
                 id: 'termometro',
@@ -2572,10 +2723,11 @@
                     'https://lacarboneragrill.pe/cdn/shop/files/termometro-para-horno_720x.jpg?v=1766087249',
                     'https://lacarboneragrill.pe/cdn/shop/files/termometro-para-horno_2_720x.jpg?v=1766087249'
                 ]),
-                especificaciones: [
+                especificacionesTecnicas: [
                     { clave: 'Rango', valor: '0-500 °C' },
                     { clave: 'Vástago', valor: '12 cm' }
-                ]
+                ],
+                porqueElegir: 'Precisión y durabilidad para un control exacto de la temperatura.'
             },
             'rejilla': {
                 id: 'rejilla',
@@ -2590,10 +2742,11 @@
                     'https://lacarboneragrill.pe/cdn/shop/files/rejilla-para-doble-altura-horno-artesanal_720x.jpg?v=1766091987',
                     'https://lacarboneragrill.pe/cdn/shop/files/rejilla-para-doble-altura-horno-artesanal_2_720x.jpg?v=1766091987'
                 ]),
-                especificaciones: [
+                especificacionesTecnicas: [
                     { clave: 'Material', valor: 'Acero' },
                     { clave: 'Altura ajustable', valor: 'Sí' }
-                ]
+                ],
+                porqueElegir: 'Maximiza la capacidad de cocción y permite preparar varios alimentos a la vez.'
             }
         };
 
@@ -2668,21 +2821,116 @@
                 miniContainer.appendChild(div);
             });
 
-            const especContainer = document.getElementById('detalle-especificaciones');
-            especContainer.innerHTML = '';
-            if (producto.especificaciones && producto.especificaciones.length) {
-                producto.especificaciones.forEach(esp => {
-                    const div = document.createElement('div');
-                    div.className = 'flex justify-between text-body-md';
-                    div.innerHTML = `
-                        <span class="text-secondary uppercase text-xs font-label-caps">${esp.clave}</span>
-                        <span class="text-primary">${esp.valor}</span>
-                    `;
-                    especContainer.appendChild(div);
+            // --- Renderizado dinámico de acordeones (TODOS CERRADOS) ---
+            const acordeonContainer = document.getElementById('detalle-acordeones');
+            acordeonContainer.innerHTML = '';
+
+            const secciones = [];
+
+            if (producto.caracteristicas) {
+                secciones.push({
+                    titulo: 'Características clave',
+                    contenido: producto.caracteristicas.map(item => `<li>${item}</li>`).join('')
                 });
-            } else {
-                especContainer.innerHTML = '<p class="text-white/50">No hay especificaciones disponibles.</p>';
             }
+
+            if (producto.ventajasTecnicas) {
+                secciones.push({
+                    titulo: 'Ventajas técnicas destacadas',
+                    contenido: producto.ventajasTecnicas.map(item => `<li>${item}</li>`).join('')
+                });
+            }
+
+            const especs = producto.especificacionesTecnicas || producto.especificaciones || [];
+            if (especs.length > 0) {
+                secciones.push({
+                    titulo: 'Especificaciones técnicas',
+                    contenido: especs.map(esp => `<li><strong>${esp.clave}:</strong> ${esp.valor}</li>`).join('')
+                });
+            }
+
+            if (producto.capacidadGastronomica) {
+                secciones.push({
+                    titulo: 'Capacidad gastronómica referencial',
+                    contenido: producto.capacidadGastronomica.map(item => `<li>${item}</li>`).join('')
+                });
+            }
+
+            if (producto.funcionesVersatilidad) {
+                secciones.push({
+                    titulo: 'Funciones y versatilidad',
+                    contenido: producto.funcionesVersatilidad.map(item => `<li>${item}</li>`).join('')
+                });
+            }
+
+            if (producto.beneficiosGastronomicos) {
+                secciones.push({
+                    titulo: 'Beneficios gastronómicos',
+                    contenido: producto.beneficiosGastronomicos.map(item => `<li>${item}</li>`).join('')
+                });
+            }
+
+            if (producto.fichaTecnica) {
+                secciones.push({
+                    titulo: 'Ficha técnica',
+                    contenido: producto.fichaTecnica.map(item => `<li>${item}</li>`).join('')
+                });
+            }
+
+            if (producto.comoElegir) {
+                secciones.push({
+                    titulo: 'Cómo elegir tu medida ideal',
+                    contenido: producto.comoElegir.map(item => `<li>${item}</li>`).join('')
+                });
+            }
+
+            if (producto.faqs) {
+                secciones.push({
+                    titulo: 'Preguntas frecuentes',
+                    contenido: producto.faqs.map(faq => `<li><strong>${faq.pregunta}</strong><br>${faq.respuesta}</li>`).join('')
+                });
+            }
+
+            if (producto.informacionComercial) {
+                secciones.push({
+                    titulo: 'Información comercial',
+                    contenido: `<p>${producto.informacionComercial}</p>`
+                });
+            }
+
+            if (producto.porqueElegir) {
+                secciones.push({
+                    titulo: '¿Por qué elegir este modelo?',
+                    contenido: `<p>${producto.porqueElegir}</p>`
+                });
+            }
+
+            // Renderizar cada sección como <details> (TODOS CERRADOS)
+            secciones.forEach((sec) => {
+                const details = document.createElement('details');
+                details.className = 'group border-b border-outline-variant/30 hover:bg-surface-container-lowest transition-colors duration-300';
+                // No se agrega el atributo "open", así todos inician cerrados
+
+                const summary = document.createElement('summary');
+                summary.className = 'flex items-center justify-between py-4 cursor-pointer list-none';
+                summary.innerHTML = `
+      <span class="font-display-lg text-body-lg text-primary">${sec.titulo}</span>
+      <span class="material-symbols-outlined text-primary transition-transform duration-300 group-open:rotate-45">add</span>
+    `;
+                details.appendChild(summary);
+
+                const contentDiv = document.createElement('div');
+                // Agregamos padding interior (superior, lateral e inferior) para mejor legibilidad
+                contentDiv.className = 'px-4 pt-2 pb-4 space-y-2 text-body-md text-on-surface-variant';
+                if (sec.contenido.includes('<li>')) {
+                    contentDiv.innerHTML = `<ul class="list-disc pl-5 space-y-1">${sec.contenido}</ul>`;
+                } else {
+                    contentDiv.innerHTML = sec.contenido;
+                }
+                details.appendChild(contentDiv);
+
+                acordeonContainer.appendChild(details);
+            });
 
             // Configurar botón "Ver Accesorios / Ver Hornos"
             if (producto.tipo === 'horno') {
@@ -2693,7 +2941,7 @@
                 btnVerAccesorios.dataset.accion = 'hornos';
             }
 
-            // Recomendados: 4 productos de tipo opuesto
+            // Recomendados
             const tipoActual = producto.tipo;
             const tipoOpuesto = tipoActual === 'horno' ? 'accesorio' : 'horno';
             const opciones = Object.values(productosDetalle).filter(p => p.tipo === tipoOpuesto && p.id !== id);
@@ -2714,19 +2962,19 @@
                     div.className = 'rec-card';
                     const imgUrl = rec.imagenes && rec.imagenes.length ? rec.imagenes[0] : '';
                     div.innerHTML = `
-                        <div class="rec-img">
-                            <img src="${imgUrl}" alt="${rec.nombre}" />
-                        </div>
-                        <div class="rec-body">
-                            <span class="font-label-caps text-[10px] text-secondary uppercase tracking-widest">${tipoOpuesto === 'horno' ? 'Horno' : 'Accesorio'}</span>
-                            <h3 class="font-display-lg text-body-lg text-primary mt-1">${rec.nombre}</h3>
-                            <p class="font-price-display text-primary mt-1">${rec.precioStr}</p>
-                            <div class="btn-group-vertical">
-                                <button class="btn-ver-detalle" data-product-id="${rec.id}">Ver Detalles</button>
-                                <button class="btn-cotizar-card" data-product-name="${rec.nombre}">Cotizar</button>
-                            </div>
-                        </div>
-                    `;
+                    <div class="rec-img">
+                    <img src="${imgUrl}" alt="${rec.nombre}" />
+                    </div>
+                    <div class="rec-body">
+                    <span class="font-label-caps text-[10px] text-secondary uppercase tracking-widest">${tipoOpuesto === 'horno' ? 'Horno' : 'Accesorio'}</span>
+                    <h3 class="font-display-lg text-body-lg text-primary mt-1">${rec.nombre}</h3>
+                    <p class="font-price-display text-primary mt-1">${rec.precioStr}</p>
+                    <div class="btn-group-vertical">
+                        <button class="btn-ver-detalle" data-product-id="${rec.id}">Ver Detalles</button>
+                        <button class="btn-cotizar-card" data-product-name="${rec.nombre}">Cotizar</button>
+                    </div>
+                    </div>
+                `;
                     recContainer.appendChild(div);
                 });
 
