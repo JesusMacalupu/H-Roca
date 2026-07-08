@@ -3293,6 +3293,7 @@
         // ====================================================
         // ===== LÓGICA DEL OVERLAY DE BÚSQUEDA (MEJORADA) =====
         // ====================================================
+
         (function () {
             const searchOverlay = document.getElementById('search-overlay');
             const searchInput = document.getElementById('search-input');
@@ -3315,7 +3316,7 @@
             if (contadorHornos) contadorHornos.textContent = `(${totalHornos})`;
             if (contadorAccesorios) contadorAccesorios.textContent = `(${totalAccesorios})`;
 
-            let featuredProductId = 'colosso'; // por defecto
+            let featuredProductId = 'colosso';
 
             function abrirBusqueda() {
                 const header = document.querySelector('header');
@@ -3341,34 +3342,53 @@
                 renderFeatured();
             }
 
+            // ===== EVENTOS PRINCIPALES =====
             searchTriggerDesktop.addEventListener('click', abrirBusqueda);
             searchTriggerMobile.addEventListener('click', abrirBusqueda);
             searchClose.addEventListener('click', cerrarBusqueda);
-            searchOverlay.addEventListener('click', function (e) {
-                if (e.target === searchOverlay) cerrarBusqueda();
-            });
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && searchOverlay.classList.contains('active')) cerrarBusqueda();
+
+            // ===== CIERRE AL HACER CLIC FUERA DEL CONTENIDO =====
+            document.addEventListener('click', function (e) {
+                if (!searchOverlay.classList.contains('active')) return;
+
+                // Elementos que NO deben cerrar la búsqueda al hacer clic
+                const triggers = [searchTriggerDesktop, searchTriggerMobile, searchClose];
+                if (triggers.includes(e.target) || triggers.includes(e.target.closest('button'))) {
+                    return; // no cerrar
+                }
+
+                const inner = document.querySelector('.search-inner');
+                // Si el clic no está dentro del contenido, cerrar
+                if (!inner.contains(e.target)) {
+                    cerrarBusqueda();
+                }
             });
 
-            // Renderizar más vendidos (3 items en lista con imagen 70px)
+            // ===== CERRAR CON TECLA ESC =====
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                    cerrarBusqueda();
+                }
+            });
+
+            // ===== RENDERIZAR MÁS VENDIDOS =====
             function renderBestSellers() {
                 const hornos = Object.values(productosDetalle).filter(p => p.tipo === 'horno');
                 const top = hornos.slice(0, 3);
                 bestSellersContainer.innerHTML = top.map(p => {
                     const img = p.imagenes && p.imagenes.length ? p.imagenes[0] : '';
                     return `
-                        <div class="search-product-item" data-product-id="${p.id}">
-                            <div class="item-img">
-                                <img src="${img}" alt="${p.nombre}" />
-                            </div>
-                            <div class="item-info">
-                                <div class="item-name">${p.nombre}</div>
-                                <div class="item-price">${p.precioStr}</div>
-                            </div>
-                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                        </div>
-                    `;
+                <div class="search-product-item" data-product-id="${p.id}">
+                    <div class="item-img">
+                        <img src="${img}" alt="${p.nombre}" />
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">${p.nombre}</div>
+                        <div class="item-price">${p.precioStr}</div>
+                    </div>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                </div>
+            `;
                 }).join('');
 
                 bestSellersContainer.querySelectorAll('[data-product-id]').forEach(el => {
@@ -3382,22 +3402,22 @@
                 });
             }
 
-            // Renderizar producto destacado (estilo mega menú)
+            // ===== RENDERIZAR DESTACADO =====
             function renderFeatured() {
                 const hornos = Object.values(productosDetalle).filter(p => p.tipo === 'horno');
                 if (hornos.length === 0) return;
-                const featured = hornos[0]; // siempre el primero
+                const featured = hornos[0];
                 featuredProductId = featured.id;
                 const img = featured.imagenes && featured.imagenes.length ? featured.imagenes[0] : '';
                 featuredContainer.innerHTML = `
-                    <div class="featured-bg" style="background-image: url('${img}');"></div>
-                    <div class="featured-overlay"></div>
-                    <div class="featured-content">
-                        <p class="tag">NUEVO</p>
-                        <h4>${featured.nombre}</h4>
-                        <p>Horno Artesanal 100 cm</p>
-                    </div>
-                `;
+            <div class="featured-bg" style="background-image: url('${img}');"></div>
+            <div class="featured-overlay"></div>
+            <div class="featured-content">
+                <p class="tag">NUEVO</p>
+                <h4>${featured.nombre}</h4>
+                <p>Horno Artesanal 100 cm</p>
+            </div>
+        `;
                 featuredContainer.dataset.productId = featured.id;
                 featuredContainer.addEventListener('click', function (e) {
                     if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') e.stopPropagation();
@@ -3420,7 +3440,7 @@
                 });
             }
 
-            // Búsqueda en tiempo real (resultados con imagen 70px)
+            // ===== BÚSQUEDA EN TIEMPO REAL =====
             function realizarBusqueda(termino) {
                 termino = termino.trim().toLowerCase();
                 if (termino.length <= 2) {
@@ -3445,17 +3465,17 @@
                     resultsList.innerHTML = resultados.map(p => {
                         const img = p.imagenes && p.imagenes.length ? p.imagenes[0] : '';
                         return `
-                            <div class="search-product-item" data-product-id="${p.id}">
-                                <div class="item-img">
-                                    <img src="${img}" alt="${p.nombre}" />
-                                </div>
-                                <div class="item-info">
-                                    <div class="item-name">${p.nombre}</div>
-                                    <div class="item-price">${p.precioStr}</div>
-                                </div>
-                                <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                            </div>
-                        `;
+                    <div class="search-product-item" data-product-id="${p.id}">
+                        <div class="item-img">
+                            <img src="${img}" alt="${p.nombre}" />
+                        </div>
+                        <div class="item-info">
+                            <div class="item-name">${p.nombre}</div>
+                            <div class="item-price">${p.precioStr}</div>
+                        </div>
+                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                    </div>
+                `;
                     }).join('');
 
                     resultsList.querySelectorAll('[data-product-id]').forEach(el => {
@@ -3474,11 +3494,11 @@
                 realizarBusqueda(e.target.value);
             });
 
-            // Inicializar
+            // ===== INICIALIZAR =====
             renderBestSellers();
             renderFeatured();
 
-            // Filtros de categoría en el overlay (enlaces)
+            // ===== FILTROS DE CATEGORÍA (enlaces) =====
             document.querySelectorAll('[data-filtro]').forEach(link => {
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
