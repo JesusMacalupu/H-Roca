@@ -109,7 +109,7 @@
         }
     </script>
     <style>
-        /* Estilos base */
+        /* Estilos base (mantener los existentes) */
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
             font-size: 20px;
@@ -915,11 +915,12 @@
             width: 100%;
         }
 
-        /* En la colección principal, los botones van en la misma línea (horizontal) */
+        /* En la colección principal, los botones van horizontales, pero en móvil vertical */
         .btn-group-horizontal {
             display: flex;
             gap: 0.5rem;
             margin-top: 0.75rem;
+            flex-wrap: wrap;
         }
 
         .btn-group-horizontal .btn-ver-detalle,
@@ -927,6 +928,19 @@
             flex: 1;
             width: auto;
             min-width: 0;
+        }
+
+        /* En móvil, los botones de la colección se apilan verticalmente */
+        @media (max-width: 640px) {
+            .btn-group-horizontal {
+                flex-direction: column;
+            }
+
+            .btn-group-horizontal .btn-ver-detalle,
+            .btn-group-horizontal .btn-cotizar-card {
+                width: 100%;
+                flex: none;
+            }
         }
 
         /* Botón Cotización en vista detalle (beige) */
@@ -1080,6 +1094,344 @@
                 max-height: 40px;
             }
         }
+
+        /* ========== ESTILOS DEL OVERLAY DE BÚSQUEDA (MEJORADO) ========== */
+        #search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8);
+            transform: translateY(-100%);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            opacity: 0;
+            z-index: 40;
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 2rem;
+            pointer-events: none;
+        }
+
+        #search-overlay.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+            padding: 1.5rem 2rem;
+        }
+
+        @media (max-width: 768px) {
+            #search-overlay.active {
+                max-height: calc(100vh - 64px);
+                padding: 1rem 1.25rem;
+            }
+        }
+
+        /* Contenedor interno */
+        #search-overlay .search-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Barra de búsqueda y botón cerrar */
+        #search-input {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 0px;
+            padding: 0.6rem 1rem 0.6rem 2.8rem;
+            font-size: 0.9rem;
+            color: #fff;
+            width: 100%;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            caret-color: #fff;
+        }
+
+        #search-input:focus {
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+            outline: none;
+        }
+
+        #search-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 400;
+        }
+
+        .search-close-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .search-close-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .search-close-btn .material-symbols-outlined {
+            font-size: 28px;
+            color: #fff;
+        }
+
+        /* Lista de productos (para "Más vendidos" y resultados) */
+        .search-product-list {
+            max-height: 350px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .search-product-list::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .search-product-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .search-product-list::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 10px;
+        }
+
+        .search-product-list::-webkit-scrollbar-thumb:hover {
+            background: #666;
+        }
+
+        .search-product-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.6rem 0.8rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+        }
+
+        .search-product-item:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateX(4px);
+        }
+
+        .search-product-item .item-img {
+            width: 70px;
+            height: 70px;
+            flex-shrink: 0;
+            background: #222;
+            overflow: hidden;
+        }
+
+        .search-product-item .item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .search-product-item .item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .search-product-item .item-info .item-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        .search-product-item .item-info .item-price {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: #fff;
+            margin-top: 0.1rem;
+        }
+
+        .search-product-item .arrow-icon {
+            color: #fff;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+            flex-shrink: 0;
+        }
+
+        .search-product-item:hover .arrow-icon {
+            opacity: 1;
+        }
+
+        /* Categorías en el panel izquierdo (solo desktop) */
+        .search-category-link {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.2s;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .search-category-link:hover {
+            color: #fff;
+        }
+
+        .search-category-link .count {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+        }
+
+        /* Producto destacado (estilo mega menú) */
+        .featured-mega {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .featured-mega .featured-card {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: #1f1f1f;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: border-color 0.3s, transform 0.3s ease;
+        }
+
+        .featured-mega .featured-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+
+        .featured-mega .featured-card .featured-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
+        }
+
+        .featured-mega .featured-card:hover .featured-bg {
+            transform: scale(1.05);
+        }
+
+        .featured-mega .featured-card .featured-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 60%);
+        }
+
+        .featured-mega .featured-card .featured-content {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+        }
+
+        .featured-mega .featured-card .featured-content .tag {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .featured-mega .featured-card .featured-content h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0.25rem 0 0.1rem;
+            line-height: 1.2;
+        }
+
+        .featured-mega .featured-card .featured-content p {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .featured-mega .destacado-link {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+            margin-top: 0.5rem;
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        .featured-mega .destacado-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.5);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .featured-mega .destacado-link:hover {
+            color: #fff;
+        }
+
+        .featured-mega .destacado-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Ocultar columna izquierda en móvil */
+        .search-sidebar {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .search-sidebar {
+                display: none !important;
+            }
+        }
+
+        /* Títulos de sección */
+        .search-section-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Scroll del overlay */
+        #search-overlay::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        #search-overlay::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        #search-overlay::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 10px;
+        }
+
+        #search-overlay::-webkit-scrollbar-thumb:hover {
+            background: #666;
+        }
     </style>
 </head>
 
@@ -1100,28 +1452,32 @@
                         href="#">SOPORTE</a>
                 </nav>
                 <div class="flex items-center gap-3 md:gap-5 social-icons text-white/70">
-                    <a href="#" target="_blank" rel="noopener noreferrer"
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/hornosroca?locale=es_LA" target="_blank" rel="noopener noreferrer"
                         class="hover:text-white transition-opacity opacity-70 hover:opacity-100" aria-label="Facebook">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
                     </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer"
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/hornosroca/" target="_blank" rel="noopener noreferrer"
                         class="hover:text-white transition-opacity opacity-70 hover:opacity-100" aria-label="Instagram">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                         </svg>
                     </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer"
+                    <!-- TikTok -->
+                    <a href="https://www.tiktok.com/@hornos.roca" target="_blank" rel="noopener noreferrer"
                         class="hover:text-white transition-opacity opacity-70 hover:opacity-100" aria-label="TikTok">
                         <svg class="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24">
                             <path
                                 d="M12.525.02c1.31-.02 2.61-.01 3.91-.01.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.21-1.35 2.06-.11.97.23 1.99.94 2.63.77.71 1.86.88 2.85.54.59-.2 1.06-.67 1.39-1.22.21-.48.31-1.01.32-1.53-.02-5.07-.02-10.15-.02-15.22z" />
                         </svg>
                     </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer"
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/@HornosRoca" target="_blank" rel="noopener noreferrer"
                         class="hover:text-white transition-opacity opacity-70 hover:opacity-100" aria-label="YouTube">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
@@ -1161,15 +1517,15 @@
 
             <div class="flex items-center gap-3">
                 <div class="hidden md:flex items-center gap-3 md:gap-6 text-primary">
-                    <button class="hover:opacity-60 transition-opacity" aria-label="Buscar">
+                    <button id="searchTriggerDesktop" class="hover:opacity-60 transition-opacity" aria-label="Buscar">
                         <span class="material-symbols-outlined">search</span>
                     </button>
                     <button
                         class="btn-cotizar-desktop border border-white/30 px-5 py-2.5 text-sm uppercase tracking-[0.15em] hover:bg-white hover:text-black transition-colors">Cotizar</button>
                 </div>
                 <div class="flex items-center justify-center gap-5 md:hidden">
-                    <button class="text-primary hover:opacity-60 transition-opacity flex items-center"
-                        aria-label="Buscar">
+                    <button id="searchTriggerMobile"
+                        class="text-primary hover:opacity-60 transition-opacity flex items-center" aria-label="Buscar">
                         <span class="material-symbols-outlined icono-mobile">search</span>
                     </button>
                     <button id="menuHamburguesa" class="text-primary focus:outline-none flex items-center"
@@ -1385,29 +1741,29 @@
                     href="#contacto">CONTACTANOS</a>
                 <hr class="border-white/10" />
                 <div class="flex items-center gap-4 pt-2">
-                    <a href="#" target="_blank" class="text-white/70 hover:text-white transition-colors"
-                        aria-label="Facebook">
+                    <a href="https://www.facebook.com/hornosroca?locale=es_LA" target="_blank"
+                        class="text-white/70 hover:text-white transition-colors" aria-label="Facebook">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                             <path
                                 d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
                     </a>
-                    <a href="#" target="_blank" class="text-white/70 hover:text-white transition-colors"
-                        aria-label="Instagram">
+                    <a href="https://www.instagram.com/hornosroca/" target="_blank"
+                        class="text-white/70 hover:text-white transition-colors" aria-label="Instagram">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                             <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                         </svg>
                     </a>
-                    <a href="#" target="_blank" class="text-white/70 hover:text-white transition-colors"
-                        aria-label="TikTok">
+                    <a href="https://www.tiktok.com/@hornos.roca" target="_blank"
+                        class="text-white/70 hover:text-white transition-colors" aria-label="TikTok">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                             <path
                                 d="M12.525.02c1.31-.02 2.61-.01 3.91-.01.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.21-1.35 2.06-.11.97.23 1.99.94 2.63.77.71 1.86.88 2.85.54.59-.2 1.06-.67 1.39-1.22.21-.48.31-1.01.32-1.53-.02-5.07-.02-10.15-.02-15.22z" />
                         </svg>
                     </a>
-                    <a href="#" target="_blank" class="text-white/70 hover:text-white transition-colors"
-                        aria-label="YouTube">
+                    <a href="https://www.youtube.com/@HornosRoca" target="_blank"
+                        class="text-white/70 hover:text-white transition-colors" aria-label="YouTube">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                             <path
                                 d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -1709,7 +2065,6 @@
                 <div class="lg:col-span-7">
                     <div class="bg-surface-container-low overflow-hidden hover-scale relative aspect-square rounded-sm">
                         <img id="detalle-imagen-principal" class="w-full h-full object-cover" src="" alt="Producto" />
-                        <!-- Eliminada la etiqueta "Edición Limitada" -->
                         <!-- Flechas del carrusel -->
                         <button id="carruselIzq" class="carrusel-btn carrusel-btn-left">
                             <span class="material-symbols-outlined">chevron_left</span>
@@ -1810,17 +2165,88 @@
         </main>
     </div>
 
-    <!-- ===== FOOTER A ANCHO COMPLETO (estilo Grillcorp) ===== -->
+    <!-- ===== OVERLAY DE BÚSQUEDA (MEJORADO) ===== -->
+    <div id="search-overlay" class="no-scrollbar">
+        <div class="search-inner">
+            <!-- Barra de búsqueda + cerrar -->
+            <div class="flex items-center gap-4 mb-4">
+                <div class="relative flex-1">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/40"
+                        style="font-size:20px;">search</span>
+                    <input id="search-input"
+                        class="w-full bg-transparent border-b border-white/20 py-2 pl-10 pr-4 text-white placeholder:text-white/40 focus:border-white/60 transition-colors"
+                        placeholder="Buscar Hornos o Accesorios..." type="text"
+                        style="caret-color: #fff; font-size: 0.95rem;">
+                </div>
+                <button class="search-close-btn" id="search-close">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- Contenido principal: desktop 20% / 80%, móvil solo 100% -->
+            <div class="flex flex-col md:flex-row gap-6">
+                <!-- Columna izquierda (solo visible en desktop) -->
+                <div class="search-sidebar md:w-[20%] flex-shrink-0 space-y-6">
+                    <!-- Categorías -->
+                    <div>
+                        <h4 class="search-section-title">CATEGORÍAS</h4>
+                        <ul class="space-y-2">
+                            <li><a class="search-category-link" href="#" data-filtro="hornos">Hornos <span class="count"
+                                        id="contador-hornos">(0)</span></a></li>
+                            <li><a class="search-category-link" href="#" data-filtro="accesorios">Accesorios <span
+                                        class="count" id="contador-accesorios">(0)</span></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Producto destacado (estilo mega menú) -->
+                    <div class="featured-mega">
+                        <h4 class="search-section-title">DESTACADO</h4>
+                        <div id="search-featured-content" class="featured-card" data-product-id="colosso">
+                            <!-- se llena con JS -->
+                        </div>
+                        <a id="search-featured-link" class="destacado-link" href="#" data-product-id="colosso">Ver
+                            detalles →</a>
+                    </div>
+                </div>
+
+                <!-- Columna derecha (80% en desktop, 100% en móvil) -->
+                <div class="md:w-[80%] flex-1 min-w-0">
+                    <!-- Vista por defecto: Más vendidos (lista con imagen 70px) -->
+                    <div id="search-default-view">
+                        <h4 class="search-section-title">MÁS VENDIDOS</h4>
+                        <div id="search-best-sellers" class="search-product-list">
+                            <!-- se llena con JS (3 items) -->
+                        </div>
+                    </div>
+
+                    <!-- Vista de resultados (lista con imagen 70px) -->
+                    <div class="hidden" id="search-results-view">
+                        <h4 class="search-section-title">COINCIDENCIAS ENCONTRADAS (<span id="result-count">0</span>)
+                        </h4>
+                        <div id="search-results-list" class="search-product-list">
+                            <!-- se llena con JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER A ANCHO COMPLETO (adaptado con información real) ===== -->
     <footer class="footer-grillcorp">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Top Bar con redes, logo y envíos -->
             <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-800 pb-6 mb-10">
                 <!-- Redes Sociales -->
                 <div class="flex space-x-6 mb-6 md:mb-0">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/hornosroca?locale=es_LA" target="_blank" class="social-icon"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/hornosroca/" target="_blank" class="social-icon"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@HornosRoca" target="_blank" class="social-icon"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@hornos.roca" target="_blank" class="social-icon"><i
+                            class="fab fa-tiktok"></i></a>
                 </div>
                 <!-- Logo -->
                 <div class="logo-placeholder mb-6 md:mb-0">
@@ -1833,41 +2259,45 @@
                 </div>
             </div>
 
-            <!-- Columnas de enlaces -->
+            <!-- Columnas de enlaces (con información real) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
                 <!-- Nuestra tienda -->
                 <div>
                     <h3 class="footer-heading">Nuestra tienda</h3>
                     <div class="footer-info-text">
                         <i class="fas fa-map-marker-alt w-5 text-center"></i>
-                        <span>Av. de las Artes Norte 961 - San Borja</span>
+                        <span>Morropon 19, Santiago de Surco, Lima, Perú</span>
                     </div>
                     <div class="footer-info-text">
                         <i class="fas fa-phone-alt w-5 text-center"></i>
-                        <span>01 9006949 / 992 768 321</span>
+                        <span>+51 952 363 833</span>
                     </div>
                     <div class="footer-info-text">
                         <i class="far fa-envelope w-5 text-center"></i>
-                        <a href="mailto:tienda@hornosroca.pe">tienda@hornosroca.pe</a>
+                        <a href="mailto:grupohornosroca@gmail.com">grupohornosroca@gmail.com</a>
+                    </div>
+                    <div class="footer-info-text">
+                        <i class="far fa-clock w-5 text-center"></i>
+                        <span>Lun – Sab 9:00 a.m. – 6:00 p.m.</span>
                     </div>
                 </div>
                 <!-- Productos -->
                 <div>
                     <h3 class="footer-heading">Productos</h3>
                     <nav>
-                        <a class="footer-link" href="#">Cajas Chinas</a>
-                        <a class="footer-link" href="#">Parrillas</a>
-                        <a class="footer-link" href="#">Ahumadores</a>
-                        <a class="footer-link" href="#">Kamados</a>
-                        <a class="footer-link" href="#">Accesorios</a>
-                        <a class="footer-link" href="#">Línea Inoxidable</a>
+                        <a class="footer-link" href="#products"
+                            onclick="document.getElementById('filtroHornos').click(); return false;">Hornos</a>
+                        <a class="footer-link" href="#products"
+                            onclick="document.getElementById('filtroAccesorios').click(); return false;">Accesorios</a>
+                        <a class="footer-link" href="#">Línea Profesional</a>
+                        <a class="footer-link" href="#">Personalización</a>
                     </nav>
                 </div>
                 <!-- Sobre Nosotros -->
                 <div>
                     <h3 class="footer-heading">Sobre Hornos Roca</h3>
                     <nav>
-                        <a class="footer-link" href="#">Nosotros</a>
+                        <a class="footer-link" href="#about">Nosotros</a>
                         <a class="footer-link" href="#">¿Cómo comprar?</a>
                         <a class="footer-link" href="#">Ventas corporativas</a>
                         <a class="footer-link" href="#">Blog</a>
@@ -1878,7 +2308,7 @@
                     <h3 class="footer-heading">Atención al Cliente</h3>
                     <div class="footer-info-text">
                         <i class="fas fa-phone-alt w-5 text-center"></i>
-                        <span>958 907 647 / 992 768 321</span>
+                        <span>+51 952 363 833</span>
                     </div>
                     <div class="footer-info-text">
                         <i class="far fa-envelope w-5 text-center"></i>
@@ -2671,15 +3101,12 @@
         // Botón "Ver Accesorios / Ver Hornos" (dinámico)
         btnVerAccesorios.addEventListener('click', function () {
             const accion = this.dataset.accion; // 'accesorios' o 'hornos'
-            // Mostrar vista principal sin scroll automático
             mostrarVistaPrincipal(false);
-            // Activar el filtro correspondiente
             if (accion === 'accesorios') {
                 filtroAccesorios.click();
             } else {
                 filtroHornos.click();
             }
-            // Scroll a la sección de productos
             const target = document.getElementById('products');
             if (target) {
                 const headerHeight = document.querySelector('header')?.offsetHeight || 80;
@@ -2806,7 +3233,7 @@
             });
         });
 
-        // ===== NAVEGACIÓN DESDE EL MENÚ (incluye vista detalle) =====
+        // ===== NAVEGACIÓN DESDE EL MENÚ =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -2815,22 +3242,13 @@
                 const target = document.querySelector(targetId);
                 if (!target) return;
 
-                // Si estamos en vista detalle o catálogo, mostrar la vista principal sin scroll
-                if (!vistaPrincipal.classList.contains('hidden')) {
-                    // ya estamos en principal
-                } else {
+                if (vistaPrincipal.classList.contains('hidden')) {
                     mostrarVistaPrincipal(false);
                 }
-
-                // Cerrar menú móvil si está abierto
                 if (mobileOpen) cerrarMenuMobile();
-
-                // Cerrar mega menú si está abierto
                 if (!megaMenu.classList.contains('hidden')) {
                     megaMenu.classList.add('hidden');
                 }
-
-                // Scroll suave al target
                 const header = document.querySelector('header');
                 const headerHeight = header ? header.offsetHeight : 80;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
@@ -2864,6 +3282,214 @@
                 window._heroInterval = interval;
             }
         }
+
+        // ====================================================
+        // ===== LÓGICA DEL OVERLAY DE BÚSQUEDA (MEJORADA) =====
+        // ====================================================
+        (function () {
+            const searchOverlay = document.getElementById('search-overlay');
+            const searchInput = document.getElementById('search-input');
+            const searchClose = document.getElementById('search-close');
+            const searchTriggerDesktop = document.getElementById('searchTriggerDesktop');
+            const searchTriggerMobile = document.getElementById('searchTriggerMobile');
+            const defaultView = document.getElementById('search-default-view');
+            const resultsView = document.getElementById('search-results-view');
+            const resultsList = document.getElementById('search-results-list');
+            const resultCount = document.getElementById('result-count');
+
+            const bestSellersContainer = document.getElementById('search-best-sellers');
+            const featuredContainer = document.getElementById('search-featured-content');
+            const featuredLink = document.getElementById('search-featured-link');
+            const contadorHornos = document.getElementById('contador-hornos');
+            const contadorAccesorios = document.getElementById('contador-accesorios');
+
+            const totalHornos = Object.values(productosDetalle).filter(p => p.tipo === 'horno').length;
+            const totalAccesorios = Object.values(productosDetalle).filter(p => p.tipo === 'accesorio').length;
+            if (contadorHornos) contadorHornos.textContent = `(${totalHornos})`;
+            if (contadorAccesorios) contadorAccesorios.textContent = `(${totalAccesorios})`;
+
+            let featuredProductId = 'colosso'; // por defecto
+
+            function abrirBusqueda() {
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 80;
+                searchOverlay.style.top = headerHeight + 'px';
+                searchOverlay.style.maxHeight = `calc(100vh - ${headerHeight}px)`;
+                searchOverlay.classList.add('active');
+                setTimeout(() => searchInput.focus(), 300);
+                if (!megaMenu.classList.contains('hidden')) megaMenu.classList.add('hidden');
+                if (mobileOpen) cerrarMenuMobile();
+            }
+
+            function cerrarBusqueda() {
+                searchOverlay.classList.remove('active');
+                setTimeout(() => {
+                    searchOverlay.style.top = '0px';
+                    searchOverlay.style.maxHeight = '0';
+                }, 500);
+                searchInput.value = '';
+                defaultView.classList.remove('hidden');
+                resultsView.classList.add('hidden');
+                renderBestSellers();
+                renderFeatured();
+            }
+
+            searchTriggerDesktop.addEventListener('click', abrirBusqueda);
+            searchTriggerMobile.addEventListener('click', abrirBusqueda);
+            searchClose.addEventListener('click', cerrarBusqueda);
+            searchOverlay.addEventListener('click', function (e) {
+                if (e.target === searchOverlay) cerrarBusqueda();
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && searchOverlay.classList.contains('active')) cerrarBusqueda();
+            });
+
+            // Renderizar más vendidos (3 items en lista con imagen 70px)
+            function renderBestSellers() {
+                const hornos = Object.values(productosDetalle).filter(p => p.tipo === 'horno');
+                const top = hornos.slice(0, 3);
+                bestSellersContainer.innerHTML = top.map(p => {
+                    const img = p.imagenes && p.imagenes.length ? p.imagenes[0] : '';
+                    return `
+                        <div class="search-product-item" data-product-id="${p.id}">
+                            <div class="item-img">
+                                <img src="${img}" alt="${p.nombre}" />
+                            </div>
+                            <div class="item-info">
+                                <div class="item-name">${p.nombre}</div>
+                                <div class="item-price">${p.precioStr}</div>
+                            </div>
+                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                        </div>
+                    `;
+                }).join('');
+
+                bestSellersContainer.querySelectorAll('[data-product-id]').forEach(el => {
+                    el.addEventListener('click', function () {
+                        const id = this.dataset.productId;
+                        if (id && productosDetalle[id]) {
+                            cerrarBusqueda();
+                            mostrarDetalle(id);
+                        }
+                    });
+                });
+            }
+
+            // Renderizar producto destacado (estilo mega menú)
+            function renderFeatured() {
+                const hornos = Object.values(productosDetalle).filter(p => p.tipo === 'horno');
+                if (hornos.length === 0) return;
+                const featured = hornos[0]; // siempre el primero
+                featuredProductId = featured.id;
+                const img = featured.imagenes && featured.imagenes.length ? featured.imagenes[0] : '';
+                featuredContainer.innerHTML = `
+                    <div class="featured-bg" style="background-image: url('${img}');"></div>
+                    <div class="featured-overlay"></div>
+                    <div class="featured-content">
+                        <p class="tag">NUEVO</p>
+                        <h4>${featured.nombre}</h4>
+                        <p>Horno Artesanal 100 cm</p>
+                    </div>
+                `;
+                featuredContainer.dataset.productId = featured.id;
+                featuredContainer.addEventListener('click', function (e) {
+                    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') e.stopPropagation();
+                    const id = this.dataset.productId;
+                    if (id && productosDetalle[id]) {
+                        cerrarBusqueda();
+                        mostrarDetalle(id);
+                    }
+                });
+                featuredLink.dataset.productId = featured.id;
+                featuredLink.href = '#';
+                featuredLink.textContent = 'Ver detalles →';
+                featuredLink.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const id = this.dataset.productId;
+                    if (id && productosDetalle[id]) {
+                        cerrarBusqueda();
+                        mostrarDetalle(id);
+                    }
+                });
+            }
+
+            // Búsqueda en tiempo real (resultados con imagen 70px)
+            function realizarBusqueda(termino) {
+                termino = termino.trim().toLowerCase();
+                if (termino.length <= 2) {
+                    defaultView.classList.remove('hidden');
+                    resultsView.classList.add('hidden');
+                    return;
+                }
+
+                const resultados = Object.values(productosDetalle).filter(p => {
+                    const nombre = p.nombre.toLowerCase();
+                    const categoria = (p.categoria || '').toLowerCase();
+                    return nombre.includes(termino) || categoria.includes(termino);
+                });
+
+                defaultView.classList.add('hidden');
+                resultsView.classList.remove('hidden');
+                resultCount.textContent = resultados.length;
+
+                if (resultados.length === 0) {
+                    resultsList.innerHTML = `<p class="text-white/50 text-center py-4">No se encontraron productos para "${termino}".</p>`;
+                } else {
+                    resultsList.innerHTML = resultados.map(p => {
+                        const img = p.imagenes && p.imagenes.length ? p.imagenes[0] : '';
+                        return `
+                            <div class="search-product-item" data-product-id="${p.id}">
+                                <div class="item-img">
+                                    <img src="${img}" alt="${p.nombre}" />
+                                </div>
+                                <div class="item-info">
+                                    <div class="item-name">${p.nombre}</div>
+                                    <div class="item-price">${p.precioStr}</div>
+                                </div>
+                                <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                            </div>
+                        `;
+                    }).join('');
+
+                    resultsList.querySelectorAll('[data-product-id]').forEach(el => {
+                        el.addEventListener('click', function () {
+                            const id = this.dataset.productId;
+                            if (id && productosDetalle[id]) {
+                                cerrarBusqueda();
+                                mostrarDetalle(id);
+                            }
+                        });
+                    });
+                }
+            }
+
+            searchInput.addEventListener('input', function (e) {
+                realizarBusqueda(e.target.value);
+            });
+
+            // Inicializar
+            renderBestSellers();
+            renderFeatured();
+
+            // Filtros de categoría en el overlay (enlaces)
+            document.querySelectorAll('[data-filtro]').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const tipo = this.dataset.filtro;
+                    cerrarBusqueda();
+                    mostrarVistaPrincipal(false);
+                    if (tipo === 'hornos') filtroHornos.click();
+                    else if (tipo === 'accesorios') filtroAccesorios.click();
+                    const target = document.getElementById('products');
+                    if (target) {
+                        const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                });
+            });
+
+        })();
     </script>
 
 </body>
