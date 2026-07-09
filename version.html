@@ -1844,8 +1844,7 @@
                 </div>
                 <div
                     class="w-full aspect-[16/9] bg-surface-container-low overflow-hidden border border-outline-variant/20">
-                    <img class="w-full h-full object-cover"
-                        src="img/historia.png"
+                    <img class="w-full h-full object-cover" src="img/historia.png"
                         alt="Detalle de perilla de control en acero inoxidable" />
                 </div>
             </div>
@@ -2646,7 +2645,7 @@
                 precioStr: 'S/ 31.90',
                 descripcion: 'El Soporte para Bandeja de Pizza de Hornos Roca está pensado para el momento más importante: servir. Te permite llevar la pizza a la mesa con una presentación más ordenada y práctica, manteniendo la bandeja estable y elevándola para un servicio cómodo. Además, incorpora un porta condimentos pequeño para tener a mano lo esencial (ají, orégano, aceite, etc.) y mejorar la experiencia al momento de comer.',
                 imagenes: asegurar4Imagenes([
-                    'https://lacarboneragrill.pe/cdn/shop/files/Soporte-bandeja-para-pizza_8fb3e971-2062-4e76-9262-67b936cb3ec7_720x.jpg?v=1766075184',
+                    'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/basePizzera_800x800.png?v=1783632783',
                     'https://lacarboneragrill.pe/cdn/shop/files/Soporte-bandeja-para-pizza_2_720x.jpg?v=1766075184'
                 ]),
                 caracteristicas: [
@@ -3036,9 +3035,9 @@
                 });
             }
 
-            if (producto.vidaUtil) {  
+            if (producto.vidaUtil) {
                 secciones.push({
-                    titulo: 'Vida útil', 
+                    titulo: 'Vida útil',
                     contenido: producto.vidaUtil.map(item => `<li>${item}</li>`).join('')
                 });
             }
@@ -3434,7 +3433,7 @@
             { id: 'ichu', nombre: 'Horno Artesanal – Modelo Ichu – 100 cm', precio: 'S/ 4,330.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu5_720x.png?v=1783367134' },
             { id: 'napolitano', nombre: 'Horno Artesanal – Modelo Napolitano – 100 cm', precio: 'S/ 4,420.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/horno-artesanal-modelo-napolitano-1_d61f4c95-7537-4c69-a68f-28fec4d9b62b_1066x.jpg?v=1757610659' },
             { id: 'di-bronzo', nombre: 'Horno Premium – Modelo Di Bronzo – 57×57×32 cm', precio: 'S/ 3,900.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/diBRONZO1_1066x.png?v=1783366601' },
-            { id: 'soporte-pizza', nombre: 'Soporte para Bandeja de Pizza con Porta Condimentos', precio: 'S/ 31.90', categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/Soporte-bandeja-para-pizza_8fb3e971-2062-4e76-9262-67b936cb3ec7_720x.jpg?v=1766075184' },
+            { id: 'soporte-pizza', nombre: 'Soporte para Bandeja de Pizza con Porta Condimentos', precio: 'S/ 31.90', categoria: 'accesorios', imagen: 'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/basePizzera_800x800.png?v=1783632783' },
             { id: 'pala-pizzera', nombre: 'Pala Pizzera AISI 304', precio: 'S/ 277.90', categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/pala-pizzera_720x.jpg?v=1766078938' },
             { id: 'bandeja', nombre: 'Bandeja para Hornos de Barro', precio: 'S/ 119.90', categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/bandeja-para-horno_720x.jpg?v=1766077876' },
             { id: 'puerta-inox', nombre: 'Puerta de Acero Inoxidable para Horno Artesanal con Termómetro', precio: 'S/ 749.00', categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/puerta-para-horno-inoxidable_720x.jpg?v=1766089332' },
@@ -3841,18 +3840,38 @@
             }
 
             // ===== BÚSQUEDA EN TIEMPO REAL =====
+            function normalizarTexto(texto) {
+                return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9\s]/g, ' ');
+            }
+
             function realizarBusqueda(termino) {
-                termino = termino.trim().toLowerCase();
+                termino = termino.trim();
                 if (termino.length <= 2) {
                     defaultView.classList.remove('hidden');
                     resultsView.classList.add('hidden');
                     return;
                 }
 
-                const resultados = Object.values(productosDetalle).filter(p => {
-                    const nombre = p.nombre.toLowerCase();
-                    const categoria = (p.categoria || '').toLowerCase();
-                    return nombre.includes(termino) || categoria.includes(termino);
+                const palabras = normalizarTexto(termino).split(/\s+/).filter(p => p.length > 0);
+                const productos = Object.values(productosDetalle);
+
+                const resultados = productos.filter(p => {
+                    const nombre = normalizarTexto(p.nombre);
+                    const categoria = normalizarTexto(p.categoria || '');
+                    const precioNum = p.precioStr.replace(/[^0-9]/g, '');
+                    return palabras.some(pal =>
+                        nombre.includes(pal) ||
+                        categoria.includes(pal) ||
+                        precioNum.includes(pal)
+                    );
+                });
+
+                resultados.sort((a, b) => {
+                    const aNombre = normalizarTexto(a.nombre);
+                    const bNombre = normalizarTexto(b.nombre);
+                    const aMatch = palabras.some(p => aNombre.includes(p));
+                    const bMatch = palabras.some(p => bNombre.includes(p));
+                    return (aMatch && !bMatch) ? -1 : (!aMatch && bMatch) ? 1 : 0;
                 });
 
                 defaultView.classList.add('hidden');
@@ -3865,17 +3884,17 @@
                     resultsList.innerHTML = resultados.map(p => {
                         const img = p.imagenes && p.imagenes.length ? p.imagenes[0] : '';
                         return `
-                    <div class="search-product-item" data-product-id="${p.id}">
-                        <div class="item-img">
-                            <img src="${img}" alt="${p.nombre}" />
-                        </div>
-                        <div class="item-info">
-                            <div class="item-name">${p.nombre}</div>
-                            <div class="item-price">${p.precioStr}</div>
-                        </div>
-                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                <div class="search-product-item" data-product-id="${p.id}">
+                    <div class="item-img">
+                        <img src="${img}" alt="${p.nombre}" />
                     </div>
-                `;
+                    <div class="item-info">
+                        <div class="item-name">${p.nombre}</div>
+                        <div class="item-price">${p.precioStr}</div>
+                    </div>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                </div>
+            `;
                     }).join('');
 
                     resultsList.querySelectorAll('[data-product-id]').forEach(el => {
