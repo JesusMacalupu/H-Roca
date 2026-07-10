@@ -1439,6 +1439,60 @@
         #search-overlay::-webkit-scrollbar-thumb:hover {
             background: #666;
         }
+
+        /* ===== CARRUSEL DE TESTIMONIOS - FLUIDO, SIN FADE ===== */
+        .testimonios-wrapper {
+            position: relative;
+        }
+
+        .testimonio-track {
+            display: flex;
+            gap: 1rem;
+            /* 16px */
+            width: fit-content;
+            animation: scrollTestimonios 16s linear infinite;
+            will-change: transform;
+        }
+
+        /* En desktop el gap y duración son diferentes */
+        @media (min-width: 768px) {
+            .testimonio-track {
+                gap: 1.5rem;
+                /* 24px */
+                animation-duration: 20s;
+            }
+        }
+
+        /* Pausar al hacer hover */
+        .testimonios-wrapper:hover .testimonio-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollTestimonios {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Ajustes para móvil: más alto y más rápido */
+        @media (max-width: 640px) {
+            .testimonio-item {
+                width: 14rem;
+                /* 224px */
+                height: 26rem;
+                /* 416px - más alto */
+            }
+
+            .testimonio-track {
+                animation-duration: 10s;
+                /* más rápida en móvil */
+                gap: 0.75rem;
+            }
+        }
     </style>
 </head>
 
@@ -1890,6 +1944,81 @@
             </div>
         </section>
 
+        <!-- ===== TESTIMONIOS - CARRUSEL INFINITO Y FLUIDO (más alto, sin fade) ===== -->
+        <section class="relative z-10 bg-black border-t border-white/10 py-stack-section overflow-hidden">
+            <div class="max-w-container-max mx-auto px-4 md:px-edge-margin">
+                <div class="text-center mb-12">
+                    <span
+                        class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.3em]">Testimonios</span>
+                    <h2 class="font-display-lg text-headline-md md:text-display-lg text-primary mt-3">Lo que dicen
+                        nuestros clientes</h2>
+                    <p class="font-body-md text-on-surface-variant max-w-lg mx-auto mt-4 opacity-80">
+                        Experiencias reales de quienes confían en Hornos Roca para sus creaciones culinarias.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Contenedor del carrusel -->
+            <div class="testimonios-wrapper w-full overflow-hidden relative">
+                <div class="testimonio-track flex gap-4 md:gap-6">
+                    <!-- Primera tanda de 6 imágenes -->
+                    <div class="flex gap-4 md:gap-6 flex-shrink-0">
+                        <div
+                            class="testimonio-item w-56 md:w-80 h-[26rem] md:h-96 flex-shrink-0 rounded-sm overflow-hidden bg-black/40">
+                            <img src="img/cliente01.png" alt="Cliente 1" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="testimonio-item w-56 md:w-80 h-[26rem] md:h-96 flex-shrink-0 rounded-sm overflow-hidden bg-black/40">
+                            <img src="img/cliente02.png" alt="Cliente 2" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="testimonio-item w-56 md:w-80 h-[26rem] md:h-96 flex-shrink-0 rounded-sm overflow-hidden bg-black/40">
+                            <img src="img/cliente03.png" alt="Cliente 3" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="testimonio-item w-56 md:w-80 h-[26rem] md:h-96 flex-shrink-0 rounded-sm overflow-hidden bg-black/40">
+                            <img src="img/cliente04.png" alt="Cliente 4" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="testimonio-item w-56 md:w-80 h-[26rem] md:h-96 flex-shrink-0 rounded-sm overflow-hidden bg-black/40">
+                            <img src="img/cliente05.png" alt="Cliente 5" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="testimonio-item w-56 md:w-80 h-[26rem] md:h-96 flex-shrink-0 rounded-sm overflow-hidden bg-black/40">
+                            <img src="img/ejemplo.png" alt="Cliente 6" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+                    <!-- Duplicado exacto para efecto infinito -->
+                    <div class="flex gap-4 md:gap-6 flex-shrink-0">
+                        <div
+                            class="testimonio-item w-56 md:w-80 h-[26rem] md:h-96 flex-shrink-0 rounded-sm overflow-hidden bg-black/40">
+                            <img src="img/cliente01.png" alt="Cliente 1" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="testimonio-item w-56 md:w-80 h-[26rem] md:h-96 flex-shrink-0 rounded-sm overflow-hidden bg-black/40">
+                            <img src="img/cliente02.png" alt="Cliente 2" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="testimonio-item w-56 md:w-80 h-[26rem] md:h-96 flex-shrink-0 rounded-sm overflow-hidden bg-black/40">
+                            <img src="img/cliente03.png" alt="Cliente 3" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="testimonio-item w-56 md:w-80 h-[26rem] md:h-96 flex-shrink-0 rounded-sm overflow-hidden bg-black/40">
+                            <img src="img/cliente04.png" alt="Cliente 4" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="testimonio-item w-56 md:w-80 h-[26rem] md:h-96 flex-shrink-0 rounded-sm overflow-hidden bg-black/40">
+                            <img src="img/cliente05.png" alt="Cliente 5" class="w-full h-full object-cover" />
+                        </div>
+                        <div
+                            class="testimonio-item w-56 md:w-80 h-[26rem] md:h-96 flex-shrink-0 rounded-sm overflow-hidden bg-black/40">
+                            <img src="img/ejemplo.png" alt="Cliente 6" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ===== PLANIFICA TU VISIÓN CON IMAGEN DE FONDO (id="planifica") ===== -->
         <section id="planifica" class="relative z-10 py-stack-section overflow-hidden bg-cover bg-center bg-no-repeat"
             style="background-image: url('img/fondoInicio.png');">
@@ -2099,6 +2228,9 @@
                         <p id="detalle-precio"
                             class="font-price-display text-display-lg-mobile md:text-display-lg text-primary tracking-tighter mt-2 pt-4">
                             S/ 0.00</p>
+
+                        <!-- ===== NUEVO: Contenedor de opciones (solo para Ichu) con mayor separación ===== -->
+                        <div id="opciones-container" class="mt-12 pt-4 flex flex-wrap gap-2"></div>
                     </div>
                     <div class="h-px bg-outline-variant w-full"></div>
                     <div class="space-y-4">
@@ -2495,11 +2627,12 @@
                 porqueElegir: 'El Modelo Nina ofrece el balance perfecto entre tradición y estética, con materiales premium y una construcción artesanal que asegura rendimiento y durabilidad. Su diseño con arco frontal y acabados en mármol lo convierten en un horno que no solo cocina de forma excepcional, sino que también añade un toque distintivo a cualquier espacio. Fabricado en Perú por Hornos Roca, con estándares de calidad premium.'
             },
 
+            // ===== ICHU CON OPCIONES (NUEVO) =====
             'ichu': {
                 id: 'ichu',
                 tipo: 'horno',
                 combustible: 'leña',
-                nombre: 'Horno Artesanal – Modelo Ichu – 100 cm',
+                nombre: 'Horno Artesanal – Modelo Ichu – 100 cm', // este se sobrescribirá con la opción por defecto
                 categoria: 'Hornos a Leña',
                 precio: 4330.00,
                 precioStr: 'S/ 4,330.00',
@@ -2514,7 +2647,7 @@
                     'Nuestro revestimiento en paredes tiene un ancho entre 11 cm, 19 cm y 25 cm por lado de pared, dando hasta 8 a 10 horas de calor.',
                     'Enchape de papelma de mármol que permite un acabado de lujo y también mayor resistencia a la intemperie o cambios climáticos, debido a que la roca ofrece mayor resistencia que los azulejos.',
                     'Chimenea frontal oculta con regulador de tiro/damper para optimizar la combustión y la salida de humos.',
-                    'Aislamiento térmico de fibra cerámica (hasta 1200 °C), que mantiene la temperatura estable por horas.',
+                    'Aislamiento térmico de fibra cerámica (hasta 1260 °C), que mantiene la temperatura estable por horas.',
                     'Cúpula boleada en ladrillo térmico, diseñada para distribuir el calor de manera uniforme (no teniendo un diseño triangular).',
                     'Puerta con diseño único del modelo en acero inoxidable con sistema de regulación de ventilación para un control preciso del flujo de aire.',
                     'Piso de ladrillos refractarios de 1 1/2", que asegura cocción pareja y base crujiente.',
@@ -2558,7 +2691,47 @@
                     'Los tamaños de 1.30 a 2.00 metros son recomendados para uso de negocio por su espacio útil, porque genera mayor productividad.',
                     'Los tamaños de hornos desde 80 cm a 1.20 m son para uso familiar.'
                 ],
-                porqueElegir: 'Porque Elegir el Modelo Ichu: el horno que rinde homenaje a la cocina tradicional peruana con un diseño boleado que envuelve cada preparación en calor perfecto y un acabado premium que eleva cualquier espacio. Construido con materiales de alta calidad y opciones de combustión que se adaptan a ti, es la elección inteligente para quienes buscan rendimiento, estilo y durabilidad en un solo equipo. Fabricado en Perú por Hornos Roca, con el sello de la excelencia.'
+                porqueElegir: 'Porque Elegir el Modelo Ichu: el horno que rinde homenaje a la cocina tradicional peruana con un diseño boleado que envuelve cada preparación en calor perfecto y un acabado premium que eleva cualquier espacio. Construido con materiales de alta calidad y opciones de combustión que se adaptan a ti, es la elección inteligente para quienes buscan rendimiento, estilo y durabilidad en un solo equipo. Fabricado en Perú por Hornos Roca, con el sello de la excelencia.',
+
+                // ===== OPCIONES PARA ICHU (con nombreBoton y nombreCompleto) =====
+                opciones: [
+                    {
+                        nombreBoton: 'Ichu – 80 cm',
+                        nombreCompleto: 'Horno Artesanal – Modelo Ichu – 80 cm',
+                        precioStr: 'S/ 3,800.00',
+                        descripcion: 'Modelo 80 cm: ideal para espacios reducidos, mantiene el mismo rendimiento térmico y acabado premium.',
+                        imagenes: asegurar4Imagenes([
+                            '',
+                            '',
+                            '',
+                            ''
+                        ])
+                    },
+                    {
+                        nombreBoton: 'Ichu – 100 cm',
+                        nombreCompleto: 'Horno Artesanal – Modelo Ichu – 100 cm', // nombre original
+                        precioStr: 'S/ 4,330.00',
+                        descripcion: 'El Modelo Ichu, el horno artesanal de la sierra peruana con forma plana tipo iglú y esencia incaica, envuelve cada cocción en calor homogéneo gracias a su estructura boleada, fabricado con materiales nacionales e importados de alto rendimiento y acabados en papelma de mármol que le dan un nivel premium único, llevando con orgullo los colores de nuestra bandera para ofrecerte autenticidad, eficiencia y estética en un solo equipo, ideal para hogares, casas de campo, playa o negocios gourmet que buscan lo mejor del Perú.',
+                        imagenes: asegurar4Imagenes([
+                            'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu5_720x.png?v=1783367134',
+                            'img/historia.png',
+                            'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu3_1066x.png?v=1783367134',
+                            'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu4_720x.png?v=1783367134'
+                        ])
+                    },
+                    {
+                        nombreBoton: 'Ichu – 120 cm',
+                        nombreCompleto: 'Horno Artesanal – Modelo Ichu – 120 cm',
+                        precioStr: 'S/ 5,200.00',
+                        descripcion: 'Modelo 120 cm: mayor capacidad y superficie de cocción, perfecto para grandes reuniones o uso comercial intensivo.',
+                        imagenes: asegurar4Imagenes([
+                            '',
+                            '',
+                            '',
+                            ''
+                        ])
+                    }
+                ]
             },
 
             'napolitano': {
@@ -2652,7 +2825,6 @@
             },
 
             // ========== ACCESORIOS (datos previos sin modificar) ==========
-            // ========== ACCESORIOS ACTUALIZADOS ==========
             'soporte-pizza': {
                 id: 'soporte-pizza',
                 tipo: 'accesorio',
@@ -2944,15 +3116,26 @@
             if (window._heroInterval) clearInterval(window._heroInterval);
         }
 
+        // ===== FUNCIÓN mostrarDetalle CON OPCIONES PARA ICHU (con nombreBoton y nombreCompleto) =====
         function mostrarDetalle(id) {
             const producto = productosDetalle[id];
             if (!producto) return;
 
-            ocultarTodas();
-            vistaDetalle.classList.remove('hidden');
-            void vistaDetalle.offsetWidth;
-            vistaDetalle.classList.add('visible');
+            // --- INICIO: manejo de opciones (solo para ichu) ---
+            let selectedOptionIndex = 1; // por defecto seleccionamos la opción de 100 cm (índice 1)
+            if (producto.opciones && producto.opciones.length > 0 && producto.id === 'ichu') {
+                // Cargamos la opción de 100 cm (índice 1)
+                const defaultOpt = producto.opciones[1]; // la segunda opción es "Ichu – 100 cm"
+                // Sobrescribimos los campos del producto con los de la opción por defecto
+                producto.nombre = defaultOpt.nombreCompleto; // usamos nombreCompleto para el título
+                producto.precioStr = defaultOpt.precioStr;
+                producto.descripcion = defaultOpt.descripcion;
+                producto.imagenes = defaultOpt.imagenes;
+                selectedOptionIndex = 1;
+            }
+            // --- FIN: manejo de opciones ---
 
+            // Resto del código original (asignación de categoría, nombre, precio, etc.)
             document.getElementById('detalle-categoria').textContent = producto.categoria || 'Producto';
             document.getElementById('detalle-nombre').textContent = producto.nombre;
             document.getElementById('detalle-precio').textContent = producto.precioStr || 'S/ 0.00';
@@ -2962,6 +3145,7 @@
             indiceActual = 0;
             actualizarImagenPrincipal();
 
+            // Renderizar miniaturas
             const miniContainer = document.getElementById('detalle-miniaturas');
             miniContainer.innerHTML = '';
             const thumbnails = imagenesActuales.slice(0, 4);
@@ -2976,7 +3160,7 @@
                 miniContainer.appendChild(div);
             });
 
-            // --- Renderizado dinámico de acordeones (TODOS CERRADOS) ---
+            // --- Renderizado de acordeones (código existente) ---
             const acordeonContainer = document.getElementById('detalle-acordeones');
             acordeonContainer.innerHTML = '';
 
@@ -3078,18 +3262,16 @@
             secciones.forEach((sec) => {
                 const details = document.createElement('details');
                 details.className = 'group border-b border-outline-variant/30 hover:bg-surface-container-lowest transition-colors duration-300';
-                // No se agrega el atributo "open", así todos inician cerrados
 
                 const summary = document.createElement('summary');
                 summary.className = 'flex items-center justify-between py-4 cursor-pointer list-none';
                 summary.innerHTML = `
-      <span class="font-display-lg text-body-lg text-primary">${sec.titulo}</span>
-      <span class="material-symbols-outlined text-primary transition-transform duration-300 group-open:rotate-45">add</span>
-    `;
+                    <span class="font-display-lg text-body-lg text-primary">${sec.titulo}</span>
+                    <span class="material-symbols-outlined text-primary transition-transform duration-300 group-open:rotate-45">add</span>
+                `;
                 details.appendChild(summary);
 
                 const contentDiv = document.createElement('div');
-                // Agregamos padding interior (superior, lateral e inferior) para mejor legibilidad
                 contentDiv.className = 'px-4 pt-2 pb-4 space-y-2 text-body-md text-on-surface-variant';
                 if (sec.contenido.includes('<li>')) {
                     contentDiv.innerHTML = `<ul class="list-disc pl-5 space-y-1">${sec.contenido}</ul>`;
@@ -3101,7 +3283,7 @@
                 acordeonContainer.appendChild(details);
             });
 
-            // Configurar botón "Ver Accesorios / Ver Hornos"
+            // --- Botón "Ver Accesorios" (código existente) ---
             if (producto.tipo === 'horno') {
                 btnVerAccesorios.textContent = 'Ver Accesorios';
                 btnVerAccesorios.dataset.accion = 'accesorios';
@@ -3110,7 +3292,7 @@
                 btnVerAccesorios.dataset.accion = 'hornos';
             }
 
-            // Recomendados
+            // --- Recomendados (código existente) ---
             const tipoActual = producto.tipo;
             const tipoOpuesto = tipoActual === 'horno' ? 'accesorio' : 'horno';
             const opciones = Object.values(productosDetalle).filter(p => p.tipo === tipoOpuesto && p.id !== id);
@@ -3131,19 +3313,19 @@
                     div.className = 'rec-card';
                     const imgUrl = rec.imagenes && rec.imagenes.length ? rec.imagenes[0] : '';
                     div.innerHTML = `
-                    <div class="rec-img">
-                    <img src="${imgUrl}" alt="${rec.nombre}" />
-                    </div>
-                    <div class="rec-body">
-                    <span class="font-label-caps text-[10px] text-secondary uppercase tracking-widest">${tipoOpuesto === 'horno' ? 'Horno' : 'Accesorio'}</span>
-                    <h3 class="font-display-lg text-body-lg text-primary mt-1">${rec.nombre}</h3>
-                    <p class="font-price-display text-primary mt-1">${rec.precioStr}</p>
-                    <div class="btn-group-vertical">
-                        <button class="btn-ver-detalle" data-product-id="${rec.id}">Ver Detalles</button>
-                        <button class="btn-cotizar-card" data-product-name="${rec.nombre}">Cotizar</button>
-                    </div>
-                    </div>
-                `;
+                        <div class="rec-img">
+                            <img src="${imgUrl}" alt="${rec.nombre}" />
+                        </div>
+                        <div class="rec-body">
+                            <span class="font-label-caps text-[10px] text-secondary uppercase tracking-widest">${tipoOpuesto === 'horno' ? 'Horno' : 'Accesorio'}</span>
+                            <h3 class="font-display-lg text-body-lg text-primary mt-1">${rec.nombre}</h3>
+                            <p class="font-price-display text-primary mt-1">${rec.precioStr}</p>
+                            <div class="btn-group-vertical">
+                                <button class="btn-ver-detalle" data-product-id="${rec.id}">Ver Detalles</button>
+                                <button class="btn-cotizar-card" data-product-name="${rec.nombre}">Cotizar</button>
+                            </div>
+                        </div>
+                    `;
                     recContainer.appendChild(div);
                 });
 
@@ -3164,6 +3346,68 @@
                     });
                 });
             }
+
+            // --- NUEVO: Renderizado de botones de opciones (solo para ichu) ---
+            const opcionesContainer = document.getElementById('opciones-container');
+            opcionesContainer.innerHTML = '';
+
+            if (producto.opciones && producto.opciones.length > 0 && producto.id === 'ichu') {
+                opcionesContainer.style.display = 'flex';
+                producto.opciones.forEach((opcion, index) => {
+                    const btn = document.createElement('button');
+                    // Estilo beige (igual que btn-ver-detalle)
+                    btn.className = `px-5 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 
+                        ${index === selectedOptionIndex ? 'bg-[#d2af8b] text-black' : 'bg-transparent border border-white/20 text-white hover:bg-white/10'}`;
+                    btn.textContent = opcion.nombreBoton; // texto corto para el botón
+
+                    btn.addEventListener('click', function () {
+                        // Actualizar nombre (usando nombreCompleto), precio, descripción e imágenes
+                        document.getElementById('detalle-nombre').textContent = opcion.nombreCompleto;
+                        document.getElementById('detalle-precio').textContent = opcion.precioStr;
+                        document.getElementById('detalle-descripcion').textContent = opcion.descripcion;
+
+                        // Actualizar imágenes principales
+                        imagenesActuales = opcion.imagenes && opcion.imagenes.length ? opcion.imagenes : asegurar4Imagenes([]);
+                        indiceActual = 0;
+                        actualizarImagenPrincipal();
+
+                        // Refrescar miniaturas
+                        const miniContainer = document.getElementById('detalle-miniaturas');
+                        miniContainer.innerHTML = '';
+                        const thumbnails = imagenesActuales.slice(0, 4);
+                        thumbnails.forEach((img, idx) => {
+                            const div = document.createElement('div');
+                            div.className = 'galeria-thumb bg-surface-container aspect-square flex items-center justify-center p-2 transition-all duration-300';
+                            div.innerHTML = `<img class="w-full h-full object-cover" src="${img}" alt="Miniatura ${idx + 1}" />`;
+                            div.addEventListener('click', () => {
+                                indiceActual = idx;
+                                actualizarImagenPrincipal();
+                            });
+                            miniContainer.appendChild(div);
+                        });
+
+                        // Resaltar el botón activo (beige) y despintar los demás
+                        const allBtns = opcionesContainer.querySelectorAll('button');
+                        allBtns.forEach(b => {
+                            b.classList.remove('bg-[#d2af8b]', 'text-black');
+                            b.classList.add('bg-transparent', 'border', 'border-white/20', 'text-white');
+                        });
+                        this.classList.remove('bg-transparent', 'border', 'border-white/20', 'text-white');
+                        this.classList.add('bg-[#d2af8b]', 'text-black');
+                        selectedOptionIndex = index;
+                    });
+
+                    opcionesContainer.appendChild(btn);
+                });
+            } else {
+                opcionesContainer.style.display = 'none';
+            }
+
+            // Mostrar la vista
+            ocultarTodas();
+            vistaDetalle.classList.remove('hidden');
+            void vistaDetalle.offsetWidth;
+            vistaDetalle.classList.add('visible');
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -3522,9 +3766,8 @@
             mostrarVistaPrincipal(true);
         });
 
-        // Botón "Ver Accesorios / Ver Hornos" (dinámico)
         btnVerAccesorios.addEventListener('click', function () {
-            const accion = this.dataset.accion; // 'accesorios' o 'hornos'
+            const accion = this.dataset.accion;
             mostrarVistaPrincipal(false);
             if (accion === 'accesorios') {
                 filtroAccesorios.click();
@@ -3759,53 +4002,45 @@
                 renderFeatured();
             }
 
-            // ===== EVENTOS PRINCIPALES =====
             searchTriggerDesktop.addEventListener('click', abrirBusqueda);
             searchTriggerMobile.addEventListener('click', abrirBusqueda);
             searchClose.addEventListener('click', cerrarBusqueda);
 
-            // ===== CIERRE AL HACER CLIC FUERA DEL CONTENIDO =====
             document.addEventListener('click', function (e) {
                 if (!searchOverlay.classList.contains('active')) return;
-
-                // Elementos que NO deben cerrar la búsqueda al hacer clic
                 const triggers = [searchTriggerDesktop, searchTriggerMobile, searchClose];
                 if (triggers.includes(e.target) || triggers.includes(e.target.closest('button'))) {
-                    return; // no cerrar
+                    return;
                 }
-
                 const inner = document.querySelector('.search-inner');
-                // Si el clic no está dentro del contenido, cerrar
                 if (!inner.contains(e.target)) {
                     cerrarBusqueda();
                 }
             });
 
-            // ===== CERRAR CON TECLA ESC =====
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
                     cerrarBusqueda();
                 }
             });
 
-            // ===== RENDERIZAR MÁS VENDIDOS =====
             function renderBestSellers() {
                 const hornos = Object.values(productosDetalle).filter(p => p.tipo === 'horno');
                 const top = hornos.slice(0, 3);
                 bestSellersContainer.innerHTML = top.map(p => {
                     const img = p.imagenes && p.imagenes.length ? p.imagenes[0] : '';
                     return `
-                <div class="search-product-item" data-product-id="${p.id}">
-                    <div class="item-img">
-                        <img src="${img}" alt="${p.nombre}" />
-                    </div>
-                    <div class="item-info">
-                        <div class="item-name">${p.nombre}</div>
-                        <div class="item-price">${p.precioStr}</div>
-                    </div>
-                    <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                </div>
-            `;
+                        <div class="search-product-item" data-product-id="${p.id}">
+                            <div class="item-img">
+                                <img src="${img}" alt="${p.nombre}" />
+                            </div>
+                            <div class="item-info">
+                                <div class="item-name">${p.nombre}</div>
+                                <div class="item-price">${p.precioStr}</div>
+                            </div>
+                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                        </div>
+                    `;
                 }).join('');
 
                 bestSellersContainer.querySelectorAll('[data-product-id]').forEach(el => {
@@ -3819,7 +4054,6 @@
                 });
             }
 
-            // ===== RENDERIZAR DESTACADO =====
             function renderFeatured() {
                 const hornos = Object.values(productosDetalle).filter(p => p.tipo === 'horno');
                 if (hornos.length === 0) return;
@@ -3827,14 +4061,14 @@
                 featuredProductId = featured.id;
                 const img = featured.imagenes && featured.imagenes.length ? featured.imagenes[0] : '';
                 featuredContainer.innerHTML = `
-            <div class="featured-bg" style="background-image: url('${img}');"></div>
-            <div class="featured-overlay"></div>
-            <div class="featured-content">
-                <p class="tag">NUEVO</p>
-                <h4>${featured.nombre}</h4>
-                <p>Horno Artesanal 100 cm</p>
-            </div>
-        `;
+                    <div class="featured-bg" style="background-image: url('${img}');"></div>
+                    <div class="featured-overlay"></div>
+                    <div class="featured-content">
+                        <p class="tag">NUEVO</p>
+                        <h4>${featured.nombre}</h4>
+                        <p>Horno Artesanal 100 cm</p>
+                    </div>
+                `;
                 featuredContainer.dataset.productId = featured.id;
                 featuredContainer.addEventListener('click', function (e) {
                     if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') e.stopPropagation();
@@ -3857,7 +4091,6 @@
                 });
             }
 
-            // ===== BÚSQUEDA EN TIEMPO REAL =====
             function normalizarTexto(texto) {
                 return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9\s]/g, ' ');
             }
@@ -3902,17 +4135,17 @@
                     resultsList.innerHTML = resultados.map(p => {
                         const img = p.imagenes && p.imagenes.length ? p.imagenes[0] : '';
                         return `
-                <div class="search-product-item" data-product-id="${p.id}">
-                    <div class="item-img">
-                        <img src="${img}" alt="${p.nombre}" />
-                    </div>
-                    <div class="item-info">
-                        <div class="item-name">${p.nombre}</div>
-                        <div class="item-price">${p.precioStr}</div>
-                    </div>
-                    <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                </div>
-            `;
+                            <div class="search-product-item" data-product-id="${p.id}">
+                                <div class="item-img">
+                                    <img src="${img}" alt="${p.nombre}" />
+                                </div>
+                                <div class="item-info">
+                                    <div class="item-name">${p.nombre}</div>
+                                    <div class="item-price">${p.precioStr}</div>
+                                </div>
+                                <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                            </div>
+                        `;
                     }).join('');
 
                     resultsList.querySelectorAll('[data-product-id]').forEach(el => {
@@ -3931,11 +4164,9 @@
                 realizarBusqueda(e.target.value);
             });
 
-            // ===== INICIALIZAR =====
             renderBestSellers();
             renderFeatured();
 
-            // ===== FILTROS DE CATEGORÍA (enlaces) =====
             document.querySelectorAll('[data-filtro]').forEach(link => {
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
