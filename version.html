@@ -2515,102 +2515,100 @@
     </div>
 
     <!-- ===== FOOTER A ANCHO COMPLETO (adaptado con información real) ===== -->
-    <footer class="footer-grillcorp">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Top Bar con redes, logo y envíos -->
-            <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-800 pb-6 mb-10">
-                <!-- Redes Sociales -->
-                <div class="flex space-x-6 mb-6 md:mb-0">
-                    <a href="https://www.facebook.com/hornosroca?locale=es_LA" target="_blank" class="social-icon"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/hornosroca/" target="_blank" class="social-icon"><i
-                            class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@HornosRoca" target="_blank" class="social-icon"><i
-                            class="fab fa-youtube"></i></a>
-                    <a href="https://www.tiktok.com/@hornos.roca" target="_blank" class="social-icon"><i
-                            class="fab fa-tiktok"></i></a>
+    <footer class="bg-black text-white footer-border-top footer-animate">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+            <!-- Fila principal: logo + columnas -->
+            <div class="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+                <!-- Logo (izquierda) -->
+                <div class="flex-shrink-0 w-full lg:w-auto flex justify-center lg:justify-start">
+                    <img src="img/logoRoca.png" alt="Hornos Roca"
+                        class="logo-glow w-28 h-28 md:w-32 md:h-32 object-contain" />
                 </div>
-                <!-- Logo -->
-                <div class="logo-placeholder mb-6 md:mb-0">
-                    <img src="img/logoRoca.png" alt="Hornos Roca" class="max-h-12 md:max-h-16 w-auto" />
-                </div>
-                <!-- Envíos -->
-                <div class="flex items-center text-white text-sm">
-                    <i class="fas fa-phone-alt mr-2 rotate-90"></i>
-                    <span class="font-medium">Envíos a todo el Perú</span>
+
+                <!-- Grid de 4 columnas (derecha) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 w-full">
+                    <!-- Columna 1: Nuestra tienda -->
+                    <div>
+                        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-3">Nuestra tienda
+                        </h3>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li class="flex items-start list-item">
+                                <i class="fas fa-map-marker-alt w-5 mt-0.5 text-gray-500 list-icon"></i>
+                                <span>Morropon 19, Santiago de Surco, Lima</span>
+                            </li>
+                            <li class="flex items-center list-item">
+                                <i class="far fa-clock w-5 text-gray-500 list-icon"></i>
+                                <span>Lun. a Vie. de 8:00 am a 5:30 pm</span>
+                            </li>
+                            <li class="flex items-center list-item">
+                                <i class="far fa-clock w-5 text-gray-500 list-icon"></i>
+                                <span>Sab. de 8:00 am a 1:00 pm</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Columna 2: Productos -->
+                    <div>
+                        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-3">Productos</h3>
+                        <nav class="flex flex-col space-y-2 text-sm">
+                            <a class="nav-link text-gray-300" href="#products"
+                                onclick="document.getElementById('filtroHornos').click(); return false;">Hornos</a>
+                            <a class="nav-link text-gray-300" href="#products"
+                                onclick="document.getElementById('filtroAccesorios').click(); return false;">Accesorios</a>
+                            <a class="nav-link text-gray-300" href="#">Personalización</a>
+                        </nav>
+                    </div>
+
+                    <!-- Columna 3: Sobre nosotros -->
+                    <div>
+                        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-3">Sobre nosotros
+                        </h3>
+                        <nav class="flex flex-col space-y-2 text-sm">
+                            <a class="nav-link text-gray-300" href="#about">Nosotros</a>
+                            <a class="nav-link text-gray-300" href="#">Blog</a>
+                        </nav>
+                    </div>
+
+                    <!-- Columna 4: Contáctanos + redes sociales -->
+                    <div>
+                        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-3">Contáctanos</h3>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li class="flex items-center list-item">
+                                <i class="fas fa-phone-alt w-5 text-gray-500 list-icon"></i>
+                                <span>+51 952 363 833</span>
+                            </li>
+                            <li class="flex items-center list-item">
+                                <i class="far fa-envelope w-5 text-gray-500 list-icon"></i>
+                                <a href="mailto:soporte@hornosroca.pe"
+                                    class="hover:text-white transition-colors">grupohornosroca@gmail.com</a>
+                            </li>
+                        </ul>
+                        <!-- Redes sociales con borde más fino (1px) -->
+                        <div class="mt-4 flex space-x-3">
+                            <a href="https://www.facebook.com/hornosroca?locale=es_LA" target="_blank"
+                                class="w-10 h-10 flex items-center justify-center bg-black border border-white rounded text-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-facebook-f text-base"></i>
+                            </a>
+                            <a href="https://www.instagram.com/hornosroca/" target="_blank"
+                                class="w-10 h-10 flex items-center justify-center bg-black border border-white rounded text-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-instagram text-base"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@HornosRoca" target="_blank"
+                                class="w-10 h-10 flex items-center justify-center bg-black border border-white rounded text-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-youtube text-base"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@hornos.roca" target="_blank"
+                                class="w-10 h-10 flex items-center justify-center bg-black border border-white rounded text-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-tiktok text-base"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Columnas de enlaces (con información real) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-                <!-- Nuestra tienda -->
-                <div>
-                    <h3 class="footer-heading">Nuestra tienda</h3>
-                    <div class="footer-info-text">
-                        <i class="fas fa-map-marker-alt w-5 text-center"></i>
-                        <span>Morropon 19, Santiago de Surco, Lima, Perú</span>
-                    </div>
-                    <div class="footer-info-text">
-                        <i class="fas fa-phone-alt w-5 text-center"></i>
-                        <span>+51 952 363 833</span>
-                    </div>
-                    <div class="footer-info-text">
-                        <i class="far fa-envelope w-5 text-center"></i>
-                        <a href="mailto:grupohornosroca@gmail.com">grupohornosroca@gmail.com</a>
-                    </div>
-                    <div class="footer-info-text">
-                        <i class="far fa-clock w-5 text-center"></i>
-                        <span>Lun – Sab 9:00 a.m. – 6:00 p.m.</span>
-                    </div>
-                </div>
-                <!-- Productos -->
-                <div>
-                    <h3 class="footer-heading">Productos</h3>
-                    <nav>
-                        <a class="footer-link" href="#products"
-                            onclick="document.getElementById('filtroHornos').click(); return false;">Hornos</a>
-                        <a class="footer-link" href="#products"
-                            onclick="document.getElementById('filtroAccesorios').click(); return false;">Accesorios</a>
-                        <a class="footer-link" href="#">Línea Profesional</a>
-                        <a class="footer-link" href="#">Personalización</a>
-                    </nav>
-                </div>
-                <!-- Sobre Nosotros -->
-                <div>
-                    <h3 class="footer-heading">Sobre Hornos Roca</h3>
-                    <nav>
-                        <a class="footer-link" href="#about">Nosotros</a>
-                        <a class="footer-link" href="#">¿Cómo comprar?</a>
-                        <a class="footer-link" href="#">Ventas corporativas</a>
-                        <a class="footer-link" href="#">Blog</a>
-                    </nav>
-                </div>
-                <!-- Atención al Cliente -->
-                <div>
-                    <h3 class="footer-heading">Atención al Cliente</h3>
-                    <div class="footer-info-text">
-                        <i class="fas fa-phone-alt w-5 text-center"></i>
-                        <span>+51 952 363 833</span>
-                    </div>
-                    <div class="footer-info-text">
-                        <i class="far fa-envelope w-5 text-center"></i>
-                        <a href="mailto:soporte@hornosroca.pe">soporte@hornosroca.pe</a>
-                    </div>
-                    <div class="footer-info-text mt-3">
-                        <i class="fas fa-book w-5 text-center"></i>
-                        <a class="footer-link mb-0" href="#">Libro de reclamaciones</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Barra inferior de políticas -->
-            <div class="border-t border-gray-800 pt-6">
-                <div class="flex flex-wrap justify-center items-center">
-                    <a class="bottom-bar-link" href="#">Política de reembolso</a>
-                    <a class="bottom-bar-link" href="#">Política de privacidad</a>
-                    <a class="bottom-bar-link" href="#">Términos del servicio</a>
-                    <a class="bottom-bar-link" href="#">Política de envío</a>
-                </div>
+            <!-- Copyright con línea superior a todo ancho y texto más grande -->
+            <div class="mt-8 pt-4 border-t border-gray-700 text-center text-sm text-gray-400">
+                &copy; 2026 HORNOS ROCA. Todos los derechos reservados.
             </div>
         </div>
     </footer>
@@ -2692,10 +2690,10 @@
                 precioStr: 'S/ 3,709.00',
                 descripcion: 'El Nina Pacha es un horno pachamanquero multifunción que combina la tradición de la cocina andina con una construcción robusta y acabados de lujo. Diseñado para ofrecer máxima versatilidad y rendimiento térmico, es ideal tanto para celebraciones familiares como para entornos gastronómicos exigentes.',
                 imagenes: asegurar4Imagenes([
-                    'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero_1066x.jpg?v=1755026023',
-                    'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero2_720x.jpg?v=1755026023',
-                    'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero3_720x.jpg?v=1755026023',
-                    'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero4_720x.jpg?v=1755026023'
+                    'https://lacarboneragrill.pe/cdn/shop/files/pachamanqueroNina2_1066x.png?v=1783786610',
+                    'https://lacarboneragrill.pe/cdn/shop/files/pachamanqueroNina01_1066x.png?v=1783786611',
+                    'https://lacarboneragrill.pe/cdn/shop/files/hornoPachamanquero01_720x.png?v=1783786610',
+                    'https://lacarboneragrill.pe/cdn/shop/files/PachamanqueroNina3_720x.png?v=1783786611'
                 ]),
                 ventajasTecnicas: [
                     'Sistema dual: funciona a leña o gas LP (presión de trabajo 10 psi) con quemador tipo "chya" para un encendido rápido y control preciso del calor.',
@@ -2897,8 +2895,8 @@
                 precioStr: 'S/ 4,420.00',
                 descripcion: 'El Modelo Napolitano está inspirado en la tradición italiana, diseñado para alcanzar temperaturas extremas en tiempo récord y ofrecer resultados auténticos. Su distintivo techo plano maximiza la acumulación y distribución del calor, logrando cocciones rápidas y uniformes. Fabricado con materiales de alto rendimiento térmico y acabados de nivel profesional, es ideal tanto para uso residencial premium como para negocios gastronómicos exigentes.',
                 imagenes: asegurar4Imagenes([
-                    'https://lacarboneragrill.pe/cdn/shop/files/horno-artesanal-modelo-napolitano-1_d61f4c95-7537-4c69-a68f-28fec4d9b62b_1066x.jpg?v=1757610659',
-                    'https://lacarboneragrill.pe/cdn/shop/files/horno-artesanal-modelo-napolitano-2_720x.jpg?v=1757610659'
+                    'https://lacarboneragrill.pe/cdn/shop/files/napolitano02_720x.png?v=1783779348',
+                    'https://lacarboneragrill.pe/cdn/shop/files/napolitano01_ec8a998e-6622-4661-9b04-ccbb9247bd92_720x.png?v=1783779347'
                 ]),
                 ventajasTecnicas: [
                     'Cúpula de techo plano, que facilita el alcance de temperaturas máximas en pocos minutos.',
@@ -3845,10 +3843,10 @@
         // ===== RENDERIZADO DE LA COLECCIÓN (con botones horizontales) =====
         const productosLista = [
             { id: 'colosso', nombre: 'Horno Artesanal Colosso di Forgia 100 cm', precio: 'S/ 5,170.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia1_1066x.png?v=1783366960' },
-            { id: 'nina-pacha', nombre: 'Horno Pachamanquero Multifunción – Modelo Nina Pacha', precio: 'S/ 3,709.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/horno-pachamanquero_1066x.jpg?v=1755026023' },
+            { id: 'nina-pacha', nombre: 'Horno Pachamanquero Multifunción – Modelo Nina Pacha', precio: 'S/ 3,709.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/pachamanqueroNina2_1066x.png?v=1783786610' },
             { id: 'nina', nombre: 'Horno Artesanal – Modelo Nina – 100 cm', precio: 'S/ 4,585.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/modeloNina2_720x.png?v=1783367288' },
             { id: 'ichu', nombre: 'Horno Artesanal – Modelo Ichu – 100 cm', precio: 'S/ 4,330.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu5_720x.png?v=1783367134' },
-            { id: 'napolitano', nombre: 'Horno Artesanal – Modelo Napolitano – 100 cm', precio: 'S/ 4,420.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/horno-artesanal-modelo-napolitano-1_d61f4c95-7537-4c69-a68f-28fec4d9b62b_1066x.jpg?v=1757610659' },
+            { id: 'napolitano', nombre: 'Horno Artesanal – Modelo Napolitano – 100 cm', precio: 'S/ 4,420.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/napolitano02_720x.png?v=1783779348' },
             { id: 'di-bronzo', nombre: 'Horno Premium – Modelo Di Bronzo – 57×57×32 cm', precio: 'S/ 3,900.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/diBRONZO1_1066x.png?v=1783366601' },
             { id: 'soporte-pizza', nombre: 'Soporte para Bandeja de Pizza con Porta Condimentos', precio: 'S/ 31.90', categoria: 'accesorios', imagen: 'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/basePizzera_800x800.png?v=1783632783' },
             { id: 'pala-pizzera', nombre: 'Pala Pizzera AISI 304', precio: 'S/ 277.90', categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/palaPizzera1_1066x.png?v=1783636099' },
