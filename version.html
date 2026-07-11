@@ -1493,6 +1493,116 @@
                 gap: 0.75rem;
             }
         }
+
+        /* CARRUSEL DE PALABRAS CLAVE */
+        .kw-section {
+            position: relative;
+            width: 100%;
+            background: #000;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 0;
+            /* Margen interno arriba y abajo */
+            overflow: hidden;
+        }
+
+        .kw-mask {
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+
+        @keyframes kwScroll {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        .kw-track {
+            display: flex;
+            width: fit-content;
+            animation: kwScroll 28s linear infinite;
+            will-change: transform;
+            align-items: center;
+        }
+
+        .kw-section:hover .kw-track {
+            animation-play-state: paused;
+        }
+
+        .kw-item {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85);
+            white-space: nowrap;
+            font-weight: 700;
+            font-family: 'Manrope', sans-serif;
+            margin: 0 0.75rem;
+        }
+
+        .kw-item-opacity {
+            opacity: 0.4;
+        }
+
+        .kw-sep {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 0.6rem;
+            font-weight: 300;
+            margin: 0 0.25rem;
+        }
+
+        /* Los conjuntos se pegan sin separación */
+        .kw-set {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            padding: 0 0.5rem;
+            /* pequeño padding para que no quede pegado al borde */
+        }
+
+        @media (min-width: 768px) {
+            .kw-section {
+                padding: 2rem 0;
+            }
+
+            .kw-item {
+                font-size: 1rem;
+                letter-spacing: 0.2em;
+                margin: 0 1.2rem;
+            }
+
+            .kw-sep {
+                margin: 0 0.5rem;
+            }
+
+            .kw-track {
+                animation-duration: 32s;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .kw-section {
+                padding: 1rem 0;
+            }
+
+            .kw-item {
+                font-size: 0.6rem;
+                letter-spacing: 0.1em;
+                margin: 0 0.4rem;
+            }
+
+            .kw-sep {
+                margin: 0 0.15rem;
+            }
+
+            .kw-track {
+                animation-duration: 22s;
+            }
+        }
     </style>
 </head>
 
@@ -2021,23 +2131,70 @@
 
         <!-- ===== PLANIFICA TU VISIÓN CON IMAGEN DE FONDO (id="planifica") ===== -->
         <section id="planifica" class="relative z-10 py-stack-section overflow-hidden bg-cover bg-center bg-no-repeat"
-            style="background-image: url('img/fondoInicio.png');">
+            style="background-image: url('img/banner-asesorias.jpg');">
             <!-- Overlay oscuro para mejorar legibilidad -->
             <div class="absolute inset-0 bg-black/70"></div>
 
             <div class="relative z-10 max-w-container-max mx-auto px-4 md:px-edge-margin text-center">
                 <h2 class="font-headline-display text-[40px] font-bold uppercase tracking-widest mb-6 text-primary">
-                    Planea tu visión.
+                    Asesoría para tu proyecto
                 </h2>
                 <p class="font-body-lg text-white/80 max-w-xl mx-auto mb-10">
-                    Utilice nuestro planificador de cocina interactivo para dar vida a su cocina exterior profesional
-                    con precisión milimétrica.
+                    ¿Tienes un plano o necesitas orientación para instalar y personalizar tu horno?
+                    Nuestros especialistas revisan cada detalle y te acompañan para que tu cocina exterior sea única y
+                    funcional.
                 </p>
                 <a class="inline-flex items-center gap-4 font-headline-section text-headline-section text-primary border-b border-primary/40 pb-2 hover:border-primary transition-all"
                     href="#">
-                    COMENZAR A PLANIFICAR
+                    SOLICITAR ASESORÍA
                     <span class="material-symbols-outlined text-sm">open_in_new</span>
                 </a>
+            </div>
+        </section>
+
+        <!-- PALABRAS CLAVE -->
+        <section class="kw-section">
+            <div class="kw-mask relative w-full">
+                <div class="kw-track">
+                    <!-- Primer conjunto -->
+                    <div class="kw-set">
+                        <span class="kw-item">Calidad</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item kw-item-opacity">Expertos</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item">Durabilidad</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item kw-item-opacity">Hechos en Perú</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item">Tradición</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item kw-item-opacity">Innovación</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item">Artesanía</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item kw-item-opacity">Hornos Roca</span>
+                        <span class="kw-sep">•</span>
+                    </div>
+                    <!-- Segundo conjunto (idéntico, pegado al primero) -->
+                    <div class="kw-set">
+                        <span class="kw-item">Calidad</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item kw-item-opacity">Expertos</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item">Durabilidad</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item kw-item-opacity">Hechos en Perú</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item">Tradición</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item kw-item-opacity">Innovación</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item">Artesanía</span>
+                        <span class="kw-sep">•</span>
+                        <span class="kw-item kw-item-opacity">Hornos Roca</span>
+                        <span class="kw-sep">•</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -2269,19 +2426,21 @@
         </main>
         <!-- ===== PLANIFICA TU VISIÓN CON IMAGEN DE FONDO ===== -->
         <section id="planifica" class="relative z-10 py-stack-section overflow-hidden bg-cover bg-center bg-no-repeat"
-            style="background-image: url('img/fondoInicio.png');">
+            style="background-image: url('img/banner-asesorias.jpg');">
             <div class="absolute inset-0 bg-black/70"></div>
+
             <div class="relative z-10 max-w-container-max mx-auto px-4 md:px-edge-margin text-center">
                 <h2 class="font-headline-display text-[40px] font-bold uppercase tracking-widest mb-6 text-primary">
-                    Planea tu visión.
+                    Asesoría para tu proyecto
                 </h2>
                 <p class="font-body-lg text-white/80 max-w-xl mx-auto mb-10">
-                    Utilice nuestro planificador de cocina interactivo para dar vida a su cocina exterior profesional
-                    con precisión milimétrica.
+                    ¿Tienes un plano o necesitas orientación para instalar y personalizar tu horno?
+                    Nuestros especialistas revisan cada detalle y te acompañan para que tu cocina exterior sea única y
+                    funcional.
                 </p>
                 <a class="inline-flex items-center gap-4 font-headline-section text-headline-section text-primary border-b border-primary/40 pb-2 hover:border-primary transition-all"
                     href="#">
-                    COMENZAR A PLANIFICAR
+                    SOLICITAR ASESORÍA
                     <span class="material-symbols-outlined text-sm">open_in_new</span>
                 </a>
             </div>
