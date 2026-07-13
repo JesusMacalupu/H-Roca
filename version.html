@@ -1750,7 +1750,8 @@
                                     Inoxidable para Horno Artesanal con Termómetro</a></li>
                             <li><a class="font-body-md text-body-md" data-product="cuchilla">Cuchilla Corta Pizza (Tipo
                                     Mezzaluna)</a></li>
-                            <li><a class="font-body-md text-body-md" data-product="termometro">Termómetro para Horno (Vástago 12 cm)</a></li>
+                            <li><a class="font-body-md text-body-md" data-product="termometro">Termómetro para Horno
+                                    (Vástago 12 cm)</a></li>
                             <li><a class="font-body-md text-body-md" data-product="rejilla">Rejilla de Doble Altura de
                                     Cocción para Horno</a></li>
                         </ul>
@@ -2338,7 +2339,7 @@
 
     <!-- ===== VISTA DE DETALLE DE PRODUCTO ===== -->
     <div id="vistaDetalle" class="relative z-10 hidden vista-detalle-container">
-        <main class="pt-32 pb-stack-lg max-w-container-max mx-auto px-4 md:px-edge-margin">
+        <main class="pt-16 md:pt-32 pb-stack-lg max-w-container-max mx-auto px-4 md:px-edge-margin">
             <!-- Botón volver con separación superior -->
             <div class="btn-volver-container">
                 <button id="btnVolver" class="flex items-center gap-2 text-white/70 hover:text-white transition-colors">
@@ -2620,7 +2621,7 @@
         }
 
         const productosDetalle = {
-            // ========== HORNOS (información exacta sin modificar) ==========
+            // ========== HORNOS ==========
             'colosso': {
                 id: 'colosso',
                 tipo: 'horno',
@@ -2673,7 +2674,46 @@
                     { pregunta: '¿Mantenimiento?', respuesta: 'Limpieza tras cada uso; ante agentes contaminantes, malla guinda suave y acabado con abrillantador 3M.' }
                 ],
                 informacionComercial: '',
-                porqueElegir: ''
+                porqueElegir: '',
+                // Opciones de tamaño
+                opciones: [
+                    {
+                        nombreBoton: 'Colosso – 80 cm',
+                        nombreCompleto: 'Horno Artesanal Colosso di Forgia 80 cm',
+                        precioStr: 'S/ 4,730.00',
+                        descripcion: 'El Colosso di Forgia 80 cm mantiene la misma excelencia constructiva y rendimiento térmico que su hermano de 100 cm, pero en un formato más compacto. Ideal para espacios reducidos sin sacrificar la calidad profesional de la cocción a leña.',
+                        imagenes: asegurar4Imagenes([
+                            '',
+                            '',
+                            '',
+                            ''
+                        ])
+                    },
+                    {
+                        nombreBoton: 'Colosso – 100 cm',
+                        nombreCompleto: 'Horno Artesanal Colosso di Forgia 100 cm',
+                        precioStr: 'S/ 5,170.00',
+                        descripcion: 'El Colosso di Forgia 100 cm es un horno artesanal profesional de diseño italiano, concebido para pizzería y panadería exigente. Su cúpula maciza y aislamiento con fibra cerámica aseguran masa térmica y curva de calor estables; la chimenea frontal con regulador optimiza el tiro para resultados consistentes tanda tras tanda.',
+                        imagenes: asegurar4Imagenes([
+                            'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia1_1066x.png?v=1783366960',
+                            'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia2_720x.png?v=1783367010',
+                            'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia3_720x.png?v=1783367068',
+                            'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia4_720x.png?v=1783367110'
+                        ])
+                    },
+                    {
+                        nombreBoton: 'Colosso – 120 cm',
+                        nombreCompleto: 'Horno Artesanal Colosso di Forgia 120 cm',
+                        precioStr: 'S/ 6,314.00',
+                        descripcion: 'El Colosso di Forgia 120 cm ofrece una capacidad superior y una mayor superficie de cocción, pensado para producciones más altas o para quienes desean un horno de gran tamaño sin perder la calidad y el diseño característico del modelo Colosso.',
+                        imagenes: asegurar4Imagenes([
+                            '',
+                            '',
+                            '',
+                            ''
+                        ])
+                    }
+                ]
             },
 
             'nina-pacha': {
@@ -2777,10 +2817,45 @@
                     'Uso recomendado: Residencial o comercial'
                 ],
                 informacionComercial: 'Precio publicado corresponde al horno en presentación a leña, entregado totalmente armado en medida estándar de 100 cm. Podemos fabricarlo en cualquier medida según requerimiento del cliente. Presentación dual (leña + gas) y fabricación in situ tienen un costo adicional.',
-                porqueElegir: 'El Modelo Nina ofrece el balance perfecto entre tradición y estética, con materiales premium y una construcción artesanal que asegura rendimiento y durabilidad. Su diseño con arco frontal y acabados en mármol lo convierten en un horno que no solo cocina de forma excepcional, sino que también añade un toque distintivo a cualquier espacio. Fabricado en Perú por Hornos Roca, con estándares de calidad premium.'
+                porqueElegir: 'El Modelo Nina ofrece el balance perfecto entre tradición y estética, con materiales premium y una construcción artesanal que asegura rendimiento y durabilidad. Su diseño con arco frontal y acabados en mármol lo convierten en un horno que no solo cocina de forma excepcional, sino que también añade un toque distintivo a cualquier espacio. Fabricado en Perú por Hornos Roca, con estándares de calidad premium.',
+                // Opciones de tamaño
+                opciones: [
+                    {
+                        nombreBoton: 'Nina – 80 cm',
+                        nombreCompleto: 'Horno Artesanal – Modelo Nina – 80 cm',
+                        precioStr: 'S/ 4,145.00',
+                        descripcion: 'El Modelo Nina 80 cm mantiene el diseño y la calidad del modelo original en un formato más compacto. Ideal para espacios reducidos sin renunciar a la estética y el rendimiento térmico de un horno artesanal premium.',
+                        imagenes: asegurar4Imagenes([
+                            '',
+                            '',
+                            ''
+                        ])
+                    },
+                    {
+                        nombreBoton: 'Nina – 100 cm',
+                        nombreCompleto: 'Horno Artesanal – Modelo Nina – 100 cm',
+                        precioStr: 'S/ 4,585.00',
+                        descripcion: 'El Modelo Nina es un horno artesanal premium que combina la tradición de la cocina a leña con un diseño elegante y acabados de lujo. Su arco frontal de ladrillo y revestimiento exterior en mármol lo convierten en una pieza que realza cualquier espacio, ya sea en una terraza residencial o en un ambiente gastronómico profesional. Construido con materiales de alto rendimiento térmico, garantiza cocciones envolventes, uniformes y con el inconfundible sabor de la leña.',
+                        imagenes: asegurar4Imagenes([
+                            'https://lacarboneragrill.pe/cdn/shop/files/modeloNina2_720x.png?v=1783367288',
+                            'https://lacarboneragrill.pe/cdn/shop/files/modeloNina3_720x.png?v=1783367288',
+                            'https://lacarboneragrill.pe/cdn/shop/files/modeloNina4_720x.png?v=1783367288'
+                        ])
+                    },
+                    {
+                        nombreBoton: 'Nina – 120 cm',
+                        nombreCompleto: 'Horno Artesanal – Modelo Nina – 120 cm',
+                        precioStr: 'S/ 5,457.00',
+                        descripcion: 'El Modelo Nina 120 cm amplía la capacidad y superficie de cocción del modelo original, ideal para quienes necesitan mayor producción o desean un horno de gran tamaño sin perder el estilo y la calidad que caracteriza a la gama Nina.',
+                        imagenes: asegurar4Imagenes([
+                            '',
+                            '',
+                            ''
+                        ])
+                    }
+                ]
             },
 
-            // ===== ICHU CON OPCIONES (NUEVO) =====
             'ichu': {
                 id: 'ichu',
                 tipo: 'horno',
@@ -2790,14 +2865,12 @@
                 precio: 4330.00,
                 precioStr: 'S/ 4,330.00',
                 descripcion: 'El Modelo Ichu rinde homenaje a la tradición de los hornos de la sierra peruana. Su forma boleada, similar a un iglú, no es casual: está diseñada para envolver cada preparación en un calor parejo, evitando puntos fríos y logrando cocciones uniformes. Fabricado con materiales nacionales e importados de alta gama, su revestimiento en pepelma de mármol no solo ofrece un acabado de lujo, sino que resiste la intemperie y el paso del tiempo. Lleva los colores de nuestra bandera y se integra con naturalidad en hogares, casas de campo, playas o negocios gourmet, aportando autenticidad y eficiencia a cada plato.',
-
                 imagenes: asegurar4Imagenes([
                     'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu5_720x.png?v=1783367134',
                     'img/historia.png',
                     'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu3_1066x.png?v=1783367134',
                     'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu4_720x.png?v=1783367134'
                 ]),
-
                 ventajasTecnicas: [
                     'Nuestro revestimiento de paredes tiene un ancho entre 11 cm, 19 cm y 25 cm por lado de pared segun el tamaño del horno y la necesidad de la elaboracion, dando hasta 8 a 10 horas de calor.',
                     'Nuestro enchape es en pepelma de mármol que permite un acabado de lujo y también mayor resistencia a la intemperie o cambios climáticos, debido a que la roca ofrece mayor resistencia que los azulejos.',
@@ -2809,7 +2882,6 @@
                     'Termómetro analógico americano 0–500 °C integrado para monitorear la temperatura interna.',
                     'Opción de sistema híbrido (leña + gas) para combinar el sabor tradicional con la practicidad del gas, fusionando lo mejor de cada método para optimizar el rendimiento.'
                 ],
-
                 beneficiosGastronomicos: [
                     'Cúpula boleada: el calor se distribuye de manera homogénea, logrando cocciones parejas en toda la cámara.',
                     'Aislamiento en fibra cerámica: mantiene la temperatura estable por horas, conservando la humedad natural de los alimentos.',
@@ -2818,7 +2890,6 @@
                     'Chimenea frontal con regulador: extrae los humos de forma eficiente, sin que interfieran en tu espacio.',
                     'Termómetro analógico 0–500 °C / Americano: control preciso de la temperatura para cada receta.'
                 ],
-
                 fichaTecnica: [
                     'Medida exterior: 100 cm de diámetro',
                     'Medida interior útil: 78 cm de diámetro',
@@ -2834,30 +2905,31 @@
                     'Tiempo de fabricación: 4 a 7 días útiles',
                     'Uso recomendado: Residencial premium o comercial'
                 ],
-
                 informacionComercial: 'El Ichu está disponible en su versión estándar de 100 cm, completamente armado y listo para usar. Pero si lo deseas, podemos fabricarlo en cualquier medida que se adapte a tu espacio y necesidades. También ofrecemos la opción híbrida (leña + gas) para quienes buscan versatilidad y ahorro, y la fabricación in situ, para que el horno nazca directamente en tu hogar.',
-
                 vidaUtil: [
                     'Tiempo de vida útil uso comercial (5 años aprox.).',
                     'Tiempo de vida útil uso familiar (8 a 10 años aprox.).',
                     'El tiempo de vida depende mucho de la calidad de uso y mantenimientos periódicos, pudiendo este alargar el tiempo de vida del horno.',
                     'Adobe (poder calorífico).'
                 ],
-
                 recomendaciones: [
                     'Para uso familiar, el grosor de pared de 11 cm es suficiente. Para restaurantes y cocciones prolongadas, elige 19 o 25 cm, que aseguran más de 8 horas de calor.',
                     'Los hornos de 1.30 a 2.00 m son ideales para negocios por su mayor productividad; los de 80 cm a 1.20 m, perfectos para el hogar.'
                 ],
-
                 porqueElegir: 'Elegir el Ichu es optar por la herencia culinaria peruana, reinterpretada con materiales de primera calidad y un diseño que prioriza el rendimiento térmico. Su cúpula boleada, su revestimiento de pepelma de mármol y sus opciones de combustión lo convierten en un equipo versátil, duradero y estéticamente impecable. No es solo un horno: es el aliado que transforma cada receta en una experiencia única.',
-
+                // Opciones de tamaño (con precios actualizados)
                 opciones: [
                     {
                         nombreBoton: 'Ichu – 80 cm',
                         nombreCompleto: 'Horno Artesanal – Modelo Ichu – 80 cm',
-                        precioStr: 'S/ 3,800.00',
+                        precioStr: 'S/ 3,890.00',
                         descripcion: 'Ideal para espacios reducidos, mantiene el mismo rendimiento térmico y acabado premium que sus hermanos mayores. Perfecto para hogares que buscan autenticidad sin ocupar demasiado lugar.',
-                        imagenes: asegurar4Imagenes(['', '', '', ''])
+                        imagenes: asegurar4Imagenes([
+                            '',
+                            '',
+                            '',
+                            ''
+                        ])
                     },
                     {
                         nombreBoton: 'Ichu – 100 cm',
@@ -2874,9 +2946,14 @@
                     {
                         nombreBoton: 'Ichu – 120 cm',
                         nombreCompleto: 'Horno Artesanal – Modelo Ichu – 120 cm',
-                        precioStr: 'S/ 5,200.00',
+                        precioStr: 'S/ 5,070.00',
                         descripcion: 'Mayor capacidad y superficie de cocción, pensado para quienes reciben con frecuencia o necesitan producir en mayor volumen. La misma excelencia térmica, ahora con más espacio para crear.',
-                        imagenes: asegurar4Imagenes(['', '', '', ''])
+                        imagenes: asegurar4Imagenes([
+                            '',
+                            '',
+                            '',
+                            ''
+                        ])
                     }
                 ]
             },
@@ -2925,7 +3002,40 @@
                     'Uso recomendado: Residencial premium o comercial'
                 ],
                 informacionComercial: 'Precio publicado corresponde al horno en presentación a leña, entregado totalmente armado en medida estándar de 100 cm. Podemos fabricarlo en cualquier medida según requerimiento del cliente. Presentación dual (leña + gas) y fabricación in situ tienen un costo adicional.',
-                porqueElegir: 'El Modelo Napolitano ofrece el balance perfecto entre tradición y eficiencia, con un diseño pensado para la cocción más exigente y acabados que aportan distinción a cualquier espacio. Es la herramienta ideal para quienes buscan calidad, estética y resultados impecables. Fabricado en Perú por Hornos Roca, con estándares de calidad premium.'
+                porqueElegir: 'El Modelo Napolitano ofrece el balance perfecto entre tradición y eficiencia, con un diseño pensado para la cocción más exigente y acabados que aportan distinción a cualquier espacio. Es la herramienta ideal para quienes buscan calidad, estética y resultados impecables. Fabricado en Perú por Hornos Roca, con estándares de calidad premium.',
+                // Opciones de tamaño
+                opciones: [
+                    {
+                        nombreBoton: 'Napolitano – 80 cm',
+                        nombreCompleto: 'Horno Artesanal – Modelo Napolitano – 80 cm',
+                        precioStr: 'S/ 3,980.00',
+                        descripcion: 'El Modelo Napolitano 80 cm conserva la esencia del diseño italiano en un formato más compacto. Ideal para quienes buscan un horno de alto rendimiento en espacios reducidos sin perder la capacidad de alcanzar altas temperaturas y cocinar con calidad profesional.',
+                        imagenes: asegurar4Imagenes([
+                            '',
+                            ''
+                        ])
+                    },
+                    {
+                        nombreBoton: 'Napolitano – 100 cm',
+                        nombreCompleto: 'Horno Artesanal – Modelo Napolitano – 100 cm',
+                        precioStr: 'S/ 4,420.00',
+                        descripcion: 'El Modelo Napolitano está inspirado en la tradición italiana, diseñado para alcanzar temperaturas extremas en tiempo récord y ofrecer resultados auténticos. Su distintivo techo plano maximiza la acumulación y distribución del calor, logrando cocciones rápidas y uniformes. Fabricado con materiales de alto rendimiento térmico y acabados de nivel profesional, es ideal tanto para uso residencial premium como para negocios gastronómicos exigentes.',
+                        imagenes: asegurar4Imagenes([
+                            'https://lacarboneragrill.pe/cdn/shop/files/napolitano02_720x.png?v=1783779348',
+                            'https://lacarboneragrill.pe/cdn/shop/files/napolitano01_ec8a998e-6622-4661-9b04-ccbb9247bd92_720x.png?v=1783779347'
+                        ])
+                    },
+                    {
+                        nombreBoton: 'Napolitano – 120 cm',
+                        nombreCompleto: 'Horno Artesanal – Modelo Napolitano – 120 cm',
+                        precioStr: 'S/ 5,564.00',
+                        descripcion: 'El Modelo Napolitano 120 cm amplía la capacidad del modelo original, ideal para producciones más grandes o para quienes desean un horno de gran formato con la misma eficiencia y diseño que caracteriza a la línea Napolitano.',
+                        imagenes: asegurar4Imagenes([
+                            '',
+                            ''
+                        ])
+                    }
+                ]
             },
 
             'di-bronzo': {
@@ -3265,26 +3375,26 @@
             if (window._heroInterval) clearInterval(window._heroInterval);
         }
 
-        // ===== FUNCIÓN mostrarDetalle CON OPCIONES PARA ICHU (con nombreBoton y nombreCompleto) =====
+        // ===== FUNCIÓN mostrarDetalle CON OPCIONES (siempre fondo beige) =====
         function mostrarDetalle(id) {
             const producto = productosDetalle[id];
             if (!producto) return;
 
-            // --- INICIO: manejo de opciones (solo para ichu) ---
-            let selectedOptionIndex = 1; // por defecto seleccionamos la opción de 100 cm (índice 1)
-            if (producto.opciones && producto.opciones.length > 0 && producto.id === 'ichu') {
-                // Cargamos la opción de 100 cm (índice 1)
-                const defaultOpt = producto.opciones[1]; // la segunda opción es "Ichu – 100 cm"
-                // Sobrescribimos los campos del producto con los de la opción por defecto
-                producto.nombre = defaultOpt.nombreCompleto; // usamos nombreCompleto para el título
-                producto.precioStr = defaultOpt.precioStr;
-                producto.descripcion = defaultOpt.descripcion;
-                producto.imagenes = defaultOpt.imagenes;
-                selectedOptionIndex = 1;
+            // Verificar si el producto tiene opciones y seleccionar la de 100 cm (índice 1) por defecto
+            let selectedOptionIndex = 1; // por defecto 100 cm
+            if (producto.opciones && producto.opciones.length > 0) {
+                // Buscar la opción que tenga "100 cm" en el nombre, o la del medio
+                const defaultOpt = producto.opciones[1]; // asumimos que la segunda es 100 cm
+                if (defaultOpt) {
+                    producto.nombre = defaultOpt.nombreCompleto;
+                    producto.precioStr = defaultOpt.precioStr;
+                    producto.descripcion = defaultOpt.descripcion;
+                    producto.imagenes = defaultOpt.imagenes;
+                    selectedOptionIndex = 1;
+                }
             }
-            // --- FIN: manejo de opciones ---
 
-            // Resto del código original (asignación de categoría, nombre, precio, etc.)
+            // Asignar valores al DOM
             document.getElementById('detalle-categoria').textContent = producto.categoria || 'Producto';
             document.getElementById('detalle-nombre').textContent = producto.nombre;
             document.getElementById('detalle-precio').textContent = producto.precioStr || 'S/ 0.00';
@@ -3309,7 +3419,7 @@
                 miniContainer.appendChild(div);
             });
 
-            // --- Renderizado de acordeones (código existente) ---
+            // --- Renderizado de acordeones (igual que antes) ---
             const acordeonContainer = document.getElementById('detalle-acordeones');
             acordeonContainer.innerHTML = '';
 
@@ -3432,7 +3542,7 @@
                 acordeonContainer.appendChild(details);
             });
 
-            // --- Botón "Ver Accesorios" (código existente) ---
+            // --- Botón "Ver Accesorios" ---
             if (producto.tipo === 'horno') {
                 btnVerAccesorios.textContent = 'Ver Accesorios';
                 btnVerAccesorios.dataset.accion = 'accesorios';
@@ -3441,7 +3551,7 @@
                 btnVerAccesorios.dataset.accion = 'hornos';
             }
 
-            // --- Recomendados (código existente) ---
+            // --- Recomendados ---
             const tipoActual = producto.tipo;
             const tipoOpuesto = tipoActual === 'horno' ? 'accesorio' : 'horno';
             const opciones = Object.values(productosDetalle).filter(p => p.tipo === tipoOpuesto && p.id !== id);
@@ -3496,26 +3606,30 @@
                 });
             }
 
-            // --- NUEVO: Renderizado de botones de opciones (solo para ichu) ---
+            // --- Renderizado de botones de opciones (con fondo beige fijo) ---
             const opcionesContainer = document.getElementById('opciones-container');
             opcionesContainer.innerHTML = '';
 
-            if (producto.opciones && producto.opciones.length > 0 && producto.id === 'ichu') {
+            if (producto.opciones && producto.opciones.length > 0) {
                 opcionesContainer.style.display = 'flex';
+                // Guardamos el índice de la opción activa (por defecto 1 = 100 cm)
+                let activeIndex = 1; // asumimos que la segunda opción es 100 cm
+
                 producto.opciones.forEach((opcion, index) => {
                     const btn = document.createElement('button');
-                    // Estilo beige (igual que btn-ver-detalle)
+                    // Estilo según si es la opción activa o no
+                    const isActive = (index === activeIndex);
                     btn.className = `px-5 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 
-                        ${index === selectedOptionIndex ? 'bg-[#d2af8b] text-black' : 'bg-transparent border border-white/20 text-white hover:bg-white/10'}`;
-                    btn.textContent = opcion.nombreBoton; // texto corto para el botón
+            ${isActive ? 'bg-[#d2af8b] text-black' : 'border border-white/40 text-white bg-transparent'}`;
+                    btn.textContent = opcion.nombreBoton;
 
                     btn.addEventListener('click', function () {
-                        // Actualizar nombre (usando nombreCompleto), precio, descripción e imágenes
+                        // Actualizar contenido
                         document.getElementById('detalle-nombre').textContent = opcion.nombreCompleto;
                         document.getElementById('detalle-precio').textContent = opcion.precioStr;
                         document.getElementById('detalle-descripcion').textContent = opcion.descripcion;
 
-                        // Actualizar imágenes principales
+                        // Actualizar imágenes
                         imagenesActuales = opcion.imagenes && opcion.imagenes.length ? opcion.imagenes : asegurar4Imagenes([]);
                         indiceActual = 0;
                         actualizarImagenPrincipal();
@@ -3535,15 +3649,12 @@
                             miniContainer.appendChild(div);
                         });
 
-                        // Resaltar el botón activo (beige) y despintar los demás
+                        // Actualizar estilos de botones: este se activa, los demás se desactivan
                         const allBtns = opcionesContainer.querySelectorAll('button');
                         allBtns.forEach(b => {
-                            b.classList.remove('bg-[#d2af8b]', 'text-black');
-                            b.classList.add('bg-transparent', 'border', 'border-white/20', 'text-white');
+                            b.className = `px-5 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 border border-white/40 text-white bg-transparent`;
                         });
-                        this.classList.remove('bg-transparent', 'border', 'border-white/20', 'text-white');
-                        this.classList.add('bg-[#d2af8b]', 'text-black');
-                        selectedOptionIndex = index;
+                        this.className = `px-5 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 bg-[#d2af8b] text-black`;
                     });
 
                     opcionesContainer.appendChild(btn);
