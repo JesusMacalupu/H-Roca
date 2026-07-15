@@ -1960,11 +1960,14 @@
     <div id="vistaPrincipal">
         <!-- HÉROE -->
         <div class="hero-wrapper">
-            <div class="hero-slide active" style="background-image: url('https://cdn.shopify.com/s/files/1/0521/0305/3481/files/principalHR1.png?v=1783978210');">
+            <div class="hero-slide active"
+                style="background-image: url('https://cdn.shopify.com/s/files/1/0521/0305/3481/files/principalHR1.png?v=1783978210');">
             </div>
-            <div class="hero-slide" style="background-image: url('https://cdn.shopify.com/s/files/1/0521/0305/3481/files/principalHR2.png?v=1783978210');">
+            <div class="hero-slide"
+                style="background-image: url('https://cdn.shopify.com/s/files/1/0521/0305/3481/files/principalHR2.png?v=1783978210');">
             </div>
-            <div class="hero-slide" style="background-image: url('https://cdn.shopify.com/s/files/1/0521/0305/3481/files/principalHR3.png?v=1783978210');">
+            <div class="hero-slide"
+                style="background-image: url('https://cdn.shopify.com/s/files/1/0521/0305/3481/files/principalHR3.png?v=1783978210');">
             </div>
             <div class="hero-overlay"></div>
             <div class="hero-content">
@@ -1995,7 +1998,11 @@
                         HISTORIA DE HORNOS ROCA
                     </h2>
                     <p class="font-body-lg text-body-lg text-on-surface-variant leading-loose">
-                        Somos Hornos Roca, fabricantes peruanos con más de ... años de experiencia en el mercado. Nos especializamos en hornos artesanales de leña y gas, así como en accesorios profesionales para cocinas y espacios gastronómicos. Trabajamos con diseño propio, materiales premium y un equipo que entiende lo que significa cocinar con pasión. Porque al final, no se trata solo de cocinar, se trata de crear momentos que quedan para siempre.
+                        Somos Hornos Roca, fabricantes peruanos con más de ... años de experiencia en el mercado. Nos
+                        especializamos en hornos artesanales de leña y gas, así como en accesorios profesionales para
+                        cocinas y espacios gastronómicos. Trabajamos con diseño propio, materiales premium y un equipo
+                        que entiende lo que significa cocinar con pasión. Porque al final, no se trata solo de cocinar,
+                        se trata de crear momentos que quedan para siempre.
                     </p>
                     <div class="flex gap-12 border-t border-outline-variant/30 pt-8">
                         <div><span
@@ -3115,7 +3122,7 @@
                 porqueElegir: 'Porque combina diseño compacto, materiales de primera calidad y tecnología a gas para garantizar resultados profesionales en cada preparación. Su piso de placa refractaria y su acabado negro mate lo convierten en una opción robusta, elegante y funcional para quienes buscan un horno moderno y duradero. Fabricado en Perú por Hornos Roca, especialistas en hornos premium.'
             },
 
-            // ========== ACCESORIOS (datos previos sin modificar) ==========
+            // ========== ACCESORIOS ==========
             'soporte-pizza': {
                 id: 'soporte-pizza',
                 tipo: 'accesorio',
@@ -3167,7 +3174,6 @@
                     'https://lacarboneragrill.pe/cdn/shop/files/palaPizzera2_720x.png?v=1783717534',
                     'https://lacarboneragrill.pe/cdn/shop/files/palaPizzera3_720x.png?v=1783969492',
                     'https://lacarboneragrill.pe/cdn/shop/files/palaPizzerafondo_720x.png?v=1783970776'
-
                 ]),
                 caracteristicas: [
                     'Acero inoxidable AISI 304: alta durabilidad, excelente desempeño en cocina y fácil limpieza.',
@@ -3381,7 +3387,14 @@
             }
         };
 
-        // ===== FUNCIONES DE NAVEGACIÓN =====
+        // ===== FUNCIÓN MEJORADA PARA ABRIR WHATSAPP =====
+        function abrirWhatsApp(nombreProducto, precioStr) {
+            const mensaje =
+                `Hola, equipo de Hornos Roca. Les escribo desde su página web porque estoy interesado en el producto: ${encodeURIComponent(nombreProducto)} con un precio de ${encodeURIComponent(precioStr)}. Me gustaría recibir una cotización formal con detalles sobre disponibilidad, plazos de entrega y opciones de pago. Si existen variantes o personalizaciones, también me interesaría conocerlas. Agradezco su atención y quedo a la espera de su respuesta.`;
+            window.open(`https://wa.me/51952363833?text=${mensaje}`, '_blank');
+        }
+
+        // ===== NAVEGACIÓN =====
         const vistaPrincipal = document.getElementById('vistaPrincipal');
         const vistaDetalle = document.getElementById('vistaDetalle');
         const vistaCatalogo = document.getElementById('vistaCatalogo');
@@ -3410,6 +3423,10 @@
             }
             if (window._heroInterval) clearInterval(window._heroInterval);
             window._heroInterval = setInterval(nextSlide, 4000);
+            // Limpiar hash
+            if (window.location.hash) {
+                history.pushState(null, '', window.location.pathname);
+            }
         }
 
         function mostrarCatalogo() {
@@ -3418,18 +3435,19 @@
             renderCatalogo();
             window.scrollTo({ top: 0, behavior: 'smooth' });
             if (window._heroInterval) clearInterval(window._heroInterval);
+            if (window.location.hash) {
+                history.pushState(null, '', window.location.pathname);
+            }
         }
 
-        // ===== FUNCIÓN mostrarDetalle CON OPCIONES (siempre fondo beige) =====
         function mostrarDetalle(id) {
             const producto = productosDetalle[id];
             if (!producto) return;
 
-            // Verificar si el producto tiene opciones y seleccionar la de 100 cm (índice 1) por defecto
+            // Verificar opciones (variantes)
             let selectedOptionIndex = 1; // por defecto 100 cm
             if (producto.opciones && producto.opciones.length > 0) {
-                // Buscar la opción que tenga "100 cm" en el nombre, o la del medio
-                const defaultOpt = producto.opciones[1]; // asumimos que la segunda es 100 cm
+                const defaultOpt = producto.opciones[1];
                 if (defaultOpt) {
                     producto.nombre = defaultOpt.nombreCompleto;
                     producto.precioStr = defaultOpt.precioStr;
@@ -3449,7 +3467,7 @@
             indiceActual = 0;
             actualizarImagenPrincipal();
 
-            // Renderizar miniaturas
+            // Miniaturas
             const miniContainer = document.getElementById('detalle-miniaturas');
             miniContainer.innerHTML = '';
             const thumbnails = imagenesActuales.slice(0, 4);
@@ -3464,7 +3482,7 @@
                 miniContainer.appendChild(div);
             });
 
-            // --- Renderizado de acordeones (igual que antes) ---
+            // --- Renderizado de acordeones ---
             const acordeonContainer = document.getElementById('detalle-acordeones');
             acordeonContainer.innerHTML = '';
 
@@ -3562,7 +3580,6 @@
                 });
             }
 
-            // Renderizar cada sección como <details> (TODOS CERRADOS)
             secciones.forEach((sec) => {
                 const details = document.createElement('details');
                 details.className = 'group border-b border-outline-variant/30 hover:bg-surface-container-lowest transition-colors duration-300';
@@ -3596,12 +3613,82 @@
                 btnVerAccesorios.dataset.accion = 'hornos';
             }
 
+            // --- Botón cotizar (actualizado) ---
+            const btnCotizar = document.getElementById('btnCotizarDetalle');
+            const nombreActual = document.getElementById('detalle-nombre').textContent;
+            const precioActual = document.getElementById('detalle-precio').textContent;
+            btnCotizar.onclick = function (e) {
+                e.preventDefault();
+                abrirWhatsApp(nombreActual, precioActual);
+            };
+
+            // --- Opciones (variantes) ---
+            const opcionesContainer = document.getElementById('opciones-container');
+            opcionesContainer.innerHTML = '';
+            if (producto.opciones && producto.opciones.length > 0) {
+                opcionesContainer.style.display = 'flex';
+                producto.opciones.forEach((opcion, index) => {
+                    const btn = document.createElement('button');
+                    const isActive = (index === selectedOptionIndex);
+                    btn.className = `px-5 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 
+                        ${isActive ? 'bg-[#d2af8b] text-black' : 'border border-white/40 text-white bg-transparent'}`;
+                    btn.textContent = opcion.nombreBoton;
+
+                    btn.addEventListener('click', function () {
+                        // Actualizar datos
+                        document.getElementById('detalle-nombre').textContent = opcion.nombreCompleto;
+                        document.getElementById('detalle-precio').textContent = opcion.precioStr;
+                        document.getElementById('detalle-descripcion').textContent = opcion.descripcion;
+
+                        // Actualizar imágenes
+                        imagenesActuales = opcion.imagenes && opcion.imagenes.length ? opcion.imagenes : asegurar4Imagenes([]);
+                        indiceActual = 0;
+                        actualizarImagenPrincipal();
+
+                        // Refrescar miniaturas
+                        const miniContainer2 = document.getElementById('detalle-miniaturas');
+                        miniContainer2.innerHTML = '';
+                        const thumbnails2 = imagenesActuales.slice(0, 4);
+                        thumbnails2.forEach((img, idx) => {
+                            const div = document.createElement('div');
+                            div.className = 'galeria-thumb bg-surface-container aspect-square flex items-center justify-center p-2 transition-all duration-300';
+                            div.innerHTML = `<img class="w-full h-full object-cover" src="${img}" alt="Miniatura ${idx + 1}" />`;
+                            div.addEventListener('click', () => {
+                                indiceActual = idx;
+                                actualizarImagenPrincipal();
+                            });
+                            miniContainer2.appendChild(div);
+                        });
+
+                        // Actualizar botón cotizar con nuevos datos
+                        const nombreNuevo = document.getElementById('detalle-nombre').textContent;
+                        const precioNuevo = document.getElementById('detalle-precio').textContent;
+                        const btnCotizar2 = document.getElementById('btnCotizarDetalle');
+                        btnCotizar2.onclick = function (e) {
+                            e.preventDefault();
+                            abrirWhatsApp(nombreNuevo, precioNuevo);
+                        };
+
+                        // Estilos de botones
+                        const allBtns = opcionesContainer.querySelectorAll('button');
+                        allBtns.forEach(b => {
+                            b.className = `px-5 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 border border-white/40 text-white bg-transparent`;
+                        });
+                        this.className = `px-5 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 bg-[#d2af8b] text-black`;
+                    });
+
+                    opcionesContainer.appendChild(btn);
+                });
+            } else {
+                opcionesContainer.style.display = 'none';
+            }
+
             // --- Recomendados ---
             const tipoActual = producto.tipo;
             const tipoOpuesto = tipoActual === 'horno' ? 'accesorio' : 'horno';
-            const opciones = Object.values(productosDetalle).filter(p => p.tipo === tipoOpuesto && p.id !== id);
+            const opcionesRec = Object.values(productosDetalle).filter(p => p.tipo === tipoOpuesto && p.id !== id);
             const seleccionados = [];
-            const copia = [...opciones];
+            const copia = [...opcionesRec];
             while (seleccionados.length < 4 && copia.length > 0) {
                 const randIdx = Math.floor(Math.random() * copia.length);
                 seleccionados.push(copia.splice(randIdx, 1)[0]);
@@ -3626,13 +3713,14 @@
                             <p class="font-price-display text-primary mt-1">${rec.precioStr}</p>
                             <div class="btn-group-vertical">
                                 <button class="btn-ver-detalle" data-product-id="${rec.id}">Ver Detalles</button>
-                                <button class="btn-cotizar-card" data-product-name="${rec.nombre}">Cotizar</button>
+                                <button class="btn-cotizar-card" data-product-name="${rec.nombre}" data-product-price="${rec.precioStr}">Cotizar</button>
                             </div>
                         </div>
                     `;
                     recContainer.appendChild(div);
                 });
 
+                // Eventos para recomendados
                 recContainer.querySelectorAll('.btn-ver-detalle').forEach(btn => {
                     btn.addEventListener('click', function (e) {
                         e.stopPropagation();
@@ -3646,74 +3734,22 @@
                     btn.addEventListener('click', function (e) {
                         e.stopPropagation();
                         const nombre = this.dataset.productName;
-                        alert('Solicitar cotización para: ' + nombre);
+                        const precio = this.dataset.productPrice || 'S/ 0.00';
+                        abrirWhatsApp(nombre, precio);
                     });
                 });
             }
 
-            // --- Renderizado de botones de opciones (con fondo beige fijo) ---
-            const opcionesContainer = document.getElementById('opciones-container');
-            opcionesContainer.innerHTML = '';
-
-            if (producto.opciones && producto.opciones.length > 0) {
-                opcionesContainer.style.display = 'flex';
-                // Guardamos el índice de la opción activa (por defecto 1 = 100 cm)
-                let activeIndex = 1; // asumimos que la segunda opción es 100 cm
-
-                producto.opciones.forEach((opcion, index) => {
-                    const btn = document.createElement('button');
-                    // Estilo según si es la opción activa o no
-                    const isActive = (index === activeIndex);
-                    btn.className = `px-5 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 
-            ${isActive ? 'bg-[#d2af8b] text-black' : 'border border-white/40 text-white bg-transparent'}`;
-                    btn.textContent = opcion.nombreBoton;
-
-                    btn.addEventListener('click', function () {
-                        // Actualizar contenido
-                        document.getElementById('detalle-nombre').textContent = opcion.nombreCompleto;
-                        document.getElementById('detalle-precio').textContent = opcion.precioStr;
-                        document.getElementById('detalle-descripcion').textContent = opcion.descripcion;
-
-                        // Actualizar imágenes
-                        imagenesActuales = opcion.imagenes && opcion.imagenes.length ? opcion.imagenes : asegurar4Imagenes([]);
-                        indiceActual = 0;
-                        actualizarImagenPrincipal();
-
-                        // Refrescar miniaturas
-                        const miniContainer = document.getElementById('detalle-miniaturas');
-                        miniContainer.innerHTML = '';
-                        const thumbnails = imagenesActuales.slice(0, 4);
-                        thumbnails.forEach((img, idx) => {
-                            const div = document.createElement('div');
-                            div.className = 'galeria-thumb bg-surface-container aspect-square flex items-center justify-center p-2 transition-all duration-300';
-                            div.innerHTML = `<img class="w-full h-full object-cover" src="${img}" alt="Miniatura ${idx + 1}" />`;
-                            div.addEventListener('click', () => {
-                                indiceActual = idx;
-                                actualizarImagenPrincipal();
-                            });
-                            miniContainer.appendChild(div);
-                        });
-
-                        // Actualizar estilos de botones: este se activa, los demás se desactivan
-                        const allBtns = opcionesContainer.querySelectorAll('button');
-                        allBtns.forEach(b => {
-                            b.className = `px-5 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 border border-white/40 text-white bg-transparent`;
-                        });
-                        this.className = `px-5 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 bg-[#d2af8b] text-black`;
-                    });
-
-                    opcionesContainer.appendChild(btn);
-                });
-            } else {
-                opcionesContainer.style.display = 'none';
+            // --- Cambiar URL (hash) ---
+            if (window.location.hash !== '#producto=' + id) {
+                history.pushState(null, '', '#producto=' + id);
             }
 
-            // Mostrar la vista
+            // --- Mostrar vista ---
             ocultarTodas();
             vistaDetalle.classList.remove('hidden');
             void vistaDetalle.offsetWidth;
             vistaDetalle.classList.add('visible');
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -3814,7 +3850,7 @@
                                 <p class="precio">${p.precioStr}</p>
                                 <div class="btn-group-vertical">
                                     <button class="btn-ver-detalle" data-product-id="${p.id}">Ver Detalles</button>
-                                    <button class="btn-cotizar-card" data-product-name="${p.nombre}">Cotizar</button>
+                                    <button class="btn-cotizar-card" data-product-name="${p.nombre}" data-product-price="${p.precioStr}">Cotizar</button>
                                 </div>
                             </div>
                         </div>
@@ -3834,7 +3870,8 @@
                     btn.addEventListener('click', function (e) {
                         e.stopPropagation();
                         const nombre = this.dataset.productName;
-                        alert('Solicitar cotización para: ' + nombre);
+                        const precio = this.dataset.productPrice || 'S/ 0.00';
+                        abrirWhatsApp(nombre, precio);
                     });
                 });
             }
@@ -3857,7 +3894,6 @@
             }
         }
 
-        // ===== RENDERIZADO DE FILTROS LATERALES =====
         function renderFiltrosLateral() {
             const aside = document.getElementById('filtrosLateral');
             const precios = Object.values(productosDetalle).map(p => p.precio);
@@ -3952,47 +3988,7 @@
             return 'S/ ' + amount.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
 
-        // ===== EVENTOS DE CLIC EN PRODUCTOS =====
-        document.querySelectorAll('[data-product]').forEach(el => {
-            el.addEventListener('click', function (e) {
-                e.preventDefault();
-                const id = this.dataset.product;
-                if (id && productosDetalle[id]) {
-                    mostrarDetalle(id);
-                    megaMenu.classList.add('hidden');
-                    cerrarMenuMobile();
-                }
-            });
-        });
-
-        function agregarEventosProductos() {
-            document.querySelectorAll('#productosContainer .cursor-pointer').forEach(card => {
-                card.addEventListener('click', function () {
-                    const id = this.dataset.productId;
-                    if (id && productosDetalle[id]) {
-                        mostrarDetalle(id);
-                    }
-                });
-            });
-            document.querySelectorAll('#productosContainer .btn-ver-detalle').forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    const id = this.dataset.productId;
-                    if (id && productosDetalle[id]) {
-                        mostrarDetalle(id);
-                    }
-                });
-            });
-            document.querySelectorAll('#productosContainer .btn-cotizar-card').forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    const nombre = this.dataset.productName;
-                    alert('Solicitar cotización para: ' + nombre);
-                });
-            });
-        }
-
-        // ===== RENDERIZADO DE LA COLECCIÓN (con botones horizontales) =====
+        // ===== RENDERIZADO DE LA COLECCIÓN =====
         const productosLista = [
             { id: 'colosso', nombre: 'Horno Artesanal Colosso di Forgia 100 cm', precio: 'S/ 5,170.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia1_1066x.png?v=1783366960' },
             { id: 'nina-pacha', nombre: 'Horno Pachamanquero Multifunción – Modelo Nina Pacha', precio: 'S/ 3,709.00', categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/pachamanqueroNina2_1066x.png?v=1783786610' },
@@ -4031,12 +4027,42 @@
                         <p class="font-body-lg text-body-lg text-on-surface-variant mt-2 font-semibold">${p.precio}</p>
                         <div class="btn-group-horizontal">
                             <button class="btn-ver-detalle" data-product-id="${p.id}">Ver Detalles</button>
-                            <button class="btn-cotizar-card" data-product-name="${p.nombre}">Cotizar</button>
+                            <button class="btn-cotizar-card" data-product-name="${p.nombre}" data-product-price="${p.precio}">Cotizar</button>
                         </div>
                     </div>
                 </div>
             `).join('');
             agregarEventosProductos();
+        }
+
+        function agregarEventosProductos() {
+            document.querySelectorAll('#productosContainer .btn-ver-detalle').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const id = this.dataset.productId;
+                    if (id && productosDetalle[id]) {
+                        mostrarDetalle(id);
+                    }
+                });
+            });
+            document.querySelectorAll('#productosContainer .btn-cotizar-card').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const nombre = this.dataset.productName;
+                    const precio = this.dataset.productPrice || 'S/ 0.00';
+                    abrirWhatsApp(nombre, precio);
+                });
+            });
+            // Clic en toda la tarjeta (opcional)
+            document.querySelectorAll('#productosContainer [data-product-id]').forEach(card => {
+                card.addEventListener('click', function (e) {
+                    if (e.target.closest('button')) return;
+                    const id = this.dataset.productId;
+                    if (id && productosDetalle[id]) {
+                        mostrarDetalle(id);
+                    }
+                });
+            });
         }
 
         renderProductos('hornos');
@@ -4087,9 +4113,8 @@
             }
         });
 
-        btnCotizarDetalle.addEventListener('click', function () {
-            const nombre = document.getElementById('detalle-nombre').textContent;
-            alert('Solicitar cotización para: ' + nombre);
+        btnCotizarDetalle.addEventListener('click', function (e) {
+            // Ya está manejado por onclick en mostrarDetalle, pero prevenimos doble ejecución
         });
 
         btnCatalogoCompleto.addEventListener('click', function () {
@@ -4255,10 +4280,32 @@
             }
         }
 
-        // ====================================================
-        // ===== LÓGICA DEL OVERLAY DE BÚSQUEDA (MEJORADA) =====
-        // ====================================================
+        // ===== MANEJO DE URL (HASH) =====
+        function procesarHash() {
+            const hash = window.location.hash;
+            if (hash.startsWith('#producto=')) {
+                const id = hash.replace('#producto=', '');
+                if (productosDetalle[id]) {
+                    mostrarDetalle(id);
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        window.addEventListener('load', function () {
+            if (!procesarHash()) {
+                mostrarVistaPrincipal(true);
+            }
+        });
+
+        window.addEventListener('popstate', function () {
+            if (!procesarHash()) {
+                mostrarVistaPrincipal(true);
+            }
+        });
+
+        // ===== LÓGICA DEL OVERLAY DE BÚSQUEDA (MEJORADA) =====
         (function () {
             const searchOverlay = document.getElementById('search-overlay');
             const searchInput = document.getElementById('search-input');
@@ -4488,7 +4535,6 @@
                     }
                 });
             });
-
         })();
     </script>
 
