@@ -4080,6 +4080,23 @@
         });
 
         // ===== BOTONES DE NAVEGACIÓN =====
+
+        // ===== EVENTOS PARA EL MEGA MENÚ Y DEMÁS ELEMENTOS CON data-product =====
+        document.querySelectorAll('[data-product]').forEach(el => {
+            el.addEventListener('click', function (e) {
+                e.preventDefault();
+                const id = this.dataset.product;
+                if (id && productosDetalle[id]) {
+                    mostrarDetalle(id);
+                    // Cerrar el mega menú si está abierto
+                    const megaMenu = document.getElementById('megaMenu');
+                    if (megaMenu) megaMenu.classList.add('hidden');
+                    // Cerrar el menú móvil si está abierto
+                    cerrarMenuMobile();
+                }
+            });
+        });
+
         logoLink.addEventListener('click', function (e) {
             e.preventDefault();
             mostrarVistaPrincipal(true);
