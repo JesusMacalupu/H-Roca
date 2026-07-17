@@ -757,15 +757,12 @@ function getAllProducts() {
     const productosBase = Object.values(productosDetalle);
     productosBase.forEach(p => {
         if (p.opciones && p.opciones.length > 0) {
-            // Para cada opción, crear un producto independiente con ID consistente
             p.opciones.forEach((opcion) => {
-                // Extraer el tamaño del nombreBoton (ej: "Colosso – 80 cm" -> "80cm")
                 let tamaño = '';
                 const match = opcion.nombreBoton.match(/(\d+)\s*cm/);
                 if (match) {
                     tamaño = match[1] + 'cm';
                 } else {
-                    // fallback: usar índice
                     tamaño = 'opcion';
                 }
                 const idUnico = p.id + '-' + tamaño;
@@ -787,7 +784,6 @@ function getAllProducts() {
                 resultados.push(variante);
             });
         } else {
-            // Producto sin opciones, se añade tal cual
             resultados.push({ ...p });
         }
     });
@@ -1263,7 +1259,7 @@ function renderCatalogo() {
                 }
             }
             return `
-                            <div class="catalogo-card">
+                            <div class="catalogo-card cursor-pointer" data-product-id="${p.id}">
                                 <div class="card-img">
                                     <img src="${img}" alt="${p.nombre}" onerror="this.style.display='none'" />
                                 </div>
@@ -1295,6 +1291,15 @@ function renderCatalogo() {
                 const nombre = this.dataset.productName;
                 const precio = this.dataset.productPrice || 'S/ 0.00';
                 abrirWhatsApp(nombre, precio);
+            });
+        });
+        grid.querySelectorAll('.catalogo-card').forEach(card => {
+            card.addEventListener('click', function (e) {
+                if (e.target.closest('button')) return;
+                const id = this.dataset.productId;
+                if (id) {
+                    mostrarDetalle(id);
+                }
             });
         });
     }
@@ -1946,7 +1951,6 @@ window.addEventListener('popstate', function () {
     // ===== PRODUCTO DESTACADO =====
     function renderFeatured() {
         const all = getAllProducts();
-        // Buscar explícitamente el Colosso 100 cm
         const featured = all.find(p => p.id === 'colosso-100cm') || all.find(p => p.tipo === 'horno') || all[0];
         if (!featured) return;
         featuredProductId = featured.id;
@@ -1985,11 +1989,9 @@ window.addEventListener('popstate', function () {
     // ===== MÁS VENDIDOS =====
     function renderBestSellers() {
         const all = getAllProducts();
-        // IDs específicos: Napolitano 100, Ichu 100, Soporte para Pizza
         const idsDeseados = ['napolitano-100cm', 'ichu-100cm', 'soporte-pizza'];
         const top = idsDeseados.map(id => all.find(p => p.id === id)).filter(Boolean);
 
-        // Si faltan, rellenar con cualquier producto
         if (top.length === 0) {
             const hornos = all.filter(p => p.tipo === 'horno');
             if (hornos.length) top.push(hornos[0]);
