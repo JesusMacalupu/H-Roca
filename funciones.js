@@ -16,8 +16,8 @@ const productosDetalle = {
         origen: 'peruano',
         nombre: 'Horno Artesanal Colosso di Forgia 100 cm',
         categoria: 'Hornos a Leña',
-        precio: 5170.00,
-        precioStr: 'S/ 5,170.00',
+        precio: 6204.00,
+        precioStr: 'S/ 6,204.00',
         descripcion: 'El Colosso di Forgia 100 cm es un horno artesanal profesional de diseño italiano, concebido para pizzería y panadería exigente. Su cúpula maciza y aislamiento con fibra cerámica aseguran masa térmica y curva de calor estables; la chimenea frontal con regulador optimiza el tiro para resultados consistentes tanda tras tanda.',
         imagenes: asegurar4Imagenes([
             'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia1_1066x.png?v=1783366960',
@@ -79,7 +79,7 @@ const productosDetalle = {
             {
                 nombreBoton: 'Colosso – 100 cm',
                 nombreCompleto: 'Horno Artesanal Colosso di Forgia 100 cm',
-                precioStr: 'S/ 5,170.00',
+                precioStr: 'S/ 6,204.00',
                 descripcion: 'El Colosso di Forgia 100 cm es un horno artesanal profesional de diseño italiano, concebido para pizzería y panadería exigente. Su cúpula maciza y aislamiento con fibra cerámica aseguran masa térmica y curva de calor estables; la chimenea frontal con regulador optimiza el tiro para resultados consistentes tanda tras tanda.',
                 imagenes: asegurar4Imagenes([
                     'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia1_1066x.png?v=1783366960',
@@ -110,8 +110,8 @@ const productosDetalle = {
         origen: 'peruano',
         nombre: 'Horno Pachamanquero Multifunción – Modelo Nina Pacha',
         categoria: 'Hornos a Leña',
-        precio: 3709.00,
-        precioStr: 'S/ 3,709.00',
+        precio: 4450.80,
+        precioStr: 'S/ 4,450.80',
         descripcion: 'El Nina Pacha es un horno pachamanquero multifunción que combina la tradición de la cocina andina con una construcción robusta y acabados de lujo. Diseñado para ofrecer máxima versatilidad y rendimiento térmico, es ideal tanto para celebraciones familiares como para entornos gastronómicos exigentes.',
         imagenes: asegurar4Imagenes([
             'https://lacarboneragrill.pe/cdn/shop/files/pachamanqueroNina2_1066x.png?v=1783786610',
@@ -168,8 +168,8 @@ const productosDetalle = {
         origen: 'peruano',
         nombre: 'Horno Artesanal – Modelo Nina – 100 cm',
         categoria: 'Hornos a Leña',
-        precio: 4585.00,
-        precioStr: 'S/ 4,585.00',
+        precio: 5502.00,
+        precioStr: 'S/ 5,502.00',
         descripcion: 'El Modelo Nina es un horno artesanal premium que combina la tradición de la cocina a leña con un diseño elegante y acabados de lujo. Su arco frontal de ladrillo y revestimiento exterior en mármol lo convierten en una pieza que realza cualquier espacio, ya sea en una terraza residencial o en un ambiente gastronómico profesional. Construido con materiales de alto rendimiento térmico, garantiza cocciones envolventes, uniformes y con el inconfundible sabor de la leña.',
         imagenes: asegurar4Imagenes([
             'https://lacarboneragrill.pe/cdn/shop/files/nuevoNina01_1066x.png?v=1784134987',
@@ -224,7 +224,7 @@ const productosDetalle = {
             {
                 nombreBoton: 'Nina – 100 cm',
                 nombreCompleto: 'Horno Artesanal – Modelo Nina – 100 cm',
-                precioStr: 'S/ 4,585.00',
+                precioStr: 'S/ 5,502.00',
                 descripcion: 'El Modelo Nina es un horno artesanal premium que combina la tradición de la cocina a leña con un diseño elegante y acabados de lujo. Su arco frontal de ladrillo y revestimiento exterior en mármol lo convierten en una pieza que realza cualquier espacio, ya sea en una terraza residencial o en un ambiente gastronómico profesional. Construido con materiales de alto rendimiento térmico, garantiza cocciones envolventes, uniformes y con el inconfundible sabor de la leña.',
                 imagenes: asegurar4Imagenes([
                     'https://lacarboneragrill.pe/cdn/shop/files/nuevoNina01_1066x.png?v=1784134987',
@@ -255,8 +255,8 @@ const productosDetalle = {
         origen: 'peruano',
         nombre: 'Horno Artesanal – Modelo Ichu – 100 cm',
         categoria: 'Hornos a Leña',
-        precio: 4330.00,
-        precioStr: 'S/ 4,330.00',
+        precio: 5196.00,
+        precioStr: 'S/ 5,196.00',
         descripcion: 'El Modelo Ichu rinde homenaje a la tradición de los hornos de la sierra peruana. Su forma boleada, similar a un iglú, no es casual: está diseñada para envolver cada preparación en un calor parejo, evitando puntos fríos y logrando cocciones uniformes. Fabricado con materiales nacionales e importados de alta gama, su revestimiento en pepelma de mármol no solo ofrece un acabado de lujo, sino que resiste la intemperie y el paso del tiempo. Lleva los colores de nuestra bandera y se integra con naturalidad en hogares, casas de campo, playas o negocios gourmet, aportando autenticidad y eficiencia a cada plato.',
         imagenes: asegurar4Imagenes([
             'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu5_720x.png?v=1783367134',
@@ -326,7 +326,7 @@ const productosDetalle = {
             {
                 nombreBoton: 'Ichu – 100 cm',
                 nombreCompleto: 'Horno Artesanal – Modelo Ichu – 100 cm',
-                precioStr: 'S/ 4,330.00',
+                precioStr: 'S/ 5,196,00',
                 descripcion: 'El Modelo Ichu rinde homenaje a la tradición de los hornos de la sierra peruana. Su forma boleada, similar a un iglú, no es casual: está diseñada para envolver cada preparación en un calor parejo, evitando puntos fríos y logrando cocciones uniformes. Fabricado con materiales nacionales e importados de alta gama, su revestimiento en pepelma de mármol no solo ofrece un acabado de lujo, sino que resiste la intemperie y el paso del tiempo. Lleva los colores de nuestra bandera y se integra con naturalidad en hogares, casas de campo, playas o negocios gourmet, aportando autenticidad y eficiencia a cada plato.',
                 imagenes: asegurar4Imagenes([
                     'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu5_720x.png?v=1783367134',
@@ -357,8 +357,8 @@ const productosDetalle = {
         origen: 'italiano',
         nombre: 'Horno Artesanal – Modelo Napolitano – 100 cm',
         categoria: 'Hornos a Leña',
-        precio: 4420.00,
-        precioStr: 'S/ 4,420.00',
+        precio: 5304.00,
+        precioStr: 'S/ 5,304.00',
         descripcion: 'El Modelo Napolitano está inspirado en la tradición italiana, diseñado para alcanzar temperaturas extremas en tiempo récord y ofrecer resultados auténticos. Su distintivo techo plano maximiza la acumulación y distribución del calor, logrando cocciones rápidas y uniformes. Fabricado con materiales de alto rendimiento térmico y acabados de nivel profesional, es ideal tanto para uso residencial premium como para negocios gastronómicos exigentes.',
         imagenes: asegurar4Imagenes([
             'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/napolitano03.png?v=1784148310',
@@ -414,7 +414,7 @@ const productosDetalle = {
             {
                 nombreBoton: 'Napolitano – 100 cm',
                 nombreCompleto: 'Horno Artesanal – Modelo Napolitano – 100 cm',
-                precioStr: 'S/ 4,420.00',
+                precioStr: 'S/ 5,304.00',
                 descripcion: 'El Modelo Napolitano está inspirado en la tradición italiana, diseñado para alcanzar temperaturas extremas en tiempo récord y ofrecer resultados auténticos. Su distintivo techo plano maximiza la acumulación y distribución del calor, logrando cocciones rápidas y uniformes. Fabricado con materiales de alto rendimiento térmico y acabados de nivel profesional, es ideal tanto para uso residencial premium como para negocios gastronómicos exigentes.',
                 imagenes: asegurar4Imagenes([
                     'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/napolitano03.png?v=1784148310',
@@ -445,14 +445,14 @@ const productosDetalle = {
         origen: 'peruano',
         nombre: 'Horno Premium – Modelo Di Bronzo – 57×57×32 cm',
         categoria: 'Hornos a Gas',
-        precio: 3900.00,
-        precioStr: 'S/ 3,900.00',
+        precio: 4680.00,
+        precioStr: 'S/ 4,680.00',
         descripcion: 'El Horno Di Bronzo de Hornos Roca es un equipo profesional de gas LP, diseñado para cocción versátil y eficiente en espacios residenciales o gastronómicos. Su diseño compacto en medidas estándar de 57 × 57 × 32 cm lo convierte en la opción ideal para quienes buscan rendimiento profesional en un formato práctico y elegante. La cúpula metálica pintada en negro mate anticalórico aporta un acabado sobrio y moderno, mientras que su piso de placa refractaria asegura una cocción uniforme y auténtica.',
         imagenes: asegurar4Imagenes([
-            'https://lacarboneragrill.pe/cdn/shop/files/diBRONZO1_1066x.png?v=1783366601',
-            'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/diBronzo04.png?v=1784038340',
-            'https://lacarboneragrill.pe/cdn/shop/files/diBRONZO2_720x.png?v=1783366601',
-            'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/diBronzo03.png?v=1784038340'
+            'https://res.cloudinary.com/srcziafe/image/upload/v1785446121/diBRONZO2_lb62gn.png',
+            'https://res.cloudinary.com/srcziafe/image/upload/v1785446121/diBronzo04_nrfdf3.png',
+            'https://res.cloudinary.com/srcziafe/image/upload/v1785446121/diBRONZO1_riikw2.png',
+            'https://res.cloudinary.com/srcziafe/image/upload/v1785446122/diBronzo03_nkaync.png'
         ]),
         ventajasTecnicas: [
             'Funcionalidad a gas LP con quemador tipo flauta, eficiente y seguro.',
@@ -491,8 +491,8 @@ const productosDetalle = {
         combustible: null,
         nombre: 'Soporte para Bandeja de Pizza',
         categoria: 'Accesorios',
-        precio: 31.90,
-        precioStr: 'S/ 31.90',
+        precio: 38.28,
+        precioStr: 'S/ 38.28',
         descripcion: 'El Soporte para Bandeja de Pizza de Hornos Roca está pensado para el momento más importante: servir. Te permite llevar la pizza a la mesa con una presentación más ordenada y práctica, manteniendo la bandeja estable y elevándola para un servicio cómodo. Además, incorpora un porta condimentos pequeño para tener a mano lo esencial (ají, orégano, aceite, etc.) y mejorar la experiencia al momento de comer.',
         imagenes: asegurar4Imagenes([
             'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/nuevoPizzaBase01.png?v=1784062592',
@@ -528,8 +528,8 @@ const productosDetalle = {
         combustible: null,
         nombre: 'Pala Pizzera AISI 304',
         categoria: 'Accesorios',
-        precio: 277.90,
-        precioStr: 'S/ 277.90',
+        precio: 333.48,
+        precioStr: 'S/ 333.48',
         descripcion: 'La Pala Pizzera Hornos Roca en acero inoxidable AISI 304 es el accesorio clave para trabajar pizzas en hornos con seguridad y precisión. Su largo te da alcance y control para cargar, girar y retirar la pizza sin deformarla, manteniendo una distancia cómoda frente al calor. Ideal para uso doméstico exigente y también para producción en pizzería.',
         imagenes: asegurar4Imagenes([
             'https://lacarboneragrill.pe/cdn/shop/files/palaPizzera1_1066x.png?v=1783636099',
@@ -567,8 +567,8 @@ const productosDetalle = {
         combustible: null,
         nombre: 'Bandeja para Hornos',
         categoria: 'Accesorios',
-        precio: 119.90,
-        precioStr: 'S/ 119.90',
+        precio: 143.88,
+        precioStr: 'S/ 143.88',
         descripcion: 'La Bandeja para Hornos de Hornos Roca está diseñada para ayudarte a cocinar con orden, practicidad y resultados parejos dentro del horno. Su formato es ideal para horneados en bandeja: desde preparaciones saladas hasta postres, permitiéndote manipular y retirar alimentos con mayor control, sin ensuciar de más la base del horno.',
         imagenes: asegurar4Imagenes([
             'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/bandejahorno01_83c6f3fa-d940-4380-8bba-be538763c79e.png?v=1784040027',
@@ -605,8 +605,8 @@ const productosDetalle = {
         combustible: null,
         nombre: 'Puerta de Acero Inoxidable para Horno Artesanal con Termómetro',
         categoria: 'Accesorios',
-        precio: 749.00,
-        precioStr: 'S/ 749.00',
+        precio: 898.80,
+        precioStr: 'S/ 898.80',
         descripcion: 'La puerta de acero inoxidable con termómetro integrado de Hornos Roca está diseñada para que tu horno trabaje con más control, mejor rendimiento térmico y mayor seguridad. Incluye marco tipo arco, termómetro analógico frontal para monitorear la temperatura sin abrir, y compuerta inferior regulable que te permite manejar el tiro/entrada de aire (clave para sostener temperatura y cocinar parejo).',
         imagenes: asegurar4Imagenes([
             'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/puertaHorno-04.png?v=1784235657',
@@ -645,8 +645,8 @@ const productosDetalle = {
         combustible: null,
         nombre: 'Cuchilla Corta Pizza (Tipo Mezzaluna)',
         categoria: 'Accesorios',
-        precio: 74.90,
-        precioStr: 'S/ 74.90',
+        precio: 89.88,
+        precioStr: 'S/ 89.88',
         descripcion: 'La Cuchilla Corta Pizza Hornos Roca es el accesorio ideal para lograr cortes rápidos, parejos y limpios sin aplastar la masa ni arrastrar los toppings. Su diseño curvo tipo mezzaluna con doble mango te da mayor control y estabilidad al cortar, haciendo que el servicio sea más ágil y con mejor presentación, tanto en casa como en pizzería.',
         imagenes: asegurar4Imagenes([
             'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/cuchillaMezzaluna01.png?v=1784042136',
@@ -679,8 +679,8 @@ const productosDetalle = {
         combustible: null,
         nombre: 'Termómetro para Horno (Vástago 12 cm)',
         categoria: 'Accesorios',
-        precio: 122.90,
-        precioStr: 'S/ 122.90',
+        precio: 147.48,
+        precioStr: 'S/ 147.48',
         descripcion: 'El Termómetro para Horno de Hornos Roca es el accesorio clave para dejar de cocinar “al ojo” y empezar a hornear con control real de temperatura. Se instala en la puerta o pared del horno y, gracias a su vástago de 12 cm, permite una lectura estable del calor para lograr pizzas bien cocidas, panes con buen desarrollo y asados más jugosos, con resultados repetibles en cada hornada.',
         imagenes: asegurar4Imagenes([
             'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/termometroHorno01_800x800.png?v=1783716159',
@@ -717,8 +717,8 @@ const productosDetalle = {
         combustible: null,
         nombre: 'Rejilla de Doble Altura de Cocción para Horno',
         categoria: 'Accesorios',
-        precio: 850.00,
-        precioStr: 'S/ 850.00',
+        precio: 1020.00,
+        precioStr: 'S/ 1,020.00',
         descripcion: 'La Rejilla de doble altura de Hornos Roca es el accesorio perfecto para aprovechar al máximo tu horno. Eleva tu cocción a un segundo nivel, permitiéndote cocinar dos preparaciones a la vez o manejar mejor los puntos de calor (piso vs cúpula). Ideal para panes, carnes, vegetales, gratinados y todo lo que necesita calor envolvente sin contacto directo con el piso refractario.',
         imagenes: asegurar4Imagenes([
             'https://lacarboneragrill.pe/cdn/shop/files/rejilla_de_Horno_720x.png?v=1784057425',
@@ -1415,61 +1415,61 @@ function formatPEN(amount) {
 // ===== RENDERIZADO DE LA COLECCIÓN =====
 const productosLista = [
     {
-        id: 'colosso', nombre: 'Horno Artesanal Colosso di Forgia 100 cm', precio: 'S/ 5,170.00',
+        id: 'colosso', nombre: 'Horno Artesanal Colosso di Forgia 100 cm', precio: 'S/ 6,204.00',
         categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/colosoDiForgia1_1066x.png?v=1783366960',
         origen: 'peruano'
     },
     {
-        id: 'nina-pacha', nombre: 'Horno Pachamanquero Multifunción – Modelo Nina Pacha', precio: 'S/ 3,709.00',
+        id: 'nina-pacha', nombre: 'Horno Pachamanquero Multifunción – Modelo Nina Pacha', precio: 'S/ 4,450.80',
         categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/pachamanqueroNina2_1066x.png?v=1783786610',
         origen: 'peruano'
     },
     {
-        id: 'nina', nombre: 'Horno Artesanal – Modelo Nina – 100 cm', precio: 'S/ 4,585.00',
+        id: 'nina', nombre: 'Horno Artesanal – Modelo Nina – 100 cm', precio: 'S/ 5,502.00',
         categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/nuevoNina01_1066x.png?v=1784134987',
         origen: 'peruano'
     },
     {
-        id: 'ichu', nombre: 'Horno Artesanal – Modelo Ichu – 100 cm', precio: 'S/ 4,330.00',
+        id: 'ichu', nombre: 'Horno Artesanal – Modelo Ichu – 100 cm', precio: 'S/ 5,196.00',
         categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu5_720x.png?v=1783367134',
         origen: 'peruano'
     },
     {
-        id: 'napolitano', nombre: 'Horno Artesanal – Modelo Napolitano – 100 cm', precio: 'S/ 4,420.00',
+        id: 'napolitano', nombre: 'Horno Artesanal – Modelo Napolitano – 100 cm', precio: 'S/ 5,304.00',
         categoria: 'hornos', imagen: 'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/napolitano03.png?v=1784148310',
         origen: 'italiano'
     },
     {
-        id: 'di-bronzo', nombre: 'Horno Premium – Modelo Di Bronzo – 57×57×32 cm', precio: 'S/ 3,900.00',
-        categoria: 'hornos', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/diBRONZO1_1066x.png?v=1783366601',
+        id: 'di-bronzo', nombre: 'Horno Premium – Modelo Di Bronzo – 57×57×32 cm', precio: 'S/ 4,680.00',
+        categoria: 'hornos', imagen: 'https://res.cloudinary.com/srcziafe/image/upload/v1785446121/diBRONZO2_lb62gn.png',
         origen: 'peruano'
     },
     {
-        id: 'soporte-pizza', nombre: 'Soporte para Bandeja de Pizza', precio: 'S/ 31.90',
+        id: 'soporte-pizza', nombre: 'Soporte para Bandeja de Pizza', precio: 'S/ 38.28',
         categoria: 'accesorios', imagen: 'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/nuevoPizzaBase01.png?v=1784062592'
     },
     {
-        id: 'pala-pizzera', nombre: 'Pala Pizzera AISI 304', precio: 'S/ 277.90',
+        id: 'pala-pizzera', nombre: 'Pala Pizzera AISI 304', precio: 'S/ 333.48',
         categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/palaPizzera1_1066x.png?v=1783636099'
     },
     {
-        id: 'bandeja', nombre: 'Bandeja para Hornos', precio: 'S/ 119.90',
+        id: 'bandeja', nombre: 'Bandeja para Hornos', precio: 'S/ 143.88',
         categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/bandejahorno01_83c6f3fa-d940-4380-8bba-be538763c79e_720x.png?v=1784040027'
     },
     {
         id: 'puerta-inox', nombre: 'Puerta de Acero Inoxidable para Horno Artesanal con Termómetro',
-        precio: 'S/ 749.00', categoria: 'accesorios', imagen: 'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/puertaHorno-04.png?v=1784235657'
+        precio: 'S/ 898.80', categoria: 'accesorios', imagen: 'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/puertaHorno-04.png?v=1784235657'
     },
     {
-        id: 'cuchilla', nombre: 'Cuchilla Corta Pizza (Tipo Mezzaluna)', precio: 'S/ 74.90',
+        id: 'cuchilla', nombre: 'Cuchilla Corta Pizza (Tipo Mezzaluna)', precio: 'S/ 89.88',
         categoria: 'accesorios', imagen: 'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/cuchillaMezzaluna01.png?v=1784042136'
     },
     {
-        id: 'termometro', nombre: 'Termómetro para Horno (Vástago 12 cm)', precio: 'S/ 122.90',
+        id: 'termometro', nombre: 'Termómetro para Horno (Vástago 12 cm)', precio: 'S/ 147.48',
         categoria: 'accesorios', imagen: 'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/termometroHorno01_800x800.png?v=1783716159'
     },
     {
-        id: 'rejilla', nombre: 'Rejilla de Doble Altura de Cocción para Horno', precio: 'S/ 850.00',
+        id: 'rejilla', nombre: 'Rejilla de Doble Altura de Cocción para Horno', precio: 'S/ 1,020.00',
         categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/rejilla_de_Horno_720x.png?v=1784057425'
     }
 ];
