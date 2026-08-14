@@ -748,6 +748,62 @@ const productosDetalle = {
             { pregunta: '¿El acero al carbono es adecuado para horno?', respuesta: 'Sí. Es un material robusto para uso térmico. Recomendación: secar bien después de limpiar para conservarlo en óptimas condiciones.' }
         ],
         porqueElegir: 'Maximiza la capacidad de cocción y permite preparar varios alimentos a la vez.'
+    },
+
+    'steel-cook': {
+        id: 'steel-cook',
+        tipo: 'accesorio',
+        combustible: null,
+        nombre: 'Modelo Steel Cook 40x30 cm - La Carbonera Grill',
+        categoria: 'Accesorios',
+        precio: 99.90,
+        precioStr: 'S/ 99.90',
+        descripcion: 'Steel Cook de La Carbonera Grill es una tabla de picar fabricada íntegramente en acero inoxidable de grado alimenticio, diseñada para ofrecer una superficie de trabajo inocua, segura y de alta durabilidad. Su sistema de apoyo proporciona mayor estabilidad durante el corte, permitiendo trabajar con precisión y seguridad. Ideal tanto para el hogar como para entornos profesionales que exigen materiales confiables y de fácil mantenimiento. Porque la calidad de tus alimentos no depende solo de los ingredientes, sino también de la superficie donde los preparas.',
+        imagenes: asegurar4Imagenes([
+            'https://res.cloudinary.com/srcziafe/image/upload/v1786542955/miniStealcook01_ve2ede.png',
+            'https://res.cloudinary.com/srcziafe/image/upload/v1786546392/peperoni_edq7yf.png',
+            'https://res.cloudinary.com/srcziafe/image/upload/v1786542955/miniSteakcook05_lko8pr.png',
+            'https://res.cloudinary.com/srcziafe/image/upload/v1786542956/miniSteakcook04_lgexdz.png'
+        ]),
+        fichaTecnica: [
+            'Marca: La Carbonera Grill',
+            'Modelo: Steel Cook',
+            'Material: Acero inoxidable AISI 304-2B grado alimenticio',
+            'Acabado: Mate',
+            'Espesor: 1.5 mm',
+            'Dimensión Total: 42 x 30 cm',
+            'Dimensión Útil: 40 x 30 cm',
+            'Sistema de apoyo: Sí',
+            'Doblez de apoyo: Sí',
+            'Relieve de enganche: Sí'
+        ],
+        beneficiosGastronomicos: [
+            'Fabricada en acero inoxidable AISI 304-2B grado alimenticio, apto para el contacto con alimentos y resistente a la corrosión.',
+            'Superficie no porosa, que no absorbe humedad, líquidos ni olores.',
+            'No genera astillas ni desprende partículas durante el uso.',
+            'Fácil de limpiar y desinfectar, facilitando una correcta inocuidad después de cada corte.',
+            'Sistema de apoyo que proporciona mayor estabilidad y control durante el corte.',
+            'Alta durabilidad, diseñada para conservar sus propiedades y apariencia con el uso continuo.',
+            'Apta para uso doméstico y gastronómico profesional.'
+        ],
+        usosRecomendados: [
+            'Carnes',
+            'Aves',
+            'Pescados',
+            'Mariscos',
+            'Frutas',
+            'Verduras'
+        ],
+        cuidadoYMantenimiento: 'Al estar fabricada en acero inoxidable AISI 304-2B grado alimenticio, la Steel Cook puede limpiarse fácilmente con agua, lavavajillas, cloro o lejía. Después del lavado, enjuágala y sécala con un paño limpio para mantener la superficie en óptimas condiciones. Evita el uso prolongado de limpiadores abrasivos, ya que pueden afectar el acabado del acero. Con una limpieza y mantenimiento adecuados, conservará sus propiedades y apariencia durante años.',
+        faqs: [
+            { pregunta: '¿La tabla se oxida?', respuesta: 'No. Steel Cook está fabricada en acero inoxidable AISI 304-2B grado alimenticio, reconocido por su alta resistencia a la corrosión. Para conservarla en buenas condiciones, se recomienda limpiarla después de cada uso, enjuagarla correctamente y secarla con un paño limpio.' },
+            { pregunta: '¿Absorbe olores o humedad?', respuesta: 'No. Su superficie no porosa evita que la humedad, los líquidos y los olores penetren en el material. Esta característica facilita la limpieza y contribuye a una manipulación más inocua de los alimentos.' },
+            { pregunta: '¿Los cuchillos la rayan?', respuesta: 'Sí. El contacto continuo con los cuchillos puede generar marcas y ralladuras superficiales, algo normal en una tabla de acero inoxidable. Estas señales de uso no afectan las propiedades del material, su funcionalidad ni su vida útil.' },
+            { pregunta: '¿Es apta para uso profesional?', respuesta: 'Sí. Steel Cook es apta tanto para el hogar como para restaurantes, hoteles, carnicerías, servicios de catering y otros negocios gastronómicos. Está diseñada para responder a entornos de trabajo donde se requiere una superficie resistente, de fácil mantenimiento y adecuada para el contacto con alimentos.' },
+            { pregunta: '¿Quiénes usan Steel Cook?', respuesta: 'Personas que quieren maximizar la calidad en sus cocinas, chefs y profesionales de la gastronomía que buscan una superficie confiable, duradera y fácil de mantener. Es una alternativa para quienes valoran la inocuidad y el desempeño de los elementos que utilizan para preparar sus alimentos.' },
+            { pregunta: '¿Fabrican otras medidas?', respuesta: 'Sí. Además del modelo estándar de 40 × 30 cm, fabricamos Steel Cook en medidas personalizadas, adaptándonos al espacio y a los requerimientos de cada cocina o proyecto gastronómico.' }
+        ],
+        porqueElegir: 'Porque ofrece una superficie más duradera y saludable. A diferencia del plástico o la madera, con el uso pueden presentar ralladuras, microfisuras o desprendimientos, el acero inoxidable no retiene jugos, grasas ni olores, priorizando tu salud. Estas características están alineadas con las buenas prácticas contempladas en las BPM y los sistemas HACCP. Por ello, el acero inoxidable es un material ampliamente utilizado en cocinas profesionales. Steel Cook incorpora estas ventajas en una tabla de picar diseñada para ofrecer inocuidad, resistencia y durabilidad en los cortes de tus alimentos.'
     }
 };
 
@@ -916,97 +972,177 @@ function mostrarDetalle(id) {
 
     const secciones = [];
 
-    if (baseProducto.caracteristicas) {
-        secciones.push({
-            titulo: 'Características clave',
-            contenido: baseProducto.caracteristicas.map(item => `<li>${item}</li>`).join('')
-        });
-    }
+    // Solo para steel-cook mostrar los acordeones específicos
+    if (baseProducto.id === 'steel-cook') {
+        // Ficha técnica
+        if (baseProducto.fichaTecnica) {
+            secciones.push({
+                titulo: 'Ficha técnica',
+                contenido: baseProducto.fichaTecnica.map(item => `<li>${item}</li>`).join('')
+            });
+        }
 
-    if (baseProducto.ventajasTecnicas) {
-        secciones.push({
-            titulo: 'Ventajas técnicas destacadas',
-            contenido: baseProducto.ventajasTecnicas.map(item => `<li>${item}</li>`).join('')
-        });
-    }
+        // Beneficios clave
+        if (baseProducto.beneficiosGastronomicos) {
+            secciones.push({
+                titulo: 'Beneficios clave',
+                contenido: baseProducto.beneficiosGastronomicos.map(item => `<li>${item}</li>`).join('')
+            });
+        }
 
-    const especs = baseProducto.especificacionesTecnicas || baseProducto.especificaciones || [];
-    if (especs.length > 0) {
-        secciones.push({
-            titulo: 'Especificaciones técnicas',
-            contenido: especs.map(esp => `<li><strong>${esp.clave}:</strong> ${esp.valor}</li>`).join('')
-        });
-    }
+        // Usos recomendados
+        if (baseProducto.usosRecomendados) {
+            secciones.push({
+                titulo: 'Usos recomendados',
+                contenido: baseProducto.usosRecomendados.map(item => `<li>${item}</li>`).join('')
+            });
+        }
 
-    if (baseProducto.capacidadGastronomica) {
-        secciones.push({
-            titulo: 'Capacidad gastronómica referencial',
-            contenido: baseProducto.capacidadGastronomica.map(item => `<li>${item}</li>`).join('')
-        });
-    }
+        // Cuidado y mantenimiento
+        if (baseProducto.cuidadoYMantenimiento) {
+            secciones.push({
+                titulo: 'Cuidado y mantenimiento',
+                contenido: `<p>${baseProducto.cuidadoYMantenimiento}</p>`
+            });
+        }
 
-    if (baseProducto.funcionesVersatilidad) {
-        secciones.push({
-            titulo: 'Funciones y versatilidad',
-            contenido: baseProducto.funcionesVersatilidad.map(item => `<li>${item}</li>`).join('')
-        });
-    }
+        // Preguntas frecuentes (FAQ)
+        if (baseProducto.faqs) {
+            secciones.push({
+                titulo: 'Preguntas frecuentes (FAQ)',
+                contenido: baseProducto.faqs.map(faq => `<li><strong>${faq.pregunta}</strong><br>${faq.respuesta}</li>`).join('')
+            });
+        }
 
-    if (baseProducto.beneficiosGastronomicos) {
-        secciones.push({
-            titulo: 'Beneficios gastronómicos',
-            contenido: baseProducto.beneficiosGastronomicos.map(item => `<li>${item}</li>`).join('')
-        });
-    }
+        // ¿Por qué elegir una tabla de picar de acero inoxidable?
+        if (baseProducto.porqueElegir) {
+            secciones.push({
+                titulo: '¿Por qué elegir una tabla de picar de acero inoxidable?',
+                contenido: `<p>${baseProducto.porqueElegir}</p>`
+            });
+        }
+    } else {
+        // Para el resto de productos (hornos y otros accesorios) mantener los acordeones originales
+        if (baseProducto.caracteristicas) {
+            secciones.push({
+                titulo: 'Características clave',
+                contenido: baseProducto.caracteristicas.map(item => `<li>${item}</li>`).join('')
+            });
+        }
 
-    if (baseProducto.fichaTecnica) {
-        secciones.push({
-            titulo: 'Ficha técnica',
-            contenido: baseProducto.fichaTecnica.map(item => `<li>${item}</li>`).join('')
-        });
-    }
+        if (baseProducto.ventajasTecnicas) {
+            secciones.push({
+                titulo: 'Ventajas técnicas destacadas',
+                contenido: baseProducto.ventajasTecnicas.map(item => `<li>${item}</li>`).join('')
+            });
+        }
 
-    if (baseProducto.comoElegir) {
-        secciones.push({
-            titulo: 'Cómo elegir tu medida ideal',
-            contenido: baseProducto.comoElegir.map(item => `<li>${item}</li>`).join('')
-        });
-    }
+        const especs = baseProducto.especificacionesTecnicas || baseProducto.especificaciones || [];
+        if (especs.length > 0) {
+            secciones.push({
+                titulo: 'Especificaciones técnicas',
+                contenido: especs.map(esp => `<li><strong>${esp.clave}:</strong> ${esp.valor}</li>`).join('')
+            });
+        }
 
-    if (baseProducto.faqs) {
-        secciones.push({
-            titulo: 'Preguntas frecuentes',
-            contenido: baseProducto.faqs.map(faq => `<li><strong>${faq.pregunta}</strong><br>${faq.respuesta}</li>`)
-                .join('')
-        });
-    }
+        if (baseProducto.capacidadGastronomica) {
+            secciones.push({
+                titulo: 'Capacidad gastronómica referencial',
+                contenido: baseProducto.capacidadGastronomica.map(item => `<li>${item}</li>`).join('')
+            });
+        }
 
-    if (baseProducto.informacionComercial) {
-        secciones.push({
-            titulo: 'Información comercial',
-            contenido: `<p>${baseProducto.informacionComercial}</p>`
-        });
-    }
+        if (baseProducto.funcionesVersatilidad) {
+            secciones.push({
+                titulo: 'Funciones y versatilidad',
+                contenido: baseProducto.funcionesVersatilidad.map(item => `<li>${item}</li>`).join('')
+            });
+        }
 
-    if (baseProducto.vidaUtil) {
-        secciones.push({
-            titulo: 'Vida útil',
-            contenido: baseProducto.vidaUtil.map(item => `<li>${item}</li>`).join('')
-        });
-    }
+        if (baseProducto.beneficiosGastronomicos) {
+            secciones.push({
+                titulo: 'Beneficios gastronómicos',
+                contenido: baseProducto.beneficiosGastronomicos.map(item => `<li>${item}</li>`).join('')
+            });
+        }
 
-    if (baseProducto.recomendaciones) {
-        secciones.push({
-            titulo: 'Recomendaciones',
-            contenido: baseProducto.recomendaciones.map(item => `<li>${item}</li>`).join('')
-        });
-    }
+        if (baseProducto.fichaTecnica) {
+            secciones.push({
+                titulo: 'Ficha técnica',
+                contenido: baseProducto.fichaTecnica.map(item => `<li>${item}</li>`).join('')
+            });
+        }
 
-    if (baseProducto.porqueElegir) {
-        secciones.push({
-            titulo: '¿Por qué elegir este modelo?',
-            contenido: `<p>${baseProducto.porqueElegir}</p>`
-        });
+        if (baseProducto.comoElegir) {
+            secciones.push({
+                titulo: 'Cómo elegir tu medida ideal',
+                contenido: baseProducto.comoElegir.map(item => `<li>${item}</li>`).join('')
+            });
+        }
+
+        if (baseProducto.faqs) {
+            secciones.push({
+                titulo: 'Preguntas frecuentes',
+                contenido: baseProducto.faqs.map(faq => `<li><strong>${faq.pregunta}</strong><br>${faq.respuesta}</li>`)
+                    .join('')
+            });
+        }
+
+        if (baseProducto.informacionComercial) {
+            secciones.push({
+                titulo: 'Información comercial',
+                contenido: `<p>${baseProducto.informacionComercial}</p>`
+            });
+        }
+
+        if (baseProducto.vidaUtil) {
+            secciones.push({
+                titulo: 'Vida útil',
+                contenido: baseProducto.vidaUtil.map(item => `<li>${item}</li>`).join('')
+            });
+        }
+
+        if (baseProducto.recomendaciones) {
+            secciones.push({
+                titulo: 'Recomendaciones',
+                contenido: baseProducto.recomendaciones.map(item => `<li>${item}</li>`).join('')
+            });
+        }
+
+        if (baseProducto.porqueElegir) {
+            secciones.push({
+                titulo: '¿Por qué elegir este modelo?',
+                contenido: `<p>${baseProducto.porqueElegir}</p>`
+            });
+        }
+
+        if (baseProducto.usosRecomendados) {
+            secciones.push({
+                titulo: 'Usos recomendados',
+                contenido: baseProducto.usosRecomendados.map(item => `<li>${item}</li>`).join('')
+            });
+        }
+
+        if (baseProducto.cuidadoYMantenimiento) {
+            secciones.push({
+                titulo: 'Cuidado y mantenimiento',
+                contenido: `<p>${baseProducto.cuidadoYMantenimiento}</p>`
+            });
+        }
+
+        if (baseProducto.quienesUsan) {
+            secciones.push({
+                titulo: '¿Quiénes usan este producto?',
+                contenido: `<p>${baseProducto.quienesUsan}</p>`
+            });
+        }
+
+        if (baseProducto.otrasMedidas) {
+            secciones.push({
+                titulo: '¿Fabricamos otras medidas?',
+                contenido: `<p>${baseProducto.otrasMedidas}</p>`
+            });
+        }
     }
 
     secciones.forEach((sec) => {
@@ -1471,6 +1607,10 @@ const productosLista = [
     {
         id: 'rejilla', nombre: 'Rejilla de Doble Altura de Cocción para Horno', precio: 'S/ 1,020.00',
         categoria: 'accesorios', imagen: 'https://lacarboneragrill.pe/cdn/shop/files/rejilla_de_Horno_720x.png?v=1784057425'
+    },
+    {
+        id: 'steel-cook', nombre: 'Modelo Steel Cook 40x30 cm - La Carbonera Grill', precio: 'S/ 99.90',
+        categoria: 'accesorios', imagen: 'https://res.cloudinary.com/srcziafe/image/upload/v1786542955/miniStealcook01_ve2ede.png'
     }
 ];
 
