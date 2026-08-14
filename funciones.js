@@ -42,7 +42,8 @@ const productosDetalle = {
             { clave: 'Acabado exterior', valor: 'mármol.' },
             { clave: 'Opción dual (gas)', valor: 'trabaja con media presión (si es gas LP de red, punto entre 10–15 PSI). Para gas natural, la conexión debe realizarla el proveedor autorizado.' },
             { clave: 'Peso aprox.', valor: '500–600 kg (según acabados/estructura/mesa).' },
-            { clave: 'Entrega a provincia', valor: 'equipo armado por agencia o visita de equipo técnico (coordinar).' }
+            { clave: 'Entrega a provincia', valor: 'equipo armado por agencia o visita de equipo técnico (coordinar).' },
+            { clave: 'Tipo de instalación: Entregado armado o fabricación in situ (cobro adicional)' } 
         ],
         capacidadGastronomica: [
             'Pizzas: hasta 2 unidades de 30–32 cm simultáneas (con rotación).',
@@ -156,7 +157,7 @@ const productosDetalle = {
             'Quemador: Tipo chya',
             'Capacidad: 34 kg',
             'Movilidad: 4 ruedas industriales',
-            'Uso recomendado: Gastronómico y residencial'
+            'Uso recomendado: Gastronómico y residencial',
         ],
         porqueElegir: 'El Nina Pacha ofrece un balance perfecto entre tradición y tecnología. Su sólida construcción en cemento y ladrillo refractario, acabada con mármol y acero inoxidable, garantiza durabilidad, eficiencia térmica y una presentación impecable. Es la elección ideal para quienes buscan un horno versátil, elegante y de alto rendimiento. Fabricado por Hornos Roca, con calidad y tradición peruana.'
     },
@@ -202,8 +203,8 @@ const productosDetalle = {
             'Puerta: Acero inoxidable con regulador de ventilación',
             'Termómetro: Analógico 0–500 °C',
             'Chimenea: Frontal con regulador de tiro',
-            'Tipo de instalación: Entregado armado o fabricación in situ',
-            'Tiempo de fabricación: 10 a 15 días útiles',
+            'Tipo de instalación: Entregado armado o fabricación in situ (cobro adicional)',
+            'Tiempo de fabricación: 10 a 15 días útiles (bajo cupo de fabricación)',
             'Uso recomendado: Residencial o comercial'
         ],
         informacionComercial: 'Precio publicado corresponde al horno en presentación a leña, entregado totalmente armado en medida estándar de 100 cm. Podemos fabricarlo en cualquier medida según requerimiento del cliente. Presentación dual (leña + gas) y fabricación in situ tienen un costo adicional.',
@@ -283,10 +284,10 @@ const productosDetalle = {
             'Chimenea frontal con regulador: extrae los humos de forma eficiente, sin que interfieran en tu espacio.',
             'Termómetro analógico 0–500 °C / Americano: control preciso de la temperatura para cada receta.'
         ],
-        fichaTecnica: [
+        fichaTecnica: [ // esta es la ficha base, se usará si la opción no tiene la suya
             'Medida exterior: 100 cm de diámetro',
             'Medida interior útil: 78 cm de diámetro',
-            'Espesor de paredes térmicas: 10 cm (con núcleo de fibra cerámica de 3 cm)',
+            'Espesor de paredes térmicas: 11 cm (con núcleo de fibra cerámica de 3 cm)',
             'Capacidad: Hasta 3 pizzas grandes/30 cm o 2 a 3 kg de pan, de 15kg a 18 kg de carnes o tubérculos por tanda (dependiendo de la bandeja en uso)',
             'Aislamiento térmico: Fibra cerámica (hasta 1260 °C)',
             'Piso: Ladrillos refractarios de 1 1/2"',
@@ -294,8 +295,8 @@ const productosDetalle = {
             'Puerta: Acero inoxidable con sistema de regulación de ventilación y fácil visión',
             'Termómetro: Analógico 0–500 °C / Americano',
             'Chimenea: Sistema frontal oculto con regulador damper en acero inoxidable',
-            'Tipo de instalación: Entregado armado o fabricación in situ',
-            'Tiempo de fabricación: 4 a 7 días útiles',
+            'Tipo de instalación: Entregado armado o fabricación in situ (cobro adicional)',
+            'Tiempo de fabricación: 4 a 7 días útiles (bajo cupo de fabricación)',
             'Uso recomendado: Residencial premium o comercial'
         ],
         informacionComercial: 'El Ichu está disponible en su versión estándar de 100 cm, completamente armado y listo para usar. Pero si lo deseas, podemos fabricarlo en cualquier medida que se adapte a tu espacio y necesidades. También ofrecemos la opción híbrida (leña + gas) para quienes buscan versatilidad y ahorro, y la fabricación in situ, para que el horno nazca directamente en tu hogar.',
@@ -321,12 +322,28 @@ const productosDetalle = {
                     'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/ichu-80-2.png?v=1784047686',
                     'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/ichu-80-3.png?v=1783977868',
                     'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/ichu-80-4.png?v=1783977868'
-                ])
+                ]),
+                // FICHA TÉCNICA EXCLUSIVA PARA 80 CM
+                fichaTecnica: [
+                    'Medida exterior: 80 cm de diámetro',
+                    'Medida interior útil: 58 cm',
+                    'Espesor de paredes térmicas: 11 cm (con núcleo de fibra cerámica)',
+                    'Capacidad: Hasta 2 pizzas grandes (30 cm) o 2 kg de pan, o 10–12 kg de carnes/tubérculos por tanda',
+                    'Aislamiento térmico: Fibra cerámica (hasta 1260 °C)',
+                    'Piso: Ladrillos refractarios de 1 1/2"',
+                    'Cúpula: Ladrillo comprimido térmico tipo torta',
+                    'Puerta: Acero inoxidable con regulador de ventilación',
+                    'Termómetro: Analógico 0–500 °C / Americano',
+                    'Chimenea: Sistema frontal oculto con regulador damper',
+                    'Tipo de instalación: Entregado armado o fabricación in situ (cobro adicional)',
+                    'Tiempo de fabricación: 4 a 7 días útiles (bajo cupo de fabricación)',
+                    'Uso recomendado: Residencial'
+                ]
             },
             {
                 nombreBoton: 'Ichu – 100 cm',
                 nombreCompleto: 'Horno Artesanal – Modelo Ichu – 100 cm',
-                precioStr: 'S/ 5,196,00',
+                precioStr: 'S/ 5,196.00',
                 descripcion: 'El Modelo Ichu rinde homenaje a la tradición de los hornos de la sierra peruana. Su forma boleada, similar a un iglú, no es casual: está diseñada para envolver cada preparación en un calor parejo, evitando puntos fríos y logrando cocciones uniformes. Fabricado con materiales nacionales e importados de alta gama, su revestimiento en pepelma de mármol no solo ofrece un acabado de lujo, sino que resiste la intemperie y el paso del tiempo. Lleva los colores de nuestra bandera y se integra con naturalidad en hogares, casas de campo, playas o negocios gourmet, aportando autenticidad y eficiencia a cada plato.',
                 imagenes: asegurar4Imagenes([
                     'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu5_720x.png?v=1783367134',
@@ -334,6 +351,7 @@ const productosDetalle = {
                     'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu3_1066x.png?v=1783367134',
                     'https://lacarboneragrill.pe/cdn/shop/files/modeloIchu4_720x.png?v=1783367134'
                 ])
+                // No tiene fichaTecnica propia, usará la base (100 cm) definida arriba
             },
             {
                 nombreBoton: 'Ichu – 120 cm',
@@ -345,7 +363,23 @@ const productosDetalle = {
                     'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/ichu-120-2.png?v=1783977868',
                     'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/ichu-120-3.png?v=1783977868',
                     'https://cdn.shopify.com/s/files/1/0521/0305/3481/files/ichu-120-4.png?v=1783977868'
-                ])
+                ]),
+                // FICHA TÉCNICA EXCLUSIVA PARA 120 CM
+                fichaTecnica: [
+                    'Medida exterior: 120 cm de diámetro',
+                    'Medida interior útil: 82 cm',
+                    'Espesor de paredes térmicas: 19 cm (con núcleo de fibra cerámica)',
+                    'Capacidad: Hasta 4 pizzas grandes (30 cm) o 4 kg de pan, o 20–25 kg de carnes/tubérculos por tanda',
+                    'Aislamiento térmico: Fibra cerámica (hasta 1260 °C)',
+                    'Piso: Ladrillos refractarios de 1 1/2"',
+                    'Cúpula: Ladrillo comprimido térmico tipo torta',
+                    'Puerta: Acero inoxidable con regulador de ventilación',
+                    'Termómetro: Analógico 0–500 °C / Americano',
+                    'Chimenea: Sistema frontal oculto con regulador damper',
+                    'Tipo de instalación: Entregado armado o fabricación in situ (cobro adicional)',
+                    'Tiempo de fabricación: 4 a 7 días útiles (bajo cupo de fabricación)',
+                    'Uso recomendado: Residencial o comercial'
+                ]
             }
         ]
     },
@@ -392,8 +426,8 @@ const productosDetalle = {
             'Termómetro: Analógico 0–500 °C',
             'Chimenea: Frontal con regulador de tiro',
             'Acabado exterior: Piedra de mármol con detalles en acero inoxidable',
-            'Tipo de instalación: Entregado armado o fabricación in situ',
-            'Tiempo de fabricación: 10 a 15 días útiles',
+            'Tipo de instalación: Entregado armado o fabricación in situ (cobro adicional)',
+            'Tiempo de fabricación: 10 a 15 días útiles (bajo cupo de fabricación)',
             'Uso recomendado: Residencial premium o comercial'
         ],
         informacionComercial: 'Precio publicado corresponde al horno en presentación a leña, entregado totalmente armado en medida estándar de 100 cm. Podemos fabricarlo en cualquier medida según requerimiento del cliente. Presentación dual (leña + gas) y fabricación in situ tienen un costo adicional.',
@@ -1066,10 +1100,11 @@ function mostrarDetalle(id) {
             });
         }
 
-        if (baseProducto.fichaTecnica) {
+        const ficha = selectedOption?.fichaTecnica || baseProducto.fichaTecnica;
+        if (ficha) {
             secciones.push({
                 titulo: 'Ficha técnica',
-                contenido: baseProducto.fichaTecnica.map(item => `<li>${item}</li>`).join('')
+                contenido: ficha.map(item => `<li>${item}</li>`).join('')
             });
         }
 
