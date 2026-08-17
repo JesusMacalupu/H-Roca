@@ -1509,3 +1509,51 @@ input[type="range"].price-slider-native-dark::-moz-range-thumb {
         animation-duration: 22s;
     }
 }
+
+/* Personalización de hornos */
+#personalizacion-wrapper {
+    margin: 2rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.personalizacion-titulo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #d2af8b;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.personalizacion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1.5rem;
+}
+
+.personalizacion-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+.personalizacion-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #d2af8b;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+/* Responsive: una columna en móviles */
+@media (max-width: 640px) {
+    .personalizacion-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}

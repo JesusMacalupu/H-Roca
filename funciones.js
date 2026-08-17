@@ -43,7 +43,7 @@ const productosDetalle = {
             { clave: 'Opción dual (gas)', valor: 'trabaja con media presión (si es gas LP de red, punto entre 10–15 PSI). Para gas natural, la conexión debe realizarla el proveedor autorizado.' },
             { clave: 'Peso aprox.', valor: '500–600 kg (según acabados/estructura/mesa).' },
             { clave: 'Entrega a provincia', valor: 'equipo armado por agencia o visita de equipo técnico (coordinar).' },
-            { clave: 'Tipo de instalación: Entregado armado o fabricación in situ (cobro adicional)' } 
+            { clave: 'Tipo de instalación: Entregado armado o fabricación in situ (cobro adicional)' }
         ],
         capacidadGastronomica: [
             'Pizzas: hasta 2 unidades de 30–32 cm simultáneas (con rotación).',
@@ -880,11 +880,21 @@ function getAllProducts() {
     return resultados;
 }
 
-// ===== FUNCIÓN MEJORADA PARA ABRIR WHATSAPP =====
-function abrirWhatsApp(nombreProducto, precioStr) {
-    const mensaje =
-        `Hola, equipo de Hornos Roca. Les escribo desde su página web porque estoy interesado en el producto: ${encodeURIComponent(nombreProducto)} con un precio de ${encodeURIComponent(precioStr)}. Me gustaría recibir una cotización formal con detalles sobre disponibilidad, plazos de entrega y opciones de pago. Si existen variantes o personalizaciones, también me interesaría conocerlas. Agradezco su atención y quedo a la espera de su respuesta.`;
-    window.open(`https://wa.me/51952363833?text=${mensaje}`, '_blank');
+// ===== FUNCIÓN MEJORADA PARA ABRIR WHATSAPP (CORREGIDA) =====
+function abrirWhatsApp(nombreProducto, precioBase, extras, total) {
+    let mensaje = `Hola, equipo de Hornos Roca. Les escribo desde su página web porque estoy interesado en el producto: ${nombreProducto} con un precio de ${precioBase}.`;
+
+    if (extras && extras.length > 0) {
+        mensaje += `\n\nMe gustaría incluir los siguientes extras:`;
+        extras.forEach(ext => {
+            mensaje += `\n- ${ext.descripcion} (+ ${ext.precio})`;
+        });
+        mensaje += `\n\nTotal estimado: ${total}.`;
+    }
+
+    mensaje += `\n\nMe gustaría recibir una cotización formal con detalles sobre disponibilidad, plazos de entrega y opciones de pago. Agradezco su atención y quedo a la espera de su respuesta.`;
+
+    window.open(`https://wa.me/51952363833?text=${encodeURIComponent(mensaje)}`, '_blank');
 }
 
 // ===== NAVEGACIÓN =====
@@ -932,6 +942,7 @@ function mostrarCatalogo() {
     }
 }
 
+// ===== MOSTRAR DETALLE (CORREGIDO) =====
 function mostrarDetalle(id) {
     const allProducts = getAllProducts();
     let producto = allProducts.find(p => p.id === id);
@@ -958,34 +969,48 @@ function mostrarDetalle(id) {
         if (opcionIndex >= 0) {
             selectedOption = baseProducto.opciones[opcionIndex];
         } else {
-            selectedOption = baseProducto.opciones[1] || baseProducto.opciones[0];
+            const idx100 = baseProducto.opciones.findIndex(o => o.nombreBoton.includes('100'));
+            selectedOption = baseProducto.opciones[idx100 !== -1 ? idx100 : 0];
         }
     }
 
     const datosMostrar = selectedOption || baseProducto;
 
+    // --- ACTUALIZAR NOMBRE, PRECIO Y DESCRIPCIÓN ---
+    const nombreMostrado =
+        selectedOption?.nombreCompleto ||
+        producto?.nombre ||
+        baseProducto.nombre;
+
+    const precioStrMostrado =
+        selectedOption?.precioStr ||
+        producto?.precioStr ||
+        baseProducto.precioStr ||
+        'S/ 0.00';
+
+    const descripcionMostrada =
+        selectedOption?.descripcion ||
+        producto?.descripcion ||
+        baseProducto.descripcion ||
+        'Sin descripción.';
+
+    document.getElementById('detalle-nombre').textContent = nombreMostrado;
+    document.getElementById('detalle-precio').textContent = precioStrMostrado;
+    document.getElementById('detalle-descripcion').textContent = descripcionMostrada;
+
+    // Categoría
     let categoriaHtml = baseProducto.categoria || 'Producto';
     if (baseProducto.tipo === 'horno') {
         if (baseProducto.origen === 'peruano') {
-            categoriaHtml =
-                `<img src="img/bandera-peru.png" class="inline-block w-6 h-6 mr-1" /> <span class="text-sm md:text-base">Horno Peruano</span>`;
+            categoriaHtml = `<img src="img/bandera-peru.png" class="inline-block w-6 h-6 mr-1" /> <span class="text-sm md:text-base">Horno Peruano</span>`;
         } else if (baseProducto.origen === 'italiano') {
-            categoriaHtml =
-                `<img src="img/bandera-italiana.png" class="inline-block w-6 h-6 mr-1" /> <span class="text-sm md:text-base">Horno Italiano</span>`;
+            categoriaHtml = `<img src="img/bandera-italiana.png" class="inline-block w-6 h-6 mr-1" /> <span class="text-sm md:text-base">Horno Italiano</span>`;
         }
     }
     document.getElementById('detalle-categoria').innerHTML = categoriaHtml;
 
-    const nombreMostrar = datosMostrar.nombreCompleto || datosMostrar.nombre || baseProducto.nombre;
-    document.getElementById('detalle-nombre').textContent = nombreMostrar;
-
-    document.getElementById('detalle-precio').textContent = datosMostrar.precioStr || baseProducto.precioStr ||
-        'S/ 0.00';
-    document.getElementById('detalle-descripcion').textContent = datosMostrar.descripcion || baseProducto
-        .descripcion || 'Sin descripción.';
-
-    imagenesActuales = datosMostrar.imagenes && datosMostrar.imagenes.length ? datosMostrar.imagenes :
-        asegurar4Imagenes([]);
+    // Imágenes
+    imagenesActuales = datosMostrar.imagenes && datosMostrar.imagenes.length ? datosMostrar.imagenes : asegurar4Imagenes([]);
     indiceActual = 0;
     actualizarImagenPrincipal();
 
@@ -1003,54 +1028,144 @@ function mostrarDetalle(id) {
         miniContainer.appendChild(div);
     });
 
+    // ===== SECCIÓN DE PERSONALIZACIÓN =====
+    const permitidos = ['colosso', 'nina', 'ichu', 'napolitano'];
+    const esPersonalizable = (baseProducto.tipo === 'horno' && permitidos.includes(baseProducto.id));
+
+    let personalizacionWrapper = document.getElementById('personalizacion-wrapper');
+    if (!personalizacionWrapper) {
+        personalizacionWrapper = document.createElement('div');
+        personalizacionWrapper.id = 'personalizacion-wrapper';
+        const acordeonContainer = document.getElementById('detalle-acordeones');
+        acordeonContainer.parentNode.insertBefore(personalizacionWrapper, acordeonContainer);
+    }
+
+    // Limpiar siempre antes de configurar
+    personalizacionWrapper.innerHTML = '';
+    personalizacionWrapper.style.display = 'none';
+    delete personalizacionWrapper.dataset.precioBase;
+    delete personalizacionWrapper.dataset.precioBaseStr;
+    delete personalizacionWrapper.dataset.extrasCompletos;
+    delete personalizacionWrapper.dataset.totalStr;
+    delete personalizacionWrapper.dataset.extrasSeleccionados;
+
+    // Variables para el precio y extras (se usarán en el botón cotizar)
+    let precioBaseNum = parseFloat(precioStrMostrado.replace(/[^0-9.]/g, ''));
+    let precioBaseStr = precioStrMostrado;
+    let extrasSeleccionados = [];
+    let precioTotalStr = precioStrMostrado;
+
+    if (esPersonalizable) {
+        personalizacionWrapper.style.display = 'block';
+        const extras = [
+            { id: 'dual', label: 'Conversión a Gas (Dual) - Para uso Gas y Leña', precio: 750 },
+            { id: 'ducto', label: 'Por cada metro de ducto adicional (Acero Inoxidable)', precio: 160 },
+            { id: 'base-acero', label: 'Base de Acero Inoxidable (Desmontable) - 90 cm de alto', precio: 1100 },
+            { id: 'base-fierro', label: 'Base de Fierro / Color negro (Desmontable) - 90 cm de alto', precio: 550 }
+        ];
+
+        let precioBase = datosMostrar.precio;
+        if (!precioBase && datosMostrar.precioStr) {
+            precioBase = parseFloat(datosMostrar.precioStr.replace(/[^0-9.]/g, ''));
+        }
+        if (!precioBase) {
+            precioBase = baseProducto.precio || 0;
+        }
+        precioBaseNum = precioBase;
+        precioBaseStr = 'S/ ' + precioBase.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        let html = `<div class="personalizacion-titulo">Personaliza tu horno a tu estilo:</div>
+                    <div class="personalizacion-grid">`;
+        extras.forEach(ext => {
+            html += `<label class="personalizacion-item">
+                        <input type="checkbox" data-extraid="${ext.id}" data-precio="${ext.precio}" />
+                        ${ext.label} (+ S/. ${ext.precio.toFixed(2)})
+                    </label>`;
+        });
+        html += `</div>`;
+        personalizacionWrapper.innerHTML = html;
+
+        function actualizarPrecioTotal() {
+            const checkboxes = personalizacionWrapper.querySelectorAll('input[type="checkbox"]');
+            let total = parseFloat(personalizacionWrapper.dataset.precioBase) || 0;
+            let extrasArr = [];
+            checkboxes.forEach(chk => {
+                if (chk.checked) {
+                    const precioExtra = parseFloat(chk.dataset.precio);
+                    total += precioExtra;
+                    const label = chk.closest('label');
+                    if (label) {
+                        const textoCompleto = label.textContent.trim();
+                        const partes = textoCompleto.split('(+ S/');
+                        const descripcion = partes[0].trim();
+                        extrasArr.push({
+                            descripcion: descripcion,
+                            precio: 'S/ ' + precioExtra.toFixed(2)
+                        });
+                    }
+                }
+            });
+
+            const totalStr = 'S/ ' + total.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('detalle-precio').textContent = totalStr;
+
+            personalizacionWrapper.dataset.precioBaseStr = 'S/ ' + parseFloat(personalizacionWrapper.dataset.precioBase).toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            personalizacionWrapper.dataset.extrasCompletos = JSON.stringify(extrasArr);
+            personalizacionWrapper.dataset.totalStr = totalStr;
+
+            precioTotalStr = totalStr;
+            extrasSeleccionados = extrasArr;
+        }
+
+        personalizacionWrapper.dataset.precioBase = precioBase;
+
+        personalizacionWrapper.querySelectorAll('input[type="checkbox"]').forEach(chk => {
+            chk.addEventListener('change', actualizarPrecioTotal);
+        });
+
+        actualizarPrecioTotal();
+    } else {
+        precioTotalStr = precioStrMostrado;
+        extrasSeleccionados = [];
+    }
+
+    // ===== ACORDEONES =====
     const acordeonContainer = document.getElementById('detalle-acordeones');
     acordeonContainer.innerHTML = '';
-
     const secciones = [];
 
     // Solo para steel-cook mostrar los acordeones específicos
     if (baseProducto.id === 'steel-cook') {
-        // Ficha técnica
         if (baseProducto.fichaTecnica) {
             secciones.push({
                 titulo: 'Ficha técnica',
                 contenido: baseProducto.fichaTecnica.map(item => `<li>${item}</li>`).join('')
             });
         }
-
-        // Beneficios clave
         if (baseProducto.beneficiosGastronomicos) {
             secciones.push({
                 titulo: 'Beneficios clave',
                 contenido: baseProducto.beneficiosGastronomicos.map(item => `<li>${item}</li>`).join('')
             });
         }
-
-        // Usos recomendados
         if (baseProducto.usosRecomendados) {
             secciones.push({
                 titulo: 'Usos recomendados',
                 contenido: baseProducto.usosRecomendados.map(item => `<li>${item}</li>`).join('')
             });
         }
-
-        // Cuidado y mantenimiento
         if (baseProducto.cuidadoYMantenimiento) {
             secciones.push({
                 titulo: 'Cuidado y mantenimiento',
                 contenido: `<p>${baseProducto.cuidadoYMantenimiento}</p>`
             });
         }
-
-        // Preguntas frecuentes (FAQ)
         if (baseProducto.faqs) {
             secciones.push({
                 titulo: 'Preguntas frecuentes (FAQ)',
                 contenido: baseProducto.faqs.map(faq => `<li><strong>${faq.pregunta}</strong><br>${faq.respuesta}</li>`).join('')
             });
         }
-
-        // ¿Por qué elegir una tabla de picar de acero inoxidable?
         if (baseProducto.porqueElegir) {
             secciones.push({
                 titulo: '¿Por qué elegir una tabla de picar de acero inoxidable?',
@@ -1120,8 +1235,7 @@ function mostrarDetalle(id) {
         if (baseProducto.faqs) {
             secciones.push({
                 titulo: 'Preguntas frecuentes',
-                contenido: baseProducto.faqs.map(faq => `<li><strong>${faq.pregunta}</strong><br>${faq.respuesta}</li>`)
-                    .join('')
+                contenido: baseProducto.faqs.map(faq => `<li><strong>${faq.pregunta}</strong><br>${faq.respuesta}</li>`).join('')
             });
         }
 
@@ -1214,32 +1328,31 @@ function mostrarDetalle(id) {
         btnVerAccesorios.dataset.accion = 'hornos';
     }
 
-    const btnCotizar = document.getElementById('btnCotizarDetalle');
+    // ===== BOTÓN COTIZAR (CORREGIDO) =====
     const nombreActual = document.getElementById('detalle-nombre').textContent;
-    const precioActual = document.getElementById('detalle-precio').textContent;
+    const btnCotizar = document.getElementById('btnCotizarDetalle');
     btnCotizar.onclick = function (e) {
         e.preventDefault();
-        abrirWhatsApp(nombreActual, precioActual);
+        abrirWhatsApp(nombreActual, precioBaseStr, extrasSeleccionados, precioTotalStr);
     };
 
+    // ===== OPCIONES (80/100/120) =====
     const opcionesContainer = document.getElementById('opciones-container');
     opcionesContainer.innerHTML = '';
     if (baseProducto.opciones && baseProducto.opciones.length > 0) {
         opcionesContainer.style.display = 'flex';
-        let activeIndex = 1;
-        if (opcionIndex >= 0) activeIndex = opcionIndex;
-        else {
+        let activeIndex = 0;
+        if (opcionIndex >= 0) {
+            activeIndex = opcionIndex;
+        } else {
             const idx100 = baseProducto.opciones.findIndex(o => o.nombreBoton.includes('100'));
-            if (idx100 !== -1) activeIndex = idx100;
-            else activeIndex = 0;
+            activeIndex = idx100 !== -1 ? idx100 : 0;
         }
 
         baseProducto.opciones.forEach((opcion, index) => {
             const btn = document.createElement('button');
             const isActive = (index === activeIndex);
-            btn.className =
-                `px-5 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 
-                            ${isActive ? 'bg-[#d2af8b] text-black' : 'border border-white/40 text-white bg-transparent'}`;
+            btn.className = `px-5 py-2 text-sm font-semibold uppercase tracking-wider transition-colors duration-200 ${isActive ? 'bg-[#d2af8b] text-black' : 'border border-white/40 text-white bg-transparent'}`;
             btn.textContent = opcion.nombreBoton;
 
             btn.addEventListener('click', function () {
@@ -1259,6 +1372,7 @@ function mostrarDetalle(id) {
         opcionesContainer.style.display = 'none';
     }
 
+    // ===== RECOMENDADOS =====
     const tipoActual = baseProducto.tipo;
     const tipoOpuesto = tipoActual === 'horno' ? 'accesorio' : 'horno';
     const opcionesRec = getAllProducts().filter(p => p.tipo === tipoOpuesto && p.id !== id);
@@ -1277,15 +1391,23 @@ function mostrarDetalle(id) {
         seleccionados.forEach(rec => {
             const div = document.createElement('div');
             div.className = 'rec-card';
+            div.style.cursor = 'pointer';
+            div.dataset.productId = rec.id;
+            div.addEventListener('click', function (e) {
+                if (e.target.closest('button')) return;
+                const id = this.dataset.productId;
+                if (id) {
+                    mostrarDetalle(id);
+                }
+            });
+
             const imgUrl = rec.imagenes && rec.imagenes.length ? rec.imagenes[0] : '';
             let label = 'Accesorio';
             if (rec.tipo === 'horno') {
                 if (rec.origen === 'peruano') {
-                    label =
-                        `<img src="img/bandera-peru.png" class="inline-block w-4 h-3 mr-1" /> <span class="text-sm md:text-base">Horno Peruano</span>`;
+                    label = `<img src="img/bandera-peru.png" class="inline-block w-4 h-3 mr-1" /> <span class="text-sm md:text-base">Horno Peruano</span>`;
                 } else if (rec.origen === 'italiano') {
-                    label =
-                        `<img src="img/bandera-italiana.png" class="inline-block w-4 h-3 mr-1" /> <span class="text-sm md:text-base">Horno Italiano</span>`;
+                    label = `<img src="img/bandera-italiana.png" class="inline-block w-4 h-3 mr-1" /> <span class="text-sm md:text-base">Horno Italiano</span>`;
                 }
             }
             div.innerHTML = `
@@ -1319,7 +1441,7 @@ function mostrarDetalle(id) {
                 e.stopPropagation();
                 const nombre = this.dataset.productName;
                 const precio = this.dataset.productPrice || 'S/ 0.00';
-                abrirWhatsApp(nombre, precio);
+                abrirWhatsApp(nombre, precio, [], precio);
             });
         });
     }
@@ -1348,8 +1470,7 @@ function actualizarImagenPrincipal() {
     indicadores.innerHTML = '';
     imagenesActuales.forEach((_, idx) => {
         const dot = document.createElement('span');
-        dot.className =
-            `block w-2 h-2 rounded-full transition-colors ${idx === indiceActual ? 'bg-primary' : 'bg-primary/20'}`;
+        dot.className = `block w-2 h-2 rounded-full transition-colors ${idx === indiceActual ? 'bg-primary' : 'bg-primary/20'}`;
         indicadores.appendChild(dot);
     });
 }
@@ -1424,11 +1545,9 @@ function renderCatalogo() {
             let label = 'Accesorio';
             if (p.tipo === 'horno') {
                 if (p.origen === 'peruano') {
-                    label =
-                        `<img src="img/bandera-peru.png" class="inline-block w-4 h-3 mr-1" /> <span class="text-sm md:text-base">Peruano</span>`;
+                    label = `<img src="img/bandera-peru.png" class="inline-block w-4 h-3 mr-1" /> <span class="text-sm md:text-base">Peruano</span>`;
                 } else if (p.origen === 'italiano') {
-                    label =
-                        `<img src="img/bandera-italiana.png" class="inline-block w-4 h-3 mr-1" /> <span class="text-sm md:text-base">Italiano</span>`;
+                    label = `<img src="img/bandera-italiana.png" class="inline-block w-4 h-3 mr-1" /> <span class="text-sm md:text-base">Italiano</span>`;
                 }
             }
             return `
@@ -1463,7 +1582,7 @@ function renderCatalogo() {
                 e.stopPropagation();
                 const nombre = this.dataset.productName;
                 const precio = this.dataset.productPrice || 'S/ 0.00';
-                abrirWhatsApp(nombre, precio);
+                abrirWhatsApp(nombre, precio, [], precio);
             });
         });
         grid.querySelectorAll('.catalogo-card').forEach(card => {
@@ -1481,8 +1600,7 @@ function renderCatalogo() {
     if (totalPaginas > 1) {
         let html = '';
         for (let i = 1; i <= totalPaginas; i++) {
-            html +=
-                `<button class="px-3 py-1 border border-white/10 hover:bg-white/10 transition-colors ${i === catalogoPaginaActual ? 'bg-white/20 text-white' : 'text-white/60'}" data-pagina="${i}">${i}</button>`;
+            html += `<button class="px-3 py-1 border border-white/10 hover:bg-white/10 transition-colors ${i === catalogoPaginaActual ? 'bg-white/20 text-white' : 'text-white/60'}" data-pagina="${i}">${i}</button>`;
         }
         paginacion.innerHTML = html;
         paginacion.querySelectorAll('[data-pagina]').forEach(btn => {
@@ -1661,11 +1779,9 @@ function renderProductos(categoria) {
         let label = categoria === 'hornos' ? 'Horno' : 'Accesorio';
         if (categoria === 'hornos') {
             if (p.origen === 'peruano') {
-                label =
-                    `<img src="img/bandera-peru.png" class="inline-block w-5 h-5 mr-1" /> <span class="text-sm md:text-base">Horno Peruano</span>`;
+                label = `<img src="img/bandera-peru.png" class="inline-block w-5 h-5 mr-1" /> <span class="text-sm md:text-base">Horno Peruano</span>`;
             } else if (p.origen === 'italiano') {
-                label =
-                    `<img src="img/bandera-italiana.png" class="inline-block w-5 h-5 mr-1" /> <span class="text-sm md:text-base">Horno Italiano</span>`;
+                label = `<img src="img/bandera-italiana.png" class="inline-block w-5 h-5 mr-1" /> <span class="text-sm md:text-base">Horno Italiano</span>`;
             }
         }
         return `
@@ -1708,7 +1824,7 @@ function agregarEventosProductos() {
             e.stopPropagation();
             const nombre = this.dataset.productName;
             const precio = this.dataset.productPrice || 'S/ 0.00';
-            abrirWhatsApp(nombre, precio);
+            abrirWhatsApp(nombre, precio, [], precio);
         });
     });
     document.querySelectorAll('#productosContainer [data-product-id]').forEach(card => {
@@ -1782,8 +1898,6 @@ btnVerAccesorios.addEventListener('click', function () {
         window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     }
 });
-
-btnCotizarDetalle.addEventListener('click', function (e) { });
 
 btnCatalogoCompleto.addEventListener('click', function () {
     renderFiltrosLateral();
@@ -2094,8 +2208,7 @@ window.addEventListener('popstate', function () {
         resultCount.textContent = resultados.length;
 
         if (resultados.length === 0) {
-            resultsList.innerHTML =
-                `<p class="text-white/50 text-center py-4">No se encontraron productos para "${termino}".</p>`;
+            resultsList.innerHTML = `<p class="text-white/50 text-center py-4">No se encontraron productos para "${termino}".</p>`;
         } else {
             resultsList.innerHTML = resultados.map(p => {
                 const img = p.imagenes && p.imagenes.length ? p.imagenes[0] : '';
