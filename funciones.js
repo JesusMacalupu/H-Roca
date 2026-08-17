@@ -976,7 +976,9 @@ function mostrarDetalle(id) {
     }
     document.getElementById('detalle-categoria').innerHTML = categoriaHtml;
 
-    document.getElementById('detalle-nombre').textContent = datosMostrar.nombre || baseProducto.nombre;
+    const nombreMostrar = datosMostrar.nombreCompleto || datosMostrar.nombre || baseProducto.nombre;
+    document.getElementById('detalle-nombre').textContent = nombreMostrar;
+
     document.getElementById('detalle-precio').textContent = datosMostrar.precioStr || baseProducto.precioStr ||
         'S/ 0.00';
     document.getElementById('detalle-descripcion').textContent = datosMostrar.descripcion || baseProducto
